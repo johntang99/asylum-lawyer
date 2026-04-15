@@ -142,10 +142,10 @@ export default async function VideoDetailPage({
                 预约免费咨询
               </Link>
               <Link
-                href="tel:+12135550188"
+                href="mailto:yuxiaris@gmail.com"
                 className="px-6 py-3 rounded-md font-semibold border-2 border-white text-white"
               >
-                致电 (213) 555-0188
+                发送邮件至 yuxiaris@gmail.com
               </Link>
             </div>
           </div>

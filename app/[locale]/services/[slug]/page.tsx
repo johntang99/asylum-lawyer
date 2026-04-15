@@ -106,10 +106,10 @@ export default async function ServiceDetailPage({
               预约免费咨询
             </Link>
             <Link
-              href="tel:+12135550188"
+              href="mailto:yuxiaris@gmail.com"
               className="inline-block px-[32px] py-[14px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              致电 (213) 555-0188
+              发送邮件至 yuxiaris@gmail.com
             </Link>
           </div>
         </div>
@@ -469,10 +469,10 @@ export default async function ServiceDetailPage({
               预约免费咨询
             </Link>
             <Link
-              href="tel:+12135550188"
+              href="mailto:yuxiaris@gmail.com"
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              致电 (213) 555-0188
+              发送邮件至 yuxiaris@gmail.com
             </Link>
           </div>
           <div className="max-w-[600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -485,8 +485,8 @@ export default async function ServiceDetailPage({
                 📞
               </div>
               <div>
-                <div className="text-white font-medium">电话咨询</div>
-                <div className="text-white/70 text-sm">(213) 555-0188</div>
+                <div className="text-white font-medium">邮件咨询</div>
+                <div className="text-white/70 text-sm">yuxiaris@gmail.com</div>
               </div>
             </div>
             {/* WeChat */}

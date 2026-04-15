@@ -4,7 +4,7 @@ import { ALL_ARTICLES } from '@/lib/articles-data';
 import { allCitySlugs } from '@/lib/locations-data';
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.zhanglaw.com';
+  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yuxiaris.com';
 
 const LOCALES = ['zh', 'en'] as const;
 

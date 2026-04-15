@@ -11,7 +11,7 @@ export async function generateMetadata(): Promise<Metadata> {
 }
 
 const STEPS = [
-  { num: '01', icon: '📅', title: '预约', desc: '在线填写表格或致电预约远程咨询时间' },
+  { num: '01', icon: '📅', title: '预约', desc: '在线填写表格或发送邮件预约远程咨询时间' },
   { num: '02', icon: '💻', title: '视频咨询', desc: '通过微信视频或Zoom与律师面对面沟通' },
   { num: '03', icon: '📋', title: '案件评估', desc: '律师详细分析您的案件并制定策略方案' },
   { num: '04', icon: '⚖', title: '法律代理', desc: '签约后律师团队全程代理您的庇护申请' },

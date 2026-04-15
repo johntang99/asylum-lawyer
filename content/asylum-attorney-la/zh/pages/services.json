@@ -215,8 +215,8 @@
       "href": "/consultation"
     },
     "secondary": {
-      "label": "致电咨询",
-      "href": "tel:+12135550188"
+      "label": "发送邮件咨询",
+      "href": "mailto:yuxiaris@gmail.com"
     }
   }
 }

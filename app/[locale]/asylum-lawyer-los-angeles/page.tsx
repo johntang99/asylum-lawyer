@@ -34,7 +34,7 @@ export default async function AsylumLawyerLosAngelesPage({
     subheadline: '宇律师事务所专注为洛杉矶华人社区提供政治庇护法律服务。',
     cta: {
       primary: { label: '预约免费咨询', href: '/consultation' },
-      secondary: { label: '致电 (213) 555-0188', href: 'tel:+12135550188' },
+      secondary: { label: '发送邮件至 yuxiaris@gmail.com', href: 'mailto:yuxiaris@gmail.com' },
     },
   };
 
@@ -52,8 +52,8 @@ export default async function AsylumLawyerLosAngelesPage({
   const location = content?.location ?? {
     address: '888 S. Figueroa St, Suite 1200',
     city: 'Los Angeles, CA 90017',
-    phone: '(213) 555-0188',
-    email: 'info@zhanglaw.com',
+    phone: 'yuxiaris@gmail.com',
+    email: 'yuxiaris@gmail.com',
     hours: [
       { day: '周一至周五', time: '9:00 AM – 6:00 PM' },
       { day: '周六', time: '10:00 AM – 2:00 PM（仅预约）' },
@@ -93,10 +93,10 @@ export default async function AsylumLawyerLosAngelesPage({
                 {hero.cta?.primary?.label ?? '预约免费咨询'}
               </Link>
               <Link
-                href={hero.cta?.secondary?.href ?? 'tel:+12135550188'}
+                href={hero.cta?.secondary?.href ?? 'mailto:yuxiaris@gmail.com'}
                 className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
               >
-                {hero.cta?.secondary?.label ?? '致电咨询'}
+                {hero.cta?.secondary?.label ?? '发送邮件咨询'}
               </Link>
             </div>
           </div>
@@ -284,7 +284,7 @@ export default async function AsylumLawyerLosAngelesPage({
                   </div>
                   <div className="flex items-center gap-3">
                     <span className="text-lg">📞</span>
-                    <Link href="tel:+12135550188" style={{ color: '#1B2A4A' }}>
+                    <Link href="mailto:yuxiaris@gmail.com" style={{ color: '#1B2A4A' }}>
                       {location.phone}
                     </Link>
                   </div>
@@ -339,10 +339,10 @@ export default async function AsylumLawyerLosAngelesPage({
               预约免费咨询
             </Link>
             <Link
-              href="tel:+12135550188"
+              href="mailto:yuxiaris@gmail.com"
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              致电 (213) 555-0188
+              发送邮件至 yuxiaris@gmail.com
             </Link>
           </div>
           <div className="flex justify-center gap-8">
@@ -354,8 +354,8 @@ export default async function AsylumLawyerLosAngelesPage({
                 📞
               </div>
               <div className="text-left">
-                <div className="text-white font-medium text-sm">电话咨询</div>
-                <div className="text-white/70 text-xs">(213) 555-0188</div>
+                <div className="text-white font-medium text-sm">邮件咨询</div>
+                <div className="text-white/70 text-xs">yuxiaris@gmail.com</div>
               </div>
             </div>
             <div className="flex items-center gap-3">

@@ -260,10 +260,10 @@ export default async function ServicesPage({
               {content?.cta?.primary?.label ?? '预约免费咨询'}
             </Link>
             <Link
-              href={content?.cta?.secondary?.href ?? 'tel:+12135550188'}
+              href={content?.cta?.secondary?.href ?? 'mailto:yuxiaris@gmail.com'}
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              {content?.cta?.secondary?.label ?? '致电咨询'}
+              {content?.cta?.secondary?.label ?? '发送邮件咨询'}
             </Link>
           </div>
         </div>

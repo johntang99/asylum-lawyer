@@ -1,7 +1,7 @@
 {
   "seo": {
     "title": "洛杉矶中文庇护律师 | 宇律师事务所",
-    "description": "宇律师事务所是洛杉矶领先的中文庇护移民律师事务所。十余年经验，500+成功案例，加州执照律师。免费初次咨询，致电 (213) 555-0188。",
+    "description": "宇律师事务所是洛杉矶领先的中文庇护移民律师事务所。十余年经验，500+成功案例，加州执照律师。免费初次咨询，发送邮件至 yuxiaris@gmail.com。",
     "h1": "洛杉矶中文庇护移民律师"
   },
   "hero": {
@@ -9,7 +9,7 @@
     "subheadline": "宇律师事务所专注为洛杉矶华人社区提供政治庇护法律服务。十余年执业经验，精通中英文，深谙庇护法律程序，帮助您在美国获得安全的法律保护。",
     "cta": {
       "primary": { "label": "预约免费咨询", "href": "/consultation" },
-      "secondary": { "label": "致电 (213) 555-0188", "href": "tel:+12135550188" }
+      "secondary": { "label": "发送邮件至 yuxiaris@gmail.com", "href": "mailto:yuxiaris@gmail.com" }
     }
   },
   "trustBar": [
@@ -107,14 +107,14 @@
     },
     {
       "question": "如何预约洛杉矶宇律师事务所的免费咨询？",
-      "answer": "您可以通过多种方式预约：致电 (213) 555-0188、添加微信 AsylumAttorneyLA、发送邮件至 info@zhanglaw.com，或直接到访我们位于 888 S. Figueroa St 的洛杉矶办公室。我们提供中英文服务。"
+      "answer": "您可以通过多种方式预约：发送邮件至 yuxiaris@gmail.com、添加微信 AsylumAttorneyLA、发送邮件至 yuxiaris@gmail.com，或直接到访我们位于 888 S. Figueroa St 的洛杉矶办公室。我们提供中英文服务。"
     }
   ],
   "location": {
     "address": "888 S. Figueroa St, Suite 1200",
     "city": "Los Angeles, CA 90017",
-    "phone": "(213) 555-0188",
-    "email": "info@zhanglaw.com",
+    "phone": "",
+    "email": "yuxiaris@gmail.com",
     "hours": [
       { "day": "周一至周五", "time": "9:00 AM – 6:00 PM" },
       { "day": "周六", "time": "10:00 AM – 2:00 PM（仅预约）" },

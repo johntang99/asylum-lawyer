@@ -399,24 +399,24 @@ export default async function HomePage({
               {contactCta?.cta?.primary?.label ?? '预约免费咨询'}
             </Link>
             <Link
-              href={contactCta?.cta?.secondary?.href ?? 'tel:+12135550188'}
+              href={contactCta?.cta?.secondary?.href ?? 'mailto:yuxiaris@gmail.com'}
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              {contactCta?.cta?.secondary?.label ?? '致电咨询'}
+              {contactCta?.cta?.secondary?.label ?? '发送邮件咨询'}
             </Link>
           </div>
           <div className="max-w-[600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
-            {/* Phone */}
+            {/* Email */}
             <div className="flex items-center gap-4">
               <div
                 className="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0"
                 style={{ backgroundColor: '#C9963B' }}
               >
-                📞
+                ✉
               </div>
               <div>
-                <div className="text-white font-medium">电话咨询</div>
-                <div className="text-white/70 text-sm">(213) 555-0188</div>
+                <div className="text-white font-medium">邮件咨询</div>
+                <a href="mailto:yuxiaris@gmail.com" className="text-white/70 text-sm hover:text-white">yuxiaris@gmail.com</a>
               </div>
             </div>
             {/* WeChat */}

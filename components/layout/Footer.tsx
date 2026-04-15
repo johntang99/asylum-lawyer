@@ -65,8 +65,8 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
   ],
   nap: {
     name: "宇律师事务所",
-    phone: "(626) 555-0188",
-    email: "info@zhanglawfirm.com",
+    phone: "yuxiaris@gmail.com",
+    email: "yuxiaris@gmail.com",
     wechatId: "ZhangLawFirm",
     address: {
       street: "123 Main Street, Suite 400",

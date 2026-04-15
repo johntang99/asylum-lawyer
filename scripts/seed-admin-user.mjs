@@ -47,7 +47,7 @@ const supabase = createClient(supabaseUrl, supabaseKey, {
 });
 
 async function seed() {
-  const email = 'admin@zhanglaw.com';
+  const email = 'admin@yuxiaris.com';
   const password = 'admin123';
   const name = 'Admin';
   const role = 'super_admin';
@@ -73,7 +73,7 @@ async function seed() {
     process.exit(1);
   }
 
-  console.log('✓ Admin user created: admin@zhanglaw.com / admin123');
+  console.log('✓ Admin user created: admin@yuxiaris.com / admin123');
 }
 
 seed();

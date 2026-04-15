@@ -111,7 +111,7 @@ export default async function NearLocationPage({
                 宇律师事务所
               </h2>
               <p className="text-gray-700 mb-1">📍 123 Main Street Suite 456, Los Angeles, CA 90012</p>
-              <p className="text-gray-700 mb-1">📞 (213) 555-0188</p>
+              <p className="text-gray-700 mb-1">📧 yuxiaris@gmail.com</p>
               <p className="text-gray-700">📧 info@zhangasylumlaw.com</p>
             </div>
             <div className="flex-shrink-0">

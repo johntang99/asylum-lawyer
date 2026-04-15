@@ -342,10 +342,10 @@ export default async function ArticleDetailPage({
               预约免费咨询
             </Link>
             <Link
-              href="tel:+12135550188"
+              href="mailto:yuxiaris@gmail.com"
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              致电 (213) 555-0188
+              发送邮件至 yuxiaris@gmail.com
             </Link>
           </div>
         </div>

@@ -38,8 +38,8 @@ const defaultConfig: NonNullable<HeaderProps["headerConfig"]> = {
     { label: "关于我们", href: "/about" },
     { label: "联系我们", href: "/contact" },
   ],
-  cta: { label: "免费咨询", href: "/consultation", phone: "(213) 555-0188" },
-  localeToggle: true,
+  cta: { label: "免费咨询", href: "/consultation", phone: "" },
+  localeToggle: false,
 };
 
 export default function Header({ locale, headerConfig }: HeaderProps) {
@@ -297,10 +297,10 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
               gap: "var(--gap-md, 16px)",
             }}
           >
-            {/* Phone */}
+            {/* Contact (phone or email) */}
             {config.cta?.phone && (
               <a
-                href={`tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
+                href={config.cta.phone.includes("@") ? `mailto:${config.cta.phone}` : `tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
                 style={{
                   color: "rgba(255, 255, 255, 0.85)",
                   fontSize: 14,
@@ -316,7 +316,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                   (e.currentTarget as HTMLElement).style.color = "rgba(255, 255, 255, 0.85)";
                 }}
               >
-                &#x1F4DE; {config.cta.phone}
+                {config.cta.phone.includes("@") ? "✉" : "\uD83D\uDCDE"} {config.cta.phone}
               </a>
             )}
 
@@ -541,7 +541,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
           >
             {config.cta.phone && (
               <a
-                href={`tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
+                href={config.cta.phone.includes("@") ? `mailto:${config.cta.phone}` : `tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
                 style={{
                   display: "block",
                   color: "rgba(255, 255, 255, 0.85)",
@@ -551,7 +551,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                   textAlign: "center",
                 }}
               >
-                &#x1F4DE; {config.cta.phone}
+                {config.cta.phone.includes("@") ? "✉" : "\uD83D\uDCDE"} {config.cta.phone}
               </a>
             )}
             <Link

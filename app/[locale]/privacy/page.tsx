@@ -165,8 +165,8 @@ export default async function PrivacyPage() {
               <div className="mt-3 bg-gray-50 rounded-lg p-5 text-sm">
                 <p className="font-semibold text-gray-900">宇律师事务所</p>
                 <p>地址：888 S. Figueroa St, Suite 1200, Los Angeles, CA 90017</p>
-                <p>电话：(213) 555-0188</p>
-                <p>邮箱：privacy@zhanglaw.com</p>
+                <p>邮箱：yuxiaris@gmail.com</p>
+                <p>邮箱：yuxiaris@gmail.com</p>
               </div>
               <p className="mt-4">
                 本所保留随时修改本隐私政策的权利。任何重大变更将在本网站上公布并注明更新日期。我们建议您定期查阅本政策以了解最新的隐私保护措施。

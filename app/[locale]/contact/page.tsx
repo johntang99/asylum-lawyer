@@ -29,9 +29,9 @@ export default async function ContactPage({
   const content = await loadPageContent<any>('contact', locale as Locale);
 
   const contact = content?.contact ?? {
-    phone: '(213) 555-0188',
-    phoneTel: 'tel:+12135550188',
-    email: 'info@zhanglaw.com',
+    phone: 'yuxiaris@gmail.com',
+    phoneTel: 'mailto:yuxiaris@gmail.com',
+    email: 'yuxiaris@gmail.com',
     wechat: 'AsylumAttorneyLA',
     address: '888 S. Figueroa St, Suite 1200',
     city: 'Los Angeles, CA 90017',
@@ -59,7 +59,7 @@ export default async function ContactPage({
   };
 
   const emergency = content?.emergency ?? {
-    message: '如果您有即将到来的出庭日期或面谈，请立即拨打 (213) 555-0188',
+    message: '如果您有即将到来的出庭日期或面谈，请立即发送邮件至 yuxiaris@gmail.com',
   };
 
   return (
@@ -89,25 +89,6 @@ export default async function ContactPage({
       <section className="bg-white py-[60px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {/* Phone */}
-            <div className="bg-white border border-gray-200 rounded-lg text-center px-6 py-8">
-              <div
-                className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl"
-                style={{ backgroundColor: '#F9FAFB', color: '#1B2A4A' }}
-              >
-                📞
-              </div>
-              <h3 className="text-lg font-semibold text-gray-900 mb-1">电话咨询</h3>
-              <p className="text-gray-500 mb-4">{contact.phone}</p>
-              <Link
-                href={contact.phoneTel}
-                className="inline-block px-6 py-2.5 text-white font-semibold rounded-md text-sm transition-colors"
-                style={{ backgroundColor: '#1B2A4A' }}
-              >
-                立即拨打
-              </Link>
-            </div>
-
             {/* WeChat */}
             <div className="bg-white border border-gray-200 rounded-lg text-center px-6 py-8">
               <div
@@ -196,11 +177,21 @@ export default async function ContactPage({
               </div>
               <div className="mb-5">
                 <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  电话 / 微信 <span className="text-red-500">*</span>
+                  电子邮箱 <span className="text-red-500">*</span>
+                </label>
+                <input
+                  type="email"
+                  placeholder="请输入您的电子邮箱"
+                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent"
+                />
+              </div>
+              <div className="mb-5">
+                <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                  电话 / 微信
                 </label>
                 <input
                   type="text"
-                  placeholder="请输入电话号码或微信号"
+                  placeholder="请输入电话号码或微信号（可选）"
                   className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent"
                 />
               </div>
@@ -365,10 +356,10 @@ export default async function ContactPage({
               预约免费咨询
             </Link>
             <Link
-              href={contact.phoneTel}
+              href={`mailto:${contact.email}`}
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              致电 {contact.phone}
+              发送邮件咨询
             </Link>
           </div>
         </div>

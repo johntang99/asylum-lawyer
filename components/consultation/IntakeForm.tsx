@@ -181,17 +181,6 @@ function ProgressDots({ current }: { current: number }) {
 function TrustSidebar() {
   return (
     <div className="lg:sticky" style={{ top: 96 }}>
-      {/* Attorney Photo Placeholder */}
-      <div
-        className="rounded-lg mb-4 flex items-center justify-center"
-        style={{
-          height: 200,
-          background: `linear-gradient(135deg, ${NAVY} 0%, #0F1A32 100%)`,
-        }}
-      >
-        <span className="text-white/40 text-sm">律师照片</span>
-      </div>
-
       <h3 className="text-lg font-bold text-gray-900">宇律师</h3>
       <p className="text-sm text-gray-500 mb-4">移民律师 · CA Bar #123456</p>
 
@@ -220,9 +209,9 @@ function TrustSidebar() {
       {/* Contact Info */}
       <div className="space-y-2 text-sm text-gray-700">
         <p>
-          <span className="font-semibold">电话：</span>
-          <Link href="tel:+12135550188" style={{ color: NAVY }}>
-            (213) 555-0188
+          <span className="font-semibold">邮箱：</span>
+          <Link href="mailto:yuxiaris@gmail.com" style={{ color: NAVY }}>
+            yuxiaris@gmail.com
           </Link>
         </p>
         <p>
@@ -262,9 +251,9 @@ function Confirmation() {
       </div>
 
       <p className="text-sm text-gray-500 mb-6">
-        如有紧急事项，请直接拨打{' '}
-        <Link href="tel:+12135550188" className="font-semibold" style={{ color: NAVY }}>
-          (213) 555-0188
+        如有紧急事项，请发送邮件至{' '}
+        <Link href="mailto:yuxiaris@gmail.com" className="font-semibold" style={{ color: NAVY }}>
+          yuxiaris@gmail.com
         </Link>
       </p>
 
@@ -297,16 +286,16 @@ function Step1({
         <TextInput value={data.name} onChange={(v) => update('name', v)} placeholder="请输入您的姓名" error={errors.name} />
       </div>
       <div>
-        <Label required>电话号码</Label>
-        <TextInput value={data.phone} onChange={(v) => update('phone', v)} placeholder="请输入电话号码" type="tel" error={errors.phone} />
+        <Label required>电子邮箱</Label>
+        <TextInput value={data.email} onChange={(v) => update('email', v)} placeholder="请输入您的电子邮箱" type="email" error={errors.email} />
+      </div>
+      <div>
+        <Label>电话号码</Label>
+        <TextInput value={data.phone} onChange={(v) => update('phone', v)} placeholder="请输入电话号码（选填）" type="tel" error={errors.phone} />
       </div>
       <div>
         <Label>微信号</Label>
         <TextInput value={data.wechat} onChange={(v) => update('wechat', v)} placeholder="请输入微信号（选填）" />
-      </div>
-      <div>
-        <Label>电子邮箱</Label>
-        <TextInput value={data.email} onChange={(v) => update('email', v)} placeholder="请输入邮箱地址（选填）" type="email" error={errors.email} />
       </div>
       <div>
         <Label>首选语言</Label>
@@ -467,8 +456,9 @@ export default function IntakeForm() {
 
     if (s === 0) {
       if (!data.name.trim()) errs.name = '请输入姓名';
-      if (!data.phone.trim()) errs.phone = '请输入电话号码';
-      if (data.email && !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
+      if (!data.email.trim()) {
+        errs.email = '请输入电子邮箱';
+      } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(data.email)) {
         errs.email = '请输入有效的邮箱地址';
       }
     } else if (s === 1) {
@@ -515,7 +505,7 @@ export default function IntakeForm() {
       if (!res.ok) throw new Error('Submit failed');
       setSubmitted(true);
     } catch {
-      setErrors({ _form: '提交失败，请稍后重试或直接拨打 (213) 555-0188' });
+      setErrors({ _form: '提交失败，请稍后重试或发送邮件至 yuxiaris@gmail.com' });
     } finally {
       setSubmitting(false);
     }

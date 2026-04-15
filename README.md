@@ -3,8 +3,23 @@
 A premium, SEO-optimized website for a Chinese-speaking asylum immigration attorney in Los Angeles. Built as a reusable template for other legal practice sites via the BAAM platform.
 
 **Live:** `http://localhost:3006` (dev) | Production domain TBD  
-**Admin:** `/admin/login` → `admin@zhanglaw.com` / `admin123`  
+**Admin:** `/admin/login` → `admin@yuxiaris.com` / `admin123`  
 **Stack:** Next.js 14 · TypeScript · Tailwind CSS · Supabase · Resend
+
+
+lsof -ti:3006 | xargs kill -9
+rm -rf .next
+npm run dev
+
+npm install
+npm run build
+
+git add .
+git commit -m "Update: describe your changes"
+git push
+
+
+
 
 ---
 

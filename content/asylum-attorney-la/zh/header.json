@@ -66,7 +66,7 @@
   "cta": {
     "label": "免费咨询",
     "href": "/consultation",
-    "phone": "(213) 555-0188"
+    "phone": ""
   },
-  "localeToggle": true
+  "localeToggle": false
 }
