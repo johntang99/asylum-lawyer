@@ -1,0 +1,22 @@
+{
+  "titleTemplate": "%s | 宇律师事务所 — 洛杉矶中文庇护律师",
+  "defaultTitle": "宇律师事务所 — 洛杉矶中文庇护律师",
+  "defaultDescription": "宇律师事务所位于洛杉矶，为华人社区提供专业的政治庇护及移民法律服务。宇律师精通普通话、粤语和英语，拥有超过十年的庇护案件经验，提供免费初次咨询。立即致电 (213) 555-0188。",
+  "siteUrl": "https://www.zhanglaw.com",
+  "locale": "zh-CN",
+  "openGraph": {
+    "type": "website",
+    "siteName": "宇律师事务所",
+    "locale": "zh_CN"
+  },
+  "twitter": {
+    "card": "summary_large_image"
+  },
+  "jsonLd": {
+    "@type": "Attorney",
+    "name": "宇律师事务所",
+    "priceRange": "$$",
+    "areaServed": "Los Angeles, CA",
+    "knowsLanguage": ["zh", "en"]
+  }
+}

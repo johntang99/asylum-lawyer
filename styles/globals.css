@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Primary Colors — Navy */
+  --primary: #1B2A4A;
+  --primary-dark: #0F1A32;
+  --primary-light: #2A3F6B;
+  --primary-50: #F0F3F8;
+  --primary-100: #D6DEE9;
+
+  /* Secondary Colors — Gold */
+  --secondary: #C9963B;
+  --secondary-dark: #A07A2E;
+  --secondary-light: #D4A94F;
+  --secondary-50: #FBF6ED;
+
+  /* Accent Colors — Red */
+  --accent: #B8373D;
+  --accent-dark: #8E2A2F;
+  --accent-light: #D04A50;
+
+  /* Backdrop */
+  --backdrop-primary: #0F1A32;
+  --backdrop-secondary: #F3F4F6;
+
+  /* Typography — Fonts */
+  --font-heading: 'Noto Serif SC', serif;
+  --font-body: 'Noto Sans SC', 'Inter', sans-serif;
+
+  /* Typography — Sizes */
+  --text-display: 3rem;
+  --text-heading: 2.25rem;
+  --text-subheading: 1.25rem;
+  --text-body: 1rem;
+  --text-small: 0.875rem;
+
+  /* Shape */
+  --radius-base: 8px;
+  --shadow-base: 0 4px 20px rgba(0, 0, 0, 0.08);
+
+  /* Layout */
+  --section-padding-y: 5rem;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-body);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #1F2937;
+}

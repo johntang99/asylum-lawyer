@@ -1,0 +1,46 @@
+{
+  "name": "宇律师事务所",
+  "nameEN": "Zhang Law Office",
+  "tagline": "洛杉矶值得信赖的中文庇护移民律师",
+  "taglineEN": "Trusted Chinese-Speaking Asylum Attorney in Los Angeles",
+  "phone": "(213) 555-0188",
+  "email": "info@zhanglaw.com",
+  "wechatId": "AsylumAttorneyLA",
+  "address": {
+    "street": "123 Main Street, Suite 456",
+    "city": "Los Angeles",
+    "state": "CA",
+    "zip": "90012",
+    "country": "US"
+  },
+  "hours": {
+    "weekday": "周一至周五：上午9:00 — 下午6:00",
+    "saturday": "周六：上午10:00 — 下午2:00（仅限预约）",
+    "sunday": "周日：休息"
+  },
+  "barNumber": "CA Bar #123456",
+  "languages": ["中文（普通话）", "中文（粤语）", "English"],
+  "serviceAreas": [
+    "洛杉矶",
+    "阿罕布拉",
+    "蒙特利公园",
+    "圣盖博",
+    "罗兰岗",
+    "钻石吧",
+    "尔湾",
+    "核桃市",
+    "天普市",
+    "柔似蜜",
+    "帕萨迪纳",
+    "橙县"
+  ],
+  "description": "宇律师事务所位于洛杉矶，专注于为华人社区提供政治庇护及移民法律服务。宇律师拥有超过十年的庇护案件经验，精通普通话、粤语和英语，致力于为每一位客户争取最佳结果。",
+  "headerVariant": "sticky",
+  "legal": {
+    "disclaimer": "本网站所提供的信息仅供一般参考之用，不构成法律建议，也不建立律师与客户之间的关系。每个案件的具体情况各不相同，过去的案件结果并不保证未来案件能获得类似结果。在做出任何法律决定之前，请咨询合格的移民律师。未经正式签署委托协议，浏览本网站或通过本网站联系我们并不构成律师与客户的关系。",
+    "disclaimerEN": "The information provided on this website is for general informational purposes only and does not constitute legal advice, nor does it establish an attorney-client relationship. Each case is unique, and past results do not guarantee similar outcomes in future cases. Please consult a qualified immigration attorney before making any legal decisions. Browsing this website or contacting us through this website does not create an attorney-client relationship without a formally signed retainer agreement.",
+    "privacyUrl": "/privacy",
+    "termsUrl": "/terms",
+    "disclaimerUrl": "/disclaimer"
+  }
+}

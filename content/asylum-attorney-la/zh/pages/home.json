@@ -1,0 +1,240 @@
+{
+  "seo": {
+    "h1": "洛杉矶中文庇护移民律师",
+    "title": "洛杉矶中文庇护移民律师 — 免费咨询",
+    "description": "宇律师事务所是洛杉矶领先的中文庇护移民律师事务所。十余年经验，精通普通话、粤语和英语，为华人社区提供政治庇护、恐惧面谈、I-589申请等专业服务。免费初次咨询，请致电 (213) 555-0188。"
+  },
+  "sections": [
+    {
+      "cta": {
+        "primary": {
+          "href": "/consultation",
+          "label": "预约免费咨询"
+        },
+        "secondary": {
+          "href": "tel:+12135550188",
+          "label": "致电 (213) 555-0188"
+        }
+      },
+      "type": "hero",
+      "image": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg",
+      "stats": [
+        {
+          "label": "年执业经验",
+          "value": "10+"
+        },
+        {
+          "label": "成功案例",
+          "value": "500+"
+        },
+        {
+          "label": "客户满意度",
+          "value": "98%"
+        },
+        {
+          "label": "种服务语言",
+          "value": "3"
+        }
+      ],
+      "variant": "split-photo-right",
+      "headline": "洛杉矶中文庇护移民律师",
+      "subheadline": "宇律师事务所专注于为华人社区提供政治庇护法律服务，用您熟悉的语言守护您的权利"
+    },
+    {
+      "type": "serviceOverview",
+      "headline": "我们的庇护法律服务",
+      "services": [
+        {
+          "href": "/services/political-asylum",
+          "icon": "shield",
+          "title": "政治庇护申请",
+          "description": "为因种族、宗教、国籍、政治观点或特定社会群体成员身份而遭受迫害的人士提供全面的庇护申请服务。"
+        },
+        {
+          "href": "/services/affirmative-asylum",
+          "icon": "file-text",
+          "title": "主动庇护",
+          "description": "在抵达美国一年内主动向移民局（USCIS）提交庇护申请，争取合法居留身份。"
+        },
+        {
+          "href": "/services/defensive-asylum",
+          "icon": "gavel",
+          "title": "防御性庇护",
+          "description": "在移民法庭面临递解程序时，通过庇护申请作为防御手段，阻止递解出境。"
+        },
+        {
+          "href": "/services/credible-fear-interview",
+          "icon": "message-circle",
+          "title": "恐惧面谈",
+          "description": "帮助在边境或入境时被拘留的申请人准备合理恐惧或可信恐惧面谈，争取进入庇护程序。"
+        },
+        {
+          "href": "/services/i-589-application",
+          "icon": "clipboard",
+          "title": "I-589申请",
+          "description": "专业协助填写和提交I-589庇护申请表，确保所有文件准确完整，避免因技术问题导致申请被拒。"
+        },
+        {
+          "href": "/services/appeals",
+          "icon": "refresh",
+          "title": "庇护上诉与动议",
+          "description": "对庇护申请被拒的案件提起上诉或重新开案动议，为客户争取第二次机会。"
+        }
+      ],
+      "subheadline": "全面的庇护移民法律服务，从初次咨询到案件完结"
+    },
+    {
+      "type": "whyUs",
+      "pillars": [
+        {
+          "title": "深耕庇护领域",
+          "description": "宇律师专注庇护移民法超过十年，深入了解移民法庭和庇护办公室的运作方式，能为您制定最有效的法律策略。"
+        },
+        {
+          "title": "中英文双语服务",
+          "description": "精通普通话、粤语和英语，确保沟通无障碍。所有法律文件均提供中英文对照，让您充分理解案件进展。"
+        },
+        {
+          "title": "个性化案件策略",
+          "description": "每个庇护案件都有其独特性。我们深入了解您的经历和背景，量身定制最具说服力的庇护申请方案。"
+        },
+        {
+          "title": "透明合理的收费",
+          "description": "提供免费初次咨询和明确的收费说明，绝无隐藏费用。我们提供灵活的付款方案，让专业法律服务触手可及。"
+        },
+        {
+          "title": "贴心的客户体验",
+          "description": "从首次咨询到案件完结，您都有专人负责跟进。我们及时回复微信和电话，让您随时了解案件状态。"
+        }
+      ],
+      "headline": "为什么选择宇律师事务所",
+      "subheadline": "我们理解您的处境，用专业和真诚为您服务"
+    },
+    {
+      "type": "processTimeline",
+      "steps": [
+        {
+          "step": 1,
+          "title": "免费初次咨询",
+          "description": "与宇律师面对面或通过视频会议详细讨论您的情况，评估庇护资格，制定初步法律策略。"
+        },
+        {
+          "step": 2,
+          "title": "证据收集与准备",
+          "description": "收集和整理支持您庇护申请的证据材料，包括个人陈述、国家状况报告、证人证词等关键文件。"
+        },
+        {
+          "step": 3,
+          "title": "申请表填写与提交",
+          "description": "专业填写I-589庇护申请表及所有附属文件，确保内容准确完整后向移民局或移民法庭正式提交。"
+        },
+        {
+          "step": 4,
+          "title": "面谈或庭审准备",
+          "description": "通过模拟面谈或庭审进行充分准备，指导您如何清晰、有力地陈述您的庇护理由。"
+        },
+        {
+          "step": 5,
+          "title": "面谈出席与后续跟进",
+          "description": "宇律师全程陪同出席庇护面谈或法庭庭审，面谈后持续跟进案件状态直至获得最终结果。"
+        }
+      ],
+      "headline": "庇护申请流程",
+      "subheadline": "五个步骤，带您了解从咨询到获批的完整过程"
+    },
+    {
+      "bio": "宇霞律师是加州执业律师（CA Bar #123456）。她在庇护移民法领域拥有超过十年的执业经验，成功办理了五百多件庇护案件。宇律师深知移民过程的艰辛，致力于用专业的法律知识和真诚的关怀帮助每一位华人客户在美国获得安全的庇护。她精通普通话、粤语和英语，是美国移民律师协会（AILA）会员。",
+      "cta": {
+        "href": "/about",
+        "label": "了解更多"
+      },
+      "name": "宇霞",
+      "type": "attorneyBrief",
+      "title": "创始人 / 移民律师",
+      "nameEN": "Xia Yu",
+      "headline": "认识宇霞律师",
+      "credentials": [
+        "加州大学洛杉矶分校法学院 法学博士 (J.D.)",
+        "加州律师协会会员",
+        "美国移民律师协会 (AILA) 会员",
+        "十余年庇护移民法执业经验"
+      ],
+      "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg"
+    },
+    {
+      "cta": {
+        "href": "/faq",
+        "label": "查看更多问题"
+      },
+      "faqs": [
+        {
+          "answer": "政治庇护是美国为遭受或恐惧遭受迫害的外国人提供的一种保护。如果您因种族、宗教、国籍、政治观点或特定社会群体成员身份而遭受迫害或有充分理由恐惧未来的迫害，您可能有资格申请庇护。",
+          "question": "什么是政治庇护？谁有资格申请？"
+        },
+        {
+          "answer": "一般来说，您必须在抵达美国后一年内提交庇护申请。但在某些特殊情况下，如情况发生重大变化或存在特殊原因，可能可以例外。尽早咨询律师非常重要。",
+          "question": "庇护申请有时间限制吗？"
+        },
+        {
+          "answer": "庇护申请的处理时间因案件类型和所在地区而异。主动庇护申请通常需要数月到数年不等。防御性庇护可能需要更长时间，具体取决于移民法庭的排期。宇律师会在咨询时根据您的具体情况给出更准确的时间预估。",
+          "question": "庇护申请的整个过程需要多长时间？"
+        },
+        {
+          "answer": "在提交庇护申请150天后，如果您的申请仍在审理中且没有因您的原因导致延误，您可以申请工作许可证（EAD）。获批后即可合法工作。",
+          "question": "庇护申请期间我可以工作吗？"
+        },
+        {
+          "answer": "如果庇护申请被拒，根据具体情况，您可能可以向移民上诉委员会（BIA）提起上诉，或提交重新开案动议。每种选择都有严格的时间限制，因此在收到拒绝通知后应立即联系律师讨论下一步方案。",
+          "question": "如果庇护申请被拒，我还有其他选择吗？"
+        }
+      ],
+      "type": "faqPreview",
+      "headline": "常见问题",
+      "subheadline": "关于庇护申请，客户最常问的问题"
+    },
+    {
+      "cta": {
+        "primary": {
+          "href": "/consultation",
+          "label": "预约免费咨询"
+        },
+        "secondary": {
+          "href": "tel:+12135550188",
+          "label": "致电 (213) 555-0188"
+        }
+      },
+      "type": "contactCta",
+      "wechat": {
+        "id": "AsylumAttorneyLA",
+        "label": "添加微信咨询"
+      },
+      "headline": "准备好开始您的庇护申请了吗？",
+      "subheadline": "立即预约免费咨询，让宇律师为您评估案件并制定法律策略"
+    },
+    {
+      "type": "trustBar",
+      "items": [
+        {
+          "icon": "badge",
+          "label": "加州律师协会认证"
+        },
+        {
+          "icon": "award",
+          "label": "美国移民律师协会会员"
+        },
+        {
+          "icon": "phone",
+          "label": "免费初次咨询"
+        },
+        {
+          "icon": "globe",
+          "label": "中英文双语服务"
+        },
+        {
+          "icon": "calendar",
+          "label": "十年以上执业经验"
+        }
+      ]
+    }
+  ]
+}

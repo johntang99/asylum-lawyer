@@ -1,0 +1,149 @@
+{
+  "seo": {
+    "h1": "关于宇律师",
+    "title": "关于宇律师 — 洛杉矶庇护移民律师",
+    "description": "了解宇律师的专业背景与执业理念。UCLA法学博士，加州执业律师，十余年庇护移民法经验，精通普通话、粤语、英语，致力于为华人社区提供专业庇护法律服务。"
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "intro": "十余年专注庇护移民法，用您熟悉的语言，守护您在美国的安全与权利。",
+      "variant": "split-photo-right",
+      "headline": "宇霞律师",
+      "subheadline": "创始人 / 移民律师",
+      "image": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg"
+    },
+    {
+      "type": "story",
+      "headline": "我的故事",
+      "paragraphs": [
+        "作为一名华裔移民的后代，我深刻理解离开家乡、在异国他乡重新开始的艰辛与勇气。正是这段家族经历驱使我选择了移民法，特别是庇护法——因为我相信每一个因恐惧和迫害而离开故土的人，都应当获得公正的法律保护。",
+        "在加州大学洛杉矶分校法学院就读期间，我参与了多个移民法律援助项目，亲眼见证了许多华人家庭在语言不通、文化差异的困境中孤立无援。这些经历坚定了我的信念：华人社区需要一位真正理解他们文化背景、能够用母语沟通的庇护律师。",
+        "如今，我创办宇律师事务所已超过十年。每一个案件对我而言都不仅是法律工作，更是一份守护他人安全与尊严的使命。我承诺用最专业的法律知识、最真诚的态度，陪伴每一位客户走过庇护申请的每一步。"
+      ]
+    },
+    {
+      "type": "credentials",
+      "items": [
+        "加州大学洛杉矶分校法学院 法学博士 (J.D.)",
+        "加州律师协会会员 (CA Bar #123456)",
+        "美国移民律师协会 (AILA) 会员",
+        "十余年庇护移民法执业经验"
+      ],
+      "headline": "专业资质"
+    },
+    {
+      "type": "stats",
+      "items": [
+        {
+          "label": "年执业经验",
+          "value": "10+"
+        },
+        {
+          "label": "成功案例",
+          "value": "500+"
+        },
+        {
+          "label": "客户满意度",
+          "value": "98%"
+        },
+        {
+          "label": "种服务语言",
+          "value": "3"
+        }
+      ],
+      "headline": "执业成就"
+    },
+    {
+      "type": "languages",
+      "items": [
+        {
+          "level": "母语",
+          "language": "普通话",
+          "description": "流利的普通话沟通能力，确保您能够自如地讲述自己的经历，无需担心翻译可能带来的信息遗漏。"
+        },
+        {
+          "level": "流利",
+          "language": "粤语",
+          "description": "为广东及港澳客户提供流利的粤语法律咨询服务，让您感到宾至如归。"
+        },
+        {
+          "level": "母语",
+          "language": "英语",
+          "description": "在美国法律体系中代表您时，确保每一份法律文件和每一次法庭陈述都准确有力。"
+        }
+      ],
+      "headline": "语言能力",
+      "narrative": "我们深知语言不仅是沟通的工具，更是信任的桥梁。在庇护案件中，用母语精确表达您的经历至关重要。"
+    },
+    {
+      "type": "office",
+      "hours": [
+        {
+          "days": "周一至周五",
+          "time": "9:00 AM — 6:00 PM"
+        },
+        {
+          "days": "周六",
+          "time": "10:00 AM — 2:00 PM（需预约）"
+        },
+        {
+          "days": "周日",
+          "time": "休息"
+        }
+      ],
+      "photos": [
+        {
+          "alt": "办公室外观",
+          "placeholder": true
+        },
+        {
+          "alt": "会议室",
+          "placeholder": true
+        }
+      ],
+      "address": {
+        "zip": "90071",
+        "city": "Los Angeles",
+        "state": "CA",
+        "street": "350 S Grand Ave, Suite 2100",
+        "formatted": "350 S Grand Ave, Suite 2100, Los Angeles, CA 90071"
+      },
+      "headline": "我们的办公室"
+    },
+    {
+      "type": "team",
+      "members": [
+        {
+          "name": "李雅文",
+          "role": "资深律师助理",
+          "description": "李雅文拥有五年以上的移民法律实务经验，负责案件资料整理、证据收集与客户沟通。她精通普通话和英语，以细致入微的工作态度赢得了众多客户的信赖。"
+        },
+        {
+          "name": "陈志强",
+          "role": "案件协调员",
+          "description": "陈志强专注于庇护案件的流程管理与进度跟踪，确保每个案件都按时推进。他精通粤语、普通话和英语，负责与移民局和法院的日常联络工作。"
+        }
+      ],
+      "headline": "我们的团队",
+      "subheadline": "专业、热忱、值得信赖的法律团队"
+    },
+    {
+      "type": "cta",
+      "buttons": [
+        {
+          "href": "/consultation",
+          "label": "预约面对面咨询",
+          "variant": "primary"
+        },
+        {
+          "href": "tel:+12135550188",
+          "label": "致电 (213) 555-0188",
+          "variant": "secondary"
+        }
+      ],
+      "headline": "想亲自了解我们？欢迎预约面谈",
+      "subheadline": "我们提供免费初次咨询，面对面了解您的情况，为您制定专属法律方案。"
+    }
+  ]
+}

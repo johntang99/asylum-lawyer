@@ -1,0 +1,127 @@
+{
+  "seo": {
+    "title": "案件经验 | 宇律师事务所",
+    "description": "了解宇律师事务所在政治庇护、宗教庇护、恐惧面谈、法庭抗辩等各类庇护案件中的处理经验。每个案例均已匿名化处理。"
+  },
+  "hero": {
+    "title": "案件处理经验",
+    "subtitle": "了解我们在各类庇护案件中的实际处理经验和成果"
+  },
+  "introduction": {
+    "title": "我们的案件处理经验",
+    "description": "宇律师事务所多年来处理了大量庇护移民案件，涵盖政治庇护、宗教庇护、恐惧面谈、法庭抗辩和家属申请等多种类型。以下案例展示了我们处理过的部分案件类型和成果。"
+  },
+  "categories": [
+    { "id": "all", "name": "全部案例", "icon": "Grid" },
+    { "id": "political-asylum", "name": "政治庇护", "icon": "Shield" },
+    { "id": "religious-asylum", "name": "宗教庇护", "icon": "BookOpen" },
+    { "id": "credible-fear", "name": "恐惧面谈", "icon": "AlertTriangle" },
+    { "id": "court-defense", "name": "法庭抗辩", "icon": "Gavel" },
+    { "id": "family", "name": "家属申请", "icon": "Users" }
+  ],
+  "caseStudies": [
+    {
+      "id": "case-1",
+      "category": "political-asylum",
+      "condition": "政治观点迫害",
+      "summary": "客户因在社交媒体上公开批评本国政府政策，遭到当局多次拘留和殴打。律师协助客户整理了详尽的迫害经历声明和社交媒体证据，结合国家状况报告，在主动庇护面谈中成功获得批准。",
+      "outcome": "庇护批准",
+      "duration": "8个月",
+      "image": ""
+    },
+    {
+      "id": "case-2",
+      "category": "political-asylum",
+      "condition": "政党成员迫害",
+      "summary": "客户为反对党活跃成员，因参与和平抗议活动被政府安全部门列入监视名单，家人遭到威胁和骚扰。律师帮助客户收集了党派成员证明、威胁证据和同国其他成员的证人声明，在USCIS面谈中成功获批。",
+      "outcome": "庇护批准",
+      "duration": "10个月",
+      "image": ""
+    },
+    {
+      "id": "case-3",
+      "category": "religious-asylum",
+      "condition": "宗教信仰迫害",
+      "summary": "客户为地下教会成员，因参加未经政府批准的宗教聚会而被多次拘留和罚款。教会的其他成员也遭到类似对待。律师提供了教会活动证据、拘留记录和美国国务院关于该国宗教自由状况的报告，庇护面谈获批。",
+      "outcome": "庇护批准",
+      "duration": "7个月",
+      "image": ""
+    },
+    {
+      "id": "case-4",
+      "category": "religious-asylum",
+      "condition": "宗教少数群体迫害",
+      "summary": "客户属于本国宗教少数群体，因信仰身份在工作和生活中遭受系统性歧视，子女被学校开除，家庭财产被损坏。律师详细记录了客户及家庭的各项遭遇，提交了社区组织出具的证明文件和人权报告，在法庭审理中获得庇护批准。",
+      "outcome": "庇护批准",
+      "duration": "14个月",
+      "image": ""
+    },
+    {
+      "id": "case-5",
+      "category": "credible-fear",
+      "condition": "边境恐惧面谈",
+      "summary": "客户在入境时被边境巡逻队截获并进入加速递解程序。律师在48小时内紧急介入，帮助客户准备可信恐惧面谈，清晰陈述了因参加人权活动而遭受政府迫害的经历，成功通过恐惧面谈，案件转至移民法庭进行正式庇护审理。",
+      "outcome": "通过恐惧面谈",
+      "duration": "面谈准备2天",
+      "image": ""
+    },
+    {
+      "id": "case-6",
+      "category": "credible-fear",
+      "condition": "拘留中的恐惧面谈",
+      "summary": "客户在拘留设施中等待恐惧面谈，因语言障碍和心理压力无法有效表达自己的恐惧。律师通过电话和视频会议进行了多次面谈准备，帮助客户组织陈述要点，最终客户在面谈中清晰表达了遭受迫害的经历，成功通过面谈。",
+      "outcome": "通过恐惧面谈",
+      "duration": "面谈准备5天",
+      "image": ""
+    },
+    {
+      "id": "case-7",
+      "category": "court-defense",
+      "condition": "庇护面谈后转至法庭",
+      "summary": "客户的主动庇护面谈未获批准，案件被转至移民法庭。律师在法庭程序中重新组织了证据材料，提交了新获得的国家状况报告和专家意见书，在个人听证会上进行了有力的法庭辩护，最终移民法官批准了庇护申请。",
+      "outcome": "法庭庇护批准",
+      "duration": "18个月",
+      "image": ""
+    },
+    {
+      "id": "case-8",
+      "category": "court-defense",
+      "condition": "庇护上诉成功",
+      "summary": "客户的庇护申请被移民法官拒绝，理由是未能充分证明迫害与法定理由的关联。律师向BIA提起上诉，撰写了详细的法律论证摘要，指出法官在法律适用上的错误，BIA最终撤销原判决并发回重审，客户在重审中获得庇护批准。",
+      "outcome": "上诉成功，重审获批",
+      "duration": "24个月",
+      "image": ""
+    },
+    {
+      "id": "case-9",
+      "category": "family",
+      "condition": "配偶附属庇护申请",
+      "summary": "主申请人庇护获批后，律师协助其为仍在国内的配偶和两个未成年子女提交I-730追随加入申请。律师准备了完整的亲属关系证明文件，配偶和子女在数月后成功获得签证来美团聚。",
+      "outcome": "家属签证获批",
+      "duration": "12个月",
+      "image": ""
+    },
+    {
+      "id": "case-10",
+      "category": "family",
+      "condition": "庇护者绿卡申请",
+      "summary": "客户在庇护获批一年后申请调整身份为永久居民。律师协助准备了完整的I-485申请材料，处理了客户入境方式相关的法律问题，并陪同客户参加了USCIS面谈，绿卡申请顺利获批。",
+      "outcome": "绿卡获批",
+      "duration": "6个月",
+      "image": ""
+    }
+  ],
+  "statistics": {
+    "totalCases": "500+",
+    "successRate": "High",
+    "yearsExperience": "10+"
+  },
+  "disclaimer": "以下案例仅展示本所处理的案件类型，不代表对具体案件结果的保证。每个案件情况不同，结果可能因具体事实而异。所有客户信息已匿名化处理。",
+  "cta": {
+    "title": "了解我们能否帮助您的案件",
+    "primary": {
+      "label": "预约免费咨询",
+      "href": "/consultation"
+    }
+  }
+}

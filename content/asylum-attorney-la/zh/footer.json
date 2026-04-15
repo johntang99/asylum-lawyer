@@ -1,0 +1,62 @@
+{
+  "columns": [
+    {
+      "title": "服务项目",
+      "links": [
+        { "label": "政治庇护申请", "href": "/services/political-asylum" },
+        { "label": "主动庇护", "href": "/services/affirmative-asylum" },
+        { "label": "防御性庇护", "href": "/services/defensive-asylum" },
+        { "label": "恐惧面谈", "href": "/services/credible-fear-interview" },
+        { "label": "I-589申请", "href": "/services/i-589-application" },
+        { "label": "所有服务", "href": "/services" }
+      ]
+    },
+    {
+      "title": "知识中心",
+      "links": [
+        { "label": "文章中心", "href": "/articles" },
+        { "label": "视频中心", "href": "/videos" },
+        { "label": "常见问题", "href": "/faq" },
+        { "label": "庇护申请流程", "href": "/articles/asylum-process" },
+        { "label": "I-589表格指南", "href": "/articles/i-589-guide" }
+      ]
+    },
+    {
+      "title": "联系我们",
+      "links": [
+        { "label": "免费咨询预约", "href": "/consultation" },
+        { "label": "联系方式", "href": "/contact" },
+        { "label": "关于宇律师", "href": "/about" },
+        { "label": "办公室地址", "href": "/contact#map" }
+      ]
+    }
+  ],
+  "nap": {
+    "name": "宇律师事务所",
+    "phone": "(213) 555-0188",
+    "email": "info@zhanglaw.com",
+    "wechatId": "AsylumAttorneyLA",
+    "address": {
+      "street": "123 Main Street, Suite 456",
+      "city": "Los Angeles",
+      "state": "CA",
+      "zip": "90012",
+      "country": "US"
+    },
+    "hours": {
+      "weekday": "周一至周五：上午9:00 — 下午6:00",
+      "saturday": "周六：上午10:00 — 下午2:00（仅限预约）",
+      "sunday": "周日：休息"
+    }
+  },
+  "compliance": {
+    "barNumber": "CA Bar #123456",
+    "links": [
+      { "label": "隐私政策", "href": "/privacy" },
+      { "label": "使用条款", "href": "/terms" },
+      { "label": "免责声明", "href": "/disclaimer" }
+    ],
+    "disclaimer": "本网站所提供的信息仅供一般参考之用，不构成法律建议，也不建立律师与客户之间的关系。"
+  },
+  "copyright": "© 2026 宇律师事务所"
+}

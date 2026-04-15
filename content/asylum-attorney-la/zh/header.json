@@ -1,0 +1,72 @@
+{
+  "logo": {
+    "text": "宇律师事务所",
+    "href": "/"
+  },
+  "nav": [
+    {
+      "label": "首页",
+      "href": "/"
+    },
+    {
+      "label": "服务项目",
+      "href": "/services",
+      "children": [
+        {
+          "label": "政治庇护申请",
+          "href": "/services/political-asylum"
+        },
+        {
+          "label": "主动庇护",
+          "href": "/services/affirmative-asylum"
+        },
+        {
+          "label": "防御性庇护",
+          "href": "/services/defensive-asylum"
+        },
+        {
+          "label": "恐惧面谈",
+          "href": "/services/credible-fear-interview"
+        },
+        {
+          "label": "I-589申请",
+          "href": "/services/i-589-application"
+        },
+        {
+          "label": "更多服务...",
+          "href": "/services"
+        }
+      ]
+    },
+    {
+      "label": "文章中心",
+      "href": "/articles"
+    },
+    {
+      "label": "视频中心",
+      "href": "/videos"
+    },
+    {
+      "label": "律师介绍",
+      "href": "/about"
+    },
+    {
+      "label": "成功案件",
+      "href": "/case-studies"
+    },
+    {
+      "label": "常见问题",
+      "href": "/faq"
+    },
+    {
+      "label": "联系我们",
+      "href": "/contact"
+    }
+  ],
+  "cta": {
+    "label": "免费咨询",
+    "href": "/consultation",
+    "phone": "(213) 555-0188"
+  },
+  "localeToggle": true
+}

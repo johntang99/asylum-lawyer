@@ -1,0 +1,37 @@
+{
+  "seo": {
+    "title": "联系我们 — 宇律师事务所 | 洛杉矶庇护移民律师",
+    "description": "联系宇律师事务所，获取免费庇护移民法律咨询。电话 (213) 555-0188，微信 AsylumAttorneyLA，或到访洛杉矶办公室。提供中英文服务，周一至周六营业。",
+    "h1": "联系我们"
+  },
+  "contact": {
+    "phone": "(213) 555-0188",
+    "phoneTel": "tel:+12135550188",
+    "email": "info@zhanglaw.com",
+    "wechat": "AsylumAttorneyLA",
+    "address": "888 S. Figueroa St, Suite 1200",
+    "city": "Los Angeles, CA 90017",
+    "mapUrl": "https://maps.google.com/?q=888+S+Figueroa+St+Los+Angeles+CA+90017"
+  },
+  "hours": [
+    { "day": "周一至周五", "time": "9:00 AM – 6:00 PM" },
+    { "day": "周六", "time": "10:00 AM – 2:00 PM（仅预约）" },
+    { "day": "周日", "time": "休息" }
+  ],
+  "serviceAreas": {
+    "primary": "洛杉矶 (Los Angeles)",
+    "nearby": [
+      "阿罕布拉 (Alhambra)",
+      "蒙特利公园 (Monterey Park)",
+      "圣盖博 (San Gabriel)",
+      "罗兰岗 (Rowland Heights)",
+      "核桃市 (Walnut)",
+      "哈仙达岗 (Hacienda Heights)",
+      "帕萨迪纳 (Pasadena)",
+      "尔湾 (Irvine)"
+    ]
+  },
+  "emergency": {
+    "message": "如果您有即将到来的出庭日期或面谈，请立即拨打 (213) 555-0188"
+  }
+}
