@@ -367,7 +367,7 @@ export default async function AsylumLawyerLosAngelesPage({
               </div>
               <div className="text-left">
                 <div className="text-white font-medium text-sm">微信咨询</div>
-                <div className="text-white/70 text-xs">AsylumAttorneyLA</div>
+                <div className="text-white/70 text-xs">yuxiaris</div>
               </div>
             </div>
           </div>

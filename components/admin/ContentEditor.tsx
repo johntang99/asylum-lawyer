@@ -1117,6 +1117,7 @@ export function ContentEditor({
   const isThemeFile = activeFile?.path === 'theme.json';
   const isHomePageFile = activeFile?.path === 'pages/home.json';
   const isAboutPageFile = activeFile?.path === 'pages/about.json';
+  const isConsultationPageFile = activeFile?.path === 'pages/consultation.json';
   const isPricingPageFile = activeFile?.path === 'pages/pricing.json';
   const isConditionsPageFile = activeFile?.path === 'pages/conditions.json';
   const isCaseStudiesPageFile = activeFile?.path === 'pages/case-studies.json';
@@ -2550,6 +2551,15 @@ export function ContentEditor({
                 />
               )}
 
+              {isConsultationPageFile && formData && (
+                <div className="space-y-4 border border-gray-200 rounded-lg p-4">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Consultation Page
+                  </div>
+                  {renderGenericFormNode(formData)}
+                </div>
+              )}
+
               {showSharedPanels && formData?.hero && (
                 <HeroPanel
                   hero={formData.hero}
@@ -2819,6 +2829,7 @@ export function ContentEditor({
 
               {formData &&
                 !isSiteInfoFile &&
+                !isConsultationPageFile &&
                 !isPricingPageFile &&
                 !formData.hero &&
                 !formData.introduction &&

@@ -1,4 +1,5 @@
 import { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 import { loadPageContent } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
@@ -421,13 +422,19 @@ export default async function HomePage({
             </div>
             {/* WeChat */}
             <div className="flex items-center gap-4">
-              <div className="w-[120px] h-[120px] bg-white rounded-lg flex items-center justify-center flex-shrink-0">
-                <span className="text-gray-400 text-xs">二维码</span>
+              <div className="w-[120px] h-[120px] bg-white rounded-lg overflow-hidden flex-shrink-0">
+                <Image
+                  src="/images/wechat-qr.png"
+                  alt="微信二维码"
+                  width={120}
+                  height={120}
+                  className="w-full h-full object-cover"
+                />
               </div>
               <div>
                 <div className="text-white font-medium">微信咨询</div>
                 <div className="text-white/70 text-sm">
-                  {contactCta?.wechat?.id ?? 'AsylumAttorneyLA'}
+                  {contactCta?.wechat?.id ?? 'yuxiaris'}
                 </div>
               </div>
             </div>

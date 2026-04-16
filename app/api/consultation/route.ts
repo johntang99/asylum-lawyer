@@ -1,9 +1,54 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseServerClient } from '@/lib/supabase/server';
+import { getRequestSiteId, loadPageContent } from '@/lib/content';
+import { defaultLocale, isValidLocale, type Locale } from '@/lib/i18n';
+
+function normalizeEmailList(input: unknown): string[] {
+  if (Array.isArray(input)) {
+    return input
+      .flatMap((item) => (typeof item === 'string' ? item.split(',') : []))
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  if (typeof input === 'string') {
+    return input
+      .split(',')
+      .map((item) => item.trim())
+      .filter(Boolean);
+  }
+  return [];
+}
 
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
+    const requestedLocale =
+      typeof body?.locale === 'string' && isValidLocale(body.locale)
+        ? (body.locale as Locale)
+        : defaultLocale;
+    const siteId = await getRequestSiteId();
+    const consultationContent = await loadPageContent<Record<string, any>>(
+      'consultation',
+      requestedLocale,
+      siteId
+    );
+    const contentReceiverEmails = normalizeEmailList(
+      consultationContent?.submission?.receiverEmails
+    );
+    const fallbackEnvEmails = normalizeEmailList(process.env.CONTACT_FALLBACK_TO);
+    const sidebarEmail = normalizeEmailList(consultationContent?.sidebar?.contact?.email);
+    const notificationRecipients =
+      contentReceiverEmails.length > 0
+        ? contentReceiverEmails
+        : fallbackEnvEmails.length > 0
+          ? fallbackEnvEmails
+          : sidebarEmail.length > 0
+            ? sidebarEmail
+            : ['yuxiaris@gmail.com'];
+    const supportEmail = sidebarEmail[0] || notificationRecipients[0] || 'yuxiaris@gmail.com';
+    const successMessage =
+      consultationContent?.submission?.successMessage ||
+      '感谢您提交案件信息，我们将在24小时内联系您。';
 
     const name = body.name;
     const phone = body.phone || '';
@@ -30,7 +75,7 @@ export async function POST(request: NextRequest) {
 
     if (supabase) {
       const { error } = await supabase.from('consultation_requests').insert({
-        site_id: 'asylum-attorney-la',
+        site_id: siteId,
         name,
         phone: phone || email,
         wechat: wechat || null,
@@ -63,7 +108,7 @@ export async function POST(request: NextRequest) {
         const resend = new Resend(process.env.RESEND_API_KEY);
         await resend.emails.send({
           from: process.env.RESEND_FROM || 'noreply@baamplatform.com',
-          to: process.env.CONTACT_FALLBACK_TO || 'yuxiaris@gmail.com',
+          to: notificationRecipients,
           subject: `新咨询请求 — ${name}`,
           html: `
             <h2>新的庇护咨询请求</h2>
@@ -110,7 +155,7 @@ export async function POST(request: NextRequest) {
                     <p style="font-size: 13px; color: #6B7280; margin: 4px 0;">首选语言：${language}</p>
                   </div>
                   <p style="color: #4B5563; line-height: 1.8;">
-                    如有紧急事项，请直接发送邮件至 <a href="mailto:yuxiaris@gmail.com" style="color: #1B2A4A; font-weight: bold;">yuxiaris@gmail.com</a>。
+                    如有紧急事项，请直接发送邮件至 <a href="mailto:${supportEmail}" style="color: #1B2A4A; font-weight: bold;">${supportEmail}</a>。
                   </p>
                   <p style="color: #4B5563; line-height: 1.8;">
                     我们期待为您提供帮助。
@@ -122,7 +167,7 @@ export async function POST(request: NextRequest) {
                 </div>
                 <div style="background: #F3F4F6; padding: 16px; text-align: center; font-size: 11px; color: #9CA3AF;">
                   <p style="margin: 0;">本邮件为系统自动发送，请勿直接回复。</p>
-                  <p style="margin: 4px 0 0;">如需联系我们，请发送邮件至 yuxiaris@gmail.com</p>
+                  <p style="margin: 4px 0 0;">如需联系我们，请发送邮件至 ${supportEmail}</p>
                 </div>
               </div>
             `,
@@ -133,9 +178,12 @@ export async function POST(request: NextRequest) {
       }
     }
 
-    return NextResponse.json({ success: true, message: '感谢您提交案件信息，我们将在24小时内联系您。' });
+    return NextResponse.json({ success: true, message: successMessage });
   } catch (error) {
     console.error('Consultation API error:', error);
-    return NextResponse.json({ error: '提交失败，请稍后再试或发送邮件至 yuxiaris@gmail.com。' }, { status: 500 });
+    return NextResponse.json(
+      { error: '提交失败，请稍后再试。' },
+      { status: 500 }
+    );
   }
 }

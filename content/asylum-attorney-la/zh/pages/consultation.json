@@ -1,0 +1,130 @@
+{
+  "seo": {
+    "title": "案件评估 — 宇律师事务所",
+    "description": "免费在线案件评估，24小时内回复。填写表格开始您的庇护申请咨询。"
+  },
+  "form": {
+    "step1": {
+      "nameLabel": "姓名",
+      "emailLabel": "电子邮箱",
+      "phoneLabel": "电话号码",
+      "wechatLabel": "微信号",
+      "languageLabel": "首选语言",
+      "languageOptions": [
+        "普通话"
+      ],
+      "namePlaceholder": "请输入您的姓名",
+      "emailPlaceholder": "请输入您的电子邮箱",
+      "phonePlaceholder": "请输入电话号码（选填）",
+      "wechatPlaceholder": "请输入微信号（选填）"
+    },
+    "step2": {
+      "inUsLabel": "您目前在美国吗？",
+      "hasNtaLabel": "是否收到出庭通知（NTA）？",
+      "inUsOptions": [
+        "是",
+        "否"
+      ],
+      "hasNtaOptions": [
+        "是",
+        "否",
+        "不确定"
+      ],
+      "filedI589Label": "是否已提交I-589？",
+      "filedI589Options": [
+        "是",
+        "否"
+      ],
+      "overOneYearLabel": "来美是否已超过一年？",
+      "overOneYearOptions": [
+        "是",
+        "否",
+        "不确定"
+      ]
+    },
+    "step3": {
+      "hasDateLabel": "是否有面谈或开庭日期？",
+      "courtDateLabel": "日期",
+      "hasDateOptions": [
+        "是",
+        "否"
+      ],
+      "nationalityLabel": "国籍",
+      "mainQuestionLabel": "最想咨询的问题",
+      "nationalityPlaceholder": "请输入您的国籍",
+      "mainQuestionPlaceholder": "请详细描述您最想咨询的问题（至少20字）"
+    },
+    "step4": {
+      "hasFamilyLabel": "家属是否需要一起申请？",
+      "hasFamilyOptions": [
+        "是",
+        "否"
+      ],
+      "additionalInfoLabel": "补充信息",
+      "otherApplicationsLabel": "其他移民申请",
+      "additionalInfoPlaceholder": "任何其他您希望律师了解的信息（选填）",
+      "otherApplicationsPlaceholder": "如有其他移民申请，请在此说明（选填）"
+    },
+    "errors": {
+      "dateRequired": "请选择日期",
+      "emailInvalid": "请输入有效的邮箱地址",
+      "nameRequired": "请输入姓名",
+      "emailRequired": "请输入电子邮箱",
+      "selectRequired": "请选择",
+      "mainQuestionMin": "请至少输入20个字",
+      "formSubmitFailed": "提交失败，请稍后重试或发送邮件至 yuxiaris@gmail.com",
+      "nationalityRequired": "请输入国籍",
+      "mainQuestionRequired": "请描述您的问题"
+    },
+    "buttons": {
+      "back": "上一步",
+      "next": "下一步",
+      "submit": "提交案件信息",
+      "submitting": "提交中..."
+    }
+  },
+  "hero": {
+    "title": "开始您的案件评估",
+    "subtitle": "填写以下信息，律师将在24小时内与您联系"
+  },
+  "steps": [
+    "基本信息",
+    "当前状况",
+    "案件详情",
+    "补充信息"
+  ],
+  "sidebar": {
+    "name": "宇律师",
+    "title": "移民律师 · CA Bar #123456",
+    "badges": [
+      "24小时内回复",
+      "免费初次咨询",
+      "严格保密"
+    ],
+    "contact": {
+      "email": "yuxiaris@gmail.com",
+      "wechat": "yuxiaris"
+    }
+  },
+  "submission": {
+    "receiverEmails": [
+      "yuxiaris@gmail.com",
+      "wuzullc@gmail.com"
+    ],
+    "successMessage": "感谢您提交案件信息，我们将在24小时内联系您。"
+  },
+  "confirmation": {
+    "title": "感谢您提交案件信息",
+    "message": "我们已收到您的案件评估请求，将尽快与您联系。",
+    "linkHref": "/services",
+    "linkLabel": "查看常见问题",
+    "nextSteps": [
+      "我们将在24小时内审核您的信息",
+      "律师将通过您提供的联系方式与您联系",
+      "安排免费初次咨询，讨论您的案件详情"
+    ],
+    "emergencyEmail": "yuxiaris@gmail.com",
+    "nextStepsTitle": "接下来的步骤：",
+    "emergencyPrefix": "如有紧急事项，请发送邮件至"
+  }
+}

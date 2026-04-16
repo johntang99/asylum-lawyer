@@ -32,7 +32,7 @@ export default async function ContactPage({
     phone: 'yuxiaris@gmail.com',
     phoneTel: 'mailto:yuxiaris@gmail.com',
     email: 'yuxiaris@gmail.com',
-    wechat: 'AsylumAttorneyLA',
+    wechat: 'yuxiaris',
     address: '888 S. Figueroa St, Suite 1200',
     city: 'Los Angeles, CA 90017',
     mapUrl: 'https://maps.google.com/?q=888+S+Figueroa+St+Los+Angeles+CA+90017',
