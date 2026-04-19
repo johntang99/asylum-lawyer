@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap');
-
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
@@ -28,8 +26,8 @@
   --backdrop-secondary: #F3F4F6;
 
   /* Typography — Fonts */
-  --font-heading: 'Noto Serif SC', serif;
-  --font-body: 'Noto Sans SC', 'Inter', sans-serif;
+  --font-heading: 'Noto Serif SC', 'Songti SC', 'SimSun', serif;
+  --font-body: 'Noto Sans SC', var(--font-inter, 'Inter'), 'PingFang SC', 'Microsoft YaHei', sans-serif;
 
   /* Typography — Sizes */
   --text-display: 3rem;
