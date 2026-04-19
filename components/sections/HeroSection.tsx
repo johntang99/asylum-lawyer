@@ -142,6 +142,8 @@ export default function HeroSection({
                         width={600}
                         height={600}
                         className="w-full h-auto object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
                       />
                     </div>
                   </div>
@@ -174,6 +176,8 @@ export default function HeroSection({
                         width={600}
                         height={600}
                         className="w-full h-auto object-cover"
+                        sizes="(max-width: 768px) 100vw, 50vw"
+                        priority
                       />
                     </div>
                   </div>
@@ -214,7 +218,7 @@ export default function HeroSection({
             {heroImage && (
               <>
                 <div className="absolute inset-0 z-0">
-                  <Image src={heroImage} alt={headline} fill className="object-cover" />
+                  <Image src={heroImage} alt={headline} fill className="object-cover" sizes="100vw" priority />
                 </div>
                 <div className="absolute inset-0 z-0 bg-[#0F1A32]/70" />
               </>
@@ -268,7 +272,7 @@ export default function HeroSection({
             {heroImage && (
               <>
                 <div className="absolute inset-0 z-0">
-                  <Image src={heroImage} alt={headline} fill className="object-cover" />
+                  <Image src={heroImage} alt={headline} fill className="object-cover" sizes="100vw" priority />
                 </div>
                 <div className="absolute inset-0 z-0 bg-[#0F1A32]/60" />
               </>
@@ -303,7 +307,7 @@ export default function HeroSection({
           >
             {heroImage && (
               <div className="absolute inset-0 z-0">
-                <Image src={heroImage} alt={headline} fill className="object-cover" />
+                <Image src={heroImage} alt={headline} fill className="object-cover" sizes="100vw" priority />
                 <div className="absolute inset-0 bg-gradient-to-r from-[#0F1A32]/70 to-[#0F1A32]/30" />
               </div>
             )}

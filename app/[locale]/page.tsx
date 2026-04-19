@@ -181,10 +181,13 @@ export default async function HomePage({
               style={attorneyBrief?.photo ? undefined : { background: 'linear-gradient(135deg, #1B2A4A, #0F1A32)' }}
             >
               {attorneyBrief?.photo ? (
-                <img
+                <Image
                   src={attorneyBrief.photo}
                   alt={attorneyBrief?.headline ?? attorneyBrief?.name ?? ''}
+                  width={320}
+                  height={400}
                   className="w-full h-full object-cover"
+                  priority={false}
                 />
               ) : (
                 <span className="text-white/30 text-sm">律师照片</span>
