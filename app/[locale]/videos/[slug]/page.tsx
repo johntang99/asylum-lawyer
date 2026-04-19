@@ -23,9 +23,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const siteId = await getRequestSiteId();
   const video = await loadContent<VideoData>(siteId, params.locale as Locale, `videos/${params.slug}.json`);
-  if (!video) return { title: '视频 | 宇律师事务所' };
+  if (!video) return { title: '视频 | 正道移民服务中心' };
   return {
-    title: `${video.title} | 宇律师事务所`,
+    title: `${video.title} | 正道移民服务中心`,
     description: video.excerpt || video.title,
   };
 }

@@ -108,9 +108,9 @@ export default async function NearLocationPage({
                 className="text-2xl font-bold mb-3"
                 style={{ color: '#1B2A4A', fontFamily: 'var(--font-heading)' }}
               >
-                宇律师事务所
+                正道移民服务中心
               </h2>
-              <p className="text-gray-700 mb-1">📍 123 Main Street Suite 456, Los Angeles, CA 90012</p>
+              <p className="text-gray-700 mb-1">📍 1045 E. Valley Blvd., #A115, Rm 6, San Gabriel, CA 91776</p>
               <p className="text-gray-700 mb-1">📧 yuxiaris@gmail.com</p>
               <p className="text-gray-700">📧 info@zhangasylumlaw.com</p>
             </div>
@@ -132,7 +132,7 @@ export default async function NearLocationPage({
         <div className="max-w-[800px] mx-auto px-6 text-center">
           <div className="text-4xl mb-4" style={{ color: '#D4AF37' }}>&ldquo;</div>
           <blockquote className="text-lg text-gray-700 italic leading-relaxed mb-4">
-            宇律师团队非常专业，从案件评估到最终获批，全程中文沟通让我们感到安心。他们对庇护法的深刻理解和耐心指导让我们顺利通过了面谈。
+            律师团队非常专业，从案件评估到最终获批，全程中文沟通让我们感到安心。他们对庇护法的深刻理解和耐心指导让我们顺利通过了面谈。
           </blockquote>
           <p className="text-sm font-medium" style={{ color: '#1B2A4A' }}>
             — 王先生，{data.cityZH}居民，政治庇护案件

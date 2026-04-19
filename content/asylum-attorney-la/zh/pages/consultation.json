@@ -1,6 +1,6 @@
 {
   "seo": {
-    "title": "案件评估 — 宇律师事务所",
+    "title": "案件评估 — 正道移民服务中心",
     "description": "免费在线案件评估，24小时内回复。填写表格开始您的庇护申请咨询。"
   },
   "form": {
@@ -94,8 +94,8 @@
     "补充信息"
   ],
   "sidebar": {
-    "name": "宇律师",
-    "title": "移民律师 · CA Bar #123456",
+    "name": "张宇霞",
+    "title": "美国司法部（DOJ）认证法律代表",
     "badges": [
       "24小时内回复",
       "免费初次咨询",
@@ -109,7 +109,8 @@
   "submission": {
     "receiverEmails": [
       "yuxiaris@gmail.com",
-      "wuzullc@gmail.com"
+      "wuzullc@gmail.com",
+      "john.tang2025@gmail.com"
     ],
     "successMessage": "感谢您提交案件信息，我们将在24小时内联系您。"
   },
@@ -120,7 +121,7 @@
     "linkLabel": "查看常见问题",
     "nextSteps": [
       "我们将在24小时内审核您的信息",
-      "律师将通过您提供的联系方式与您联系",
+      "我们将通过您提供的联系方式与您联系",
       "安排免费初次咨询，讨论您的案件详情"
     ],
     "emergencyEmail": "yuxiaris@gmail.com",

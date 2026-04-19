@@ -156,5 +156,5 @@ CREATE INDEX IF NOT EXISTS idx_media_site ON media(site_id);
 
 -- Seed default site
 INSERT INTO sites (id, name, enabled, supported_locales, default_locale)
-VALUES ('asylum-attorney-la', '宇律师事务所', true, ARRAY['zh', 'en'], 'zh')
+VALUES ('asylum-attorney-la', '正道移民服务中心', true, ARRAY['zh', 'en'], 'zh')
 ON CONFLICT (id) DO NOTHING;

@@ -136,11 +136,11 @@ export async function POST(request: NextRequest) {
           await resend.emails.send({
             from: process.env.RESEND_FROM || 'noreply@baamplatform.com',
             to: email,
-            subject: '宇律师事务所 — 我们已收到您的咨询请求',
+            subject: '正道移民服务中心 — 我们已收到您的咨询请求',
             html: `
               <div style="font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; max-width: 600px; margin: 0 auto;">
                 <div style="background: linear-gradient(135deg, #1B2A4A, #0F1A32); padding: 32px; text-align: center;">
-                  <h1 style="color: #C9963B; font-size: 20px; margin: 0;">宇律师事务所</h1>
+                  <h1 style="color: #C9963B; font-size: 20px; margin: 0;">正道移民服务中心</h1>
                   <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px;">洛杉矶中文庇护移民律师</p>
                 </div>
                 <div style="padding: 32px; background: #fff;">
@@ -162,7 +162,7 @@ export async function POST(request: NextRequest) {
                   </p>
                   <p style="color: #4B5563; margin-top: 24px;">
                     此致<br/>
-                    <strong style="color: #1B2A4A;">宇律师事务所团队</strong>
+                    <strong style="color: #1B2A4A;">正道移民服务中心团队</strong>
                   </p>
                 </div>
                 <div style="background: #F3F4F6; padding: 16px; text-align: center; font-size: 11px; color: #9CA3AF;">

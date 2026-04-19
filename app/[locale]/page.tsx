@@ -117,12 +117,12 @@ export default async function HomePage({
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
             label="为什么选择我们"
-            title={whyUs?.headline ?? '为什么选择宇律师事务所'}
+            title={whyUs?.headline ?? '为什么选择正道移民服务中心'}
             subtitle={whyUs?.subheadline}
           />
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6">
+          <div className="flex flex-wrap justify-center gap-6">
             {whyUs?.pillars?.map((pillar: any, i: number) => (
-              <div key={i} className="text-center px-4 py-6">
+              <div key={i} className="text-center px-4 py-6 w-full sm:w-[calc(50%-12px)] md:w-[calc(33.333%-16px)] max-w-[300px]">
                 <div
                   className="w-14 h-14 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl"
                   style={{ backgroundColor: 'rgba(201, 150, 59, 0.1)', color: '#C9963B' }}
@@ -183,7 +183,7 @@ export default async function HomePage({
               {attorneyBrief?.photo ? (
                 <img
                   src={attorneyBrief.photo}
-                  alt={`${attorneyBrief?.name ?? '宇霞'}律师`}
+                  alt={attorneyBrief?.headline ?? attorneyBrief?.name ?? ''}
                   className="w-full h-full object-cover"
                 />
               ) : (
@@ -196,13 +196,13 @@ export default async function HomePage({
                 className="inline-block text-xs font-semibold uppercase tracking-[0.1em] mb-3"
                 style={{ color: '#C9963B' }}
               >
-                关于律师
+                {attorneyBrief?.sectionLabel ?? '关于我们'}
               </span>
               <h2
                 className="text-2xl font-bold text-gray-900 mb-2"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {attorneyBrief?.name ?? '宇霞'}律师
+                {attorneyBrief?.headline ?? attorneyBrief?.name ?? ''}
               </h2>
               <p className="font-semibold mb-4" style={{ color: '#C9963B' }}>
                 {attorneyBrief?.title}
@@ -327,10 +327,10 @@ export default async function HomePage({
           <SectionHeader light label="客户评价" title="听听他们怎么说" />
           <div className="flex gap-6 overflow-x-auto pb-4" style={{ scrollSnapType: 'x mandatory' }}>
             {[
-              { name: '王女士', type: '政治庇护', year: '2023', quote: '宇律师非常专业和耐心，在整个庇护申请过程中给了我极大的帮助和信心。她的中文服务让我感到非常安心，不用担心语言障碍。' },
-              { name: '李先生', type: '防御性庇护', year: '2023', quote: '在我面临递解的时候，宇律师帮我成功申请了庇护。她对案件的准备非常充分，每一个细节都考虑到了。非常感谢！' },
-              { name: '陈女士', type: '主动庇护', year: '2024', quote: '从初次咨询到最终获批，宇律师全程跟进。她的专业知识和认真态度让我印象深刻。强烈推荐给需要庇护律师的朋友。' },
-              { name: '赵先生', type: '恐惧面谈', year: '2024', quote: '宇律师帮我准备恐惧面谈，模拟面谈让我不再紧张。最终顺利通过了面谈，进入了庇护程序。非常感谢宇律师的专业服务。' },
+              { name: '王女士', type: '政治庇护', year: '2023', quote: '律师非常专业和耐心，在整个庇护申请过程中给了我极大的帮助和信心。她的中文服务让我感到非常安心，不用担心语言障碍。' },
+              { name: '李先生', type: '防御性庇护', year: '2023', quote: '在我面临递解的时候，律师帮我成功申请了庇护。她对案件的准备非常充分，每一个细节都考虑到了。非常感谢！' },
+              { name: '陈女士', type: '主动庇护', year: '2024', quote: '从初次咨询到最终获批，律师全程跟进。她的专业知识和认真态度让我印象深刻。强烈推荐给需要庇护律师的朋友。' },
+              { name: '赵先生', type: '恐惧面谈', year: '2024', quote: '律师帮我准备恐惧面谈，模拟面谈让我不再紧张。最终顺利通过了面谈，进入了庇护程序。非常感谢律师的专业服务。' },
             ].map((testimonial, i) => (
               <div
                 key={i}

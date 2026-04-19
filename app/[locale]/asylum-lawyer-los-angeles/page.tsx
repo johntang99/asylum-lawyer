@@ -16,7 +16,7 @@ export async function generateMetadata({
   const content = await loadPageContent<any>('asylum-lawyer-los-angeles', locale as Locale);
   const seo = content?.seo;
   return {
-    title: seo?.title ?? '洛杉矶中文庇护律师 | 宇律师事务所',
+    title: seo?.title ?? '洛杉矶中文庇护律师 | 正道移民服务中心',
     description: seo?.description ?? '',
   };
 }
@@ -31,7 +31,7 @@ export default async function AsylumLawyerLosAngelesPage({
 
   const hero = content?.hero ?? {
     headline: '洛杉矶中文庇护移民律师',
-    subheadline: '宇律师事务所专注为洛杉矶华人社区提供政治庇护法律服务。',
+    subheadline: '正道移民服务中心专注为洛杉矶华人社区提供政治庇护法律服务。',
     cta: {
       primary: { label: '预约免费咨询', href: '/consultation' },
       secondary: { label: '发送邮件至 yuxiaris@gmail.com', href: 'mailto:yuxiaris@gmail.com' },
@@ -50,8 +50,8 @@ export default async function AsylumLawyerLosAngelesPage({
   const testimonials = content?.testimonials ?? [];
   const faqs = content?.faqs ?? [];
   const location = content?.location ?? {
-    address: '888 S. Figueroa St, Suite 1200',
-    city: 'Los Angeles, CA 90017',
+    address: '1045 E. Valley Blvd., #A115, Rm 6',
+    city: 'San Gabriel, CA 91776',
     phone: 'yuxiaris@gmail.com',
     email: 'yuxiaris@gmail.com',
     hours: [
@@ -136,13 +136,13 @@ export default async function AsylumLawyerLosAngelesPage({
         <div className="max-w-[800px] mx-auto px-6">
           <div className="prose prose-gray max-w-none text-gray-600 leading-relaxed space-y-4">
             <p>
-              如果您正在洛杉矶寻找一位经验丰富、能用中文沟通的庇护移民律师，宇律师事务所是您值得信赖的选择。我们位于洛杉矶市中心，专注于为华人社区提供全面的政治庇护法律服务，包括主动庇护申请、防御性庇护、恐惧面谈准备、I-589表格填写以及庇护上诉等。
+              如果您正在洛杉矶寻找一位经验丰富、能用中文沟通的庇护移民律师，正道移民服务中心是您值得信赖的选择。我们位于洛杉矶市中心，专注于为华人社区提供全面的政治庇护法律服务，包括主动庇护申请、防御性庇护、恐惧面谈准备、I-589表格填写以及庇护上诉等。
             </p>
             <p>
-              宇律师拥有超过十年的庇护移民法执业经验，是加州律师协会认证律师和美国移民律师协会（AILA）会员。精通普通话、粤语和英语，能够确保在整个法律程序中与您保持无障碍的沟通。从初次免费咨询到最终案件结果，宇律师团队始终为您提供个性化的法律策略和贴心的跟踪服务。
+              律师拥有超过十年的庇护移民法执业经验，是美国司法部（DOJ）认证法律代表律师和美国移民律师协会（AILA）会员。精通普通话、粤语和英语，能够确保在整个法律程序中与您保持无障碍的沟通。从初次免费咨询到最终案件结果，律师团队始终为您提供个性化的法律策略和贴心的跟踪服务。
             </p>
             <p>
-              在过去的十余年中，我们已成功办理超过500件庇护案件，帮助众多洛杉矶及周边地区的华人家庭和个人获得庇护身份。我们深入了解洛杉矶移民法庭和USCIS庇护办公室的运作流程，能够为您制定最有效的法律方案。无论您面临何种庇护需求，宇律师事务所都致力于用专业知识和真诚态度为您争取最好的结果。
+              在过去的十余年中，我们已成功办理超过500件庇护案件，帮助众多洛杉矶及周边地区的华人家庭和个人获得庇护身份。我们深入了解洛杉矶移民法庭和USCIS庇护办公室的运作流程，能够为您制定最有效的法律方案。无论您面临何种庇护需求，正道移民服务中心都致力于用专业知识和真诚态度为您争取最好的结果。
             </p>
           </div>
         </div>
@@ -184,7 +184,7 @@ export default async function AsylumLawyerLosAngelesPage({
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
             label="为什么选择我们"
-            title="选择洛杉矶宇律师事务所的理由"
+            title="选择洛杉矶正道移民服务中心的理由"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-[900px] mx-auto">
             {whyUs.map((item: any, i: number) => (
@@ -272,7 +272,7 @@ export default async function AsylumLawyerLosAngelesPage({
             {/* NAP block */}
             <div className="space-y-6">
               <div>
-                <h3 className="font-bold text-gray-900 mb-3 text-lg">宇律师事务所</h3>
+                <h3 className="font-bold text-gray-900 mb-3 text-lg">正道移民服务中心</h3>
                 <div className="space-y-3 text-sm text-gray-600">
                   <div className="flex items-start gap-3">
                     <span className="text-lg mt-0.5">📍</span>
@@ -328,7 +328,7 @@ export default async function AsylumLawyerLosAngelesPage({
           <SectionHeader
             light
             title="准备好在洛杉矶开始您的庇护申请了吗？"
-            subtitle="立即预约免费咨询，让宇律师为您评估案件并制定法律策略"
+            subtitle="立即预约免费咨询，让律师为您评估案件并制定法律策略"
           />
           <div className="flex flex-wrap justify-center gap-4 mb-8">
             <Link

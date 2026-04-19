@@ -16,7 +16,7 @@ export async function generateMetadata({
   const content = await loadPageContent<any>('about', locale as Locale);
   const seo = content?.seo;
   return {
-    title: seo?.title ?? '关于宇律师 — 洛杉矶庇护移民律师',
+    title: seo?.title ?? '关于律师 — 洛杉矶庇护移民律师',
     description: seo?.description ?? '',
   };
 }
@@ -100,7 +100,7 @@ export default async function AboutPage({
                 className="text-[2.5rem] lg:text-[3rem] font-bold text-white mb-2 leading-tight"
                 style={{ fontFamily: 'var(--font-heading)' }}
               >
-                {hero?.headline ?? '宇律师'}
+                {hero?.headline ?? '律师'}
               </h1>
               <p
                 className="text-lg font-semibold mb-4"

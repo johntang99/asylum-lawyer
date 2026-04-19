@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { loadPageContent } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
+import ContactForm from './ContactForm';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -15,8 +16,8 @@ export async function generateMetadata({
   const content = await loadPageContent<any>('contact', locale as Locale);
   const seo = content?.seo;
   return {
-    title: seo?.title ?? '联系我们 — 宇律师事务所',
-    description: seo?.description ?? '联系宇律师事务所获取免费庇护移民法律咨询。',
+    title: seo?.title ?? '联系我们 — 正道移民服务中心',
+    description: seo?.description ?? '联系正道移民服务中心获取免费庇护移民法律咨询。',
   };
 }
 
@@ -33,9 +34,9 @@ export default async function ContactPage({
     phoneTel: 'mailto:yuxiaris@gmail.com',
     email: 'yuxiaris@gmail.com',
     wechat: 'yuxiaris',
-    address: '888 S. Figueroa St, Suite 1200',
-    city: 'Los Angeles, CA 90017',
-    mapUrl: 'https://maps.google.com/?q=888+S+Figueroa+St+Los+Angeles+CA+90017',
+    address: '1045 E. Valley Blvd., #A115, Rm 6',
+    city: 'San Gabriel, CA 91776',
+    mapUrl: 'https://maps.google.com/?q=1045+E+Valley+Blvd+A115+San+Gabriel+CA+91776',
   };
 
   const hours = content?.hours ?? [
@@ -80,7 +81,7 @@ export default async function ContactPage({
             联系我们
           </h1>
           <p className="text-white/70 text-lg">
-            多种方式联系宇律师事务所，获取免费庇护法律咨询
+            多种方式联系正道移民服务中心，获取免费庇护法律咨询
           </p>
         </div>
       </section>
@@ -163,57 +164,7 @@ export default async function ContactPage({
             title="在线留言"
             subtitle="填写以下表格，我们将在24小时内回复您"
           />
-          <div className="bg-white border border-gray-200 rounded-lg p-8">
-            <form action="#" method="POST">
-              <div className="mb-5">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  姓名 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="text"
-                  placeholder="请输入您的姓名"
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent"
-                />
-              </div>
-              <div className="mb-5">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  电子邮箱 <span className="text-red-500">*</span>
-                </label>
-                <input
-                  type="email"
-                  placeholder="请输入您的电子邮箱"
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent"
-                />
-              </div>
-              <div className="mb-5">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  电话 / 微信
-                </label>
-                <input
-                  type="text"
-                  placeholder="请输入电话号码或微信号（可选）"
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent"
-                />
-              </div>
-              <div className="mb-6">
-                <label className="block text-sm font-medium text-gray-700 mb-1.5">
-                  简要说明
-                </label>
-                <textarea
-                  rows={4}
-                  placeholder="请简要描述您的情况和需求"
-                  className="w-full border border-gray-300 rounded-md px-4 py-3 text-sm focus:outline-none focus:ring-2 focus:ring-[#1B2A4A] focus:border-transparent resize-none"
-                />
-              </div>
-              <button
-                type="button"
-                className="w-full py-3 text-white font-semibold rounded-md text-sm transition-colors"
-                style={{ backgroundColor: '#C9963B' }}
-              >
-                提交留言
-              </button>
-            </form>
-          </div>
+          <ContactForm email={contact.email} />
         </div>
       </section>
 
@@ -262,12 +213,18 @@ export default async function ContactPage({
               </div>
             </div>
 
-            {/* Right: map placeholder */}
-            <div
-              className="bg-gray-200 rounded-lg flex items-center justify-center"
-              style={{ minHeight: '300px' }}
-            >
-              <span className="text-gray-400 text-sm">地图加载中...</span>
+            {/* Right: Google Map */}
+            <div className="rounded-lg overflow-hidden" style={{ minHeight: '300px' }}>
+              <iframe
+                src={`https://maps.google.com/maps?q=${encodeURIComponent(contact.address + ', ' + contact.city)}&t=m&z=15&output=embed`}
+                width="100%"
+                height="100%"
+                style={{ border: 0, minHeight: '300px' }}
+                allowFullScreen
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                title="Office Location"
+              />
             </div>
           </div>
         </div>
@@ -345,7 +302,7 @@ export default async function ContactPage({
           <SectionHeader
             light
             title="准备好开始您的庇护申请了吗？"
-            subtitle="立即联系宇律师事务所，获取免费初次咨询"
+            subtitle="立即联系正道移民服务中心，获取免费初次咨询"
           />
           <div className="flex flex-wrap justify-center gap-4">
             <Link

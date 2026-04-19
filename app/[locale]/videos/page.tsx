@@ -5,8 +5,8 @@ import SectionHeader from '@/components/shared/SectionHeader';
 
 export async function generateMetadata() {
   return {
-    title: '视频中心 | 宇律师事务所',
-    description: '宇律师亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
+    title: '视频中心 | 正道移民服务中心',
+    description: '律师亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
   };
 }
 

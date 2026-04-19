@@ -1,16 +1,18 @@
 {
-  "name": "宇律师事务所",
+  "name": "正道移民服务中心",
   "nameEN": "Zhang Law Office",
+  "attorneyName": "张宇霞女士",
+  "attorneyNameEN": "Ms. Zhang Yuxia",
   "tagline": "洛杉矶值得信赖的中文庇护移民律师",
   "taglineEN": "Trusted Chinese-Speaking Asylum Attorney in Los Angeles",
   "phone": "",
   "email": "yuxiaris@gmail.com",
   "wechatId": "yuxiaris",
   "address": {
-    "street": "123 Main Street, Suite 456",
-    "city": "Los Angeles",
+    "street": "1045 E. Valley Blvd., #A115, Rm 6",
+    "city": "San Gabriel",
     "state": "CA",
-    "zip": "90012",
+    "zip": "91776",
     "country": "US"
   },
   "hours": {
@@ -34,7 +36,7 @@
     "帕萨迪纳",
     "橙县"
   ],
-  "description": "宇律师事务所位于洛杉矶，专注于为华人社区提供政治庇护及移民法律服务。宇律师拥有超过十年的庇护案件经验，精通普通话、粤语和英语，致力于为每一位客户争取最佳结果。",
+  "description": "正道移民服务中心位于洛杉矶，专注于为华人社区提供政治庇护及移民法律服务。张宇霞女士拥有超过十年的庇护案件经验，精通普通话、粤语和英语，致力于为每一位客户争取最佳结果。",
   "headerVariant": "sticky",
   "legal": {
     "disclaimer": "本网站所提供的信息仅供一般参考之用，不构成法律建议，也不建立律师与客户之间的关系。每个案件的具体情况各不相同，过去的案件结果并不保证未来案件能获得类似结果。在做出任何法律决定之前，请咨询合格的移民律师。未经正式签署委托协议，浏览本网站或通过本网站联系我们并不构成律师与客户的关系。",

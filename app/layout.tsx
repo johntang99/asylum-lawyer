@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import '@/styles/globals.css';
 
 export const metadata: Metadata = {
-  title: '宇律师事务所',
+  title: '正道移民服务中心',
   description: '洛杉矶专业中文庇护移民律师，提供政治庇护、移民签证等法律服务。',
 };
 

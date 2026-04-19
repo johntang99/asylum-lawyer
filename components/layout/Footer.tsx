@@ -64,15 +64,15 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     },
   ],
   nap: {
-    name: "宇律师事务所",
+    name: "正道移民服务中心",
     phone: "yuxiaris@gmail.com",
     email: "yuxiaris@gmail.com",
     wechatId: "ZhangLawFirm",
     address: {
-      street: "123 Main Street, Suite 400",
+      street: "1045 E. Valley Blvd., #A115, Rm 6",
       city: "Los Angeles",
       state: "CA",
-      zip: "90012",
+      zip: "91776",
     },
     hours: {
       weekday: "周一至周五: 9:00 AM - 6:00 PM",
@@ -91,7 +91,7 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     disclaimer:
       "本站内容仅供一般信息参考，不构成法律意见。浏览本网站不构成律师-客户关系。",
   },
-  copyright: `© ${new Date().getFullYear()} 宇律师事务所 版权所有`,
+  copyright: `© ${new Date().getFullYear()} 正道移民服务中心 版权所有`,
 };
 
 export default function Footer({ locale, footerConfig }: FooterProps) {

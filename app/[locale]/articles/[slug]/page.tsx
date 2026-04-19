@@ -23,7 +23,7 @@ export async function generateMetadata({
     return { title: '文章未找到' };
   }
   return {
-    title: `${article.title} | 宇律师事务所`,
+    title: `${article.title} | 正道移民服务中心`,
     description: article.excerpt,
   };
 }
@@ -135,7 +135,7 @@ export default async function ArticleDetailPage({
               张
             </div>
             <div>
-              <div className="text-white font-medium">宇律师</div>
+              <div className="text-white font-medium">律师</div>
               <div className="text-white/60 text-sm">
                 加州执照移民律师 · CA Bar #123456
               </div>
@@ -355,7 +355,7 @@ export default async function ArticleDetailPage({
       <section className="bg-gray-50 py-8">
         <div className="max-w-[800px] mx-auto px-6">
           <p className="text-xs text-gray-400 leading-relaxed">
-            本文仅供一般信息参考，不构成法律建议，也不建立律师与客户关系。每个案件的情况不同，法律结果可能因具体事实和情况而异。如果您需要针对您个人情况的法律建议，请咨询有资质的移民律师。本文中的信息基于撰写时的法律，相关法律法规可能已发生变化。宇律师事务所不对因依赖本文信息而采取或未采取的任何行动承担责任。
+            本文仅供一般信息参考，不构成法律建议，也不建立律师与客户关系。每个案件的情况不同，法律结果可能因具体事实和情况而异。如果您需要针对您个人情况的法律建议，请咨询有资质的移民律师。本文中的信息基于撰写时的法律，相关法律法规可能已发生变化。正道移民服务中心不对因依赖本文信息而采取或未采取的任何行动承担责任。
           </p>
         </div>
       </section>

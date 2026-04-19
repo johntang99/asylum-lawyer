@@ -26,21 +26,21 @@
       "links": [
         { "label": "免费咨询预约", "href": "/consultation" },
         { "label": "联系方式", "href": "/contact" },
-        { "label": "关于宇律师", "href": "/about" },
+        { "label": "关于张宇霞女士", "href": "/about" },
         { "label": "办公室地址", "href": "/contact#map" }
       ]
     }
   ],
   "nap": {
-    "name": "宇律师事务所",
+    "name": "正道移民服务中心",
     "phone": "",
     "email": "yuxiaris@gmail.com",
     "wechatId": "yuxiaris",
     "address": {
-      "street": "123 Main Street, Suite 456",
-      "city": "Los Angeles",
+      "street": "1045 E. Valley Blvd., #A115, Rm 6",
+      "city": "San Gabriel",
       "state": "CA",
-      "zip": "90012",
+      "zip": "91776",
       "country": "US"
     },
     "hours": {
@@ -58,5 +58,5 @@
     ],
     "disclaimer": "本网站所提供的信息仅供一般参考之用，不构成法律建议，也不建立律师与客户之间的关系。"
   },
-  "copyright": "© 2026 宇律师事务所"
+  "copyright": "© 2026 正道移民服务中心"
 }

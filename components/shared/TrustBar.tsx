@@ -8,7 +8,7 @@ interface TrustBarProps {
 }
 
 const defaultItems: TrustBarItem[] = [
-  { icon: "⚖", label: "加州律师协会认证" },
+  { icon: "⚖", label: "美国司法部（DOJ）认证法律代表" },
   { icon: "🏆", label: "10+ 年执业经验" },
   { icon: "📋", label: "500+ 庇护案件" },
   { icon: "🗣", label: "中英文全程服务" },

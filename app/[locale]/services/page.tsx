@@ -23,7 +23,7 @@ export async function generateMetadata({
     title: seo?.title ?? '庇护移民服务项目 | 洛杉矶中文庇护律师',
     description:
       seo?.description ??
-      '宇律师事务所提供全面的庇护移民法律服务，包括政治庇护、主动庇护、防御性庇护等15项专业服务。',
+      '正道移民服务中心提供全面的庇护移民法律服务，包括政治庇护、主动庇护、防御性庇护等15项专业服务。',
   };
 }
 

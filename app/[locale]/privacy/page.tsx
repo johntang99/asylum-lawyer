@@ -3,9 +3,9 @@ import Link from 'next/link';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: '隐私政策 | 宇律师事务所',
+    title: '隐私政策 | 正道移民服务中心',
     description:
-      '宇律师事务所隐私政策，说明我们如何收集、使用和保护您的个人信息。',
+      '正道移民服务中心隐私政策，说明我们如何收集、使用和保护您的个人信息。',
   };
 }
 
@@ -60,7 +60,7 @@ export default async function PrivacyPage() {
                 一、信息收集
               </h2>
               <p>
-                宇律师事务所（以下简称"本所"或"我们"）尊重每位访客和客户的隐私。当您访问我们的网站、填写在线咨询表格、通过电话或微信联系我们、或使用我们的法律服务时，我们可能会收集以下类型的个人信息：
+                正道移民服务中心（以下简称"本所"或"我们"）尊重每位访客和客户的隐私。当您访问我们的网站、填写在线咨询表格、通过电话或微信联系我们、或使用我们的法律服务时，我们可能会收集以下类型的个人信息：
               </p>
               <ul className="list-disc pl-6 space-y-1 mt-3">
                 <li>个人身份信息：姓名、电话号码、电子邮件地址、微信号、通讯地址</li>
@@ -163,8 +163,8 @@ export default async function PrivacyPage() {
                 如果您对本隐私政策有任何疑问、意见或请求，或希望行使您的数据隐私权利（包括访问、更正或删除您的个人信息），请通过以下方式联系我们：
               </p>
               <div className="mt-3 bg-gray-50 rounded-lg p-5 text-sm">
-                <p className="font-semibold text-gray-900">宇律师事务所</p>
-                <p>地址：888 S. Figueroa St, Suite 1200, Los Angeles, CA 90017</p>
+                <p className="font-semibold text-gray-900">正道移民服务中心</p>
+                <p>地址：1045 E. Valley Blvd., #A115, Rm 6, San Gabriel, CA 91776</p>
                 <p>邮箱：yuxiaris@gmail.com</p>
                 <p>邮箱：yuxiaris@gmail.com</p>
               </div>

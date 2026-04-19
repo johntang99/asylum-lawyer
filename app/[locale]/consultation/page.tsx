@@ -15,7 +15,7 @@ export async function generateMetadata({
   const seo = content?.seo;
   const isZh = locale === 'zh';
   return {
-    title: seo?.title ?? (isZh ? '案件评估 — 宇律师事务所' : 'Case Evaluation — Zhang Law Office'),
+    title: seo?.title ?? (isZh ? '案件评估 — 正道移民服务中心' : 'Case Evaluation — Zhang Law Office'),
     description:
       seo?.description ??
       (isZh
