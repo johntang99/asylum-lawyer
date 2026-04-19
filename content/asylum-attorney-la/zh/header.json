@@ -68,5 +68,12 @@
     "href": "/consultation",
     "phone": ""
   },
-  "localeToggle": false
+  "localeToggle": false,
+  "menu": {
+    "logo": {
+      "image": {
+        "src": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776576694886-righteous-immigration-service-logo.png"
+      }
+    }
+  }
 }

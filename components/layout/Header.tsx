@@ -17,6 +17,12 @@ interface HeaderProps {
     nav?: NavItem[];
     cta?: { label: string; href: string; phone?: string };
     localeToggle?: boolean;
+    menu?: {
+      logo?: {
+        image?: { src?: string };
+        text?: string;
+      };
+    };
   };
 }
 
@@ -120,31 +126,45 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
               textDecoration: "none",
             }}
           >
-            <span
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                width: 36,
-                height: 36,
-                borderRadius: "var(--radius-md, 6px)",
-                background: "var(--color-secondary, #C9963B)",
-                fontSize: 18,
-              }}
-              aria-hidden="true"
-            >
-              &#x2696;
-            </span>
-            <span
-              style={{
-                color: "var(--color-white, #FFFFFF)",
-                fontWeight: 700,
-                fontSize: "var(--text-body, 1rem)",
-                whiteSpace: "nowrap",
-              }}
-            >
-              {config.logo?.text || "正道移民服务中心"}
-            </span>
+            {config.menu?.logo?.image?.src ? (
+              <img
+                src={config.menu.logo.image.src}
+                alt={config.logo?.text || ""}
+                style={{
+                  height: 40,
+                  width: "auto",
+                  objectFit: "contain",
+                }}
+              />
+            ) : (
+              <>
+                <span
+                  style={{
+                    display: "flex",
+                    alignItems: "center",
+                    justifyContent: "center",
+                    width: 36,
+                    height: 36,
+                    borderRadius: "var(--radius-md, 6px)",
+                    background: "var(--color-secondary, #C9963B)",
+                    fontSize: 18,
+                  }}
+                  aria-hidden="true"
+                >
+                  &#x2696;
+                </span>
+                <span
+                  style={{
+                    color: "var(--color-white, #FFFFFF)",
+                    fontWeight: 700,
+                    fontSize: "var(--text-body, 1rem)",
+                    whiteSpace: "nowrap",
+                  }}
+                >
+                  {config.logo?.text || "正道移民服务中心"}
+                </span>
+              </>
+            )}
           </Link>
 
           {/* Desktop Nav */}
@@ -446,15 +466,23 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             flexShrink: 0,
           }}
         >
-          <span
-            style={{
-              color: "var(--color-white, #FFFFFF)",
-              fontWeight: 700,
-              fontSize: 16,
-            }}
-          >
-            {config.logo?.text || "正道移民服务中心"}
-          </span>
+          {config.menu?.logo?.image?.src ? (
+            <img
+              src={config.menu.logo.image.src}
+              alt={config.logo?.text || ""}
+              style={{ height: 32, width: "auto", objectFit: "contain" }}
+            />
+          ) : (
+            <span
+              style={{
+                color: "var(--color-white, #FFFFFF)",
+                fontWeight: 700,
+                fontSize: 16,
+              }}
+            >
+              {config.logo?.text || "正道移民服务中心"}
+            </span>
+          )}
           <button
             type="button"
             onClick={() => setMobileMenuOpen(false)}
