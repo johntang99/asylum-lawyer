@@ -2,13 +2,13 @@
   "seo": {
     "h1": "关于张宇霞女士",
     "title": "关于张宇霞女士 — 洛杉矶庇护移民律师",
-    "description": "了解张宇霞女士的专业背景与执业理念。加州执业律师，法律代表, 十余年庇护移民法经验，精通普通话、粤语、英语，致力于为华人社区提供专业庇护法律服务。"
+    "description": "了解张宇霞女士的专业背景与执业理念。加州执业律师，法律代表, 七年庇护移民法经验，精通普通话、粤语、英语，致力于为华人社区提供专业庇护法律服务。"
   },
   "sections": [
     {
       "type": "hero",
       "image": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
-      "intro": "十余年专注庇护移民法，用您熟悉的语言，守护您在美国的安全与权利。",
+      "intro": "七年专注庇护移民法，用您熟悉的语言，守护您在美国的安全与权利。",
       "variant": "split-photo-right",
       "headline": "美国司法部（DOJ）认证法律代表：张宇霞",
       "subheadline": ""
@@ -27,7 +27,7 @@
       "items": [
         "美国司法部（DOJ）认证法律代表",
         "美国移民律师协会 (AILA) 会员",
-        "十余年庇护移民法执业经验"
+        "七年庇护移民法执业经验"
       ],
       "headline": "专业资质"
     },
@@ -36,7 +36,7 @@
       "items": [
         {
           "label": "年执业经验",
-          "value": "10+"
+          "value": "7+"
         },
         {
           "label": "成功案例",

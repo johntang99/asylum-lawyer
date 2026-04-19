@@ -90,12 +90,14 @@ export default async function AboutPage({
             )}
             {/* Content */}
             <div className={`flex-1 ${hero?.variant === 'centered' ? 'text-center max-w-[700px]' : 'text-center lg:text-left'} ${hero?.variant === 'split-photo-right' ? 'order-1 lg:order-2' : ''}`}>
-              <span
-                className="inline-block text-xs font-semibold uppercase tracking-[0.1em] mb-3"
-                style={{ color: 'var(--accent, #C9963B)' }}
-              >
-                关于律师
-              </span>
+              {hero?.sectionLabel && (
+                <span
+                  className="inline-block text-xs font-semibold uppercase tracking-[0.1em] mb-3"
+                  style={{ color: 'var(--accent, #C9963B)' }}
+                >
+                  {hero.sectionLabel}
+                </span>
+              )}
               <h1
                 className="text-[2.5rem] lg:text-[3rem] font-bold text-white mb-2 leading-tight"
                 style={{ fontFamily: 'var(--font-heading)' }}

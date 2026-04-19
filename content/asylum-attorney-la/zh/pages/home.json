@@ -2,7 +2,7 @@
   "seo": {
     "h1": "洛杉矶中文庇护移民律师",
     "title": "洛杉矶中文庇护移民律师 — 免费咨询",
-    "description": "正道移民服务中心是洛杉矶领先的中文庇护移民律师事务所。十余年经验，精通普通话、粤语和英语，为华人社区提供政治庇护、恐惧面谈、I-589申请等专业服务。免费初次咨询，请发送邮件至 yuxiaris@gmail.com。"
+    "description": "正道移民服务中心是洛杉矶领先的中文庇护移民律师事务所。七年经验，精通普通话、粤语和英语，为华人社区提供政治庇护、恐惧面谈、I-589申请等专业服务。免费初次咨询，请发送邮件至 yuxiaris@gmail.com。"
   },
   "sections": [
     {
@@ -21,7 +21,7 @@
       "stats": [
         {
           "label": "年执业经验",
-          "value": "10+"
+          "value": "7+"
         },
         {
           "label": "成功案例",
@@ -141,7 +141,6 @@
         "label": "了解更多"
       },
       "name": "张宇霞",
-      "sectionLabel": "律师介绍",
       "type": "attorneyBrief",
       "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg",
       "title": "",
@@ -149,10 +148,11 @@
       "headline": "认识张宇霞",
       "credentials": [
         "",
-        "",
+        "美国司法部（DOJ）认证法律代表",
         "美国移民律师协会 (AILA) 会员",
-        "十余年庇护移民法执业经验"
-      ]
+        "七年庇护移民法执业经验"
+      ],
+      "sectionLabel": ""
     },
     {
       "cta": {
@@ -225,7 +225,7 @@
         },
         {
           "icon": "calendar",
-          "label": "十年以上执业经验"
+          "label": "七年以上执业经验"
         }
       ]
     }
