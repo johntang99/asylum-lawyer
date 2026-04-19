@@ -21,25 +21,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh" className={inter.variable} suppressHydrationWarning>
-      <head>
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          rel="preload"
-          as="style"
-          href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap"
-        />
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              var l=document.createElement('link');
-              l.rel='stylesheet';
-              l.href='https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@600;700&family=Noto+Sans+SC:wght@400;500;600&display=swap';
-              document.head.appendChild(l);
-            `,
-          }}
-        />
-      </head>
+      <head />
       <body>{children}</body>
     </html>
   );
