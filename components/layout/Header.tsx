@@ -19,7 +19,7 @@ interface HeaderProps {
     localeToggle?: boolean;
     menu?: {
       logo?: {
-        image?: { src?: string };
+        image?: { src?: string; height?: number };
         text?: string;
       };
     };
@@ -131,7 +131,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                 src={config.menu.logo.image.src}
                 alt={config.logo?.text || ""}
                 style={{
-                  height: 40,
+                  height: config.menu.logo.image.height || 40,
                   width: "auto",
                   objectFit: "contain",
                 }}
@@ -470,7 +470,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             <img
               src={config.menu.logo.image.src}
               alt={config.logo?.text || ""}
-              style={{ height: 32, width: "auto", objectFit: "contain" }}
+              style={{ height: Math.min(config.menu.logo.image.height || 32, 36), width: "auto", objectFit: "contain" }}
             />
           ) : (
             <span

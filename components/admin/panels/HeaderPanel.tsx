@@ -161,6 +161,20 @@ export function HeaderPanel({
               />
             </div>
           </div>
+          <div className="mt-3 grid gap-3 md:grid-cols-3">
+            <div>
+              <label className="block text-xs text-gray-500">Logo Height (px)</label>
+              <input
+                type="number"
+                className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+                placeholder="40"
+                value={formData.menu?.logo?.image?.height || ''}
+                onChange={(event) =>
+                  updateFormValue(['menu', 'logo', 'image', 'height'], event.target.value ? Number(event.target.value) : null)
+                }
+              />
+            </div>
+          </div>
         </div>
 
         <div>
