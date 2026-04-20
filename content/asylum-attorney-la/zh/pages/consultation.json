@@ -62,7 +62,7 @@
       ],
       "additionalInfoLabel": "补充信息",
       "otherApplicationsLabel": "其他移民申请",
-      "additionalInfoPlaceholder": "任何其他您希望律师了解的信息（选填）",
+      "additionalInfoPlaceholder": "任何其他您希望我们了解的信息（选填）",
       "otherApplicationsPlaceholder": "如有其他移民申请，请在此说明（选填）"
     },
     "errors": {
@@ -109,13 +109,12 @@
   "submission": {
     "receiverEmails": [
       "yuxiaris@gmail.com",
-      "wuzullc@gmail.com",
-      "john.tang2025@gmail.com"
+      "wuzullc@gmail.com"
     ],
     "successMessage": "感谢您提交案件信息，我们将在24小时内联系您。"
   },
   "confirmation": {
-    "title": "感谢您提交案件信息",
+    "title": "非常感谢您提交案件信息",
     "message": "我们已收到您的案件评估请求，将尽快与您联系。",
     "linkHref": "/services",
     "linkLabel": "查看常见问题",

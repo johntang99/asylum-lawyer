@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { getSupabaseServerClient } from '@/lib/supabase/server';
-import { getRequestSiteId, loadPageContent } from '@/lib/content';
+import { getRequestSiteId, loadPageContent, loadSiteInfo } from '@/lib/content';
 import { defaultLocale, isValidLocale, type Locale } from '@/lib/i18n';
 
 function normalizeEmailList(input: unknown): string[] {
@@ -49,6 +49,11 @@ export async function POST(request: NextRequest) {
     const successMessage =
       consultationContent?.submission?.successMessage ||
       '感谢您提交案件信息，我们将在24小时内联系您。';
+
+    const siteInfo = await loadSiteInfo(siteId, requestedLocale) as Record<string, any> | null;
+    const siteName = siteInfo?.name || '正道移民服务中心';
+    const siteTagline = siteInfo?.tagline || '';
+    const confirmation = consultationContent?.confirmation as Record<string, any> | undefined;
 
     const name = body.name;
     const phone = body.phone || '';
@@ -132,42 +137,46 @@ export async function POST(request: NextRequest) {
           `,
         });
         // Send confirmation email to the client
-        if (email) {
+        if (email && confirmation) {
+          const confirmTitle = confirmation.title || '感谢您提交案件信息';
+          const confirmMessage = confirmation.message || '我们已收到您的案件评估请求，将尽快与您联系。';
+          const nextStepsTitle = confirmation.nextStepsTitle || '接下来的步骤：';
+          const nextSteps = Array.isArray(confirmation.nextSteps) ? confirmation.nextSteps : [];
+          const emergencyPrefix = confirmation.emergencyPrefix || '如有紧急事项，请发送邮件至';
+          const emergencyEmail = confirmation.emergencyEmail || supportEmail;
+
+          const nextStepsHtml = nextSteps
+            .map((step: string, i: number) => `<p style="font-size: 13px; color: #4B5563; margin: 4px 0;">${i + 1}. ${step}</p>`)
+            .join('');
+
           await resend.emails.send({
             from: process.env.RESEND_FROM || 'noreply@baamplatform.com',
             to: email,
-            subject: '正道移民服务中心 — 我们已收到您的咨询请求',
+            subject: `${siteName} — ${confirmTitle}`,
             html: `
               <div style="font-family: 'Microsoft YaHei', 'PingFang SC', sans-serif; max-width: 600px; margin: 0 auto;">
                 <div style="background: linear-gradient(135deg, #1B2A4A, #0F1A32); padding: 32px; text-align: center;">
-                  <h1 style="color: #C9963B; font-size: 20px; margin: 0;">正道移民服务中心</h1>
-                  <p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px;">洛杉矶中文庇护移民律师</p>
+                  <h1 style="color: #C9963B; font-size: 20px; margin: 0;">${siteName}</h1>
+                  ${siteTagline ? `<p style="color: rgba(255,255,255,0.7); font-size: 13px; margin-top: 4px;">${siteTagline}</p>` : ''}
                 </div>
                 <div style="padding: 32px; background: #fff;">
                   <p style="font-size: 16px; color: #1B2A4A; font-weight: bold;">您好，${name}：</p>
-                  <p style="color: #4B5563; line-height: 1.8;">
-                    感谢您提交案件评估请求。我们已收到您的信息，律师将在 <strong>24小时内</strong> 通过邮件与您联系，安排免费初次咨询。
-                  </p>
+                  <p style="color: #4B5563; line-height: 1.8;">${confirmMessage}</p>
                   <div style="background: #F9FAFB; border-radius: 8px; padding: 20px; margin: 24px 0;">
-                    <p style="font-size: 14px; font-weight: bold; color: #1B2A4A; margin-top: 0;">您提交的信息摘要：</p>
-                    <p style="font-size: 13px; color: #6B7280; margin: 4px 0;">姓名：${name}</p>
-                    <p style="font-size: 13px; color: #6B7280; margin: 4px 0;">国籍：${nationality || '未填写'}</p>
-                    <p style="font-size: 13px; color: #6B7280; margin: 4px 0;">首选语言：${language}</p>
+                    <p style="font-size: 14px; font-weight: bold; color: #1B2A4A; margin-top: 0;">${nextStepsTitle}</p>
+                    ${nextStepsHtml}
                   </div>
                   <p style="color: #4B5563; line-height: 1.8;">
-                    如有紧急事项，请直接发送邮件至 <a href="mailto:${supportEmail}" style="color: #1B2A4A; font-weight: bold;">${supportEmail}</a>。
-                  </p>
-                  <p style="color: #4B5563; line-height: 1.8;">
-                    我们期待为您提供帮助。
+                    ${emergencyPrefix} <a href="mailto:${emergencyEmail}" style="color: #1B2A4A; font-weight: bold;">${emergencyEmail}</a>
                   </p>
                   <p style="color: #4B5563; margin-top: 24px;">
                     此致<br/>
-                    <strong style="color: #1B2A4A;">正道移民服务中心团队</strong>
+                    <strong style="color: #1B2A4A;">${siteName}团队</strong>
                   </p>
                 </div>
                 <div style="background: #F3F4F6; padding: 16px; text-align: center; font-size: 11px; color: #9CA3AF;">
                   <p style="margin: 0;">本邮件为系统自动发送，请勿直接回复。</p>
-                  <p style="margin: 4px 0 0;">如需联系我们，请发送邮件至 ${supportEmail}</p>
+                  <p style="margin: 4px 0 0;">如需联系我们，请发送邮件至 ${emergencyEmail}</p>
                 </div>
               </div>
             `,
