@@ -15,7 +15,7 @@ const DEFAULT_CONSULTATION_CONTENT = {
   steps: ['基本信息', '当前状况', '案件详情', '补充信息'],
   sidebar: {
     name: '律师',
-    title: '移民律师 · CA Bar #123456',
+    title: '移民律师 · CA Bar',
     badges: ['24小时内回复', '免费初次咨询', '严格保密'],
     contact: {
       email: 'yuxiaris@gmail.com',

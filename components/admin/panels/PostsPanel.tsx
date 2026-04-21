@@ -1,6 +1,7 @@
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { normalizeMarkdown } from '@/components/admin/utils/editorHelpers';
+import { getYouTubeEmbedUrl } from '@/lib/utils';
 
 interface PostsPanelProps {
   formData: Record<string, any>;
@@ -26,6 +27,7 @@ export function PostsPanel({
   openImagePicker,
 }: PostsPanelProps) {
   const hideBodyPreview = markdownPreview['blog-article-body'] === false;
+  const videoPreviewUrl = getYouTubeEmbedUrl(formData?.videoUrl);
 
   return (
     <>
@@ -168,7 +170,7 @@ export function PostsPanel({
                   <label className="block text-xs text-gray-500 mb-1">YouTube URL</label>
                   <input
                     className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
-                    placeholder="https://www.youtube.com/watch?v=..."
+                    placeholder="https://www.youtube.com/watch?v=... or /shorts/..."
                     value={formData.videoUrl || ''}
                     onChange={(event) => updateFormValue(['videoUrl'], event.target.value)}
                   />
@@ -187,9 +189,9 @@ export function PostsPanel({
                 <div className="mt-2">
                   <label className="block text-xs text-gray-500 mb-1">Preview</label>
                   <div className="aspect-video bg-gray-900 rounded-md overflow-hidden max-w-md">
-                    {formData.videoUrl.includes('youtube.com') || formData.videoUrl.includes('youtu.be') ? (
+                    {videoPreviewUrl ? (
                       <iframe
-                        src={formData.videoUrl.replace('watch?v=', 'embed/').replace('youtu.be/', 'youtube.com/embed/')}
+                        src={videoPreviewUrl}
                         className="w-full h-full"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
@@ -197,7 +199,7 @@ export function PostsPanel({
                       />
                     ) : (
                       <div className="flex items-center justify-center h-full text-gray-400 text-sm">
-                        Enter a YouTube URL to preview
+                        Enter a valid YouTube URL to preview
                       </div>
                     )}
                   </div>

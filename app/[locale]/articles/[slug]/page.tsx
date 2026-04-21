@@ -137,7 +137,7 @@ export default async function ArticleDetailPage({
             <div>
               <div className="text-white font-medium">律师</div>
               <div className="text-white/60 text-sm">
-                加州执照移民律师 · CA Bar #123456
+                美国司法部（DOJ）认证法律代表
               </div>
             </div>
           </div>

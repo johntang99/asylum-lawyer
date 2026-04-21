@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { loadAllItems } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
+import { getYouTubeThumbnailUrl } from '@/lib/utils';
 
 export async function generateMetadata() {
   return {
@@ -77,23 +78,18 @@ export default async function VideosPage({
                 >
                   {/* Thumbnail */}
                   {(() => {
-                    // Extract YouTube video ID for thumbnail
-                    let ytId = '';
-                    if (video.videoUrl) {
-                      const m = video.videoUrl.match(/(?:v=|youtu\.be\/)([a-zA-Z0-9_-]{11})/);
-                      if (m) ytId = m[1];
-                    }
+                    const thumbnailUrl = getYouTubeThumbnailUrl(video.videoUrl);
                     return (
                       <div
                         className="h-[200px] relative flex items-center justify-center overflow-hidden"
                         style={{
-                          background: ytId ? undefined : 'linear-gradient(135deg, #1B2A4A, #0F1A32)',
+                          background: thumbnailUrl ? undefined : 'linear-gradient(135deg, #1B2A4A, #0F1A32)',
                         }}
                       >
-                        {ytId && (
+                        {thumbnailUrl && (
                           // eslint-disable-next-line @next/next/no-img-element
                           <img
-                            src={`https://img.youtube.com/vi/${ytId}/hqdefault.jpg`}
+                            src={thumbnailUrl}
                             alt={video.title}
                             className="absolute inset-0 w-full h-full object-cover"
                           />

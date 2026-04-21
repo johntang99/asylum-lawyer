@@ -88,3 +88,57 @@ export function debounce<T extends (...args: any[]) => any>(
     timeout = setTimeout(later, wait);
   };
 }
+
+function isValidYouTubeId(value: string | null | undefined): value is string {
+  return Boolean(value && /^[a-zA-Z0-9_-]{11}$/.test(value));
+}
+
+export function extractYouTubeVideoId(rawUrl?: string | null): string | null {
+  if (!rawUrl) return null;
+  const input = rawUrl.trim();
+  if (!input) return null;
+
+  const tryParse = (urlValue: string): URL | null => {
+    try {
+      return new URL(urlValue);
+    } catch {
+      return null;
+    }
+  };
+
+  const parsed = tryParse(input) ?? tryParse(`https://${input}`);
+  if (parsed) {
+    const hostname = parsed.hostname.toLowerCase().replace(/^www\./, '');
+    const parts = parsed.pathname.split('/').filter(Boolean);
+
+    if (hostname === 'youtu.be') {
+      const id = parts[0];
+      return isValidYouTubeId(id) ? id : null;
+    }
+
+    if (hostname.endsWith('youtube.com') || hostname.endsWith('youtube-nocookie.com')) {
+      if (parts[0] === 'watch') {
+        const id = parsed.searchParams.get('v');
+        return isValidYouTubeId(id) ? id : null;
+      }
+
+      if (parts[0] === 'shorts' || parts[0] === 'embed' || parts[0] === 'live' || parts[0] === 'v') {
+        const id = parts[1];
+        return isValidYouTubeId(id) ? id : null;
+      }
+    }
+  }
+
+  const fallbackMatch = input.match(/(?:v=|youtu\.be\/|youtube\.com\/shorts\/|youtube\.com\/embed\/)([a-zA-Z0-9_-]{11})/);
+  return fallbackMatch?.[1] ?? null;
+}
+
+export function getYouTubeEmbedUrl(rawUrl?: string | null): string | null {
+  const id = extractYouTubeVideoId(rawUrl);
+  return id ? `https://www.youtube.com/embed/${id}` : null;
+}
+
+export function getYouTubeThumbnailUrl(rawUrl?: string | null): string | null {
+  const id = extractYouTubeVideoId(rawUrl);
+  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : null;
+}

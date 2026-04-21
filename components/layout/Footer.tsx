@@ -81,7 +81,7 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     },
   },
   compliance: {
-    barNumber: "CA Bar #123456",
+    barNumber: "CA Bar",
     links: [
       { label: "隐私政策", href: "/privacy" },
       { label: "服务条款", href: "/terms" },
@@ -245,12 +245,6 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
               style={{ color: "rgba(255,255,255,0.4)" }}
             >
               <span>{copyright}</span>
-              {compliance.barNumber && (
-                <>
-                  <span>·</span>
-                  <span>{compliance.barNumber}</span>
-                </>
-              )}
             </div>
             <div className="flex items-center gap-4">
               {compliance.links?.map((link) => (

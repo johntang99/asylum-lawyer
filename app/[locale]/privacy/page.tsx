@@ -166,7 +166,6 @@ export default async function PrivacyPage() {
                 <p className="font-semibold text-gray-900">正道移民服务中心</p>
                 <p>地址：1045 E. Valley Blvd., #A115, Rm 6, San Gabriel, CA 91776</p>
                 <p>邮箱：yuxiaris@gmail.com</p>
-                <p>邮箱：yuxiaris@gmail.com</p>
               </div>
               <p className="mt-4">
                 本所保留随时修改本隐私政策的权利。任何重大变更将在本网站上公布并注明更新日期。我们建议您定期查阅本政策以了解最新的隐私保护措施。

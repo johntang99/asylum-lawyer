@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { loadAllItems, loadContent, getRequestSiteId } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
+import { getYouTubeEmbedUrl } from '@/lib/utils';
 
 interface VideoData {
   slug: string;
@@ -47,13 +48,8 @@ export default async function VideoDetailPage({
     );
   }
 
-  // Convert YouTube URL to embed URL
-  let embedUrl = '';
-  if (video.videoUrl) {
-    embedUrl = video.videoUrl
-      .replace('watch?v=', 'embed/')
-      .replace('youtu.be/', 'youtube.com/embed/');
-  }
+  // Convert YouTube URL (watch/shorts/youtu.be) to embed URL
+  const embedUrl = getYouTubeEmbedUrl(video.videoUrl);
 
   return (
     <>

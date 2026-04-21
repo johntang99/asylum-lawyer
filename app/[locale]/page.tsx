@@ -6,6 +6,7 @@ import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import HeroSection from '@/components/sections/HeroSection';
+import { getYouTubeThumbnailUrl } from '@/lib/utils';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -316,29 +317,46 @@ export default async function HomePage({
             <SectionHeader label="视频中心" title="最新视频" />
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {latestVideos.map((video: any, i: number) => (
-                <Link
-                  key={video.slug || i}
-                  href={`/${locale}/videos/${video.slug}`}
-                  className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
-                >
-                  <div
-                    className="h-[180px] relative flex items-center justify-center"
-                    style={{ background: ['linear-gradient(135deg, #1B2A4A, #2D4A7A)', 'linear-gradient(135deg, #8B5E3C, #C9963B)', 'linear-gradient(135deg, #2D5A3D, #4A8C6A)'][i % 3] }}
-                  >
-                    <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg">
-                      <span className="text-[#1B2A4A] text-xl ml-1">▶</span>
-                    </div>
-                    {video.duration && (
-                      <span className="absolute bottom-3 right-3 text-xs font-medium text-white bg-black/60 px-2 py-1 rounded">
-                        {video.duration}
-                      </span>
-                    )}
-                  </div>
-                  <div className="p-5">
-                    <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">{video.title}</h3>
-                    <p className="text-sm text-gray-500">{video.category || ''}</p>
-                  </div>
-                </Link>
+                (() => {
+                  const thumbnailUrl = getYouTubeThumbnailUrl(video.videoUrl);
+                  return (
+                    <Link
+                      key={video.slug || i}
+                      href={`/${locale}/videos/${video.slug}`}
+                      className="border border-gray-200 rounded-lg overflow-hidden hover:shadow-lg transition-shadow"
+                    >
+                      <div
+                        className="h-[180px] relative flex items-center justify-center overflow-hidden"
+                        style={{
+                          background: thumbnailUrl
+                            ? undefined
+                            : ['linear-gradient(135deg, #1B2A4A, #2D4A7A)', 'linear-gradient(135deg, #8B5E3C, #C9963B)', 'linear-gradient(135deg, #2D5A3D, #4A8C6A)'][i % 3],
+                        }}
+                      >
+                        {thumbnailUrl && (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={thumbnailUrl}
+                            alt={video.title}
+                            className="absolute inset-0 w-full h-full object-cover"
+                          />
+                        )}
+                        <div className="w-14 h-14 rounded-full bg-white flex items-center justify-center shadow-lg relative z-10">
+                          <span className="text-[#1B2A4A] text-xl ml-1">▶</span>
+                        </div>
+                        {video.duration && (
+                          <span className="absolute bottom-3 right-3 text-xs font-medium text-white bg-black/60 px-2 py-1 rounded z-10">
+                            {video.duration}
+                          </span>
+                        )}
+                      </div>
+                      <div className="p-5">
+                        <h3 className="font-semibold text-gray-900 mb-1 line-clamp-2">{video.title}</h3>
+                        <p className="text-sm text-gray-500">{video.category || ''}</p>
+                      </div>
+                    </Link>
+                  );
+                })()
               ))}
             </div>
             <div className="text-center mt-10">
