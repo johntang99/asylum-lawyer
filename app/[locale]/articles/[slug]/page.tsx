@@ -23,7 +23,7 @@ export async function generateMetadata({
     return { title: '文章未找到' };
   }
   return {
-    title: `${article.title} | 正道移民服务中心`,
+    title: `${article.title} | 宇霞移民服务中心`,
     description: article.excerpt,
   };
 }
@@ -135,7 +135,7 @@ export default async function ArticleDetailPage({
               张
             </div>
             <div>
-              <div className="text-white font-medium">律师</div>
+              <div className="text-white font-medium">宇霞</div>
               <div className="text-white/60 text-sm">
                 美国司法部（DOJ）认证法律代表
               </div>
@@ -173,10 +173,10 @@ export default async function ArticleDetailPage({
               className="text-lg font-semibold mb-3"
               style={{ color: '#1B2A4A' }}
             >
-              您的情况可能更复杂，立即咨询律师
+              您的情况可能更复杂，立即咨询法律代表宇霞
             </p>
             <p className="text-sm text-gray-600 mb-4">
-              每个庇护案件都有独特的情况。文章提供一般性指导，但专业律师可以根据您的具体情况制定最佳策略。
+              每个庇护案件都有独特的情况。文章提供一般性指导，但专业法律代表可以根据您的具体情况制定最佳策略。
             </p>
             <Link
               href={`/${locale}/consultation`}
@@ -331,7 +331,7 @@ export default async function ArticleDetailPage({
           <SectionHeader
             light
             title="需要专业帮助？预约免费咨询"
-            subtitle="让经验丰富的庇护律师为您评估案件，制定最佳法律策略。初次咨询完全免费，无任何义务。"
+            subtitle="让经验丰富的庇护法律代表为您评估案件，制定最佳法律策略。初次咨询完全免费，无任何义务。"
           />
           <div className="flex flex-wrap justify-center gap-4">
             <Link
@@ -355,7 +355,7 @@ export default async function ArticleDetailPage({
       <section className="bg-gray-50 py-8">
         <div className="max-w-[800px] mx-auto px-6">
           <p className="text-xs text-gray-400 leading-relaxed">
-            本文仅供一般信息参考，不构成法律建议，也不建立律师与客户关系。每个案件的情况不同，法律结果可能因具体事实和情况而异。如果您需要针对您个人情况的法律建议，请咨询有资质的移民律师。本文中的信息基于撰写时的法律，相关法律法规可能已发生变化。正道移民服务中心不对因依赖本文信息而采取或未采取的任何行动承担责任。
+            本文仅供一般信息参考，不构成法律建议，也不建立律师与客户关系。每个案件的情况不同，法律结果可能因具体事实和情况而异。如果您需要针对您个人情况的法律建议，请咨询有资质的移民律师。本文中的信息基于撰写时的法律，相关法律法规可能已发生变化。宇霞移民服务中心不对因依赖本文信息而采取或未采取的任何行动承担责任。
           </p>
         </div>
       </section>

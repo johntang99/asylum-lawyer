@@ -6,7 +6,7 @@ import { ALL_ARTICLES, CATEGORIES } from '@/lib/articles-data';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: '文章中心 | 正道移民服务中心',
+    title: '文章中心 | 宇霞移民服务中心',
     description:
       '庇护移民知识库：了解美国政治庇护申请流程、I-589填写指南、庇护面谈准备、被拒补救方案等专业法律知识。',
   };

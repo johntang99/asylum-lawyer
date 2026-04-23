@@ -16,8 +16,8 @@ export async function generateMetadata({
   const content = await loadPageContent<any>('contact', locale as Locale);
   const seo = content?.seo;
   return {
-    title: seo?.title ?? '联系我们 — 正道移民服务中心',
-    description: seo?.description ?? '联系正道移民服务中心获取免费庇护移民法律咨询。',
+    title: seo?.title ?? '联系我们 — 宇霞移民服务中心',
+    description: seo?.description ?? '联系宇霞移民服务中心获取免费庇护移民法律咨询。',
   };
 }
 
@@ -81,7 +81,7 @@ export default async function ContactPage({
             联系我们
           </h1>
           <p className="text-white/70 text-lg">
-            多种方式联系正道移民服务中心，获取免费庇护法律咨询
+            多种方式联系宇霞移民服务中心，获取免费庇护法律咨询
           </p>
         </div>
       </section>
@@ -302,7 +302,7 @@ export default async function ContactPage({
           <SectionHeader
             light
             title="准备好开始您的庇护申请了吗？"
-            subtitle="立即联系正道移民服务中心，获取免费初次咨询"
+            subtitle="立即联系宇霞移民服务中心，获取免费初次咨询"
           />
           <div className="flex flex-wrap justify-center gap-4">
             <Link

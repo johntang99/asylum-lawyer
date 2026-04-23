@@ -6,8 +6,8 @@ import { getYouTubeThumbnailUrl } from '@/lib/utils';
 
 export async function generateMetadata() {
   return {
-    title: '视频中心 | 正道移民服务中心',
-    description: '律师亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
+    title: '视频中心 | 宇霞移民服务中心',
+    description: '法律代表宇霞亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
   };
 }
 
@@ -56,7 +56,7 @@ export default async function VideosPage({
             视频中心
           </h1>
           <p className="text-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
-            律师亲自解答庇护移民常见问题
+          法律代表宇霞亲自解答庇护移民常见问题
           </p>
         </div>
       </section>
@@ -126,7 +126,7 @@ export default async function VideosPage({
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <p className="text-gray-500 mb-4">有类似问题？咨询律师获取专业解答</p>
+            <p className="text-gray-500 mb-4">有类似问题？咨询我们获取专业解答</p>
             <Link
               href={`/${locale}/consultation`}
               className="inline-block px-8 py-3 rounded-md text-white font-semibold transition-colors"

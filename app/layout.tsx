@@ -10,7 +10,7 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: '正道移民服务中心',
+  title: '宇霞移民服务中心',
   description: '洛杉矶专业中文庇护移民律师，提供政治庇护、移民签证等法律服务。',
 };
 

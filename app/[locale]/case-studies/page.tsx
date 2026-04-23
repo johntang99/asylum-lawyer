@@ -15,7 +15,7 @@ export async function generateMetadata({
   const content = await loadPageContent<any>('case-studies', locale as Locale);
   const seo = content?.seo;
   return {
-    title: seo?.title ?? '案件经验 | 正道移民服务中心',
+    title: seo?.title ?? '案件经验 | 宇霞移民服务中心',
     description: seo?.description ?? '',
   };
 }

@@ -51,7 +51,7 @@ export async function POST(request: NextRequest) {
       '感谢您提交案件信息，我们将在24小时内联系您。';
 
     const siteInfo = await loadSiteInfo(siteId, requestedLocale) as Record<string, any> | null;
-    const siteName = siteInfo?.name || '正道移民服务中心';
+    const siteName = siteInfo?.name || '宇霞移民服务中心';
     const siteTagline = siteInfo?.tagline || '';
     const confirmation = consultationContent?.confirmation as Record<string, any> | undefined;
 

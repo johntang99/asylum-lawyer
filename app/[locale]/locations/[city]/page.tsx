@@ -108,7 +108,7 @@ export default async function NearLocationPage({
                 className="text-2xl font-bold mb-3"
                 style={{ color: '#1B2A4A', fontFamily: 'var(--font-heading)' }}
               >
-                正道移民服务中心
+                宇霞移民服务中心
               </h2>
               <p className="text-gray-700 mb-1">📍 1045 E. Valley Blvd., #A115, Rm 6, San Gabriel, CA 91776</p>
               <p className="text-gray-700 mb-1">📧 yuxiaris@gmail.com</p>

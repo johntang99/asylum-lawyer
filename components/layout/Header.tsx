@@ -27,7 +27,7 @@ interface HeaderProps {
 }
 
 const defaultConfig: NonNullable<HeaderProps["headerConfig"]> = {
-  logo: { text: "正道移民服务中心", href: "/" },
+  logo: { text: "宇霞移民服务中心", href: "/" },
   nav: [
     { label: "首页", href: "/" },
     {
@@ -161,7 +161,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {config.logo?.text || "正道移民服务中心"}
+                  {config.logo?.text || "宇霞移民服务中心"}
                 </span>
               </>
             )}
@@ -480,7 +480,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                 fontSize: 16,
               }}
             >
-              {config.logo?.text || "正道移民服务中心"}
+              {config.logo?.text || "宇霞移民服务中心"}
             </span>
           )}
           <button

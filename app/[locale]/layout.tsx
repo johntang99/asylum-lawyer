@@ -40,7 +40,7 @@ export async function generateMetadata({
 
   if (!site) {
     return {
-      title: '正道移民服务中心',
+      title: '宇霞移民服务中心',
       description: '专业庇护移民律师事务所',
     };
   }

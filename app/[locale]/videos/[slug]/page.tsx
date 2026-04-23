@@ -24,9 +24,9 @@ export async function generateStaticParams() {
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const siteId = await getRequestSiteId();
   const video = await loadContent<VideoData>(siteId, params.locale as Locale, `videos/${params.slug}.json`);
-  if (!video) return { title: '视频 | 正道移民服务中心' };
+  if (!video) return { title: '视频 | 宇霞移民服务中心' };
   return {
-    title: `${video.title} | 正道移民服务中心`,
+    title: `${video.title} | 宇霞移民服务中心`,
     description: video.excerpt || video.title,
   };
 }
@@ -124,10 +124,10 @@ export default async function VideoDetailPage({
           {/* CTA */}
           <div className="mt-12 text-center p-8 rounded-lg" style={{ background: 'linear-gradient(135deg, #1B2A4A 0%, #0F1A32 100%)' }}>
             <h2 className="text-xl font-bold text-white mb-2" style={{ fontFamily: 'var(--font-heading)' }}>
-              有类似问题？免费咨询律师
+              有类似问题？免费咨询法律代表宇霞
             </h2>
             <p className="text-sm mb-6" style={{ color: 'rgba(255,255,255,0.7)' }}>
-              每个案件情况不同，让专业律师为您分析
+              每个案件情况不同，让法律代表宇霞为您分析
             </p>
             <div className="flex justify-center gap-4 flex-wrap">
               <Link

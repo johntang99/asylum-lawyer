@@ -9,7 +9,7 @@ interface FooterProps {
     }>;
     nap?: {
       name: string;
-      phone: string;
+      phone?: string;
       email?: string;
       wechatId?: string;
       address?: string | {
@@ -64,10 +64,10 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     },
   ],
   nap: {
-    name: "正道移民服务中心",
-    phone: "yuxiaris@gmail.com",
+    name: "宇霞移民服务中心",
+
     email: "yuxiaris@gmail.com",
-    wechatId: "ZhangLawFirm",
+    wechatId: "yuxiaris",
     address: {
       street: "1045 E. Valley Blvd., #A115, Rm 6",
       city: "Los Angeles",
@@ -91,7 +91,7 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     disclaimer:
       "本站内容仅供一般信息参考，不构成法律意见。浏览本网站不构成律师-客户关系。",
   },
-  copyright: `© ${new Date().getFullYear()} 正道移民服务中心 版权所有`,
+  copyright: `© ${new Date().getFullYear()} 宇霞移民服务中心 版权所有`,
 };
 
 export default function Footer({ locale, footerConfig }: FooterProps) {
@@ -185,22 +185,26 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
               </div>
             </div>
 
-            {/* Phone */}
-            <div className="flex items-start gap-3">
-              <span className="text-lg mt-0.5" style={{ color: "#C9963B" }}>
-                📞
-              </span>
-              <div>
-                <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-                  {nap.phone}
-                </p>
-                {nap.wechatId && (
-                  <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
-                    微信: {nap.wechatId}
-                  </p>
-                )}
+            {/* Phone / Wechat */}
+            {(nap.phone || nap.wechatId) && (
+              <div className="flex items-start gap-3">
+                <span className="text-lg mt-0.5" style={{ color: "#C9963B" }}>
+                  📞
+                </span>
+                <div>
+                  {nap.phone && (
+                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+                      {nap.phone}
+                    </p>
+                  )}
+                  {nap.wechatId && (
+                    <p className="text-sm" style={{ color: "rgba(255,255,255,0.75)" }}>
+                      微信: {nap.wechatId}
+                    </p>
+                  )}
+                </div>
               </div>
-            </div>
+            )}
 
             {/* Email */}
             <div className="flex items-start gap-3">

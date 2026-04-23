@@ -4,9 +4,9 @@ import SectionHeader from '@/components/shared/SectionHeader';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
-    title: '全美中文庇护律师在线咨询 | 正道移民服务中心',
+    title: '全美中文庇护律师在线咨询 | 宇霞移民服务中心',
     description:
-      '正道移民服务中心提供全美50州远程庇护移民法律咨询。通过微信视频、Zoom或电话即可获得专业中文庇护律师服务。',
+      '宇霞移民服务中心提供全美50州远程庇护移民法律咨询。通过微信视频、Zoom或电话即可获得专业中文庇护律师服务。',
   };
 }
 
@@ -119,7 +119,7 @@ export default async function RemoteConsultationPage({
             </div>
             <div className="flex-1">
               <p className="text-gray-700 mb-6 leading-relaxed">
-                庇护案件属于联邦移民法范畴，律师可以代理全美任何州的客户。无论您身在纽约、德州还是其他任何州，正道移民服务中心都能通过远程方式为您提供与面对面同等质量的法律服务。
+                庇护案件属于联邦移民法范畴，律师可以代理全美任何州的客户。无论您身在纽约、德州还是其他任何州，宇霞移民服务中心都能通过远程方式为您提供与面对面同等质量的法律服务。
               </p>
               <div className="flex flex-wrap gap-2">
                 {STATES.map((state) => (

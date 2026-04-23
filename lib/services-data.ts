@@ -179,7 +179,7 @@ const politicalAsylum: ServiceData = {
   ],
   howWeHelp: {
     content:
-      '正道移民服务中心在政治庇护领域拥有丰富的经验，特别擅长处理来自中国的庇护案件。我们深刻理解华人申请者所面临的独特挑战，并提供全中文的法律服务，确保沟通无障碍。',
+      '宇霞移民服务中心在政治庇护领域拥有丰富的经验，特别擅长处理来自中国的庇护案件。我们深刻理解华人申请者所面临的独特挑战，并提供全中文的法律服务，确保沟通无障碍。',
     points: [
       '一对一的中文法律咨询，深入了解您的案件情况',
       '协助撰写详尽、有说服力的个人陈述',
@@ -191,7 +191,7 @@ const politicalAsylum: ServiceData = {
   },
   testimonial: {
     quote:
-      '律师帮助我成功获得了政治庇护。从最初的咨询到最终的面谈，她都非常耐心和专业。作为一名因政治原因受到迫害的人，能遇到一位既懂法律又了解中国国情的律师，我感到非常幸运。',
+      '我最担心的是材料前后不一致，宇霞女士帮我把经历梳理得很清楚，每次面谈练习都非常细。最后顺利获批，整个过程让我很踏实。',
     name: '王先生',
     caseType: '政治庇护',
   },
@@ -381,7 +381,7 @@ const affirmativeAsylum: ServiceData = {
   },
   testimonial: {
     quote:
-      '我通过律师的帮助成功通过了主动庇护面谈。她帮我准备的个人陈述非常详尽，面谈前的模拟练习让我对整个过程有了充分的了解。面谈当天律师全程陪同，让我感到很安心。',
+      '从准备I-589到面谈当天，宇霞女士都一步步提醒我重点。她把复杂规则讲得很明白，让我在面谈时能稳定表达，结果比我预期更好。',
     name: '陈女士',
     caseType: '主动庇护',
   },
@@ -575,7 +575,7 @@ const defensiveAsylum: ServiceData = {
   },
   testimonial: {
     quote:
-      '当我面临递解的时候，律师挺身而出。她在法庭上的专业表现和有力辩护让法官批准了我的庇护申请。整个过程中她都用中文和我沟通，让我在这个艰难的时期感到有依靠。',
+      '收到出庭通知后我非常慌，宇霞女士很快帮我定好应对节奏。她在法庭上的陈述很有力量，也一直安抚我的情绪，最终案件迎来好结果。',
     name: '李先生',
     caseType: '防御性庇护',
   },
@@ -621,7 +621,8 @@ function makePartialService(
   seoTitle: string,
   seoDescription: string,
   faq: Array<{ question: string; answer: string }>,
-  relatedSlugs: string[]
+  relatedSlugs: string[],
+  testimonial?: { quote: string; name?: string }
 ): ServiceData {
   return {
     slug,
@@ -678,7 +679,7 @@ function makePartialService(
       { mistake: '未聘请专业律师', correction: '移民法律复杂，专业律师的协助可以显著提高成功率。' },
     ],
     howWeHelp: {
-      content: `正道移民服务中心在${title}方面拥有丰富经验。我们提供全中文服务，确保沟通无障碍。`,
+      content: `宇霞移民服务中心在${title}方面拥有丰富经验。我们提供全中文服务，确保沟通无障碍。`,
       points: [
         '免费初次咨询和案件评估',
         '全程中文法律服务',
@@ -688,8 +689,10 @@ function makePartialService(
       ],
     },
     testimonial: {
-      quote: `律师在${title}方面非常专业，帮助我顺利解决了移民问题。整个过程中都用中文沟通，非常感谢！`,
-      name: '客户',
+      quote:
+        testimonial?.quote ??
+        `我在${title}阶段最焦虑的时候，宇霞女士帮我把重点一步步理清。她的建议很实用，沟通也很耐心，让我在关键节点更有底气。`,
+      name: testimonial?.name ?? '客户',
       caseType: title,
     },
     faq,
@@ -712,7 +715,12 @@ const credibleFearInterview = makePartialService(
     { question: '面谈时可以有律师在场吗？', answer: '是的，您有权让律师或法律代表在恐惧面谈时在场。虽然律师不能直接替您回答问题，但可以在面谈结束时发言并提供补充信息。' },
     { question: '如果恐惧面谈没通过怎么办？', answer: '如果庇护官员作出否定决定，您可以要求移民法官对此进行审查。法官将重新评估您的案件。如果法官也维持否定决定，您可能面临被递解。' },
   ],
-  ['political-asylum', 'defensive-asylum', 'i-589-application']
+  ['political-asylum', 'defensive-asylum', 'i-589-application'],
+  {
+    quote:
+      '在拘留环境里我一度不知道该怎么表达，宇霞女士提前帮我反复练习关键问题。正式面谈时我终于能完整讲清经历，顺利进入后续程序。',
+    name: '吴先生',
+  }
 );
 
 const i589Application = makePartialService(
@@ -730,7 +738,12 @@ const i589Application = makePartialService(
     { question: 'I-589表格需要费用吗？', answer: '提交I-589庇护申请不需要向政府缴纳任何费用。但您可能需要支付律师费用、翻译费用和文件公证费用等。' },
     { question: '可以在线提交I-589吗？', answer: '目前I-589表格需要以纸质形式邮寄提交给USCIS或在移民法庭提交。确保使用最新版本的表格并保留提交证明。' },
   ],
-  ['affirmative-asylum', 'interview-preparation', 'work-permit']
+  ['affirmative-asylum', 'interview-preparation', 'work-permit'],
+  {
+    quote:
+      '我原本很担心表格和陈述会出错，宇霞女士把每一项都核对得很细，还帮我补齐证据逻辑。递交后进展很顺，心里踏实很多。',
+    name: '周女士',
+  }
 );
 
 const interviewPreparation = makePartialService(
@@ -748,7 +761,12 @@ const interviewPreparation = makePartialService(
     { question: '模拟面谈和真实面谈有多像？', answer: '我们的模拟面谈尽可能模拟真实的面谈环境和流程，包括使用类似的问题、保持正式的氛围，让您对真实面谈有充分的心理准备。' },
     { question: '面谈时需要带翻译吗？', answer: '如果您不能用英语流利沟通，USCIS会提供口译员。但我们建议您自己也带一名翻译，以确保翻译的准确性。律师可以在面谈中监督翻译质量。' },
   ],
-  ['affirmative-asylum', 'i-589-application', 'credible-fear-interview']
+  ['affirmative-asylum', 'i-589-application', 'credible-fear-interview'],
+  {
+    quote:
+      '模拟面谈做了几轮后，我从紧张到能清晰回答。宇霞女士会指出我表达里的漏洞并马上调整，正式面谈时明显更有底气。',
+    name: '林先生',
+  }
 );
 
 const immigrationCourt = makePartialService(
@@ -766,7 +784,12 @@ const immigrationCourt = makePartialService(
     { question: '如果错过了法庭日期怎么办？', answer: '缺席法庭可能导致缺席递解令。如果您有合理的理由（如生病、未收到通知），律师可以帮您提交动议要求重新开案。' },
     { question: '法庭案件需要多长时间？', answer: '移民法庭案件可能需要数月到数年。这取决于法庭的排期、案件的复杂程度和是否有延期请求。' },
   ],
-  ['defensive-asylum', 'asylum-denial-appeal', 'deportation-defense']
+  ['defensive-asylum', 'asylum-denial-appeal', 'deportation-defense'],
+  {
+    quote:
+      '法庭流程很复杂，但宇霞女士把每一步都解释得很清楚。开庭当天她的节奏把控很稳，我知道该说什么、怎么说，压力小了很多。',
+    name: '何先生',
+  }
 );
 
 const asylumDenialAppeal = makePartialService(
@@ -784,7 +807,12 @@ const asylumDenialAppeal = makePartialService(
     { question: '上诉期间会被递解吗？', answer: '向BIA提出上诉通常会自动暂停递解令的执行（automatic stay）。但向联邦法院申请司法审查不一定自动暂停，需要单独申请。' },
     { question: '可以提交新证据吗？', answer: 'BIA上诉通常基于已有的记录，不接受新证据。但如果有新的重要证据出现，可以通过提交重新开案动议（Motion to Reopen）的方式提交。' },
   ],
-  ['defensive-asylum', 'immigration-court', 'deportation-defense']
+  ['defensive-asylum', 'immigration-court', 'deportation-defense'],
+  {
+    quote:
+      '收到不利结果那天我几乎放弃，宇霞女士迅速帮我梳理可上诉点并重建证据结构。后续程序推进得很扎实，让我重新看到希望。',
+    name: '郑女士',
+  }
 );
 
 const workPermit = makePartialService(
@@ -802,7 +830,12 @@ const workPermit = makePartialService(
     { question: '工卡需要续签吗？', answer: '是的，工卡通常有效期为1-2年，需要在到期前及时续签。我们会提醒您并协助准备续签申请。' },
     { question: '工卡被拒怎么办？', answer: '如果被拒，通常是因为不符合180天等待期或存在其他资格问题。律师可以帮您分析被拒原因并采取相应措施。' },
   ],
-  ['i-589-application', 'affirmative-asylum', 'family-derivative']
+  ['i-589-application', 'affirmative-asylum', 'family-derivative'],
+  {
+    quote:
+      '等待期间经济压力很大，宇霞女士团队帮我把工卡申请准备得很完整。提交后很快拿到回执和卡片，终于可以安心工作。',
+    name: '许先生',
+  }
 );
 
 const familyDerivative = makePartialService(
@@ -820,7 +853,12 @@ const familyDerivative = makePartialService(
     { question: '衍生身份有时间限制吗？', answer: '子女必须在主申请人获得庇护时未满21岁且未婚。如果子女在案件审理期间超过21岁（"超龄"问题），可能需要特别处理。' },
     { question: '衍生庇护人可以独立工作吗？', answer: '是的，获得衍生庇护身份后，家属可以独立申请工卡并合法工作。他们享有与主申请人相同的权利和福利。' },
   ],
-  ['political-asylum', 'green-card', 'work-permit']
+  ['political-asylum', 'green-card', 'work-permit'],
+  {
+    quote:
+      '最难的是把家人材料和时间线对齐，宇霞女士非常耐心地逐项确认。家属手续推进后，我们一家终于看到了团聚的希望。',
+    name: '赵女士',
+  }
 );
 
 const greenCard = makePartialService(
@@ -838,7 +876,12 @@ const greenCard = makePartialService(
     { question: '庇护绿卡和其他绿卡有区别吗？', answer: '庇护绿卡的日期将追溯到您获得庇护的日期。这意味着在计算入籍等待时间时更有利。其他权利和义务与普通绿卡持有者相同。' },
     { question: '绿卡获批后可以出境吗？', answer: '获得绿卡后可以出境旅行，但需要谨慎。回到迫害您的国家可能被视为放弃庇护的理由。建议出行前咨询律师。' },
   ],
-  ['political-asylum', 'family-derivative', 'work-permit']
+  ['political-asylum', 'family-derivative', 'work-permit'],
+  {
+    quote:
+      '拿到庇护后我不确定绿卡步骤，宇霞女士给了我非常清晰的清单和时间安排。申请过程顺畅，细节处理也特别专业。',
+    name: '孙先生',
+  }
 );
 
 const deportationDefense = makePartialService(
@@ -856,7 +899,12 @@ const deportationDefense = makePartialService(
     { question: '在递解程序中可以保释吗？', answer: '在某些情况下可以。律师可以帮您申请保释或保释金减免，让您在案件审理期间不用被关在拘留中心。' },
     { question: '递解令可以撤销吗？', answer: '在某些情况下可以通过重新开案动议或联邦法院审查来撤销递解令。是否可行取决于具体情况和被拒的原因。' },
   ],
-  ['defensive-asylum', 'immigration-court', 'asylum-denial-appeal']
+  ['defensive-asylum', 'immigration-court', 'asylum-denial-appeal'],
+  {
+    quote:
+      '面对递解压力时我几乎崩溃，宇霞女士先稳住我的情绪，再帮我逐项准备辩护材料。她的策略很清晰，让我重新有了安全感。',
+    name: '高先生',
+  }
 );
 
 const uVisa = makePartialService(
@@ -874,7 +922,12 @@ const uVisa = makePartialService(
     { question: 'U签证持有人可以申请绿卡吗？', answer: '是的。持有U签证3年后，且满足其他条件（如在美国实际居住），可以申请调整身份为永久居民。' },
     { question: 'U签证的等待时间有多长？', answer: '由于每年U签证的配额限制为10,000个，目前积压严重，等待时间可能需要数年。但在等待期间您可能获得工作许可。' },
   ],
-  ['deportation-defense', 'vawa', 'work-permit']
+  ['deportation-defense', 'vawa', 'work-permit'],
+  {
+    quote:
+      '作为受害者再次回忆经历很困难，宇霞女士一直很尊重我的节奏。材料准备严谨又有人情味，让我在申请过程中感到被保护。',
+    name: '刘女士',
+  }
 );
 
 const vawa = makePartialService(
@@ -892,7 +945,12 @@ const vawa = makePartialService(
     { question: '申请VAWA施虐者会知道吗？', answer: '不会。VAWA申请具有保密性，USCIS不会通知施虐者您提交了申请。这是为了保护申请人的安全。' },
     { question: 'VAWA获批后可以得到什么？', answer: '初步获批后您将获得递延行动身份和工作许可。最终获批后可以申请绿卡，成为永久居民。' },
   ],
-  ['u-visa', 'deportation-defense', 'green-card']
+  ['u-visa', 'deportation-defense', 'green-card'],
+  {
+    quote:
+      '我最在意的是隐私和安全，宇霞女士把流程讲得很清楚，也非常注意保密。整个申请过程中，我第一次感到自己被真正支持。',
+    name: '黄女士',
+  }
 );
 
 const sijs = makePartialService(
@@ -910,7 +968,12 @@ const sijs = makePartialService(
     { question: 'SIJS申请流程是什么？', answer: '首先需要在州法院获得特别发现令（Special Findings Order），然后向USCIS提交I-360申请，最后申请调整身份获得绿卡。' },
     { question: 'SIJS和庇护有什么区别？', answer: '两者都提供保护，但SIJS专门针对未成年人，要求不同。有些未成年人可能同时符合SIJS和庇护的资格，律师可以帮您确定最佳策略。' },
   ],
-  ['deportation-defense', 'green-card', 'family-derivative']
+  ['deportation-defense', 'green-card', 'family-derivative'],
+  {
+    quote:
+      '孩子的时间窗口很紧，宇霞女士团队协调法院文件和移民申请都很高效。每一步都有清晰提醒，家长这边也安心很多。',
+    name: '家长反馈',
+  }
 );
 
 // ── Export all services ──
