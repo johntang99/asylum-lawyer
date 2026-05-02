@@ -3,8 +3,14 @@
 A premium, SEO-optimized website for a Chinese-speaking asylum immigration attorney in Los Angeles. Built as a reusable template for other legal practice sites via the BAAM platform.
 
 **Live:** `http://localhost:3006` (dev) | Production domain TBD  
-**Admin:** `/admin/login` → `admin@yuxiaris.com` / `admin123`  
-**Stack:** Next.js 14 · TypeScript · Tailwind CSS · Supabase · Resend
+
+admin/login` →
+ `admin@yuxiaris.com` / 
+ `admin123`  
+
+
+kill -9 $(lsof -tiTCP:3006 -sTCP:LISTEN)
+npm run dev
 
 
 lsof -ti:3006 | xargs kill -9

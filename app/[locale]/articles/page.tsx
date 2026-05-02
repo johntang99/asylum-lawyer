@@ -1,8 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { isValidLocale, defaultLocale } from '@/lib/i18n';
+import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
-import { ALL_ARTICLES, CATEGORIES } from '@/lib/articles-data';
+import {
+  getArticleDisplayDate,
+  loadPublicArticles,
+} from '@/lib/articles';
 
 export async function generateMetadata(): Promise<Metadata> {
   return {
@@ -19,13 +22,26 @@ export default async function ArticlesPage({
   params: { locale: string };
   searchParams: { category?: string };
 }) {
-  const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
   const activeCategory = searchParams.category || 'all';
-
+  const articles = await loadPublicArticles(locale);
+  const categories = [
+    { key: 'all', label: '全部' },
+    ...Array.from(
+      new Set(
+        articles
+          .map((article) => article.category.trim())
+          .filter(Boolean)
+      )
+    ).map((category) => ({
+      key: category,
+      label: category,
+    })),
+  ];
   const filteredArticles =
     activeCategory === 'all'
-      ? ALL_ARTICLES
-      : ALL_ARTICLES.filter((a) => a.category === activeCategory);
+      ? articles
+      : articles.filter((article) => article.category === activeCategory);
 
   return (
     <main>
@@ -70,7 +86,7 @@ export default async function ArticlesPage({
       <section className="bg-white border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6 py-5">
           <div className="flex flex-wrap gap-2">
-            {CATEGORIES.map((cat) => {
+            {categories.map((cat) => {
               const isActive = activeCategory === cat.key;
               return (
                 <Link
@@ -78,7 +94,7 @@ export default async function ArticlesPage({
                   href={
                     cat.key === 'all'
                       ? `/${locale}/articles`
-                      : `/${locale}/articles?category=${cat.key}`
+                      : `/${locale}/articles?category=${encodeURIComponent(cat.key)}`
                   }
                   className={`inline-block px-4 py-2 rounded-full text-sm font-medium transition-colors ${
                     isActive
@@ -108,12 +124,18 @@ export default async function ArticlesPage({
                 key={article.slug}
                 className="group border border-gray-200 rounded-lg overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
               >
-                {/* Gradient Image Placeholder */}
+                {/* Cover Image */}
                 <div
                   className="relative h-[200px]"
                   style={{
-                    background:
-                      'linear-gradient(135deg, #1B2A4A 0%, #2D4A7A 50%, #1B2A4A 100%)',
+                    background: article.image
+                      ? undefined
+                      : 'linear-gradient(135deg, #1B2A4A 0%, #2D4A7A 50%, #1B2A4A 100%)',
+                    backgroundImage: article.image
+                      ? `linear-gradient(rgba(10, 18, 36, 0.2), rgba(10, 18, 36, 0.2)), url("${article.image}")`
+                      : undefined,
+                    backgroundSize: article.image ? 'cover' : undefined,
+                    backgroundPosition: article.image ? 'center' : undefined,
                   }}
                 >
                   {/* Category Badge */}
@@ -121,32 +143,33 @@ export default async function ArticlesPage({
                     className="absolute top-4 left-4 inline-block px-3 py-1 text-xs font-semibold rounded-full text-white"
                     style={{ backgroundColor: 'rgba(201, 150, 59, 0.9)' }}
                   >
-                    {article.categoryLabel}
+                    {article.category || '法律知识'}
                   </span>
-                  {/* Decorative pattern */}
-                  <div className="absolute inset-0 flex items-center justify-center opacity-10">
-                    <svg
-                      width="120"
-                      height="120"
-                      viewBox="0 0 120 120"
-                      fill="none"
-                    >
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="50"
-                        stroke="white"
-                        strokeWidth="2"
-                      />
-                      <circle
-                        cx="60"
-                        cy="60"
-                        r="30"
-                        stroke="white"
-                        strokeWidth="2"
-                      />
-                    </svg>
-                  </div>
+                  {!article.image && (
+                    <div className="absolute inset-0 flex items-center justify-center opacity-10">
+                      <svg
+                        width="120"
+                        height="120"
+                        viewBox="0 0 120 120"
+                        fill="none"
+                      >
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="50"
+                          stroke="white"
+                          strokeWidth="2"
+                        />
+                        <circle
+                          cx="60"
+                          cy="60"
+                          r="30"
+                          stroke="white"
+                          strokeWidth="2"
+                        />
+                      </svg>
+                    </div>
+                  )}
                 </div>
 
                 {/* Card Body */}
@@ -160,8 +183,8 @@ export default async function ArticlesPage({
                     {article.excerpt}
                   </p>
                   <div className="flex items-center justify-between text-xs text-gray-400">
-                    <span>{article.date}</span>
-                    <span>{article.readTime}阅读</span>
+                    <span>{getArticleDisplayDate(article) || '-'}</span>
+                    <span>{article.readTime || '5 分钟'}阅读</span>
                   </div>
                 </div>
               </article>

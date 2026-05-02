@@ -1,16 +1,36 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { isValidLocale, defaultLocale } from '@/lib/i18n';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
+import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import {
-  ALL_ARTICLES,
-  getArticleBySlug,
-  getRelatedArticles,
-} from '@/lib/articles-data';
+  getArticleDisplayDate,
+  loadPublicArticle,
+  loadPublicArticles,
+} from '@/lib/articles';
+import { getRequestSiteId } from '@/lib/content';
+
+function normalizeArticleMarkdown(markdown: string): string {
+  const withoutLeadingTitle = markdown.replace(/^#\s+.+\n+/, '');
+  const demotedHeadings = withoutLeadingTitle.replace(
+    /^(#{1,6})\s+/gm,
+    (_match, hashes: string) => `${'#'.repeat(Math.min(hashes.length + 1, 6))} `
+  );
+  return demotedHeadings.replace(/\n{3,}/g, '\n\n');
+}
 
 export async function generateStaticParams() {
-  return ALL_ARTICLES.map((article) => ({ slug: article.slug }));
+  const siteId = await getRequestSiteId();
+  const [zhArticles, enArticles] = await Promise.all([
+    loadPublicArticles('zh', siteId),
+    loadPublicArticles('en', siteId),
+  ]);
+  const slugs = Array.from(
+    new Set([...zhArticles, ...enArticles].map((article) => article.slug))
+  );
+  return slugs.map((slug) => ({ slug }));
 }
 
 export async function generateMetadata({
@@ -18,7 +38,8 @@ export async function generateMetadata({
 }: {
   params: { locale: string; slug: string };
 }): Promise<Metadata> {
-  const article = getArticleBySlug(params.slug);
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const article = await loadPublicArticle(locale, params.slug);
   if (!article) {
     return { title: '文章未找到' };
   }
@@ -33,25 +54,27 @@ export default async function ArticleDetailPage({
 }: {
   params: { locale: string; slug: string };
 }) {
-  const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const article = getArticleBySlug(params.slug);
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const article = await loadPublicArticle(locale, params.slug);
 
   if (!article) {
     notFound();
   }
 
-  const relatedArticles = getRelatedArticles(article.relatedSlugs);
-
-  // Split content roughly at 40% for mid-article CTA insertion
-  const contentParts = (() => {
-    const allContent = article.content;
-    const midPoint = Math.floor(allContent.length * 0.4);
-    // Find the next closing tag after midpoint to avoid breaking HTML
-    const breakIndex = allContent.indexOf('</p>', midPoint);
-    if (breakIndex === -1) return [allContent, ''];
-    const splitAt = breakIndex + 4;
-    return [allContent.slice(0, splitAt), allContent.slice(splitAt)];
-  })();
+  const allArticles = await loadPublicArticles(locale);
+  const relatedBySlug = article.relatedSlugs
+    .map((slug) => allArticles.find((entry) => entry.slug === slug))
+    .filter((entry): entry is NonNullable<typeof entry> => Boolean(entry));
+  const fallbackRelated = allArticles.filter(
+    (entry) =>
+      entry.slug !== article.slug &&
+      entry.category &&
+      entry.category === article.category &&
+      !relatedBySlug.some((related) => related.slug === entry.slug)
+  );
+  const relatedArticles = [...relatedBySlug, ...fallbackRelated].slice(0, 5);
+  const articleCategoryLabel = article.category || '法律知识';
+  const markdownBody = normalizeArticleMarkdown(article.contentMarkdown);
 
   return (
     <main>
@@ -90,12 +113,16 @@ export default async function ArticleDetailPage({
                 <span className="mx-1">&gt;</span>
               </li>
               <li>
-                <Link
-                  href={`/${locale}/articles?category=${article.category}`}
-                  className="hover:text-white transition-colors"
-                >
-                  {article.categoryLabel}
-                </Link>
+                {article.category ? (
+                  <Link
+                    href={`/${locale}/articles?category=${encodeURIComponent(article.category)}`}
+                    className="hover:text-white transition-colors"
+                  >
+                    {articleCategoryLabel}
+                  </Link>
+                ) : (
+                  <span className="text-white/70">{articleCategoryLabel}</span>
+                )}
               </li>
               <li>
                 <span className="mx-1">&gt;</span>
@@ -117,11 +144,13 @@ export default async function ArticleDetailPage({
               className="inline-block px-3 py-1 text-xs font-semibold rounded-full text-white"
               style={{ backgroundColor: 'rgba(201, 150, 59, 0.9)' }}
             >
-              {article.categoryLabel}
+              {articleCategoryLabel}
             </span>
-            <span className="text-sm text-white/60">{article.date}</span>
             <span className="text-sm text-white/60">
-              阅读时间 {article.readTime}
+              {getArticleDisplayDate(article) || '-'}
+            </span>
+            <span className="text-sm text-white/60">
+              阅读时间 {article.readTime || '5 分钟'}
             </span>
           </div>
 
@@ -147,19 +176,93 @@ export default async function ArticleDetailPage({
       {/* ── Article Body ── */}
       <section className="bg-white py-[60px]">
         <div className="max-w-[800px] mx-auto px-6">
-          {/* First part of content (~40%) */}
-          <div
-            className="prose prose-lg max-w-none
-              prose-headings:font-bold prose-headings:text-gray-900
-              prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-              prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-              prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
-              prose-ul:text-gray-600 prose-ul:mb-4 prose-ul:space-y-2
-              prose-li:leading-relaxed
-              prose-strong:text-gray-800"
-            style={{ fontFamily: 'var(--font-body)' }}
-            dangerouslySetInnerHTML={{ __html: contentParts[0] }}
-          />
+          {article.image && (
+            <div
+              className="mb-8 h-[300px] w-full overflow-hidden rounded-lg border border-gray-200"
+              style={{
+                backgroundImage: `url("${article.image}")`,
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+              }}
+            />
+          )}
+          {article.contentMarkdown ? (
+            <div
+              className="prose prose-lg max-w-none
+                prose-headings:font-bold prose-headings:text-gray-900
+                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
+                prose-ul:text-gray-600 prose-ul:mb-4 prose-ul:space-y-2
+                prose-li:leading-relaxed
+                prose-strong:text-gray-800"
+            >
+              <ReactMarkdown
+                remarkPlugins={[remarkGfm]}
+                components={{
+                  h1: (props) => (
+                    <h2
+                      className="mt-10 mb-4 text-2xl font-bold text-gray-900"
+                      {...props}
+                    />
+                  ),
+                  h2: (props) => (
+                    <h3
+                      className="mt-8 mb-3 text-xl font-semibold text-gray-900"
+                      {...props}
+                    />
+                  ),
+                  h3: (props) => (
+                    <h4
+                      className="mt-6 mb-2 text-lg font-semibold text-gray-900"
+                      {...props}
+                    />
+                  ),
+                  p: (props) => (
+                    <p className="mb-4 leading-8 text-gray-700" {...props} />
+                  ),
+                  ul: (props) => (
+                    <ul className="mb-4 list-disc pl-6 text-gray-700" {...props} />
+                  ),
+                  ol: (props) => (
+                    <ol className="mb-4 list-decimal pl-6 text-gray-700" {...props} />
+                  ),
+                  li: (props) => <li className="mb-1.5 leading-7" {...props} />,
+                  hr: (props) => (
+                    <hr className="my-7 border-gray-200" {...props} />
+                  ),
+                  blockquote: (props) => (
+                    <blockquote
+                      className="my-5 border-l-4 border-amber-400 bg-amber-50 px-4 py-3 text-gray-700"
+                      {...props}
+                    />
+                  ),
+                  strong: (props) => (
+                    <strong className="font-semibold text-gray-900" {...props} />
+                  ),
+                }}
+              >
+                {markdownBody}
+              </ReactMarkdown>
+            </div>
+          ) : article.content ? (
+            <div
+              className="prose prose-lg max-w-none
+                prose-headings:font-bold prose-headings:text-gray-900
+                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
+                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
+                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
+                prose-ul:text-gray-600 prose-ul:mb-4 prose-ul:space-y-2
+                prose-li:leading-relaxed
+                prose-strong:text-gray-800"
+              style={{ fontFamily: 'var(--font-body)' }}
+              dangerouslySetInnerHTML={{ __html: article.content }}
+            />
+          ) : (
+            <div className="rounded-md border border-gray-200 bg-gray-50 px-4 py-5 text-sm text-gray-500">
+              暂无正文内容。
+            </div>
+          )}
 
           {/* ── Mid-Article CTA ── */}
           <div
@@ -186,83 +289,6 @@ export default async function ArticleDetailPage({
               预约免费咨询
             </Link>
           </div>
-
-          {/* Second part of content (~60%) */}
-          {contentParts[1] && (
-            <div
-              className="prose prose-lg max-w-none
-                prose-headings:font-bold prose-headings:text-gray-900
-                prose-h2:text-2xl prose-h2:mt-10 prose-h2:mb-4
-                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-3
-                prose-p:text-gray-600 prose-p:leading-relaxed prose-p:mb-4
-                prose-ul:text-gray-600 prose-ul:mb-4 prose-ul:space-y-2
-                prose-li:leading-relaxed
-                prose-strong:text-gray-800"
-              style={{ fontFamily: 'var(--font-body)' }}
-              dangerouslySetInnerHTML={{ __html: contentParts[1] }}
-            />
-          )}
-        </div>
-      </section>
-
-      {/* ── Topic Cluster Navigator ── */}
-      <section style={{ backgroundColor: '#F9FAFB' }} className="py-[60px]">
-        <div className="max-w-[800px] mx-auto px-6">
-          <div className="bg-white border border-gray-200 rounded-lg p-8">
-            <h2
-              className="text-xl font-bold mb-6"
-              style={{ color: '#1B2A4A', fontFamily: 'var(--font-heading)' }}
-            >
-              相关主题
-            </h2>
-            <div className="space-y-3">
-              <Link
-                href={`/${locale}/articles/asylum-complete-guide`}
-                className="flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <span className="text-gray-700 group-hover:text-[#1B2A4A] transition-colors">
-                  美国政治庇护申请完整指南
-                </span>
-                <span style={{ color: '#C9963B' }}>→</span>
-              </Link>
-              <Link
-                href={`/${locale}/articles/i-589-guide`}
-                className="flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <span className="text-gray-700 group-hover:text-[#1B2A4A] transition-colors">
-                  I-589申请表填写指南
-                </span>
-                <span style={{ color: '#C9963B' }}>→</span>
-              </Link>
-              <Link
-                href={`/${locale}/articles/credible-fear-guide`}
-                className="flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <span className="text-gray-700 group-hover:text-[#1B2A4A] transition-colors">
-                  恐惧面谈完整说明
-                </span>
-                <span style={{ color: '#C9963B' }}>→</span>
-              </Link>
-              <Link
-                href={`/${locale}/articles/evidence-preparation`}
-                className="flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <span className="text-gray-700 group-hover:text-[#1B2A4A] transition-colors">
-                  庇护证据如何准备
-                </span>
-                <span style={{ color: '#C9963B' }}>→</span>
-              </Link>
-              <Link
-                href={`/${locale}/articles/asylum-green-card`}
-                className="flex items-center justify-between py-3 px-4 rounded-lg hover:bg-gray-50 transition-colors group"
-              >
-                <span className="text-gray-700 group-hover:text-[#1B2A4A] transition-colors">
-                  庇护一年后绿卡申请指南
-                </span>
-                <span style={{ color: '#C9963B' }}>→</span>
-              </Link>
-            </div>
-          </div>
         </div>
       </section>
 
@@ -282,12 +308,18 @@ export default async function ArticleDetailPage({
                   href={`/${locale}/articles/${related.slug}`}
                   className="group block border border-gray-200 rounded-lg overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
                 >
-                  {/* Gradient placeholder */}
+                  {/* Related cover */}
                   <div
                     className="h-[160px] relative"
                     style={{
-                      background:
-                        'linear-gradient(135deg, #1B2A4A 0%, #2D4A7A 50%, #1B2A4A 100%)',
+                      background: related.image
+                        ? undefined
+                        : 'linear-gradient(135deg, #1B2A4A 0%, #2D4A7A 50%, #1B2A4A 100%)',
+                      backgroundImage: related.image
+                        ? `linear-gradient(rgba(10, 18, 36, 0.2), rgba(10, 18, 36, 0.2)), url("${related.image}")`
+                        : undefined,
+                      backgroundSize: related.image ? 'cover' : undefined,
+                      backgroundPosition: related.image ? 'center' : undefined,
                     }}
                   >
                     <span
@@ -296,7 +328,7 @@ export default async function ArticleDetailPage({
                         backgroundColor: 'rgba(201, 150, 59, 0.9)',
                       }}
                     >
-                      {related.categoryLabel}
+                      {related.category || '法律知识'}
                     </span>
                   </div>
                   <div className="p-5">

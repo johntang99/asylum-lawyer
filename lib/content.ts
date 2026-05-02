@@ -266,8 +266,11 @@ export async function loadAllItems<T>(
             return parsed;
           })
         );
-
-        return items;
+        // In local dev, an empty directory should not mask DB content.
+        // If no JSON files exist and DB is available, fall through to DB lookup.
+        if (items.length > 0 || !canUseContentDb()) {
+          return items;
+        }
       }
     } catch (error) {
       // Fall through to DB lookup

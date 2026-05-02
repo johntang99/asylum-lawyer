@@ -277,7 +277,16 @@ export default async function HomePage({
                 >
                   <div
                     className="h-[180px] relative flex items-end p-4"
-                    style={{ background: ['linear-gradient(135deg, #1B2A4A, #2D4A7A)', 'linear-gradient(135deg, #8B5E3C, #C9963B)', 'linear-gradient(135deg, #2D5A3D, #4A8C6A)'][i % 3] }}
+                    style={{
+                      background: article.image
+                        ? undefined
+                        : ['linear-gradient(135deg, #1B2A4A, #2D4A7A)', 'linear-gradient(135deg, #8B5E3C, #C9963B)', 'linear-gradient(135deg, #2D5A3D, #4A8C6A)'][i % 3],
+                      backgroundImage: article.image
+                        ? `linear-gradient(rgba(10, 18, 36, 0.2), rgba(10, 18, 36, 0.2)), url("${article.image}")`
+                        : undefined,
+                      backgroundSize: article.image ? 'cover' : undefined,
+                      backgroundPosition: article.image ? 'center' : undefined,
+                    }}
                   >
                     <span className="inline-block text-xs font-semibold text-white bg-white/20 px-3 py-1 rounded-full">
                       {article.category || '法律知识'}
