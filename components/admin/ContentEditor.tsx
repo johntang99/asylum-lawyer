@@ -1117,6 +1117,7 @@ export function ContentEditor({
   const isThemeFile = activeFile?.path === 'theme.json';
   const isHomePageFile = activeFile?.path === 'pages/home.json';
   const isAboutPageFile = activeFile?.path === 'pages/about.json';
+  const isAboutSectionsSchema = isAboutPageFile && Array.isArray(formData?.sections);
   const isConsultationPageFile = activeFile?.path === 'pages/consultation.json';
   const isPricingPageFile = activeFile?.path === 'pages/pricing.json';
   const isConditionsPageFile = activeFile?.path === 'pages/conditions.json';
@@ -2542,7 +2543,7 @@ export function ContentEditor({
                 />
               )}
 
-              {showSharedPanels && isAboutPageFile && Array.isArray(formData?.sections) && (
+              {showSharedPanels && isAboutSectionsSchema && (
                 <AboutSectionsPanel
                   sections={formData.sections}
                   seo={formData.seo}
@@ -2583,7 +2584,7 @@ export function ContentEditor({
                 />
               )}
 
-              {showSharedPanels && activeFile?.path === 'pages/about.json' && formData && (
+              {showSharedPanels && isAboutPageFile && formData && !isAboutSectionsSchema && (
                 <>
                   <AboutStaffsPanel
                     staffs={formData.staffs ?? formData.team ?? { title: '', members: [] }}

@@ -22,18 +22,28 @@ export async function generateMetadata({
 
 export default async function CaseStudiesPage({
   params,
+  searchParams,
 }: {
   params: { locale: string };
+  searchParams?: { category?: string };
 }) {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
   const content = await loadPageContent<any>('case-studies', locale as Locale);
 
   const hero = content?.hero;
   const categories = content?.categories ?? [];
-  const caseStudies = content?.caseStudies ?? [];
+  const allCaseStudies = content?.caseStudies ?? [];
   const statistics = content?.statistics;
   const disclaimer = content?.disclaimer;
   const cta = content?.cta;
+  const requestedCategory = searchParams?.category || 'all';
+  const activeCategory = categories.some((cat: any) => cat.id === requestedCategory)
+    ? requestedCategory
+    : 'all';
+  const caseStudies =
+    activeCategory === 'all'
+      ? allCaseStudies
+      : allCaseStudies.filter((cs: any) => cs.category === activeCategory);
 
   return (
     <>
@@ -91,12 +101,21 @@ export default async function CaseStudiesPage({
         <div className="max-w-[1200px] mx-auto px-6 py-6">
           <div className="flex flex-wrap justify-center gap-3">
             {categories.map((cat: any) => (
-              <button
+              <Link
                 key={cat.id}
-                className="inline-block text-sm font-medium px-5 py-2 rounded-full border border-gray-200 text-gray-600 transition-all duration-200 hover:border-[var(--accent,#C9963B)] hover:text-[var(--accent,#C9963B)] hover:bg-amber-50"
+                href={
+                  cat.id === 'all'
+                    ? `/${locale}/case-studies`
+                    : `/${locale}/case-studies?category=${encodeURIComponent(cat.id)}`
+                }
+                className={`inline-block text-sm font-medium px-5 py-2 rounded-full border transition-all duration-200 ${
+                  activeCategory === cat.id
+                    ? 'border-[var(--accent,#C9963B)] text-[var(--accent,#C9963B)] bg-amber-50'
+                    : 'border-gray-200 text-gray-600 hover:border-[var(--accent,#C9963B)] hover:text-[var(--accent,#C9963B)] hover:bg-amber-50'
+                }`}
               >
                 {cat.name}
-              </button>
+              </Link>
             ))}
           </div>
         </div>
@@ -105,65 +124,71 @@ export default async function CaseStudiesPage({
       {/* ── Case Studies Grid ── */}
       <section className="py-[60px]" style={{ backgroundColor: '#F9FAFB' }}>
         <div className="max-w-[1200px] mx-auto px-6">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            {caseStudies.map((cs: any) => {
-              const category = categories.find(
-                (c: any) => c.id === cs.category
-              );
-              return (
-                <div
-                  key={cs.id}
-                  className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
-                >
-                  {/* Category Badge */}
-                  <span
-                    className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4"
-                    style={{
-                      backgroundColor: 'rgba(27, 42, 74, 0.08)',
-                      color: 'var(--primary, #1B2A4A)',
-                    }}
+          {caseStudies.length > 0 ? (
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              {caseStudies.map((cs: any) => {
+                const category = categories.find(
+                  (c: any) => c.id === cs.category
+                );
+                return (
+                  <div
+                    key={cs.id}
+                    className="bg-white border border-gray-200 rounded-lg p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
                   >
-                    {category?.name ?? cs.category}
-                  </span>
-
-                  {/* Condition Title */}
-                  <h3
-                    className="text-lg font-bold text-gray-900 mb-3"
-                    style={{ fontFamily: 'var(--font-heading)' }}
-                  >
-                    {cs.condition}
-                  </h3>
-
-                  {/* Summary */}
-                  <p className="text-sm text-gray-600 leading-relaxed mb-4">
-                    {cs.summary}
-                  </p>
-
-                  {/* Footer: Outcome + Duration */}
-                  <div className="flex items-center justify-between pt-4 border-t border-gray-100">
-                    {/* Outcome Badge (green) */}
-                    <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-green-50 text-green-700">
-                      <svg
-                        className="w-3 h-3"
-                        fill="currentColor"
-                        viewBox="0 0 20 20"
-                      >
-                        <path
-                          fillRule="evenodd"
-                          d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
-                          clipRule="evenodd"
-                        />
-                      </svg>
-                      {cs.outcome}
+                    {/* Category Badge */}
+                    <span
+                      className="inline-block text-xs font-semibold uppercase tracking-wider px-3 py-1 rounded-full mb-4"
+                      style={{
+                        backgroundColor: 'rgba(27, 42, 74, 0.08)',
+                        color: 'var(--primary, #1B2A4A)',
+                      }}
+                    >
+                      {category?.name ?? cs.category}
                     </span>
 
-                    {/* Duration */}
-                    <span className="text-xs text-gray-400">{cs.duration}</span>
+                    {/* Condition Title */}
+                    <h3
+                      className="text-lg font-bold text-gray-900 mb-3"
+                      style={{ fontFamily: 'var(--font-heading)' }}
+                    >
+                      {cs.condition}
+                    </h3>
+
+                    {/* Summary */}
+                    <p className="text-sm text-gray-600 leading-relaxed mb-4">
+                      {cs.summary}
+                    </p>
+
+                    {/* Footer: Outcome + Duration */}
+                    <div className="flex items-center justify-between pt-4 border-t border-gray-100">
+                      {/* Outcome Badge (green) */}
+                      <span className="inline-flex items-center gap-1.5 text-xs font-semibold px-3 py-1.5 rounded-full bg-green-50 text-green-700">
+                        <svg
+                          className="w-3 h-3"
+                          fill="currentColor"
+                          viewBox="0 0 20 20"
+                        >
+                          <path
+                            fillRule="evenodd"
+                            d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z"
+                            clipRule="evenodd"
+                          />
+                        </svg>
+                        {cs.outcome}
+                      </span>
+
+                      {/* Duration */}
+                      <span className="text-xs text-gray-400">{cs.duration}</span>
+                    </div>
                   </div>
-                </div>
-              );
-            })}
-          </div>
+                );
+              })}
+            </div>
+          ) : (
+            <div className="rounded-lg border border-dashed border-gray-300 bg-white px-6 py-16 text-center text-gray-500">
+              该分类下暂无案例。
+            </div>
+          )}
         </div>
       </section>
 

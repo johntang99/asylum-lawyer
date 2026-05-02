@@ -165,6 +165,15 @@ export function AboutSectionsPanel({
     String(sectionIndex),
     ...rest,
   ];
+  const addArrayItem = (path: string[], current: any[], nextItem: any) => {
+    updateFormValue(path, [...(Array.isArray(current) ? current : []), nextItem]);
+  };
+  const removeArrayItem = (path: string[], current: any[], removeIndex: number) => {
+    updateFormValue(
+      path,
+      (Array.isArray(current) ? current : []).filter((_, index) => index !== removeIndex)
+    );
+  };
 
   return (
     <div className="space-y-3">
@@ -240,17 +249,48 @@ export function AboutSectionsPanel({
                   value={section.headline}
                   onChange={(v) => updateFormValue(sp(idx, 'headline'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Paragraphs ({Array.isArray(section.paragraphs) ? section.paragraphs.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      addArrayItem(
+                        sp(idx, 'paragraphs'),
+                        section.paragraphs,
+                        ''
+                      )
+                    }
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Paragraph
+                  </button>
+                </div>
                 {Array.isArray(section.paragraphs) &&
                   section.paragraphs.map((para: string, pi: number) => (
-                    <TextArea
-                      key={pi}
-                      label={`Paragraph ${pi + 1}`}
-                      value={para}
-                      onChange={(v) =>
-                        updateFormValue(sp(idx, 'paragraphs', String(pi)), v)
-                      }
-                      rows={4}
-                    />
+                    <div key={pi} className="rounded border border-gray-100 p-3 bg-gray-50/50 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-gray-500">Paragraph {pi + 1}</div>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem(sp(idx, 'paragraphs'), section.paragraphs, pi)
+                          }
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                      <TextArea
+                        label="Content"
+                        value={para}
+                        onChange={(v) =>
+                          updateFormValue(sp(idx, 'paragraphs', String(pi)), v)
+                        }
+                        rows={4}
+                      />
+                    </div>
                   ))}
               </SectionWrapper>
             );
@@ -263,16 +303,39 @@ export function AboutSectionsPanel({
                   value={section.headline}
                   onChange={(v) => updateFormValue(sp(idx, 'headline'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Items ({Array.isArray(section.items) ? section.items.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => addArrayItem(sp(idx, 'items'), section.items, '')}
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Credential
+                  </button>
+                </div>
                 {Array.isArray(section.items) &&
                   section.items.map((item: string, ci: number) => (
-                    <TextField
-                      key={ci}
-                      label={`Credential ${ci + 1}`}
-                      value={item}
-                      onChange={(v) =>
-                        updateFormValue(sp(idx, 'items', String(ci)), v)
-                      }
-                    />
+                    <div key={ci} className="rounded border border-gray-100 p-3 bg-gray-50/50 space-y-2">
+                      <div className="flex items-center justify-between">
+                        <div className="text-xs text-gray-500">Credential {ci + 1}</div>
+                        <button
+                          type="button"
+                          onClick={() => removeArrayItem(sp(idx, 'items'), section.items, ci)}
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                      <TextField
+                        label="Text"
+                        value={item}
+                        onChange={(v) =>
+                          updateFormValue(sp(idx, 'items', String(ci)), v)
+                        }
+                      />
+                    </div>
                   ))}
               </SectionWrapper>
             );
@@ -285,14 +348,35 @@ export function AboutSectionsPanel({
                   value={section.headline}
                   onChange={(v) => updateFormValue(sp(idx, 'headline'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Items ({Array.isArray(section.items) ? section.items.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      addArrayItem(sp(idx, 'items'), section.items, { value: '', label: '' })
+                    }
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Stat
+                  </button>
+                </div>
                 {Array.isArray(section.items) &&
                   section.items.map((item: any, si: number) => (
                     <div
                       key={si}
                       className="border border-gray-100 rounded p-3 bg-gray-50/50"
                     >
-                      <div className="text-[11px] font-medium text-gray-400 mb-2">
-                        {item.value || ''} {item.label || ''}
+                      <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                        <span>{item.value || ''} {item.label || ''}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeArrayItem(sp(idx, 'items'), section.items, si)}
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
                       <div className="space-y-2">
                         <TextField
@@ -328,14 +412,39 @@ export function AboutSectionsPanel({
                   value={section.narrative}
                   onChange={(v) => updateFormValue(sp(idx, 'narrative'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Items ({Array.isArray(section.items) ? section.items.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      addArrayItem(sp(idx, 'items'), section.items, {
+                        language: '',
+                        level: '',
+                        description: '',
+                      })
+                    }
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Language
+                  </button>
+                </div>
                 {Array.isArray(section.items) &&
                   section.items.map((item: any, li: number) => (
                     <div
                       key={li}
                       className="border border-gray-100 rounded p-3 bg-gray-50/50"
                     >
-                      <div className="text-[11px] font-medium text-gray-400 mb-2">
-                        {item.language || `Language ${li + 1}`}
+                      <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                        <span>{item.language || `Language ${li + 1}`}</span>
+                        <button
+                          type="button"
+                          onClick={() => removeArrayItem(sp(idx, 'items'), section.items, li)}
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
                       <div className="space-y-2">
                         <TextField
@@ -406,8 +515,20 @@ export function AboutSectionsPanel({
                 </div>
                 {Array.isArray(section.hours) && (
                   <div className="border-t pt-3 mt-1">
-                    <div className="text-[11px] font-medium text-gray-400 mb-2">
-                      HOURS ({section.hours.length})
+                    <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                      <span>HOURS ({section.hours.length})</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          addArrayItem(sp(idx, 'hours'), section.hours, {
+                            days: '',
+                            time: '',
+                          })
+                        }
+                        className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                      >
+                        Add Hour Row
+                      </button>
                     </div>
                     {section.hours.map((h: any, hi: number) => (
                       <div
@@ -415,6 +536,17 @@ export function AboutSectionsPanel({
                         className="border border-gray-100 rounded p-3 bg-gray-50/50 mb-2"
                       >
                         <div className="space-y-2">
+                          <div className="flex items-center justify-end">
+                            <button
+                              type="button"
+                              onClick={() =>
+                                removeArrayItem(sp(idx, 'hours'), section.hours, hi)
+                              }
+                              className="text-xs text-red-600 hover:underline"
+                            >
+                              Remove
+                            </button>
+                          </div>
                           <TextField
                             label="Days"
                             value={h.days}
@@ -436,9 +568,34 @@ export function AboutSectionsPanel({
                 )}
                 {Array.isArray(section.photos) && (
                   <div className="border-t pt-3 mt-1">
-                    <div className="text-[11px] font-medium text-gray-400 mb-2">PHOTOS</div>
+                    <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                      <span>PHOTOS</span>
+                      <button
+                        type="button"
+                        onClick={() =>
+                          addArrayItem(sp(idx, 'photos'), section.photos, {
+                            src: '',
+                            alt: '',
+                          })
+                        }
+                        className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                      >
+                        Add Photo
+                      </button>
+                    </div>
                     {section.photos.map((photo: any, pi: number) => (
-                      <div key={pi} className="mb-2">
+                      <div key={pi} className="mb-2 rounded border border-gray-100 p-3 bg-gray-50/50">
+                        <div className="flex items-center justify-end mb-2">
+                          <button
+                            type="button"
+                            onClick={() =>
+                              removeArrayItem(sp(idx, 'photos'), section.photos, pi)
+                            }
+                            className="text-xs text-red-600 hover:underline"
+                          >
+                            Remove
+                          </button>
+                        </div>
                         <ImageField
                           label={photo.alt || `Photo ${pi + 1}`}
                           value={photo.src || ''}
@@ -473,14 +630,42 @@ export function AboutSectionsPanel({
                   value={section.subheadline}
                   onChange={(v) => updateFormValue(sp(idx, 'subheadline'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Members ({Array.isArray(section.members) ? section.members.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      addArrayItem(sp(idx, 'members'), section.members, {
+                        name: '',
+                        role: '',
+                        description: '',
+                        photo: '',
+                      })
+                    }
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Member
+                  </button>
+                </div>
                 {Array.isArray(section.members) &&
                   section.members.map((member: any, mi: number) => (
                     <div
                       key={mi}
                       className="border border-gray-100 rounded p-3 bg-gray-50/50"
                     >
-                      <div className="text-[11px] font-medium text-gray-400 mb-2">
-                        {member.name || `Member ${mi + 1}`}
+                      <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                        <span>{member.name || `Member ${mi + 1}`}</span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem(sp(idx, 'members'), section.members, mi)
+                          }
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
                       <div className="space-y-2">
                         <TextField
@@ -533,14 +718,41 @@ export function AboutSectionsPanel({
                   value={section.subheadline}
                   onChange={(v) => updateFormValue(sp(idx, 'subheadline'), v)}
                 />
+                <div className="flex items-center justify-between">
+                  <div className="text-xs font-semibold text-gray-500 uppercase">
+                    Buttons ({Array.isArray(section.buttons) ? section.buttons.length : 0})
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() =>
+                      addArrayItem(sp(idx, 'buttons'), section.buttons, {
+                        label: '',
+                        href: '',
+                        variant: 'primary',
+                      })
+                    }
+                    className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                  >
+                    Add Button
+                  </button>
+                </div>
                 {Array.isArray(section.buttons) &&
                   section.buttons.map((btn: any, bi: number) => (
                     <div
                       key={bi}
                       className="border border-gray-100 rounded p-3 bg-gray-50/50"
                     >
-                      <div className="text-[11px] font-medium text-gray-400 mb-2">
-                        Button {bi + 1}
+                      <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                        <span>Button {bi + 1}</span>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            removeArrayItem(sp(idx, 'buttons'), section.buttons, bi)
+                          }
+                          className="text-xs text-red-600 hover:underline"
+                        >
+                          Remove
+                        </button>
                       </div>
                       <div className="space-y-2">
                         <TextField

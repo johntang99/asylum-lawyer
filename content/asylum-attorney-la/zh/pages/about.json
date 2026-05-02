@@ -114,14 +114,28 @@
       "type": "team",
       "members": [
         {
-          "name": "李雅文",
-          "role": "资深助理",
-          "description": "李雅文拥有五年以上的移民法律实务经验，负责案件资料整理、证据收集与客户沟通。她精通普通话和英语，以细致入微的工作态度赢得了众多客户的信赖。"
+          "name": "Charlie Zheng",
+          "role": "客户沟通经理 ｜AI运营策略师",
+          "description": "Charlie 负责客户前期沟通、情况梳理和咨询流程协调，帮助客户把复杂问题整理清楚，并对接团队制定下一步服务安排。",
+          "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1777691282986-screenshot-2026-05-01-at-11.02.52-pm.png"
         },
         {
-          "name": "陈志强",
-          "role": "案件协调员",
-          "description": "陈志强专注于庇护案件的流程管理与进度跟踪，确保每个案件都按时推进。他精通粤语、普通话和英语，负责与移民局和法院的日常联络工作。"
+          "name": "Angie Zhang",
+          "role": "移民文件协调专员",
+          "description": "Angie 负责客户资料整理、文件流程协调和申请准备支持。她的工作重点是协助客户把材料分类、归档，并按照团队要求完成相应的准备工作。\n\n在移民服务过程中，很多客户最容易卡住的地方，是不知道哪些材料重要、哪些信息需要提前整理。Angie 的角色，就是帮助客户把这些细节变得更清楚、更有条理。\n\n\n\n",
+          "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1777691420248-screenshot-2026-05-01-at-11.09.46-pm.png"
+        },
+        {
+          "name": "Elvis Wang",
+          "role": "客户咨询协调专员",
+          "description": "\nElvis 负责团队的客户沟通、网站内容和线上咨询流程。他的工作连接了网站、社交媒体和客户咨询环节，帮助客户在正式沟通前，更清楚地了解服务内容、团队方式和基本流程。\n\nElvis 长期从事内容运营、数字营销和客户沟通相关工作，擅长把复杂的移民问题转化为客户更容易理解的表达。他也协助团队优化网站内容、视频脚本和线上咨询转化流程。\n",
+          "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1777691228570-screenshot-2026-05-01-at-11.06.07-pm.png"
+        },
+        {
+          "name": "Elysia Guo",
+          "role": "客户服务协调专员",
+          "description": "Elysia 负责客户服务协调、预约跟进和日常运营支持。她的工作贯穿客户服务过程中的多个环节，包括沟通提醒、服务安排、后续跟进和客户体验管理。\n\nElysia 注重客户在整个服务过程中的感受。她帮助团队保持稳定、及时的沟通，也协助客户在不同阶段清楚知道自己需要做什么、什么时候做，以及如何配合团队。\n",
+          "photo": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1777691569899-screenshot-2026-05-01-at-11.12.03-pm.png"
         }
       ],
       "headline": "我们的团队",

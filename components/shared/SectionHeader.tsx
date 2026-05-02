@@ -24,7 +24,7 @@ export default function SectionHeader({
       <h2
         className={`font-heading font-bold ${
           light ? "text-white" : "text-gray-900"
-        }`}
+        } text-[30px] md:text-[36px] leading-tight tracking-[-0.01em]`}
       >
         {title}
       </h2>

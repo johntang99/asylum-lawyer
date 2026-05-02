@@ -228,46 +228,31 @@ export default async function AboutPage({
       <section className="py-[80px]" style={{ backgroundColor: '#F9FAFB' }}>
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader label="办公地址" title={office?.headline ?? '我们的办公室'} />
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
-            {/* Photos */}
-            <div className="grid grid-cols-2 gap-4">
-              {office?.photos?.map((photo: any, i: number) => (
-                <div
-                  key={i}
-                  className="h-[220px] rounded-lg flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, var(--primary, #1B2A4A), var(--primary-dark, #0F1A32))' }}
-                >
-                  <span className="text-white/30 text-sm">{photo.alt}</span>
-                </div>
-              ))}
-            </div>
-            {/* Address + Hours */}
-            <div>
-              <h3
-                className="text-lg font-semibold text-gray-900 mb-3"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                地址
-              </h3>
-              <p className="text-gray-600 mb-6">{office?.address?.formatted}</p>
+          <div className="max-w-[760px] mx-auto">
+            <h3
+              className="text-lg font-semibold text-gray-900 mb-3"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              地址
+            </h3>
+            <p className="text-gray-600 mb-6">{office?.address?.formatted}</p>
 
-              <h3
-                className="text-lg font-semibold text-gray-900 mb-3"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                办公时间
-              </h3>
-              <table className="w-full text-sm">
-                <tbody>
-                  {office?.hours?.map((h: any, i: number) => (
-                    <tr key={i} className="border-b border-gray-100">
-                      <td className="py-3 font-medium text-gray-700 pr-4">{h.days}</td>
-                      <td className="py-3 text-gray-500">{h.time}</td>
-                    </tr>
-                  ))}
-                </tbody>
-              </table>
-            </div>
+            <h3
+              className="text-lg font-semibold text-gray-900 mb-3"
+              style={{ fontFamily: 'var(--font-heading)' }}
+            >
+              办公时间
+            </h3>
+            <table className="w-full text-sm">
+              <tbody>
+                {office?.hours?.map((h: any, i: number) => (
+                  <tr key={i} className="border-b border-gray-100">
+                    <td className="py-3 font-medium text-gray-700 pr-4">{h.days}</td>
+                    <td className="py-3 text-gray-500">{h.time}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
@@ -286,12 +271,26 @@ export default async function AboutPage({
                 key={i}
                 className="border border-gray-200 rounded-lg overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
               >
-                {/* Photo placeholder */}
+                {/* Team member photo */}
                 <div
-                  className="h-[200px] flex items-center justify-center"
-                  style={{ background: 'linear-gradient(135deg, var(--primary, #1B2A4A), var(--primary-dark, #0F1A32))' }}
+                  className="flex items-center justify-center overflow-hidden"
+                  style={
+                    member?.photo || member?.image
+                      ? undefined
+                      : { background: 'linear-gradient(135deg, var(--primary, #1B2A4A), var(--primary-dark, #0F1A32))' }
+                  }
                 >
-                  <span className="text-white/30 text-sm">团队照片</span>
+                  {member?.photo || member?.image ? (
+                    <Image
+                      src={member.photo || member.image}
+                      alt={member?.name || '团队成员照片'}
+                      width={640}
+                      height={400}
+                      className="w-full h-auto"
+                    />
+                  ) : (
+                    <span className="text-white/30 text-sm">团队照片</span>
+                  )}
                 </div>
                 <div className="p-6">
                   <h3
