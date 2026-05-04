@@ -60,6 +60,7 @@ export default async function HomePage({
   const whyUs = sections.find((s: any) => s.type === 'whyUs');
   const processTimeline = sections.find((s: any) => s.type === 'processTimeline');
   const attorneyBrief = sections.find((s: any) => s.type === 'attorneyBrief');
+  const testimonials = sections.find((s: any) => s.type === 'testimonials');
   const faqPreview = sections.find((s: any) => s.type === 'faqPreview');
   const contactCta = sections.find((s: any) => s.type === 'contactCta');
 
@@ -382,42 +383,50 @@ export default async function HomePage({
       )}
 
       {/* ── Section 8: Testimonials ── */}
-      <section className="py-[80px]" style={{ backgroundColor: '#0F1A32' }}>
-        <div className="max-w-[1200px] mx-auto px-6">
-          <SectionHeader light label="客户评价" title="听听他们怎么说" />
-          <div className="flex gap-6 overflow-x-auto pb-4" style={{ scrollSnapType: 'x mandatory' }}>
-            {[
-              { name: '王女士', type: '政治庇护', year: '2023', quote: '宇霞女士非常专业和耐心，在整个庇护申请过程中给了我极大的帮助和信心。她的中文服务让我感到非常安心，不用担心语言障碍。' },
-              { name: '李先生', type: '防御性庇护', year: '2023', quote: '在我面临递解的时候，宇霞女士帮我成功申请了庇护。她对案件的准备非常充分，每一个细节都考虑到了。非常感谢！' },
-              { name: '陈女士', type: '主动庇护', year: '2024', quote: '从初次咨询到最终获批，宇霞女士全程跟进。她的专业知识和认真态度让我印象深刻。强烈推荐给需要庇护宇霞女士的朋友。' },
-              { name: '赵先生', type: '恐惧面谈', year: '2024', quote: '宇霞女士帮我准备恐惧面谈，模拟面谈让我不再紧张。最终顺利通过了面谈，进入了庇护程序。非常感谢宇霞女士的专业服务。' },
-            ].map((testimonial, i) => (
-              <div
-                key={i}
-                className="min-w-[360px] rounded-lg p-8 flex-shrink-0"
-                style={{
-                  scrollSnapAlign: 'start',
-                  backgroundColor: 'rgba(255,255,255,0.05)',
-                  border: '1px solid rgba(255,255,255,0.1)',
-                  borderLeft: '3px solid #C9963B',
-                }}
-              >
-                <div className="text-lg mb-4" style={{ color: '#C9963B' }}>★★★★★</div>
-                <p className="text-base text-gray-300 italic leading-relaxed mb-6 relative">
-                  <span className="text-2xl absolute -top-2 -left-1" style={{ color: '#C9963B' }}>&ldquo;</span>
-                  <span className="ml-4">{testimonial.quote}</span>
-                </p>
-                <div>
-                  <span className="text-white font-bold">{testimonial.name}</span>
-                  <span className="text-gray-400 text-sm ml-2">
-                    {testimonial.type} · {testimonial.year}
-                  </span>
+      {testimonials && Array.isArray(testimonials.items) && testimonials.items.length > 0 && (
+        <section className="py-[80px]" style={{ backgroundColor: '#0F1A32' }}>
+          <div className="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+              light
+              label={testimonials.label ?? '客户评价'}
+              title={testimonials.headline ?? '听听他们怎么说'}
+              subtitle={testimonials.subheadline}
+            />
+            <div className="flex gap-6 overflow-x-auto pb-4" style={{ scrollSnapType: 'x mandatory' }}>
+              {testimonials.items.map((testimonial: any, i: number) => (
+                <div
+                  key={i}
+                  className="min-w-[360px] rounded-lg p-8 flex-shrink-0"
+                  style={{
+                    scrollSnapAlign: 'start',
+                    backgroundColor: 'rgba(255,255,255,0.05)',
+                    border: '1px solid rgba(255,255,255,0.1)',
+                    borderLeft: '3px solid #C9963B',
+                  }}
+                >
+                  <div className="text-lg mb-4" style={{ color: '#C9963B' }}>
+                    {testimonial.rating || '★★★★★'}
+                  </div>
+                  <p className="text-base text-gray-300 italic leading-relaxed mb-6 relative">
+                    <span className="text-2xl absolute -top-2 -left-1" style={{ color: '#C9963B' }}>
+                      &ldquo;
+                    </span>
+                    <span className="ml-4">{testimonial.quote}</span>
+                  </p>
+                  <div>
+                    <span className="text-white font-bold">{testimonial.name}</span>
+                    {(testimonial.type || testimonial.year) && (
+                      <span className="text-gray-400 text-sm ml-2">
+                        {[testimonial.type, testimonial.year].filter(Boolean).join(' · ')}
+                      </span>
+                    )}
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* ── Section 9: FAQ Preview ── */}
       {faqPreview && (

@@ -233,6 +233,15 @@ export function HomeSectionsPanel({
     String(sectionIndex),
     ...rest,
   ];
+  const addArrayItem = (path: string[], current: any[], nextItem: any) => {
+    updateFormValue(path, [...(Array.isArray(current) ? current : []), nextItem]);
+  };
+  const removeArrayItem = (path: string[], current: any[], removeIndex: number) => {
+    updateFormValue(
+      path,
+      (Array.isArray(current) ? current : []).filter((_, index) => index !== removeIndex)
+    );
+  };
 
   return (
     <div className="space-y-3">
@@ -551,6 +560,105 @@ export function HomeSectionsPanel({
                     value={section.cta?.href}
                     onChange={(v) => updateFormValue(sp(idx, 'cta', 'href'), v)}
                   />
+                </div>
+              </SectionWrapper>
+            );
+
+          case 'testimonials':
+            return (
+              <SectionWrapper key={idx} title="Testimonials">
+                <TextField
+                  label="Section Label"
+                  value={section.label}
+                  onChange={(v) => updateFormValue(sp(idx, 'label'), v)}
+                />
+                <TextField
+                  label="Headline"
+                  value={section.headline}
+                  onChange={(v) => updateFormValue(sp(idx, 'headline'), v)}
+                />
+                <TextArea
+                  label="Subheadline"
+                  value={section.subheadline}
+                  onChange={(v) => updateFormValue(sp(idx, 'subheadline'), v)}
+                />
+                <div className="border-t pt-3 mt-1">
+                  <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                    <span>REVIEWS ({Array.isArray(section.items) ? section.items.length : 0})</span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        addArrayItem(sp(idx, 'items'), section.items, {
+                          name: '',
+                          type: '',
+                          year: '',
+                          quote: '',
+                          rating: '★★★★★',
+                        })
+                      }
+                      className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                    >
+                      Add Review
+                    </button>
+                  </div>
+                  {Array.isArray(section.items) &&
+                    section.items.map((item: any, itemIndex: number) => (
+                      <div
+                        key={itemIndex}
+                        className="border border-gray-100 rounded p-3 bg-gray-50/50 mb-3"
+                      >
+                        <div className="flex items-center justify-between text-[11px] font-medium text-gray-400 mb-2">
+                          <span>{item.name || `Review ${itemIndex + 1}`}</span>
+                          <button
+                            type="button"
+                            onClick={() =>
+                              removeArrayItem(sp(idx, 'items'), section.items, itemIndex)
+                            }
+                            className="text-xs text-red-600 hover:underline"
+                          >
+                            Remove
+                          </button>
+                        </div>
+                        <div className="space-y-2">
+                          <TextField
+                            label="Name"
+                            value={item.name}
+                            onChange={(v) =>
+                              updateFormValue(sp(idx, 'items', String(itemIndex), 'name'), v)
+                            }
+                          />
+                          <TextField
+                            label="Type"
+                            value={item.type}
+                            onChange={(v) =>
+                              updateFormValue(sp(idx, 'items', String(itemIndex), 'type'), v)
+                            }
+                          />
+                          <TextField
+                            label="Year"
+                            value={item.year}
+                            onChange={(v) =>
+                              updateFormValue(sp(idx, 'items', String(itemIndex), 'year'), v)
+                            }
+                          />
+                          <TextField
+                            label="Rating"
+                            value={item.rating}
+                            onChange={(v) =>
+                              updateFormValue(sp(idx, 'items', String(itemIndex), 'rating'), v)
+                            }
+                          />
+                          <TextArea
+                            label="Quote"
+                            value={item.quote}
+                            rows={4}
+                            onChange={(v) =>
+                              updateFormValue(sp(idx, 'items', String(itemIndex), 'quote'), v)
+                            }
+                          />
+                        </div>
+                      </div>
+                    ))}
                 </div>
               </SectionWrapper>
             );
