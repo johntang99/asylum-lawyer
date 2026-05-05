@@ -186,6 +186,9 @@ export function ContentEditor({
     caseStudies: ['pages/case-studies.json', 'pages/case-studies.layout.json'],
     caseStudiesItems: ['pages/case-studies.json', 'pages/case-studies.layout.json'],
   };
+  const BLOG_PAGE_CONFIG_PATHS = ['pages/articles.json'];
+  const VIDEO_PAGE_CONFIG_PATHS = ['pages/videos.json'];
+  const SERVICES_PAGE_CONFIG_PATHS = ['pages/services.json', 'pages/services.layout.json'];
   const isBlogManagedPath = (value?: string | null) =>
     typeof value === 'string' &&
     (value.startsWith('blog/') || value.startsWith('blog-scheduled/'));
@@ -228,24 +231,42 @@ export function ContentEditor({
       const payload = await response.json();
       let nextFiles: ContentFileItem[] = payload.files || [];
       if (fileFilter === 'blog') {
-        nextFiles = nextFiles.filter((file) => isBlogManagedPath(file.path));
-        nextFiles = [...nextFiles].sort((a, b) => {
-          const aDate = a.publishAt || a.publishDate || '';
-          const bDate = b.publishAt || b.publishDate || '';
-          return bDate.localeCompare(aDate);
-        });
+        const blogPageConfigFiles = nextFiles
+          .filter((file) => BLOG_PAGE_CONFIG_PATHS.includes(file.path))
+          .sort((a, b) => a.label.localeCompare(b.label));
+        const blogPostFiles = nextFiles
+          .filter((file) => isBlogManagedPath(file.path))
+          .sort((a, b) => {
+            const aDate = a.publishAt || a.publishDate || '';
+            const bDate = b.publishAt || b.publishDate || '';
+            return bDate.localeCompare(aDate);
+          });
+        nextFiles = [...blogPageConfigFiles, ...blogPostFiles];
       } else if (fileFilter === 'videos') {
-        nextFiles = nextFiles.filter((file) => isVideoManagedPath(file.path));
-        nextFiles = [...nextFiles].sort((a, b) => {
-          const aDate = a.publishAt || a.publishDate || '';
-          const bDate = b.publishAt || b.publishDate || '';
-          return bDate.localeCompare(aDate);
-        });
+        const videoPageConfigFiles = nextFiles
+          .filter((file) => VIDEO_PAGE_CONFIG_PATHS.includes(file.path))
+          .sort((a, b) => a.label.localeCompare(b.label));
+        const videoItemFiles = nextFiles
+          .filter((file) => isVideoManagedPath(file.path))
+          .sort((a, b) => {
+            const aDate = a.publishAt || a.publishDate || '';
+            const bDate = b.publishAt || b.publishDate || '';
+            return bDate.localeCompare(aDate);
+          });
+        nextFiles = [...videoPageConfigFiles, ...videoItemFiles];
       } else if (fileFilter === 'serviceFiles') {
-        nextFiles = nextFiles.filter((file) =>
-          typeof file.path === 'string' && file.path.startsWith('services/')
-        );
-        nextFiles = [...nextFiles].sort((a, b) => a.label.localeCompare(b.label));
+        const servicePageConfigFiles = nextFiles
+          .filter((file) => SERVICES_PAGE_CONFIG_PATHS.includes(file.path))
+          .sort((a, b) => a.label.localeCompare(b.label));
+        const serviceFiles = nextFiles
+          .filter(
+            (file) =>
+              typeof file.path === 'string' &&
+              file.path.startsWith('services/') &&
+              !SERVICES_PAGE_CONFIG_PATHS.includes(file.path)
+          )
+          .sort((a, b) => a.label.localeCompare(b.label));
+        nextFiles = [...servicePageConfigFiles, ...serviceFiles];
       } else if (fileFilter === 'siteSettings') {
         nextFiles = nextFiles.filter((file) => SITE_SETTINGS_PATHS.has(file.path));
         nextFiles = [...nextFiles].sort((a, b) => a.label.localeCompare(b.label));

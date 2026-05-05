@@ -179,14 +179,16 @@ export async function POST(request: NextRequest) {
     },
   });
 
+  const exportedTotal = localeEntries.length + (themeEntry ? 1 : 0);
+
   return NextResponse.json({
     success: true,
-    exported: localeEntries.length + (themeEntry ? 1 : 0),
+    exported: exportedTotal,
     backfilled,
     backfillErrors,
     backfilledPaths,
     backfillErrorPaths,
-    message: `Exported ${localeEntries.length} content files to content/${siteId}/${locale}/` +
+    message: `Exported ${exportedTotal} content files to content/${siteId}/${locale}/` +
       (backfilled > 0 ? ` Backfilled ${backfilled} missing DB entries from local files.` : '') +
       (backfillErrors > 0 ? ` (${backfillErrors} files could not be backfilled.)` : ''),
   });

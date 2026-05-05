@@ -49,6 +49,35 @@ function deepEqual(a: any, b: any): boolean {
   return false;
 }
 
+async function collectJsonPathsRecursive(
+  rootDir: string,
+  currentDir = rootDir
+): Promise<string[]> {
+  let entries: Array<{ name: string; isDirectory: () => boolean; isFile: () => boolean }>;
+  try {
+    entries = (await fs.readdir(currentDir, {
+      withFileTypes: true,
+    })) as Array<{ name: string; isDirectory: () => boolean; isFile: () => boolean }>;
+  } catch {
+    return [];
+  }
+
+  const paths: string[] = [];
+  for (const entry of entries) {
+    const fullPath = path.join(currentDir, entry.name);
+    if (entry.isDirectory()) {
+      const nested = await collectJsonPathsRecursive(rootDir, fullPath);
+      paths.push(...nested);
+      continue;
+    }
+    if (entry.isFile() && entry.name.endsWith('.json')) {
+      const relativePath = path.relative(rootDir, fullPath).split(path.sep).join('/');
+      paths.push(relativePath);
+    }
+  }
+  return paths;
+}
+
 async function collectImportCandidates(siteId: string, locale: string): Promise<ImportCandidate[]> {
   const candidates: ImportCandidate[] = [];
   const localeRoot = path.join(CONTENT_DIR, siteId, locale);
@@ -64,36 +93,12 @@ async function collectImportCandidates(siteId: string, locale: string): Promise<
     });
   };
 
-  // Root locale JSON files
-  try {
-    const rootFiles = await fs.readdir(localeRoot);
-    for (const file of rootFiles.filter((item) => item.endsWith('.json') && item !== 'theme.json')) {
-      await addCandidate(locale, file, path.join(localeRoot, file));
-    }
-  } catch {
-    // ignore missing locale root
-  }
-
-  // Pages
-  const pagesDir = path.join(localeRoot, 'pages');
-  try {
-    const pageFiles = await fs.readdir(pagesDir);
-    for (const file of pageFiles.filter((item) => item.endsWith('.json'))) {
-      await addCandidate(locale, `pages/${file}`, path.join(pagesDir, file));
-    }
-  } catch {
-    // ignore missing pages dir
-  }
-
-  // Blog posts
-  const blogDir = path.join(localeRoot, 'blog');
-  try {
-    const blogFiles = await fs.readdir(blogDir);
-    for (const file of blogFiles.filter((item) => item.endsWith('.json'))) {
-      await addCandidate(locale, `blog/${file}`, path.join(blogDir, file));
-    }
-  } catch {
-    // ignore missing blog dir
+  // Collect all locale-scoped JSON files recursively (pages, blog, services, videos, etc.)
+  const localJsonPaths = (await collectJsonPathsRecursive(localeRoot)).filter(
+    (relativePath) => relativePath !== 'theme.json'
+  );
+  for (const relativePath of localJsonPaths.sort((a, b) => a.localeCompare(b))) {
+    await addCandidate(locale, relativePath, path.join(localeRoot, relativePath));
   }
 
   // Theme (site scope) - mirrored to all locales

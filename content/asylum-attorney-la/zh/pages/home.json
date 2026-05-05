@@ -18,12 +18,6 @@
       },
       "type": "hero",
       "image": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
-      "gallery": [
-        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
-        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg"
-      ],
-      "photoOverlayOpacity": 0.2,
-      "photoContentPosition": "left-below",
       "stats": [
         {
           "label": "年执业经验",
@@ -42,9 +36,15 @@
           "value": "3"
         }
       ],
-      "variant": "gallery-background",
+      "gallery": [
+        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
+        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg"
+      ],
+      "variant": "split-photo-right",
       "headline": "美国司法部（DOJ）认证法律代表：张宇霞",
-      "subheadline": "专注庇护与亲属移民代理，以真实的细节打动移民官，以同理心与专业护航您的美国梦。\n\n无论您身在洛杉矶，还是美国其他州，我们都能依托联邦移民法为您提供专业的代理与程序协助。\n"
+      "subheadline": "专注庇护与亲属移民代理，以真实的细节打动移民官，以同理心与专业护航您的美国梦。\n\n无论您身在洛杉矶，还是美国其他州，我们都能依托联邦移民法为您提供专业的代理与程序协助。\n",
+      "photoOverlayOpacity": 0.2,
+      "photoContentPosition": "left-below"
     },
     {
       "type": "serviceOverview",
@@ -162,39 +162,39 @@
     },
     {
       "type": "testimonials",
-      "label": "客户评价",
-      "headline": "听听他们怎么说",
-      "subheadline": "",
       "items": [
         {
           "name": "王女士",
           "type": "政治庇护",
           "year": "2023",
-          "rating": "★★★★★",
-          "quote": "宇霞女士非常专业和耐心，在整个庇护申请过程中给了我极大的帮助和信心。她的中文服务让我感到非常安心，不用担心语言障碍。"
+          "quote": "宇霞女士非常专业和耐心，在整个庇护申请过程中给了我极大的帮助和信心。她的中文服务让我感到非常安心，不用担心语言障碍。",
+          "rating": "★★★★★"
         },
         {
           "name": "李先生",
           "type": "防御性庇护",
           "year": "2023",
-          "rating": "★★★★★",
-          "quote": "在我面临递解的时候，宇霞女士帮我成功申请了庇护。她对案件的准备非常充分，每一个细节都考虑到了。非常感谢！"
+          "quote": "在我面临递解的时候，宇霞女士帮我成功申请了庇护。她对案件的准备非常充分，每一个细节都考虑到了。非常感谢！",
+          "rating": "★★★★★"
         },
         {
           "name": "陈女士",
           "type": "主动庇护",
           "year": "2024",
-          "rating": "★★★★★",
-          "quote": "从初次咨询到最终获批，宇霞女士全程跟进。她的专业知识和认真态度让我印象深刻。强烈推荐给需要庇护宇霞女士的朋友。"
+          "quote": "从初次咨询到最终获批，宇霞女士全程跟进。她的专业知识和认真态度让我印象深刻。强烈推荐给需要庇护宇霞女士的朋友。",
+          "rating": "★★★★★"
         },
         {
           "name": "赵先生",
           "type": "恐惧面谈",
           "year": "2024",
-          "rating": "★★★★★",
-          "quote": "宇霞女士帮我准备恐惧面谈，模拟面谈让我不再紧张。最终顺利通过了面谈，进入了庇护程序。非常感谢宇霞女士的专业服务。"
+          "quote": "宇霞女士帮我准备恐惧面谈，模拟面谈让我不再紧张。最终顺利通过了面谈，进入了庇护程序。非常感谢宇霞女士的专业服务。",
+          "rating": "★★★★★"
         }
-      ]
+      ],
+      "label": "客户评价",
+      "headline": "听听他们怎么说",
+      "subheadline": ""
     },
     {
       "cta": {

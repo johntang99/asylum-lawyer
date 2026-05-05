@@ -1,0 +1,29 @@
+{
+  "cta": {
+    "primary": {
+      "href": "/consultation",
+      "label": "预约免费咨询"
+    },
+    "headline": "需要个人法律建议？",
+    "secondary": {
+      "href": "mailto:yuxiaris@gmail.com",
+      "label": "发送邮件至 yuxiaris@gmail.com"
+    },
+    "subheadline": "每个案件都是独特的。文章提供一般性信息，但无法替代专业法律代表针对您具体情况的法律建议。"
+  },
+  "seo": {
+    "h1": "文章中心",
+    "title": "文章中心 | 宇霞移民服务中心",
+    "description": "庇护移民知识库：了解美国政治庇护申请流程、I-589填写指南、庇护面谈准备、被拒补救方案等专业法律知识。"
+  },
+  "hero": {
+    "headline": "文章中心",
+    "subheadline": "庇护移民知识库 - 专业法律知识，助您了解庇护申请的每一个环节"
+  },
+  "categories": {
+    "allLabel": "全部"
+  },
+  "emptyState": {
+    "message": "该分类下暂无文章"
+  }
+}

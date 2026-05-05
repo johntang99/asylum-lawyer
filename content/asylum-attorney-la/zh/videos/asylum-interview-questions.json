@@ -7,6 +7,7 @@
   "excerpt": "有人准备得很充分，却因为不了解流程走了弯路",
   "category": "问题解答",
   "duration": "3:42",
+  "featured": true,
   "videoUrl": "https://www.youtube.com/watch?v=o2_HdlwLMr4",
   "publishAt": "2026-04-23T20:00:00.000Z",
   "publishDate": "2026-04-23",
@@ -15,6 +16,5 @@
     "political-asylum",
     "interview-preparation"
   ],
-  "translationGroup": "asylum-interview-questions",
-  "featured": true
+  "translationGroup": "asylum-interview-questions"
 }

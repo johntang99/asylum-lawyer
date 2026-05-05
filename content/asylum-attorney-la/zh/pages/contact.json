@@ -1,25 +1,36 @@
 {
   "seo": {
+    "h1": "联系我们",
     "title": "联系我们 — 宇霞移民服务中心 | 洛杉矶庇护移民律师",
-    "description": "联系宇霞移民服务中心，获取免费庇护移民法律咨询。电话 yuxiaris@gmail.com，微信 yuxiaris，或到访洛杉矶办公室。提供中英文服务，周一至周六营业。",
-    "h1": "联系我们"
-  },
-  "contact": {
-    "phone": "",
-    "phoneTel": "",
-    "email": "yuxiaris@gmail.com",
-    "wechat": "yuxiaris",
-    "address": "1045 E. Valley Blvd., #A115, Rm 6",
-    "city": "San Gabriel, CA 91776",
-    "mapUrl": "https://maps.google.com/?q=1045+E+Valley+Blvd+A115+San+Gabriel+CA+91776"
+    "description": "联系宇霞移民服务中心，获取免费庇护移民法律咨询。电话 yuxiaris@gmail.com，微信 yuxiaris，或到访洛杉矶办公室。提供中英文服务，周一至周六营业。"
   },
   "hours": [
-    { "day": "周一至周五", "time": "9:00 AM – 6:00 PM" },
-    { "day": "周六", "time": "10:00 AM – 2:00 PM（仅预约）" },
-    { "day": "周日", "time": "休息" }
+    {
+      "day": "周一至周五",
+      "time": "9:00 AM – 6:00 PM"
+    },
+    {
+      "day": "周六",
+      "time": "10:00 AM – 2:00 PM（仅预约）"
+    },
+    {
+      "day": "周日",
+      "time": "休息"
+    }
   ],
+  "contact": {
+    "city": "San Gabriel, CA 91776",
+    "email": "yuxiaris@gmail.com",
+    "phone": "",
+    "mapUrl": "https://maps.google.com/?q=1045+E+Valley+Blvd+A115+San+Gabriel+CA+91776",
+    "wechat": "yuxiaris",
+    "address": "1045 E. Valley Blvd., #A115, Rm 6",
+    "phoneTel": ""
+  },
+  "emergency": {
+    "message": "如果您有即将到来的出庭日期或面谈，请立即发送邮件至 yuxiaris@gmail.com"
+  },
   "serviceAreas": {
-    "primary": "洛杉矶 (Los Angeles)",
     "nearby": [
       "阿罕布拉 (Alhambra)",
       "蒙特利公园 (Monterey Park)",
@@ -29,9 +40,7 @@
       "哈仙达岗 (Hacienda Heights)",
       "帕萨迪纳 (Pasadena)",
       "尔湾 (Irvine)"
-    ]
-  },
-  "emergency": {
-    "message": "如果您有即将到来的出庭日期或面谈，请立即发送邮件至 yuxiaris@gmail.com"
+    ],
+    "primary": "洛杉矶 (Los Angeles)"
   }
 }

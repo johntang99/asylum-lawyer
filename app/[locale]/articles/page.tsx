@@ -1,16 +1,25 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
+import { loadPageContent } from '@/lib/content';
 import SectionHeader from '@/components/shared/SectionHeader';
 import {
   getArticleDisplayDate,
   loadPublicArticles,
 } from '@/lib/articles';
 
-export async function generateMetadata(): Promise<Metadata> {
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const pageContent = await loadPageContent<any>('articles', locale);
+  const seo = pageContent?.seo;
   return {
-    title: '文章中心 | 宇霞移民服务中心',
+    title: seo?.title ?? '文章中心 | 宇霞移民服务中心',
     description:
+      seo?.description ??
       '庇护移民知识库：了解美国政治庇护申请流程、I-589填写指南、庇护面谈准备、被拒补救方案等专业法律知识。',
   };
 }
@@ -23,10 +32,11 @@ export default async function ArticlesPage({
   searchParams: { category?: string };
 }) {
   const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const pageContent = await loadPageContent<any>('articles', locale);
   const activeCategory = searchParams.category || 'all';
   const articles = await loadPublicArticles(locale);
   const categories = [
-    { key: 'all', label: '全部' },
+    { key: 'all', label: pageContent?.categories?.allLabel || '全部' },
     ...Array.from(
       new Set(
         articles
@@ -74,10 +84,11 @@ export default async function ArticlesPage({
             className="text-[2.5rem] md:text-[3rem] font-bold text-white mb-3 leading-tight"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            文章中心
+            {pageContent?.hero?.headline || '文章中心'}
           </h1>
           <p className="text-lg text-white/80 max-w-[600px] leading-relaxed">
-            庇护移民知识库 — 专业法律知识，助您了解庇护申请的每一个环节
+            {pageContent?.hero?.subheadline ||
+              '庇护移民知识库 — 专业法律知识，助您了解庇护申请的每一个环节'}
           </p>
         </div>
       </section>
@@ -193,7 +204,9 @@ export default async function ArticlesPage({
 
           {filteredArticles.length === 0 && (
             <div className="text-center py-20">
-              <p className="text-gray-400 text-lg">该分类下暂无文章</p>
+              <p className="text-gray-400 text-lg">
+                {pageContent?.emptyState?.message || '该分类下暂无文章'}
+              </p>
             </div>
           )}
         </div>
@@ -209,22 +222,25 @@ export default async function ArticlesPage({
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
             light
-            title="需要个人法律建议？"
-            subtitle="每个案件都是独特的。文章提供一般性信息，但无法替代专业律师针对您具体情况的法律建议。"
+            title={pageContent?.cta?.headline || '需要个人法律建议？'}
+            subtitle={
+              pageContent?.cta?.subheadline ||
+              '每个案件都是独特的。文章提供一般性信息，但无法替代专业律师针对您具体情况的法律建议。'
+            }
           />
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href={`/${locale}/consultation`}
+              href={pageContent?.cta?.primary?.href || `/${locale}/consultation`}
               className="inline-block px-[36px] py-[16px] text-white font-semibold rounded-md transition-colors"
               style={{ backgroundColor: '#B8373D' }}
             >
-              预约免费咨询
+              {pageContent?.cta?.primary?.label || '预约免费咨询'}
             </Link>
             <Link
-              href="mailto:yuxiaris@gmail.com"
+              href={pageContent?.cta?.secondary?.href || 'mailto:yuxiaris@gmail.com'}
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
-              发送邮件至 yuxiaris@gmail.com
+              {pageContent?.cta?.secondary?.label || '发送邮件至 yuxiaris@gmail.com'}
             </Link>
           </div>
         </div>

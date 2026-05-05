@@ -1,13 +1,23 @@
 import Link from 'next/link';
 import { loadAllItems } from '@/lib/content';
-import type { Locale } from '@/lib/i18n';
+import { loadPageContent } from '@/lib/content';
+import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import { getYouTubeThumbnailUrl } from '@/lib/utils';
 
-export async function generateMetadata() {
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const pageContent = await loadPageContent<any>('videos', locale);
+  const seo = pageContent?.seo;
   return {
-    title: '视频中心 | 宇霞移民服务中心',
-    description: '法律代表宇霞亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
+    title: seo?.title || '视频中心 | 宇霞移民服务中心',
+    description:
+      seo?.description ||
+      '法律代表宇霞亲自解答庇护移民常见问题。观看视频了解庇护申请流程、面谈准备、政策变化等内容。',
   };
 }
 
@@ -27,7 +37,8 @@ export default async function VideosPage({
 }: {
   params: { locale: string };
 }) {
-  const locale = params.locale as Locale;
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const pageContent = await loadPageContent<any>('videos', locale);
 
   // Load videos from content
   const videos = await loadAllItems<VideoItem>(undefined, locale, 'videos');
@@ -53,10 +64,10 @@ export default async function VideosPage({
             <span style={{ color: 'rgba(255,255,255,0.9)' }}>视频中心</span>
           </nav>
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-4" style={{ fontFamily: 'var(--font-heading)' }}>
-            视频中心
+            {pageContent?.hero?.headline || '视频中心'}
           </h1>
           <p className="text-lg" style={{ color: 'rgba(255,255,255,0.8)' }}>
-          法律代表宇霞亲自解答庇护移民常见问题
+            {pageContent?.hero?.subheadline || '法律代表宇霞亲自解答庇护移民常见问题'}
           </p>
         </div>
       </section>
@@ -64,7 +75,11 @@ export default async function VideosPage({
       {/* Video Grid */}
       <section className="py-[80px] bg-white">
         <div className="max-w-[1280px] mx-auto px-6">
-          <SectionHeader label="视频" title="最新视频" subtitle="了解庇护移民的最新资讯和专业知识" />
+          <SectionHeader
+            label={pageContent?.sections?.label || '视频'}
+            title={pageContent?.sections?.title || '最新视频'}
+            subtitle={pageContent?.sections?.subtitle || '了解庇护移民的最新资讯和专业知识'}
+          />
 
           {sorted.length === 0 ? (
             <p className="text-center text-gray-500 py-12">暂无视频内容</p>
@@ -126,13 +141,15 @@ export default async function VideosPage({
 
           {/* CTA */}
           <div className="text-center mt-12">
-            <p className="text-gray-500 mb-4">有类似问题？咨询我们获取专业解答</p>
+            <p className="text-gray-500 mb-4">
+              {pageContent?.cta?.subheadline || '有类似问题？咨询我们获取专业解答'}
+            </p>
             <Link
-              href={`/${locale}/consultation`}
+              href={pageContent?.cta?.primary?.href || `/${locale}/consultation`}
               className="inline-block px-8 py-3 rounded-md text-white font-semibold transition-colors"
               style={{ backgroundColor: '#B8373D' }}
             >
-              预约免费咨询
+              {pageContent?.cta?.primary?.label || '预约免费咨询'}
             </Link>
           </div>
         </div>

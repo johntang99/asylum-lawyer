@@ -1,74 +1,73 @@
 {
-  "logo": {
-    "text": "宇霞移民服务中心",
-    "href": "/"
+  "cta": {
+    "href": "/consultation",
+    "label": "免费咨询",
+    "phone": ""
   },
   "nav": [
     {
-      "label": "首页",
-      "href": "/"
+      "href": "/",
+      "label": "首页"
     },
     {
-      "label": "服务项目",
       "href": "/services",
+      "label": "服务项目",
       "children": [
         {
-          "label": "政治庇护申请",
-          "href": "/services/political-asylum"
+          "href": "/services/political-asylum",
+          "label": "政治庇护申请"
         },
         {
-          "label": "主动庇护",
-          "href": "/services/affirmative-asylum"
+          "href": "/services/affirmative-asylum",
+          "label": "主动庇护"
         },
         {
-          "label": "防御性庇护",
-          "href": "/services/defensive-asylum"
+          "href": "/services/defensive-asylum",
+          "label": "防御性庇护"
         },
         {
-          "label": "恐惧面谈",
-          "href": "/services/credible-fear-interview"
+          "href": "/services/credible-fear-interview",
+          "label": "恐惧面谈"
         },
         {
-          "label": "I-589申请",
-          "href": "/services/i-589-application"
+          "href": "/services/i-589-application",
+          "label": "I-589申请"
         },
         {
-          "label": "更多服务...",
-          "href": "/services"
+          "href": "/services",
+          "label": "更多服务..."
         }
       ]
     },
     {
-      "label": "文章中心",
-      "href": "/articles"
+      "href": "/articles",
+      "label": "文章中心"
     },
     {
-      "label": "视频中心",
-      "href": "/videos"
+      "href": "/videos",
+      "label": "视频中心"
     },
     {
-      "label": "团队介绍",
-      "href": "/about"
+      "href": "/about",
+      "label": "团队介绍"
     },
     {
-      "label": "成功案件",
-      "href": "/case-studies"
+      "href": "/case-studies",
+      "label": "成功案件"
     },
     {
-      "label": "常见问题",
-      "href": "/faq"
+      "href": "/faq",
+      "label": "常见问题"
     },
     {
-      "label": "联系我们",
-      "href": "/contact"
+      "href": "/contact",
+      "label": "联系我们"
     }
   ],
-  "cta": {
-    "label": "免费咨询",
-    "href": "/consultation",
-    "phone": ""
+  "logo": {
+    "href": "/",
+    "text": "宇霞移民服务中心"
   },
-  "localeToggle": false,
   "menu": {
     "logo": {
       "image": {
@@ -76,5 +75,6 @@
         "height": 60
       }
     }
-  }
+  },
+  "localeToggle": false
 }
