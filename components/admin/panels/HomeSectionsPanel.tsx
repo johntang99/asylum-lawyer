@@ -18,6 +18,7 @@ const HERO_VARIANT_OPTIONS = [
   'split-photo-right',
   'split-photo-left',
   'photo-background',
+  'gallery-background',
   'overlap',
   'video-background',
 ];
@@ -268,7 +269,8 @@ export function HomeSectionsPanel({
 
       {sections.map((section, idx) => {
         switch (section.type) {
-          case 'hero':
+          case 'hero': {
+            const heroGallery = Array.isArray(section.gallery) ? section.gallery : [];
             return (
               <SectionWrapper key={idx} title="Hero Section" defaultOpen>
                 <SelectField
@@ -301,6 +303,107 @@ export function HomeSectionsPanel({
                   updateFormValue={updateFormValue}
                   openImagePicker={openImagePicker}
                 />
+                <div className="border-t pt-3 mt-1">
+                  <div className="flex items-center justify-between mb-2">
+                    <label className="block text-xs text-gray-500">Gallery Images</label>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        updateFormValue(sp(idx, 'gallery'), [...heroGallery, ''])
+                      }
+                      className="rounded-md border border-gray-200 px-2.5 py-1 text-xs hover:bg-gray-50"
+                    >
+                      Add Photo
+                    </button>
+                  </div>
+                  <div className="space-y-2">
+                    {heroGallery.map((imageUrl: string, imageIndex: number) => (
+                      <div key={imageIndex} className="flex gap-2">
+                        <input
+                          className="w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+                          value={imageUrl || ''}
+                          onChange={(event) =>
+                            updateFormValue(
+                              sp(idx, 'gallery', String(imageIndex)),
+                              event.target.value
+                            )
+                          }
+                        />
+                        <button
+                          type="button"
+                          onClick={() =>
+                            openImagePicker(sp(idx, 'gallery', String(imageIndex)))
+                          }
+                          className="px-3 rounded-md border border-gray-200 text-xs"
+                        >
+                          Choose
+                        </button>
+                        <button
+                          type="button"
+                          onClick={() =>
+                            updateFormValue(
+                              sp(idx, 'gallery'),
+                              heroGallery.filter(
+                                (_: string, currentIndex: number) => currentIndex !== imageIndex
+                              )
+                            )
+                          }
+                          className="px-3 rounded-md border border-red-200 text-xs text-red-600 hover:bg-red-50"
+                        >
+                          Remove
+                        </button>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                  <div>
+                    <label className="block text-xs text-gray-500">Photo Overlay Opacity (0-1)</label>
+                    <input
+                      type="number"
+                      min={0}
+                      max={1}
+                      step={0.05}
+                      className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm"
+                      value={
+                        typeof section.photoOverlayOpacity === 'number'
+                          ? section.photoOverlayOpacity
+                          : 0.6
+                      }
+                      onChange={(event) => {
+                        const next = Number(event.target.value);
+                        const normalized = Number.isFinite(next)
+                          ? Math.min(1, Math.max(0, next))
+                          : 0.6;
+                        updateFormValue(sp(idx, 'photoOverlayOpacity'), normalized);
+                      }}
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-xs text-gray-500">Photo Content Position</label>
+                    <select
+                      className="mt-1 w-full rounded-md border border-gray-200 px-3 py-2 text-sm bg-white"
+                      value={
+                        section.photoContentPosition === 'center' ||
+                        section.photoContentPosition === 'center-below' ||
+                        section.photoContentPosition === 'left' ||
+                        section.photoContentPosition === 'left-below'
+                          ? section.photoContentPosition
+                          : section.photoContentPosition === 'lower'
+                            ? 'left-below'
+                            : 'left'
+                      }
+                      onChange={(event) =>
+                        updateFormValue(sp(idx, 'photoContentPosition'), event.target.value)
+                      }
+                    >
+                      <option value="center">Center</option>
+                      <option value="center-below">Center Below</option>
+                      <option value="left">Left</option>
+                      <option value="left-below">Left Below</option>
+                    </select>
+                  </div>
+                </div>
                 <div className="border-t pt-3 mt-3">
                   <div className="text-[11px] font-medium text-gray-400 mb-2">PRIMARY CTA</div>
                   <TextField
@@ -347,6 +450,7 @@ export function HomeSectionsPanel({
                 )}
               </SectionWrapper>
             );
+          }
 
           case 'serviceOverview':
             return (

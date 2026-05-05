@@ -11,6 +11,7 @@ export type HeroVariant =
   | 'split-photo-left'        // Text right, photo left
   | 'overlap'                 // Text overlaps photo with dark overlay
   | 'photo-background'        // Photo as full background
+  | 'gallery-background'      // Rotating gallery background
   | 'video-background';       // Video as background
 
 export interface SectionVariantConfig {
@@ -54,6 +55,13 @@ export const heroVariantConfig: Record<HeroVariant, SectionVariantConfig> = {
   },
   'photo-background': {
     variant: 'photo-background',
+    layout: 'full-width',
+    padding: 'xl',
+    background: 'image',
+    className: 'relative bg-cover bg-center',
+  },
+  'gallery-background': {
+    variant: 'gallery-background',
     layout: 'full-width',
     padding: 'xl',
     background: 'image',

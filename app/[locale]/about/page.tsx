@@ -4,6 +4,7 @@ import Image from 'next/image';
 import { loadPageContent } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
+import HeroSection from '@/components/sections/HeroSection';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -42,81 +43,30 @@ export default async function AboutPage({
   return (
     <>
       {/* ── Section 1: Hero ── */}
-      <section
-        className="flex items-center relative"
-        style={{
-          marginTop: '72px',
-          background: (hero?.variant === 'photo-background' || hero?.variant === 'overlap') && (hero?.image || hero?.backgroundImage)
-            ? undefined
-            : 'linear-gradient(135deg, var(--primary, #1B2A4A) 0%, var(--primary-dark, #0F1A32) 100%)',
-        }}
-      >
-        {/* Background image for photo-background / overlap variants */}
-        {(hero?.variant === 'photo-background' || hero?.variant === 'overlap') && (hero?.image || hero?.backgroundImage) && (
-          <>
-            <Image
-              src={hero.image || hero.backgroundImage}
-              alt={hero?.headline || ''}
-              fill
-              className="object-cover z-0"
-            />
-            <div className="absolute inset-0 z-0 bg-[#0F1A32]/60" />
-          </>
-        )}
-        <div className="max-w-[1200px] mx-auto px-6 py-16 w-full relative z-10">
-          <div className={`flex flex-col lg:flex-row gap-12 items-center ${hero?.variant === 'centered' ? 'justify-center text-center' : ''}`}>
-            {/* Photo — show for split variants or when image is set and not a background variant */}
-            {hero?.variant !== 'photo-background' && hero?.variant !== 'centered' && (
-              <div
-                className={`w-full max-w-[320px] h-[400px] rounded-lg flex-shrink-0 flex items-center justify-center overflow-hidden ${hero?.variant === 'split-photo-left' ? 'order-1' : hero?.variant === 'split-photo-right' ? 'order-2 lg:order-1' : ''}`}
-                style={
-                  (hero?.image || hero?.backgroundImage)
-                    ? undefined
-                    : { background: 'linear-gradient(135deg, var(--primary, #1B2A4A), var(--primary-dark, #0F1A32))' }
-                }
-              >
-                {(hero?.image || hero?.backgroundImage) ? (
-                  <Image
-                    src={hero.image || hero.backgroundImage}
-                    alt={hero?.headline || ''}
-                    width={320}
-                    height={400}
-                    className="w-full h-full object-cover"
-                  />
-                ) : (
-                  <span className="text-white/30 text-sm">律师照片</span>
-                )}
-              </div>
-            )}
-            {/* Content */}
-            <div className={`flex-1 ${hero?.variant === 'centered' ? 'text-center max-w-[700px]' : 'text-center lg:text-left'} ${hero?.variant === 'split-photo-right' ? 'order-1 lg:order-2' : ''}`}>
-              {hero?.sectionLabel && (
-                <span
-                  className="inline-block text-xs font-semibold uppercase tracking-[0.1em] mb-3"
-                  style={{ color: 'var(--accent, #C9963B)' }}
-                >
-                  {hero.sectionLabel}
-                </span>
-              )}
-              <h1
-                className="text-[2.5rem] lg:text-[3rem] font-bold text-white mb-2 leading-tight"
-                style={{ fontFamily: 'var(--font-heading)' }}
-              >
-                {hero?.headline ?? '律师'}
-              </h1>
-              <p
-                className="text-lg font-semibold mb-4"
-                style={{ color: 'var(--accent, #C9963B)' }}
-              >
-                {hero?.subheadline ?? '创始人 / 移民律师'}
-              </p>
-              <p className={`text-base text-white/85 leading-relaxed ${hero?.variant === 'centered' ? 'max-w-[600px] mx-auto' : 'max-w-[520px] mx-auto lg:mx-0'}`}>
-                {hero?.intro}
-              </p>
-            </div>
-          </div>
-        </div>
-      </section>
+      <HeroSection
+        variant={
+          hero?.variant === 'split'
+            ? 'split-photo-right'
+            : (hero?.variant ?? 'split-photo-right')
+        }
+        headline={hero?.headline ?? '律师'}
+        subheadline={[hero?.subheadline, hero?.intro].filter(Boolean).join('\n\n')}
+        image={hero?.image}
+        backgroundImage={hero?.backgroundImage}
+        gallery={Array.isArray(hero?.gallery) ? hero.gallery : undefined}
+        photoOverlayOpacity={
+          typeof hero?.photoOverlayOpacity === 'number' ? hero.photoOverlayOpacity : 0.6
+        }
+        photoContentPosition={
+          hero?.photoContentPosition === 'center' ||
+          hero?.photoContentPosition === 'center-below' ||
+          hero?.photoContentPosition === 'left' ||
+          hero?.photoContentPosition === 'left-below' ||
+          hero?.photoContentPosition === 'lower'
+            ? hero.photoContentPosition
+            : 'left'
+        }
+      />
 
       {/* ── Section 2: Story ── */}
       <section className="bg-white py-[80px]">

@@ -1,3 +1,6 @@
+'use client';
+
+import { useEffect, useMemo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import type { HeroVariant } from '@/lib/section-variants';
@@ -11,6 +14,9 @@ export interface HeroSectionProps {
   image?: string;
   backgroundImage?: string;
   video?: string;
+  gallery?: string[];
+  photoOverlayOpacity?: number;
+  photoContentPosition?: 'center' | 'center-below' | 'left' | 'left-below' | 'lower';
   cta?: {
     primary?: { label: string; href: string };
     secondary?: { label: string; href: string };
@@ -101,10 +107,54 @@ export default function HeroSection({
   image,
   backgroundImage,
   video,
+  gallery,
+  photoOverlayOpacity = 0.6,
+  photoContentPosition = 'left',
   cta,
   stats,
 }: HeroSectionProps) {
   const heroImage = image || backgroundImage;
+  const normalizedPhotoContentPosition =
+    photoContentPosition === 'lower' ? 'left-below' : photoContentPosition;
+  const isBelowPosition =
+    normalizedPhotoContentPosition === 'center-below' ||
+    normalizedPhotoContentPosition === 'left-below';
+  const isCenterAlignedPosition =
+    normalizedPhotoContentPosition === 'center' ||
+    normalizedPhotoContentPosition === 'center-below';
+
+  const galleryImages = useMemo(
+    () =>
+      Array.isArray(gallery)
+        ? gallery.filter((src): src is string => typeof src === 'string' && src.trim().length > 0)
+        : [],
+    [gallery]
+  );
+
+  const galleryBackgroundImages = useMemo(() => {
+    if (variant !== 'gallery-background') return galleryImages;
+    const merged = [backgroundImage, image, ...galleryImages].filter(
+      (src): src is string => typeof src === 'string' && src.trim().length > 0
+    );
+    return Array.from(new Set(merged));
+  }, [variant, backgroundImage, image, galleryImages]);
+
+  const useGalleryBackground =
+    variant === 'gallery-background' && galleryBackgroundImages.length > 0;
+  const shouldRotateGallery = useGalleryBackground && galleryBackgroundImages.length > 1;
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(0);
+
+  useEffect(() => {
+    setActiveGalleryIndex(0);
+  }, [variant, galleryImages, backgroundImage, image]);
+
+  useEffect(() => {
+    if (!shouldRotateGallery) return;
+    const timerId = window.setInterval(() => {
+      setActiveGalleryIndex((current) => (current + 1) % galleryBackgroundImages.length);
+    }, 3000);
+    return () => window.clearInterval(timerId);
+  }, [shouldRotateGallery, galleryBackgroundImages.length]);
 
   switch (variant) {
     case 'split-photo-right':
@@ -262,6 +312,7 @@ export default function HeroSection({
         </>
       );
 
+    case 'gallery-background':
     case 'photo-background':
       return (
         <>
@@ -269,16 +320,61 @@ export default function HeroSection({
             className="relative min-h-[600px] flex items-center"
             style={{ marginTop: '72px' }}
           >
-            {heroImage && (
+            {(heroImage || useGalleryBackground) && (
               <>
-                <div className="absolute inset-0 z-0">
-                  <Image src={heroImage} alt={headline} fill className="object-cover" sizes="100vw" priority />
-                </div>
-                <div className="absolute inset-0 z-0 bg-[#0F1A32]/60" />
+                {shouldRotateGallery ? (
+                  <div className="absolute inset-0 z-0">
+                    {galleryBackgroundImages.map((galleryImage, index) => (
+                      <div
+                        key={`${galleryImage}-${index}`}
+                        className={`absolute inset-0 transition-opacity duration-1000 ${
+                          index === activeGalleryIndex ? 'opacity-100' : 'opacity-0'
+                        }`}
+                      >
+                        <Image src={galleryImage} alt={`${headline} ${index + 1}`} fill className="object-cover" sizes="100vw" priority={index === 0} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div className="absolute inset-0 z-0">
+                    <Image
+                      src={useGalleryBackground ? galleryBackgroundImages[0] : heroImage!}
+                      alt={headline}
+                      fill
+                      className="object-cover"
+                      sizes="100vw"
+                      priority
+                    />
+                  </div>
+                )}
+                <div
+                  className="absolute inset-0 z-0"
+                  style={{ backgroundColor: `rgba(15, 26, 50, ${photoOverlayOpacity})` }}
+                />
               </>
             )}
-            <div className="max-w-[1200px] mx-auto px-6 py-20 w-full relative z-10">
-              <div className="max-w-[700px]">
+            <div
+              className={`max-w-[1200px] mx-auto px-6 py-20 w-full relative z-10 min-h-[600px] flex ${
+                isBelowPosition ? 'items-end pb-12' : 'items-center'
+              }`}
+            >
+              <div
+                className={`relative max-w-[700px] ${
+                  isCenterAlignedPosition ? 'mx-auto text-center' : 'text-left'
+                } ${isBelowPosition ? 'translate-y-6 md:translate-y-10' : ''}`}
+              >
+                <div className="absolute -inset-x-10 -inset-y-8 -z-10 pointer-events-none">
+                  <div
+                    className="w-full h-full"
+                    style={{
+                      background:
+                        isCenterAlignedPosition
+                          ? 'radial-gradient(120% 140% at 50% 75%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.44) 34%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0.09) 72%, rgba(0,0,0,0) 86%)'
+                          : 'radial-gradient(120% 140% at 18% 75%, rgba(0,0,0,0.62) 0%, rgba(0,0,0,0.44) 34%, rgba(0,0,0,0.22) 58%, rgba(0,0,0,0.09) 72%, rgba(0,0,0,0) 86%)',
+                      filter: 'blur(8px)',
+                    }}
+                  />
+                </div>
                 <h1
                   className="text-[2.5rem] lg:text-[3rem] font-bold text-white mb-4 leading-tight"
                   style={{ fontFamily: 'var(--font-heading)' }}
@@ -286,7 +382,7 @@ export default function HeroSection({
                   {headline}
                 </h1>
                 {subheadline && (
-                  <p className="text-[1.125rem] text-white/85 leading-relaxed mb-8">
+                  <p className="text-[1.125rem] text-white/85 leading-relaxed mb-8 whitespace-pre-line">
                     {subheadline}
                   </p>
                 )}

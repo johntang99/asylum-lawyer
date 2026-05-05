@@ -164,6 +164,8 @@ export interface HeroSection {
   image?: string;
   video?: string;
   gallery?: string[];
+  photoOverlayOpacity?: number;
+  photoContentPosition?: 'center' | 'center-below' | 'left' | 'left-below' | 'lower';
   floatingTags: string[];
   stats: Stat[];
   trustBadges: string[];
@@ -547,6 +549,9 @@ export interface ServicesPage {
     title: string;
     subtitle: string;
     backgroundImage?: string;
+    gallery?: string[];
+    photoOverlayOpacity?: number;
+    photoContentPosition?: 'center' | 'center-below' | 'left' | 'left-below' | 'lower';
   };
   overview: {
     variant?: 'centered' | 'left';
@@ -643,6 +648,10 @@ export interface ContactPage {
     variant?: 'centered' | 'split-photo-right' | 'split-photo-left' | 'overlap' | 'photo-background' | 'video-background' | 'gallery-background';
     title: string;
     subtitle: string;
+    backgroundImage?: string;
+    gallery?: string[];
+    photoOverlayOpacity?: number;
+    photoContentPosition?: 'center' | 'center-below' | 'left' | 'left-below' | 'lower';
   };
   location: {
     title: string;

@@ -87,6 +87,20 @@ export default async function HomePage({
           headline={hero.headline ?? ''}
           subheadline={hero.subheadline}
           image={hero.image}
+          backgroundImage={hero.backgroundImage}
+          gallery={Array.isArray(hero.gallery) ? hero.gallery : undefined}
+          photoOverlayOpacity={
+            typeof hero.photoOverlayOpacity === 'number' ? hero.photoOverlayOpacity : 0.6
+          }
+          photoContentPosition={
+            hero.photoContentPosition === 'center' ||
+            hero.photoContentPosition === 'center-below' ||
+            hero.photoContentPosition === 'left' ||
+            hero.photoContentPosition === 'left-below' ||
+            hero.photoContentPosition === 'lower'
+              ? hero.photoContentPosition
+              : 'left'
+          }
           cta={hero.cta}
           stats={hero.stats}
         />

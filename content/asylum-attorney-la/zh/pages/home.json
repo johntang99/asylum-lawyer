@@ -18,6 +18,12 @@
       },
       "type": "hero",
       "image": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
+      "gallery": [
+        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776529969062-zhang-yu-xia-1.jpg",
+        "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1776224299701-lawyer-photo-1.jpeg"
+      ],
+      "photoOverlayOpacity": 0.2,
+      "photoContentPosition": "left-below",
       "stats": [
         {
           "label": "年执业经验",
@@ -36,7 +42,7 @@
           "value": "3"
         }
       ],
-      "variant": "split-photo-right",
+      "variant": "gallery-background",
       "headline": "美国司法部（DOJ）认证法律代表：张宇霞",
       "subheadline": "专注庇护与亲属移民代理，以真实的细节打动移民官，以同理心与专业护航您的美国梦。\n\n无论您身在洛杉矶，还是美国其他州，我们都能依托联邦移民法为您提供专业的代理与程序协助。\n"
     },
