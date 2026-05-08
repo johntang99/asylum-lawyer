@@ -680,15 +680,21 @@ export function ContentEditor({
 
   const handleCreate = async () => {
     const isBlog = fileFilter === 'blog';
-    const slug = window.prompt(
-      isBlog ? 'New blog slug (example: my-post)' : 'New page slug (example: faq)'
-    );
+    const isVideo = fileFilter === 'videos';
+    const promptLabel = isBlog
+      ? 'New blog slug (example: my-post)'
+      : isVideo
+        ? 'New video slug (example: asylum-tips)'
+        : 'New page slug (example: faq)';
+    const slug = window.prompt(promptLabel);
     if (!slug) return;
-    const templateId =
-      window.prompt(
-        `Template: ${CONTENT_TEMPLATES.map((t) => t.id).join(', ')}`,
-        CONTENT_TEMPLATES[0]?.id || 'basic'
-      ) || CONTENT_TEMPLATES[0]?.id;
+    const templateId = isVideo
+      ? undefined
+      : window.prompt(
+          `Template: ${CONTENT_TEMPLATES.map((t) => t.id).join(', ')}`,
+          CONTENT_TEMPLATES[0]?.id || 'basic'
+        ) || CONTENT_TEMPLATES[0]?.id;
+    const targetDir = isBlog ? 'blog' : isVideo ? 'videos' : 'pages';
     const response = await fetch('/api/admin/content/file', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -698,7 +704,7 @@ export function ContentEditor({
         action: 'create',
         slug,
         templateId,
-        targetDir: isBlog ? 'blog' : 'pages',
+        targetDir,
       }),
     });
 
@@ -2398,10 +2404,14 @@ export function ContentEditor({
               onClick={handleCreate}
               className="px-3 py-2 rounded-lg border border-gray-200 text-xs text-gray-700 hover:bg-gray-50"
             >
-              {fileFilter === 'blog' ? 'New Post' : 'New Page'}
+              {fileFilter === 'blog'
+                ? 'New Post'
+                : fileFilter === 'videos'
+                  ? 'New Video'
+                  : 'New Page'}
             </button>
           )}
-          {allowCreateOrDuplicate && (
+          {allowCreateOrDuplicate && fileFilter !== 'videos' && (
             <button
               type="button"
               onClick={handleDuplicate}
@@ -2424,7 +2434,8 @@ export function ContentEditor({
             !isConditionsItemsMode &&
             !isCaseStudiesItemsMode &&
             (activeFile.path.startsWith('pages/') ||
-              isBlogManagedPath(activeFile.path)) && (
+              isBlogManagedPath(activeFile.path) ||
+              isVideoManagedPath(activeFile.path)) && (
               <button
                 type="button"
                 onClick={handleDelete}

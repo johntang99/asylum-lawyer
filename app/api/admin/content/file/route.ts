@@ -305,7 +305,7 @@ export async function POST(request: NextRequest) {
     if (!slug) {
       return NextResponse.json({ message: 'slug is required' }, { status: 400 });
     }
-    if (!['pages', 'blog', 'blog-scheduled'].includes(targetDir)) {
+    if (!['pages', 'blog', 'blog-scheduled', 'videos'].includes(targetDir)) {
       return NextResponse.json({ message: 'Invalid target directory' }, { status: 400 });
     }
     const normalized = slug.trim().toLowerCase();
@@ -323,6 +323,7 @@ export async function POST(request: NextRequest) {
     const template =
       CONTENT_TEMPLATES.find((item) => item.id === templateId) ||
       CONTENT_TEMPLATES[0];
+    const today = new Date().toISOString().slice(0, 10);
     const templateContent =
       targetDir === 'blog'
         ? {
@@ -344,7 +345,24 @@ export async function POST(request: NextRequest) {
             relatedServices: [],
             relatedConditions: [],
           }
-        : template.content;
+        : targetDir === 'videos'
+          ? {
+              slug: normalized,
+              image: '',
+              title: 'New Video',
+              author: '',
+              status: 'published',
+              excerpt: '',
+              category: '',
+              duration: '',
+              videoUrl: '',
+              publishAt: `${today}T00:00:00.000Z`,
+              publishDate: today,
+              contentMarkdown: '',
+              relatedServices: [],
+              translationGroup: normalized,
+            }
+          : template.content;
     if (canUseContentDb()) {
       const existing = await fetchContentEntry(siteId, locale, filePath);
       if (existing) {
