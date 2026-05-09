@@ -1,7 +1,13 @@
 import Link from 'next/link';
+import ReactMarkdown from 'react-markdown';
+import remarkGfm from 'remark-gfm';
 import { loadAllItems, loadContent, getRequestSiteId } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
 import { getYouTubeEmbedUrl } from '@/lib/utils';
+
+function normalizeVideoMarkdown(markdown: string): string {
+  return markdown.replace(/^#\s+.+\n+/, '').replace(/\n{3,}/g, '\n\n');
+}
 
 interface VideoData {
   slug: string;
@@ -115,8 +121,58 @@ export default async function VideoDetailPage({
               <div className="px-6 py-4 border-b border-gray-200 bg-gray-50">
                 <h2 className="font-semibold text-gray-800">文字版内容</h2>
               </div>
-              <div className="px-6 py-6 text-gray-600 leading-relaxed whitespace-pre-line text-sm">
-                {video.contentMarkdown.replace(/^#\s.*\n\n?/, '').replace(/#{2,}\s/g, '\n')}
+              <div className="px-6 py-6 text-sm text-gray-600 leading-relaxed">
+                <ReactMarkdown
+                  remarkPlugins={[remarkGfm]}
+                  components={{
+                    h1: (props) => (
+                      <h3 className="mt-6 mb-3 text-lg font-semibold text-gray-900" {...props} />
+                    ),
+                    h2: (props) => (
+                      <h4 className="mt-5 mb-2 text-base font-semibold text-gray-900" {...props} />
+                    ),
+                    h3: (props) => (
+                      <h5 className="mt-4 mb-2 text-sm font-semibold text-gray-900" {...props} />
+                    ),
+                    p: (props) => (
+                      <p className="mb-3 leading-7 text-gray-700" {...props} />
+                    ),
+                    ul: (props) => (
+                      <ul className="mb-3 list-disc pl-5 text-gray-700" {...props} />
+                    ),
+                    ol: (props) => (
+                      <ol className="mb-3 list-decimal pl-5 text-gray-700" {...props} />
+                    ),
+                    li: (props) => <li className="mb-1 leading-6" {...props} />,
+                    a: ({ href, children, ...rest }) => {
+                      const url = href || '';
+                      const isExternal = /^https?:\/\//i.test(url) && !url.includes('localhost');
+                      return (
+                        <a
+                          href={url}
+                          className="text-[#B8373D] underline underline-offset-2 hover:text-[#8a2a2f] break-all"
+                          target={isExternal ? '_blank' : undefined}
+                          rel={isExternal ? 'noopener noreferrer' : undefined}
+                          {...rest}
+                        >
+                          {children}
+                        </a>
+                      );
+                    },
+                    strong: (props) => (
+                      <strong className="font-semibold text-gray-900" {...props} />
+                    ),
+                    blockquote: (props) => (
+                      <blockquote
+                        className="my-3 border-l-4 border-amber-400 bg-amber-50 px-3 py-2 text-gray-700"
+                        {...props}
+                      />
+                    ),
+                    hr: (props) => <hr className="my-5 border-gray-200" {...props} />,
+                  }}
+                >
+                  {normalizeVideoMarkdown(video.contentMarkdown)}
+                </ReactMarkdown>
               </div>
             </div>
           )}
