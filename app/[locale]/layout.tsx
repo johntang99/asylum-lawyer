@@ -247,7 +247,11 @@ export default async function LocaleLayout({
           locale={locale}
           footerConfig={footer ?? undefined}
         />
-        <MobileStickyBar phone={siteInfo?.phone} />
+        <MobileStickyBar
+          phone={siteInfo?.phone}
+          email={siteInfo?.email}
+          wechatId={siteInfo?.wechatId}
+        />
       </div>
     </>
   );
