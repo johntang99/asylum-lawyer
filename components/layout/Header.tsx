@@ -85,7 +85,18 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
     return pathname?.startsWith(`/${locale}${href}`) || pathname?.startsWith(href);
   };
 
-  const localePath = (href: string) => `/${locale}${href}`;
+  const isExternalHref = (href: string) =>
+    /^(https?:)?\/\//i.test(href) || href.startsWith("mailto:") || href.startsWith("tel:");
+
+  const localePath = (href: string) => {
+    if (isExternalHref(href)) return href;
+    if (href.startsWith(`/${locale}`)) return href;
+    if (href.startsWith("/")) return `/${locale}${href}`;
+    return `/${locale}/${href}`;
+  };
+
+  const getLinkTargetProps = (href: string) =>
+    isExternalHref(href) ? { target: "_blank", rel: "noopener noreferrer" } : {};
 
   const toggleLocale = locale === "zh" ? "en" : "zh";
   const localePathSwitch = pathname?.replace(`/${locale}`, `/${toggleLocale}`) || `/${toggleLocale}`;
@@ -121,6 +132,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
           {/* Logo */}
           <Link
             href={localePath(config.logo?.href || "/")}
+            {...getLinkTargetProps(config.logo?.href || "/")}
             style={{
               display: "flex",
               alignItems: "center",
@@ -192,6 +204,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                   >
                     <Link
                       href={localePath(item.href)}
+                      {...getLinkTargetProps(item.href)}
                       style={{
                         color: active
                           ? "var(--color-white, #FFFFFF)"
@@ -250,6 +263,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                         <Link
                           key={child.href}
                           href={localePath(child.href)}
+                          {...getLinkTargetProps(child.href)}
                           style={{
                             display: "block",
                             padding: "10px 20px",
@@ -281,6 +295,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                 <Link
                   key={item.href}
                   href={localePath(item.href)}
+                  {...getLinkTargetProps(item.href)}
                   style={{
                     color: active
                       ? "var(--color-white, #FFFFFF)"
@@ -346,6 +361,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             {config.localeToggle && (
               <Link
                 href={localePathSwitch}
+                {...getLinkTargetProps(localePathSwitch)}
                 style={{
                   color: "rgba(255, 255, 255, 0.85)",
                   fontSize: 12,
@@ -376,6 +392,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             {config.cta && (
               <Link
                 href={localePath(config.cta.href)}
+                {...getLinkTargetProps(config.cta.href)}
                 style={{
                   background: "var(--color-secondary, #C9963B)",
                   color: "var(--color-white, #FFFFFF)",
@@ -517,6 +534,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             <div key={item.href}>
               <Link
                 href={localePath(item.href)}
+                {...getLinkTargetProps(item.href)}
                 onClick={() => setMobileMenuOpen(false)}
                 style={{
                   display: "block",
@@ -538,6 +556,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                     <Link
                       key={child.href}
                       href={localePath(child.href)}
+                      {...getLinkTargetProps(child.href)}
                       onClick={() => setMobileMenuOpen(false)}
                       style={{
                         display: "block",
@@ -586,6 +605,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             )}
             <Link
               href={localePath(config.cta.href)}
+              {...getLinkTargetProps(config.cta.href)}
               onClick={() => setMobileMenuOpen(false)}
               style={{
                 display: "block",

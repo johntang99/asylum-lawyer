@@ -107,6 +107,19 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
   const compliance = config.compliance!;
   const copyright = config.copyright ?? defaultConfig.copyright!;
 
+  const isExternalHref = (href: string) =>
+    /^(https?:)?\/\//i.test(href) || href.startsWith('mailto:') || href.startsWith('tel:');
+
+  const resolveHref = (href: string) => {
+    if (isExternalHref(href)) return href;
+    if (href.startsWith(`/${locale}`)) return href;
+    if (href.startsWith('/')) return `/${locale}${href}`;
+    return `/${locale}/${href}`;
+  };
+
+  const getLinkTargetProps = (href: string) =>
+    isExternalHref(href) ? { target: '_blank', rel: 'noopener noreferrer' } : {};
+
   return (
     <footer className="pt-20 pb-0" style={{ backgroundColor: "#0F1A32" }}>
       {/* Main grid */}
@@ -143,7 +156,8 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
                 {column.links.map((link) => (
                   <li key={link.href}>
                     <Link
-                      href={`/${locale}${link.href}`}
+                      href={resolveHref(link.href)}
+                      {...getLinkTargetProps(link.href)}
                       className="text-sm transition-colors duration-200 hover:[color:#C9963B]"
                       style={{ color: "rgba(255,255,255,0.6)" }}
                     >
@@ -254,7 +268,8 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
               {compliance.links?.map((link) => (
                 <Link
                   key={link.href}
-                  href={`/${locale}${link.href}`}
+                  href={resolveHref(link.href)}
+                  {...getLinkTargetProps(link.href)}
                   className="text-xs transition-colors duration-200 hover:[color:#C9963B]"
                   style={{ color: "rgba(255,255,255,0.4)" }}
                 >

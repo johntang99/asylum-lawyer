@@ -34,6 +34,7 @@ export default async function ContactPage({
     phoneTel: 'mailto:yuxiaris@gmail.com',
     email: 'yuxiaris@gmail.com',
     wechat: 'yuxiaris',
+    linktree: 'https://linktr.ee/yuxiaris',
     address: '1045 E. Valley Blvd., #A115, Rm 6',
     city: 'San Gabriel, CA 91776',
     mapUrl: 'https://maps.google.com/?q=1045+E+Valley+Blvd+A115+San+Gabriel+CA+91776',
@@ -152,6 +153,28 @@ export default async function ContactPage({
                 查看地图
               </Link>
             </div>
+
+            {contact.linktree && (
+              <div className="bg-white border border-gray-200 rounded-lg text-center px-6 py-8">
+                <div
+                  className="w-16 h-16 rounded-full mx-auto mb-4 flex items-center justify-center text-2xl"
+                  style={{ backgroundColor: '#F9FAFB', color: '#1B2A4A' }}
+                >
+                  🔗
+                </div>
+                <h3 className="text-lg font-semibold text-gray-900 mb-1">社媒主页</h3>
+                <p className="text-gray-500 mb-4">查看微信、YouTube、Instagram、TikTok 等入口</p>
+                <Link
+                  href={contact.linktree}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block px-6 py-2.5 text-white font-semibold rounded-md text-sm transition-colors"
+                  style={{ backgroundColor: '#1B2A4A' }}
+                >
+                  打开 Linktree
+                </Link>
+              </div>
+            )}
           </div>
         </div>
       </section>

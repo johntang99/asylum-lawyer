@@ -139,6 +139,22 @@ export default async function VideosPage({
             </div>
           )}
 
+          {/* Social / Linktree CTA */}
+          <div className="mt-12 rounded-lg border border-gray-200 bg-gray-50 px-6 py-8 text-center">
+            <p className="text-gray-700 mb-4 text-base md:text-lg">
+              更多短视频与最新内容：关注张宇霞老师社交媒体
+            </p>
+            <Link
+              href="https://linktr.ee/yuxiaris"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block px-8 py-3 rounded-md text-white font-semibold transition-colors"
+              style={{ backgroundColor: '#1B2A4A' }}
+            >
+              查看全部社交平台
+            </Link>
+          </div>
+
           {/* CTA */}
           <div className="text-center mt-12">
             <p className="text-gray-500 mb-4">
