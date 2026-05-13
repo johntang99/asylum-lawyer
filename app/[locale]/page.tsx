@@ -6,6 +6,7 @@ import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 import HeroSection from '@/components/sections/HeroSection';
+import TestimonialsCarousel from '@/components/sections/TestimonialsCarousel';
 import { getYouTubeThumbnailUrl } from '@/lib/utils';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -406,38 +407,7 @@ export default async function HomePage({
               title={testimonials.headline ?? '听听他们怎么说'}
               subtitle={testimonials.subheadline}
             />
-            <div className="flex gap-6 overflow-x-auto pb-4" style={{ scrollSnapType: 'x mandatory' }}>
-              {testimonials.items.map((testimonial: any, i: number) => (
-                <div
-                  key={i}
-                  className="min-w-[360px] rounded-lg p-8 flex-shrink-0"
-                  style={{
-                    scrollSnapAlign: 'start',
-                    backgroundColor: 'rgba(255,255,255,0.05)',
-                    border: '1px solid rgba(255,255,255,0.1)',
-                    borderLeft: '3px solid #C9963B',
-                  }}
-                >
-                  <div className="text-lg mb-4" style={{ color: '#C9963B' }}>
-                    {testimonial.rating || '★★★★★'}
-                  </div>
-                  <p className="text-base text-gray-300 italic leading-relaxed mb-6 relative">
-                    <span className="text-2xl absolute -top-2 -left-1" style={{ color: '#C9963B' }}>
-                      &ldquo;
-                    </span>
-                    <span className="ml-4">{testimonial.quote}</span>
-                  </p>
-                  <div>
-                    <span className="text-white font-bold">{testimonial.name}</span>
-                    {(testimonial.type || testimonial.year) && (
-                      <span className="text-gray-400 text-sm ml-2">
-                        {[testimonial.type, testimonial.year].filter(Boolean).join(' · ')}
-                      </span>
-                    )}
-                  </div>
-                </div>
-              ))}
-            </div>
+            <TestimonialsCarousel items={testimonials.items} />
           </div>
         </section>
       )}
