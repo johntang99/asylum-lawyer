@@ -39,8 +39,13 @@ npm install
 cp .env.local.example .env.local
 # Fill in Supabase, Resend, and JWT_SECRET values
 
-# Run Supabase schema
-# Copy supabase/schema.sql → run in Supabase SQL Editor
+# Run Supabase schema + migrations (in order)
+# 1) supabase/schema.sql
+# 2) supabase/migrate-001.sql
+# 3) supabase/migrate-002-data-api-grants.sql
+#
+# Note: Supabase now requires explicit GRANTs for Data API access on public tables.
+# Keep grants in table-creation flow for all new tables.
 
 # Seed content into database
 npm run seed
@@ -111,7 +116,9 @@ site/
 │           ├── seo.json       # Default SEO config
 │           └── pages/         # Page content JSON files
 ├── supabase/
-│   └── schema.sql             # Full database schema (8 tables)
+│   ├── schema.sql             # Full database schema
+│   ├── migrate-001.sql        # Backfill columns/tables for older DBs
+│   └── migrate-002-data-api-grants.sql  # Data API explicit grants + RLS baseline
 ├── scripts/
 │   ├── seed-content.mjs       # Seed JSON → Supabase content_entries
 │   └── seed-admin-user.mjs    # Create default admin user

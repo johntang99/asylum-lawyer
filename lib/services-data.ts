@@ -199,7 +199,7 @@ const politicalAsylum: ServiceData = {
     {
       question: '政治庇护申请需要多长时间？',
       answer:
-        '处理时间因案件复杂程度和USCIS/移民法庭的工作量而异。主动庇护面谈通常在提交申请后数周至数月内安排。如果案件转到移民法庭，可能需要1-3年或更长时间。我们会帮您了解预期的时间线。',
+        '处理时间因案件复杂程度和USCIS/移民法庭的工作量而异。一般来说，面谈或听证安排可能在提交申请后数周至数月内启动；如进入法庭程序，整体周期可能需要1-3年或更长时间。我们会帮您了解预期的时间线。',
     },
     {
       question: '申请庇护期间可以工作吗？',
@@ -980,8 +980,6 @@ const sijs = makePartialService(
 
 export const ALL_SERVICES: ServiceData[] = [
   politicalAsylum,
-  affirmativeAsylum,
-  defensiveAsylum,
   credibleFearInterview,
   i589Application,
   interviewPreparation,

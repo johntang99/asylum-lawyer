@@ -154,6 +154,38 @@ CREATE INDEX IF NOT EXISTS idx_content_entries_path ON content_entries(path);
 CREATE INDEX IF NOT EXISTS idx_site_seo_pages_site ON site_seo_pages(site_id, locale);
 CREATE INDEX IF NOT EXISTS idx_media_site ON media(site_id);
 
+-- ================================================================
+-- Data API explicit grants (Supabase requirement)
+-- IMPORTANT: When adding a new public table, add explicit GRANT statements.
+-- ================================================================
+GRANT USAGE ON SCHEMA public TO service_role;
+
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.consultation_requests TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.contact_submissions TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.content_entries TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.sites TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.site_domains TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.site_seo_pages TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.admin_users TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.media TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.admin_audit_logs TO service_role;
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLE public.content_revisions TO service_role;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA public TO service_role;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT SELECT, INSERT, UPDATE, DELETE ON TABLES TO service_role;
+
+ALTER DEFAULT PRIVILEGES IN SCHEMA public
+GRANT USAGE, SELECT ON SEQUENCES TO service_role;
+
+-- Security baseline
+ALTER TABLE IF EXISTS public.consultation_requests ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.contact_submissions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.content_entries ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.content_revisions ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.admin_users ENABLE ROW LEVEL SECURITY;
+ALTER TABLE IF EXISTS public.admin_audit_logs ENABLE ROW LEVEL SECURITY;
+
 -- Seed default site
 INSERT INTO sites (id, name, enabled, supported_locales, default_locale)
 VALUES ('asylum-attorney-la', '宇霞移民服务中心', true, ARRAY['zh', 'en'], 'zh')

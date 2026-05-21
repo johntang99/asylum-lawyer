@@ -39,7 +39,6 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
       title: "服务项目",
       links: [
         { label: "庇护申请", href: "/services/asylum" },
-        { label: "防御性庇护", href: "/services/defensive-asylum" },
         { label: "上诉服务", href: "/services/appeals" },
         { label: "工作许可", href: "/services/work-permit" },
       ],

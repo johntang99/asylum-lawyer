@@ -18,14 +18,6 @@
           "label": "政治庇护申请"
         },
         {
-          "href": "/services/affirmative-asylum",
-          "label": "主动庇护"
-        },
-        {
-          "href": "/services/defensive-asylum",
-          "label": "防御性庇护"
-        },
-        {
           "href": "/services/credible-fear-interview",
           "label": "恐惧面谈"
         },

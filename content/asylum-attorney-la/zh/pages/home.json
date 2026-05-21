@@ -57,18 +57,6 @@
           "description": "为因种族、宗教、国籍、政治观点或特定社会群体成员身份而遭受迫害的人士提供全面的庇护申请服务。"
         },
         {
-          "href": "/services/affirmative-asylum",
-          "icon": "file-text",
-          "title": "主动庇护",
-          "description": "在抵达美国一年内主动向移民局（USCIS）提交庇护申请，争取合法居留身份。"
-        },
-        {
-          "href": "/services/defensive-asylum",
-          "icon": "gavel",
-          "title": "防御性庇护",
-          "description": "在移民法庭面临递解程序时，通过庇护申请作为防御手段，阻止递解出境。"
-        },
-        {
           "href": "/services/credible-fear-interview",
           "icon": "message-circle",
           "title": "恐惧面谈",
@@ -155,7 +143,6 @@
       "credentials": [
         "",
         "美国司法部（DOJ）认证法律代表",
-        "美国移民律师协会 (AILA) 会员",
         "七年庇护移民法执业经验"
       ],
       "sectionLabel": ""
@@ -211,7 +198,7 @@
           "question": "庇护申请有时间限制吗？"
         },
         {
-          "answer": "庇护申请的处理时间因案件类型和所在地区而异。主动庇护申请通常需要数月到数年不等。防御性庇护可能需要更长时间，具体取决于移民法庭的排期。张宇霞女士会在咨询时根据您的具体情况给出更准确的时间预估。",
+          "answer": "庇护申请的处理时间因案件类型和所在地区而异，通常需要数月到数年不等，具体取决于移民局与移民法庭的排期。张宇霞女士会在咨询时根据您的具体情况给出更准确的时间预估。",
           "question": "庇护申请的整个过程需要多长时间？"
         },
         {
@@ -252,10 +239,6 @@
         {
           "icon": "badge",
           "label": "美国司法部（DOJ）认证法律代表"
-        },
-        {
-          "icon": "award",
-          "label": "美国移民律师协会会员"
         },
         {
           "icon": "phone",

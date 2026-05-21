@@ -100,6 +100,17 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
 
   const toggleLocale = locale === "zh" ? "en" : "zh";
   const localePathSwitch = pathname?.replace(`/${locale}`, `/${toggleLocale}`) || `/${toggleLocale}`;
+  const rawContact = (config.cta?.phone || "").trim();
+  const isEmailContact = rawContact.includes("@");
+  const normalizedPhone = rawContact.replace(/[^\d+]/g, "");
+  const hasValidPhone = normalizedPhone.length >= 7;
+  const hasValidEmail = isEmailContact && rawContact.length > 3;
+  const contactHref = hasValidEmail
+    ? `mailto:${rawContact}`
+    : hasValidPhone
+      ? `tel:${normalizedPhone}`
+      : "";
+  const contactLabel = hasValidEmail ? "✉" : "\uD83D\uDCDE";
 
   return (
     <>
@@ -335,9 +346,9 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
             }}
           >
             {/* Contact (phone or email) */}
-            {config.cta?.phone && (
+            {contactHref && (
               <a
-                href={config.cta.phone.includes("@") ? `mailto:${config.cta.phone}` : `tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
+                href={contactHref}
                 style={{
                   color: "rgba(255, 255, 255, 0.85)",
                   fontSize: 14,
@@ -353,7 +364,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                   (e.currentTarget as HTMLElement).style.color = "rgba(255, 255, 255, 0.85)";
                 }}
               >
-                {config.cta.phone.includes("@") ? "✉" : "\uD83D\uDCDE"} {config.cta.phone}
+                {contactLabel} {rawContact}
               </a>
             )}
 
@@ -588,9 +599,9 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
               flexShrink: 0,
             }}
           >
-            {config.cta.phone && (
+            {contactHref && (
               <a
-                href={config.cta.phone.includes("@") ? `mailto:${config.cta.phone}` : `tel:${config.cta.phone.replace(/[^\d+]/g, "")}`}
+                href={contactHref}
                 style={{
                   display: "block",
                   color: "rgba(255, 255, 255, 0.85)",
@@ -600,7 +611,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                   textAlign: "center",
                 }}
               >
-                {config.cta.phone.includes("@") ? "✉" : "\uD83D\uDCDE"} {config.cta.phone}
+                {contactLabel} {rawContact}
               </a>
             )}
             <Link
