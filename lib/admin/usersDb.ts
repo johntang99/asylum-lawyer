@@ -13,6 +13,13 @@ export interface AdminUserRow {
   last_login_at: string;
 }
 
+function isUuid(value?: string): value is string {
+  if (!value) return false;
+  return /^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i.test(
+    value
+  );
+}
+
 function mapAdminUser(row: AdminUserRow): User {
   return {
     id: row.id,
@@ -112,16 +119,20 @@ export async function createAdminUserDb(params: {
   const supabase = getSupabaseServerClient();
   if (!supabase) return null;
 
+  const insertPayload: Record<string, unknown> = {
+    email: params.email,
+    name: params.name,
+    role: params.role,
+    sites: params.sites,
+    password_hash: params.passwordHash,
+  };
+  if (isUuid(params.id)) {
+    insertPayload.id = params.id;
+  }
+
   const { data, error } = await supabase
     .from('admin_users')
-    .insert({
-      id: params.id || `user-${Date.now()}`,
-      email: params.email,
-      name: params.name,
-      role: params.role,
-      sites: params.sites,
-      password_hash: params.passwordHash,
-    })
+    .insert(insertPayload)
     .select('*')
     .maybeSingle();
   if (error) {
@@ -169,19 +180,23 @@ export async function upsertAdminUserDb(params: {
 
   const createdAt = params.createdAt || new Date().toISOString();
   const lastLoginAt = params.lastLoginAt || createdAt;
+  const insertPayload: Record<string, unknown> = {
+    email: params.email,
+    name: params.name,
+    role: params.role,
+    sites: params.sites,
+    avatar: params.avatar ?? null,
+    password_hash: params.passwordHash,
+    created_at: createdAt,
+    last_login_at: lastLoginAt,
+  };
+  if (isUuid(params.id)) {
+    insertPayload.id = params.id;
+  }
+
   const { data, error } = await supabase
     .from('admin_users')
-    .insert({
-      id: params.id || `user-${Date.now()}`,
-      email: params.email,
-      name: params.name,
-      role: params.role,
-      sites: params.sites,
-      avatar: params.avatar ?? null,
-      password_hash: params.passwordHash,
-      created_at: createdAt,
-      last_login_at: lastLoginAt,
-    })
+    .insert(insertPayload)
     .select('*')
     .maybeSingle();
   if (error) {

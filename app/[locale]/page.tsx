@@ -399,7 +399,7 @@ export default async function HomePage({
 
       {/* ── Section 8: Testimonials ── */}
       {testimonials && Array.isArray(testimonials.items) && testimonials.items.length > 0 && (
-        <section className="py-[80px]" style={{ backgroundColor: '#0F1A32' }}>
+        <section className="py-[80px] overflow-hidden" style={{ backgroundColor: '#0F1A32' }}>
           <div className="max-w-[1200px] mx-auto px-6">
             <SectionHeader
               light
@@ -407,6 +407,8 @@ export default async function HomePage({
               title={testimonials.headline ?? '听听他们怎么说'}
               subtitle={testimonials.subheadline}
             />
+          </div>
+          <div className="mt-8">
             <TestimonialsCarousel items={testimonials.items} />
           </div>
         </section>

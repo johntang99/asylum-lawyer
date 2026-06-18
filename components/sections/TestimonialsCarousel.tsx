@@ -22,6 +22,7 @@ export default function TestimonialsCarousel({ items }: TestimonialsCarouselProp
   const trackRef = useRef<HTMLDivElement | null>(null);
   const [canScrollPrev, setCanScrollPrev] = useState(false);
   const [canScrollNext, setCanScrollNext] = useState(false);
+  const [autoPaused, setAutoPaused] = useState(false);
 
   if (safeItems.length === 0) return null;
 
@@ -47,6 +48,48 @@ export default function TestimonialsCarousel({ items }: TestimonialsCarouselProp
     };
   }, [safeItems.length, updateScrollState]);
 
+  useEffect(() => {
+    const track = trackRef.current;
+    if (!track || safeItems.length < 2) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    let rafId = 0;
+    let lastTs = 0;
+    let carryPx = 0;
+    const speedPxPerSecond = 96;
+
+    const tick = (ts: number) => {
+      const el = trackRef.current;
+      if (!el) return;
+
+      if (lastTs === 0) lastTs = ts;
+      const dt = Math.min(64, ts - lastTs);
+      lastTs = ts;
+
+      if (!autoPaused) {
+        const maxScrollLeft = Math.max(0, el.scrollWidth - el.clientWidth);
+        if (maxScrollLeft > 4) {
+          // Use integer pixel steps to avoid sub-pixel no-op on some browsers.
+          const stepRaw = (speedPxPerSecond * dt) / 1000 + carryPx;
+          const step = Math.max(1, Math.floor(stepRaw));
+          carryPx = Math.max(0, stepRaw - step);
+          const next = el.scrollLeft + step;
+          if (next >= maxScrollLeft - 1) {
+            el.scrollLeft = 0;
+            carryPx = 0;
+          } else {
+            el.scrollLeft = next;
+          }
+        }
+      }
+
+      rafId = window.requestAnimationFrame(tick);
+    };
+
+    rafId = window.requestAnimationFrame(tick);
+    return () => window.cancelAnimationFrame(rafId);
+  }, [safeItems.length, autoPaused]);
+
   const scrollByPage = (direction: 1 | -1) => {
     const track = trackRef.current;
     if (!track) return;
@@ -55,15 +98,18 @@ export default function TestimonialsCarousel({ items }: TestimonialsCarouselProp
   };
 
   return (
-    <div className="relative">
+    <div className="relative w-full">
       <div
         ref={trackRef}
-        className="flex gap-4 md:gap-6 overflow-x-auto pb-4 snap-x snap-mandatory scroll-smooth"
+        className="flex gap-4 md:gap-6 overflow-x-auto pb-4 px-6 md:px-8 lg:px-10"
+        aria-label="客户评价横向滚动列表"
+        onPointerEnter={() => setAutoPaused(true)}
+        onPointerLeave={() => setAutoPaused(false)}
       >
         {safeItems.map((testimonial, i) => (
           <div
             key={`${testimonial.name || "review"}-${i}`}
-            className="snap-start flex-shrink-0 w-[86%] sm:w-[72%] md:w-[48%] lg:w-[32%]"
+            className="flex-shrink-0 w-[86%] sm:w-[68%] md:w-[46%] lg:w-[34%] xl:w-[28%]"
           >
             <article
               className="rounded-xl p-6 md:p-7 h-full"
@@ -95,7 +141,7 @@ export default function TestimonialsCarousel({ items }: TestimonialsCarouselProp
         <button
           type="button"
           onClick={() => scrollByPage(-1)}
-          className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 w-10 h-10 rounded-full border text-white items-center justify-center"
+          className="hidden md:flex absolute left-3 lg:left-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border text-white items-center justify-center"
           style={{
             backgroundColor: "rgba(15,26,50,0.78)",
             borderColor: "rgba(255,255,255,0.22)",
@@ -110,7 +156,7 @@ export default function TestimonialsCarousel({ items }: TestimonialsCarouselProp
         <button
           type="button"
           onClick={() => scrollByPage(1)}
-          className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 w-10 h-10 rounded-full border text-white items-center justify-center"
+          className="hidden md:flex absolute right-3 lg:right-4 top-1/2 -translate-y-1/2 w-10 h-10 rounded-full border text-white items-center justify-center"
           style={{
             backgroundColor: "rgba(15,26,50,0.78)",
             borderColor: "rgba(255,255,255,0.22)",

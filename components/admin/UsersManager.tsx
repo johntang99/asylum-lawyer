@@ -3,6 +3,7 @@
 import { useEffect, useMemo, useState } from 'react';
 import type { SiteConfig, User } from '@/lib/types';
 import { Button } from '@/components/ui';
+import { Eye, EyeOff } from 'lucide-react';
 
 interface UsersManagerProps {
   sites: SiteConfig[];
@@ -21,6 +22,7 @@ export function UsersManager({ sites }: UsersManagerProps) {
   const [importing, setImporting] = useState(false);
   const [currentUserId, setCurrentUserId] = useState<string | null>(null);
   const [currentUserRole, setCurrentUserRole] = useState<User['role'] | null>(null);
+  const [showNewUserPassword, setShowNewUserPassword] = useState(false);
 
   const [newUser, setNewUser] = useState<UserDraft>({
     name: '',
@@ -227,13 +229,27 @@ export function UsersManager({ sites }: UsersManagerProps) {
             value={newUser.email}
             onChange={(event) => setNewUser({ ...newUser, email: event.target.value })}
           />
-          <input
-            className="rounded-md border border-gray-200 px-3 py-2 text-sm"
-            placeholder="Temporary password"
-            type="password"
-            value={newUser.password}
-            onChange={(event) => setNewUser({ ...newUser, password: event.target.value })}
-          />
+          <div className="relative">
+            <input
+              className="w-full rounded-md border border-gray-200 px-3 py-2 pr-10 text-sm"
+              placeholder="Temporary password"
+              type={showNewUserPassword ? 'text' : 'password'}
+              value={newUser.password}
+              onChange={(event) => setNewUser({ ...newUser, password: event.target.value })}
+            />
+            <button
+              type="button"
+              onClick={() => setShowNewUserPassword((current) => !current)}
+              className="absolute right-3 top-1/2 -translate-y-1/2 text-gray-500"
+              aria-label={showNewUserPassword ? 'Hide password' : 'Show password'}
+            >
+              {showNewUserPassword ? (
+                <EyeOff className="w-4 h-4" />
+              ) : (
+                <Eye className="w-4 h-4" />
+              )}
+            </button>
+          </div>
           <select
             className="rounded-md border border-gray-200 px-3 py-2 text-sm"
             value={newUser.role}
