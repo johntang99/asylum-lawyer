@@ -1,0 +1,110 @@
+{
+  "seo": {
+    "title": "Privacy Policy | Legal Dispute Help",
+    "description": "How Legal Dispute Help collects, uses and protects your personal information."
+  },
+  "hero": {
+    "headline": "Privacy Policy",
+    "updated": "Last updated: August 2026"
+  },
+  "breadcrumbLabel": "Privacy Policy",
+  "sections": [
+    {
+      "heading": "1. Information we collect",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Legal Dispute Help (\"we\" or \"the firm\") respects the privacy of every visitor and client. When you visit this website, submit an enquiry form, contact us by phone or WeChat, or use our services, we may collect the following:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Identifying information: name, phone number, email address, WeChat ID, mailing address",
+            "Matter information: the background you provide about your dispute, amounts involved, dates and parties",
+            "Technical information: IP address, browser type, device information, visit times and pages viewed",
+            "Communications: email, messages and call records between you and the firm"
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "2. How we use it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The information we collect is used only for the following purposes:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Assessing and responding to your enquiry",
+            "Providing services you engage us for and keeping you informed",
+            "Complying with applicable law and professional obligations",
+            "Improving the content and usability of this website"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "We do not sell, rent or provide your personal information to third parties for marketing purposes."
+        }
+      ]
+    },
+    {
+      "heading": "3. How we protect it",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "We apply reasonable technical and organisational measures, including:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Limiting who can access client information",
+            "Access controls on electronic records",
+            "Secure storage of physical files",
+            "Disposing of records appropriately once no longer required"
+          ]
+        },
+        {
+          "type": "p",
+          "text": "Please note that no internet transmission can be guaranteed secure. Avoid sending highly sensitive information over unencrypted channels."
+        }
+      ]
+    },
+    {
+      "heading": "4. Cookies and analytics",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This website may use cookies and similar technologies to remember your preferences and understand overall usage. You can refuse cookies through your browser settings, though some functionality may be affected."
+        }
+      ]
+    },
+    {
+      "heading": "5. Third-party links",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "This website may link to third-party sites. We are not responsible for their content or privacy practices, and we recommend reviewing their policies."
+        }
+      ]
+    },
+    {
+      "heading": "6. Contact",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "If you have questions about this policy, or wish to access or correct your information, please contact us:"
+        },
+        {
+          "type": "ul",
+          "items": [
+            "Phone: 845-299-9888",
+            "Address: 90 North Street, Suite 206, Middletown, NY 10940",
+            "Email: TODO_EMAIL"
+          ]
+        }
+      ]
+    }
+  ]
+}

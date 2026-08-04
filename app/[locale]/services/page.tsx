@@ -4,10 +4,11 @@ import { loadPageContent } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import {
-  ALL_SERVICES,
-  PRIMARY_SERVICES,
-  ADDITIONAL_SERVICES,
-} from '@/lib/services-data';
+  categoryHref,
+  getServiceCategories,
+  getServices,
+  serviceHref,
+} from '@/lib/services';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
@@ -64,7 +65,17 @@ export default async function ServicesPage({
   params: { locale: string };
 }) {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const content = await loadPageContent<any>('services', locale as Locale);
+  const [content, categories, services] = await Promise.all([
+    loadPageContent<any>('services', locale as Locale),
+    getServiceCategories(locale as Locale),
+    getServices(locale as Locale),
+  ]);
+
+  // Sites that define category hubs get a two-tier layout; sites without them
+  // keep the original primary/additional split.
+  const useCategories = categories.length > 0;
+  const primaryServices = services.filter((svc) => svc.category === 'primary');
+  const additionalServices = services.filter((svc) => svc.category === 'additional');
 
   return (
     <main>
@@ -107,7 +118,70 @@ export default async function ServicesPage({
         </div>
       </section>
 
+      {/* ── Category Hubs (sites with a categorised service taxonomy) ── */}
+      {useCategories && (
+        <section className="bg-white py-[80px]">
+          <div className="max-w-[1200px] mx-auto px-6">
+            <SectionHeader
+              label={content?.sections?.primaryLabel ?? '服务领域'}
+              title={content?.sections?.primaryTitle ?? '我们处理的纠纷类型'}
+              subtitle={
+                content?.sections?.primarySubtitle ??
+                '选择您遇到的问题类别，查看我们能提供的具体帮助'
+              }
+            />
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+              {categories.map((category) => (
+                <Link
+                  key={category.slug}
+                  href={categoryHref(locale, category)}
+                  className="group block bg-white border border-gray-200 rounded-lg px-6 py-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+                >
+                  <div
+                    className="w-14 h-14 rounded-lg mb-5 flex items-center justify-center text-2xl"
+                    style={{
+                      background: 'linear-gradient(135deg, var(--primary), var(--primary-dark))',
+                      color: 'var(--secondary)',
+                    }}
+                  >
+                    {category.icon}
+                  </div>
+                  <h3 className="text-[1.25rem] font-semibold text-gray-900 mb-2">
+                    {category.title}
+                  </h3>
+                  <p className="text-sm text-gray-500 mb-4 leading-relaxed line-clamp-3">
+                    {category.description}
+                  </p>
+                  {category.items.length > 0 && (
+                    <ul className="text-sm text-gray-600 space-y-1 mb-4">
+                      {category.items.slice(0, 4).map((item, i) => (
+                        <li key={i} className="flex gap-2">
+                          <span style={{ color: 'var(--secondary)' }}>·</span>
+                          <span className="line-clamp-1">{item.title}</span>
+                        </li>
+                      ))}
+                      {category.items.length > 4 && (
+                        <li className="text-gray-400">
+                          等 {category.items.length} 项
+                        </li>
+                      )}
+                    </ul>
+                  )}
+                  <span
+                    className="text-sm font-semibold"
+                    style={{ color: 'var(--secondary)' }}
+                  >
+                    了解详情 →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </div>
+        </section>
+      )}
+
       {/* ── Primary Services (核心服务) ── */}
+      {!useCategories && (
       <section className="bg-white py-[80px]">
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
@@ -116,10 +190,10 @@ export default async function ServicesPage({
             subtitle="涵盖庇护申请的每一个关键环节"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {PRIMARY_SERVICES.map((svc) => (
+            {primaryServices.map((svc) => (
               <Link
                 key={svc.slug}
-                href={`/${locale}/services/${svc.slug}`}
+                href={serviceHref(locale, svc)}
                 className="group block bg-white border border-gray-200 rounded-lg text-center px-6 py-8 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
               >
                 <div
@@ -148,8 +222,10 @@ export default async function ServicesPage({
           </div>
         </div>
       </section>
+      )}
 
       {/* ── Divider: 其他相关服务 ── */}
+      {!useCategories && (
       <section className="py-[80px]" style={{ backgroundColor: '#F9FAFB' }}>
         <div className="max-w-[1200px] mx-auto px-6">
           <SectionHeader
@@ -158,10 +234,10 @@ export default async function ServicesPage({
             subtitle="除核心庇护服务外，我们还提供以下相关法律服务"
           />
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {ADDITIONAL_SERVICES.map((svc) => (
+            {additionalServices.map((svc) => (
               <Link
                 key={svc.slug}
-                href={`/${locale}/services/${svc.slug}`}
+                href={serviceHref(locale, svc)}
                 className="group block bg-gray-50 border border-gray-100 rounded-lg text-center px-6 py-8 transition-all duration-200 hover:shadow-md hover:-translate-y-0.5 hover:bg-white"
               >
                 <div
@@ -190,6 +266,7 @@ export default async function ServicesPage({
           </div>
         </div>
       </section>
+      )}
 
       {/* ── How We Help: 4-step process ── */}
       <section className="bg-white py-[80px]">

@@ -1,0 +1,146 @@
+{
+  "seo": {
+    "title": "FAQ | New York Chinese Legal Consultation | Legal Dispute Help",
+    "description": "Common questions on business and shareholder disputes, debt recovery, family law, estate matters, real estate and employment in New York."
+  },
+  "hero": {
+    "headline": "Frequently asked questions",
+    "subheadline": "The questions the community asks most often, answered plainly"
+  },
+  "categories": [
+    {
+      "id": "about-us",
+      "label": "About our service",
+      "questions": [
+        {
+          "question": "Are you a law firm?",
+          "answer": "No. Legal Dispute Help is a legal-matter consultation and referral service. We do not give legal advice or represent clients. Our founder, John Tao, practised law in China more than twenty years ago and is not licensed to practise in the United States."
+        },
+        {
+          "question": "So what can you actually do for me?",
+          "answer": "Understand your situation in Chinese, organise your documents and timeline, explain how these matters usually proceed and what is typically required, and connect you with a suitable law firm when needed."
+        },
+        {
+          "question": "Is the content on this website legal advice?",
+          "answer": "No. It is general information to help you understand common processes and concepts. It is not specific to any case and cannot substitute for advice from a licensed attorney on your situation."
+        },
+        {
+          "question": "Do I pay legal fees on top after a referral?",
+          "answer": "Yes. Law firm fees are agreed directly between you and that firm. We explain the likely fee structure before referring you."
+        },
+        {
+          "question": "What is your relationship with the partner firms?",
+          "answer": "We maintain working relationships with several US law firms and recommend one suited to your situation. The engagement is formed directly between you and that firm, and all legal advice and representation come from its licensed attorneys."
+        },
+        {
+          "question": "Is the first conversation free?",
+          "answer": "Yes. We learn about your situation, explain the usual process, and tell you whether an attorney needs to be involved."
+        }
+      ]
+    },
+    {
+      "id": "business",
+      "label": "Business & shareholder disputes",
+      "questions": [
+        {
+          "question": "I only have WeChat messages, no contract. Can I still recover?",
+          "answer": "In most cases yes. New York recognises oral contracts, and message history, transfer records and delivery notes can together establish what was agreed. What matters is a complete chain: what was agreed, what you performed, what remains unpaid."
+        },
+        {
+          "question": "I contributed capital but I'm not named in the company documents.",
+          "answer": "The first step is establishing whether you are, in law, a shareholder or a creditor — the remedies differ entirely. Transfer records, evidence of participation in management and how you were held out externally can all help reconstruct the original arrangement, though it is harder than for a registered holder."
+        },
+        {
+          "question": "My partner won't agree to dissolve. Can I force it?",
+          "answer": "Where the company is genuinely deadlocked and statutory conditions are met, dissolution can be sought. But it is the worst financial outcome — liquidation value is far below going-concern value. In practice the application mainly serves to bring the other side back to the table."
+        },
+        {
+          "question": "They say they have no money. Is it still worth pursuing?",
+          "answer": "Verify first. An asset check can identify bank accounts, property, vehicles and operating businesses. If there is genuinely nothing collectible we'll suggest waiting — judgments generally remain valid for a long period and can be enforced later."
+        },
+        {
+          "question": "How long before a debt can no longer be recovered?",
+          "answer": "Limitation periods vary by claim type; for debts under a written contract in New York it is generally six years. But when the period started and whether it was interrupted both affect the analysis, so earlier advice gives you more options."
+        }
+      ]
+    },
+    {
+      "id": "family",
+      "label": "Family",
+      "questions": [
+        {
+          "question": "My spouse won't agree to divorce. Can I still get one?",
+          "answer": "Yes. New York permits divorce on a no-fault basis, and refusal cannot permanently prevent it — it mainly affects how long the process takes and how complex it becomes."
+        },
+        {
+          "question": "Is property always split 50/50?",
+          "answer": "No. New York applies equitable distribution, weighing the length of the marriage, each party's contributions and their financial circumstances. The result may or may not be equal. Premarital property is generally excluded, though commingling complicates the analysis."
+        },
+        {
+          "question": "Does property in China get divided?",
+          "answer": "Property acquired during the marriage is not excluded merely because it sits overseas. The practical difficulty is valuation and enforcement, so overseas assets are commonly weighed in the overall division and balanced against other assets."
+        },
+        {
+          "question": "I earn less than my spouse. Will I lose custody?",
+          "answer": "Not on income alone. Courts look to the child's best interests, where the primary caregiving role and the stability of daily life generally weigh more heavily than earnings. Income differences are addressed mainly through support."
+        },
+        {
+          "question": "My spouse wants to take our child to China. Can I prevent it?",
+          "answer": "You can seek to. Removing a child without authorisation can carry serious consequences. If you have a genuine concern, restrictions on travel — such as passport retention or written consent requirements — can be sought. Act early rather than after departure."
+        }
+      ]
+    },
+    {
+      "id": "estate",
+      "label": "Estate & inheritance",
+      "questions": [
+        {
+          "question": "Why can't the house be transferred after a parent dies?",
+          "answer": "Property in the deceased's name doesn't pass automatically. A court process is generally required — probate with a will, administration without one — before anyone has authority to deal with it."
+        },
+        {
+          "question": "Is probate always required?",
+          "answer": "Not always. Life insurance and retirement accounts with named beneficiaries, jointly held property, and assets held in a living trust generally transfer without it. Smaller estates may qualify for a simplified process."
+        },
+        {
+          "question": "Is a will I wrote myself valid?",
+          "answer": "New York has specific execution and witnessing requirements, and a document that doesn't meet them is likely to fail at probate. The problem is usually the signing procedure rather than the content."
+        },
+        {
+          "question": "How do I inherit my parents' property in China from the US?",
+          "answer": "It generally follows the rules where the property sits, and requires identity and relationship documents in the form that jurisdiction accepts. Documents issued in the US need corresponding notarisation and authentication. Most of the elapsed time is document turnaround, so start early."
+        },
+        {
+          "question": "If the deceased had debts, do the heirs pay them?",
+          "answer": "Debts are generally paid from the estate, and heirs are not usually personally liable unless they were co-borrowers or guarantors. Order matters though: lawful debts should be settled before distribution."
+        }
+      ]
+    },
+    {
+      "id": "property-work",
+      "label": "Property & employment",
+      "questions": [
+        {
+          "question": "My tenant isn't paying. Can I just change the locks?",
+          "answer": "No. New York prohibits landlords from self-help eviction — changing locks, cutting utilities or removing possessions — and doing so can expose you to liability and undermine an otherwise strong position. The statutory process must be used."
+        },
+        {
+          "question": "I received eviction papers. Do I have to move out immediately?",
+          "answer": "No. The papers mean the process has started; you have a defined period to respond and an opportunity to appear. The worst course is not appearing, which usually leads to a default judgment."
+        },
+        {
+          "question": "We bought jointly and the co-owner won't sell.",
+          "answer": "A co-owner generally has the right to seek partition, and where physical division isn't feasible the court can order a sale. So refusal usually delays the timeline rather than changing the outcome."
+        },
+        {
+          "question": "My employer paid cash with no pay stubs. Can I still claim?",
+          "answer": "It's worth pursuing. Employers are generally required to keep hours and pay records, and where they can't produce them an employee's reasonable estimate may be accepted. Scheduling messages, commuting records and colleagues' accounts help reconstruct the picture."
+        },
+        {
+          "question": "I'm paid a day rate. Am I still owed overtime?",
+          "answer": "Quite possibly. Paying a day or monthly rate doesn't automatically remove the overtime obligation; what matters is actual hours worked and the nature of the role. Long hours in food service, retail and personal care frequently leave a shortfall."
+        }
+      ]
+    }
+  ]
+}

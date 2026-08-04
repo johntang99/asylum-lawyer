@@ -1,67 +1,30 @@
-import { Metadata } from 'next';
 import Link from 'next/link';
-import { loadPageContent } from '@/lib/content';
-import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import FaqAccordion from '@/components/shared/FaqAccordion';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
 
-export async function generateMetadata({
-  params,
+/**
+ * Renders a keyword-targeted local landing page from content JSON.
+ * Used by the slug-driven /[locale]/[landing] route so any site can publish
+ * as many local SEO landings as it needs without new code.
+ */
+export default function LandingPage({
+  locale,
+  content,
 }: {
-  params: { locale: string };
-}): Promise<Metadata> {
-  const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const content = await loadPageContent<any>('asylum-lawyer-los-angeles', locale as Locale);
-  const seo = content?.seo;
-  return {
-    title: seo?.title ?? '洛杉矶中文庇护律师 | 宇霞移民服务中心',
-    description: seo?.description ?? '',
-  };
-}
-
-export default async function AsylumLawyerLosAngelesPage({
-  params,
-}: {
-  params: { locale: string };
+  locale: string;
+  content: any;
 }) {
-  const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const content = await loadPageContent<any>('asylum-lawyer-los-angeles', locale as Locale);
+  const hero = content?.hero ?? {};
+  const trustBar = Array.isArray(content?.trustBar) ? content.trustBar : [];
+  const services = Array.isArray(content?.services) ? content.services : [];
+  const whyUs = Array.isArray(content?.whyUs) ? content.whyUs : [];
+  const testimonials = Array.isArray(content?.testimonials) ? content.testimonials : [];
+  const faqs = Array.isArray(content?.faqs) ? content.faqs : [];
+  const location = content?.location ?? {};
 
-  const hero = content?.hero ?? {
-    headline: '洛杉矶中文庇护移民律师',
-    subheadline: '宇霞移民服务中心专注为洛杉矶华人社区提供政治庇护法律服务。',
-    cta: {
-      primary: { label: '预约免费咨询', href: '/consultation' },
-      secondary: { label: '发送邮件至 yuxiaris@gmail.com', href: 'mailto:yuxiaris@gmail.com' },
-    },
-  };
-
-  const trustBar = content?.trustBar ?? [
-    { icon: '🏆', label: '7+ 年经验' },
-    { icon: '⚖', label: 'CA 执照律师' },
-    { icon: '⭐', label: '4.9 评分' },
-    { icon: '📋', label: '500+ 案件' },
-  ];
-
-  const services = content?.services ?? [];
-  const whyUs = content?.whyUs ?? [];
-  const testimonials = content?.testimonials ?? [];
-  const faqs = content?.faqs ?? [];
-  const location = content?.location ?? {
-    address: '1045 E. Valley Blvd., #A115, Rm 6',
-    city: 'San Gabriel, CA 91776',
-    phone: 'yuxiaris@gmail.com',
-    email: 'yuxiaris@gmail.com',
-    hours: [
-      { day: '周一至周五', time: '9:00 AM – 6:00 PM' },
-      { day: '周六', time: '10:00 AM – 2:00 PM（仅预约）' },
-      { day: '周日', time: '休息' },
-    ],
-  };
-
-  const WHY_US_ICONS = ['🎯', '🗣', '📊', '💰'];
+  const WHY_US_ICONS = ['\u{1F3AF}', '\u{1F5E3}', '\u{1F4CA}', '\u{1F4B0}'];
 
   return (
     <main>

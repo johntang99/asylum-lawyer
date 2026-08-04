@@ -1,0 +1,55 @@
+{
+  "seo": {
+    "title": "Practice Areas | New York Chinese Legal Consultation | Legal Dispute Help",
+    "description": "Eight practice areas: business and financial disputes, family law, estate planning and probate, real estate, employment, business formation, personal injury, and other matters."
+  },
+  "hero": {
+    "headline": "Our practice areas",
+    "subheadline": "Eight areas covering more than fifty common matter types — see how each usually proceeds and what is typically needed"
+  },
+  "sections": {
+    "primaryLabel": "Practice areas",
+    "primaryTitle": "The disputes we handle",
+    "primarySubtitle": "Choose the category that matches your situation to see how we can help",
+    "processTitle": "How we work alongside you",
+    "processSubtitle": "From first assessment to implementing the result"
+  },
+  "process": [
+    {
+      "step": 1,
+      "title": "Free initial conversation",
+      "description": "We listen in Chinese and understand amounts, dates and parties.",
+      "icon": "📞"
+    },
+    {
+      "step": 2,
+      "title": "Organise and explain",
+      "description": "We build the timeline and explain how these matters usually proceed.",
+      "icon": "📋"
+    },
+    {
+      "step": 3,
+      "title": "Identify whether you need an attorney",
+      "description": "We explain which category your situation generally falls into.",
+      "icon": "⚖"
+    },
+    {
+      "step": 4,
+      "title": "Refer to a partner firm",
+      "description": "We recommend a suitable firm and support communication throughout.",
+      "icon": "🤝"
+    }
+  ],
+  "cta": {
+    "headline": "Not sure which area applies?",
+    "subheadline": "Every dispute differs. Tell us what happened and we'll make the situation clear. The first conversation is free.",
+    "primary": {
+      "href": "/consultation",
+      "label": "Book a free consultation"
+    },
+    "secondary": {
+      "href": "tel:8452999888",
+      "label": "Call 845-299-9888"
+    }
+  }
+}

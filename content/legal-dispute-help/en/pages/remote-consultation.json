@@ -1,0 +1,95 @@
+{
+  "seo": {
+    "title": "Remote Legal Consultation | New York Chinese-Language Service | Legal Dispute Help",
+    "description": "Remote Chinese-language legal consultation. The initial assessment can be completed by WeChat video, Zoom or phone without travelling to the office."
+  },
+  "hero": {
+    "headline": "Remote Chinese-language conversation",
+    "subheadline": "The initial assessment can usually be completed by phone or video — no need to make the trip.",
+    "ctaLabel": "Book a remote consultation"
+  },
+  "process": {
+    "title": "How it works",
+    "subtitle": "Four steps to a complete initial assessment",
+    "steps": [
+      {
+        "num": "01",
+        "icon": "📅",
+        "title": "Book",
+        "desc": "Submit the form or call to arrange a time"
+      },
+      {
+        "num": "02",
+        "icon": "💻",
+        "title": "Video or phone",
+        "desc": "Talk it through over WeChat video, Zoom or phone"
+      },
+      {
+        "num": "03",
+        "icon": "📋",
+        "title": "Organise and explain",
+        "desc": "We build the timeline and explain how these matters usually proceed"
+      },
+      {
+        "num": "04",
+        "icon": "🤝",
+        "title": "Refer if needed",
+        "desc": "Where representation is needed, we recommend a partner law firm"
+      }
+    ]
+  },
+  "coverage": {
+    "title": "Where we serve",
+    "subtitle": "NYC Chinese communities and the wider New York area",
+    "emoji": "🗽",
+    "body": "Our office is in Middletown, New York, and we primarily serve New York City's Chinese communities. For clients who cannot travel, the initial assessment and most subsequent communication can be handled remotely. Where documents need signing or a meeting is required, we arrange it separately.",
+    "regions": [
+      "Flushing",
+      "Manhattan Chinatown",
+      "Sunset Park",
+      "Elmhurst",
+      "Bensonhurst",
+      "Jackson Heights",
+      "Queens",
+      "Brooklyn",
+      "Long Island",
+      "Upstate New York"
+    ]
+  },
+  "platforms": {
+    "title": "How we can talk",
+    "subtitle": "Whichever suits you",
+    "items": [
+      {
+        "icon": "💬",
+        "title": "WeChat video",
+        "desc": "Use the app you already have — no extra software, and you can send documents and screenshots as you go."
+      },
+      {
+        "icon": "🖥",
+        "title": "Zoom",
+        "desc": "Best when we need to look at a contract together; screen sharing lets us go through it clause by clause."
+      },
+      {
+        "icon": "📞",
+        "title": "Phone",
+        "desc": "If video isn't convenient, just call 845-299-9888 and describe the situation."
+      }
+    ]
+  },
+  "promise": {
+    "title": "Remote doesn't change what we can do",
+    "body": "The first conversation does a fixed set of things: understand what happened, organise the timeline and documents, explain the usual process, and identify whether an attorney is needed. All of that works just as well by phone or video. Meeting an attorney or signing documents is arranged separately by the partner firm.",
+    "badges": [
+      "Chinese throughout",
+      "Secure document transfer",
+      "Flexible scheduling",
+      "Referral when needed"
+    ]
+  },
+  "cta": {
+    "title": "Book a remote consultation",
+    "subtitle": "Tell us what happened and we'll help you see the options. The initial assessment is free.",
+    "label": "Book a free consultation"
+  }
+}

@@ -1,0 +1,67 @@
+{
+  "name": "Legal Dispute Help",
+  "nameEN": "Legal Dispute Help",
+  "tagline": "Chinese-Language Legal Matter Consultation and Law Firm Referral in New York",
+  "description": "Legal Dispute Help helps New York's Chinese community understand their situation in Chinese — organising documents and timelines, explaining how these matters usually proceed — and connects them with partner US law firms when representation is needed. We are not a law firm and do not give legal advice.",
+  "contactName": "John Tao",
+  "attorneyName": "John Tao",
+  "barNumber": "TODO_BAR_NUMBER",
+  "phone": "845-299-9888",
+  "email": "TODO_EMAIL",
+  "wechatId": "TODO_WECHAT_ID",
+  "address": {
+    "street": "90 North Street, Suite 206",
+    "city": "Middletown",
+    "state": "NY",
+    "zip": "10940",
+    "country": "US"
+  },
+  "hours": {
+    "weekday": "Mon–Fri: TODO_HOURS",
+    "saturday": "Sat: TODO_HOURS",
+    "sunday": "Sun: Closed"
+  },
+  "languages": [
+    "Mandarin",
+    "Cantonese",
+    "English"
+  ],
+  "serviceAreas": [
+    "New York City",
+    "Flushing",
+    "Manhattan Chinatown",
+    "Sunset Park",
+    "Elmhurst",
+    "Bensonhurst",
+    "Jackson Heights",
+    "Queens",
+    "Brooklyn",
+    "Upstate New York"
+  ],
+  "headerVariant": "sticky",
+  "trustBar": [
+    {
+      "icon": "🗣",
+      "label": "Full Chinese-language service"
+    },
+    {
+      "icon": "💬",
+      "label": "Free initial conversation"
+    },
+    {
+      "icon": "🤝",
+      "label": "Partner law firms handle cases"
+    },
+    {
+      "icon": "💻",
+      "label": "Remote conversation available"
+    }
+  ],
+  "legal": {
+    "privacyUrl": "/privacy",
+    "termsUrl": "/terms",
+    "disclaimerUrl": "/disclaimer",
+    "disclaimer": "Legal Dispute Help is a legal-matter consultation and referral service. It is not a law firm, does not provide legal advice, and does not represent clients. Its founder, John Tao, practised law in China and is not licensed to practise law in the United States. Where formal legal advice or representation is needed, we connect you with a partner US law firm, and a licensed attorney there provides those services."
+  },
+  "notALawFirm": "Legal Dispute Help is a legal-matter consultation and referral service. It is not a law firm, does not provide legal advice, and does not represent clients. Its founder, John Tao, practised law in China and is not licensed to practise law in the United States. Where formal legal advice or representation is needed, we connect you with a partner US law firm, and a licensed attorney there provides those services."
+}

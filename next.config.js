@@ -21,6 +21,10 @@ const nextConfig = {
     unoptimized: process.env.NODE_ENV === 'development',
   },
   output: 'standalone',
+  // Each per-client server (one port per site) needs its own build directory.
+  // Two `next dev` processes sharing one .next overwrite each other's compiled
+  // output, which surfaces as "__webpack_modules__[moduleId] is not a function".
+  distDir: process.env.NEXT_DIST_DIR || '.next',
 };
 
 module.exports = nextConfig;

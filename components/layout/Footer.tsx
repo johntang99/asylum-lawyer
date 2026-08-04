@@ -3,6 +3,8 @@ import Link from "next/link";
 interface FooterProps {
   locale: string;
   footerConfig?: {
+    /** Short brand blurb shown under the site name. */
+    tagline?: string;
     columns?: Array<{
       title: string;
       links: Array<{ label: string; href: string }>;
@@ -62,25 +64,17 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
       ],
     },
   ],
+  // Deliberately empty: these are per-site values. Falling back to any real
+  // firm's contact details would display one client's NAP on another's site.
   nap: {
-    name: "宇霞移民服务中心",
-
-    email: "yuxiaris@gmail.com",
-    wechatId: "yuxiaris",
-    address: {
-      street: "1045 E. Valley Blvd., #A115, Rm 6",
-      city: "Los Angeles",
-      state: "CA",
-      zip: "91776",
-    },
-    hours: {
-      weekday: "周一至周五: 9:00 AM - 6:00 PM",
-      saturday: "周六: 10:00 AM - 2:00 PM",
-      sunday: "周日: 休息",
-    },
+    name: "",
+    email: "",
+    wechatId: "",
+    address: { street: "", city: "", state: "", zip: "" },
+    hours: { weekday: "", saturday: "", sunday: "" },
   },
   compliance: {
-    barNumber: "CA Bar",
+    barNumber: "",
     links: [
       { label: "隐私政策", href: "/privacy" },
       { label: "服务条款", href: "/terms" },
@@ -90,7 +84,7 @@ const defaultConfig: NonNullable<FooterProps["footerConfig"]> = {
     disclaimer:
       "本站内容仅供一般信息参考，不构成法律意见。浏览本网站不构成律师-客户关系。",
   },
-  copyright: `© ${new Date().getFullYear()} 宇霞移民服务中心 版权所有`,
+  copyright: undefined,
 };
 
 export default function Footer({ locale, footerConfig }: FooterProps) {
@@ -137,9 +131,11 @@ export default function Footer({ locale, footerConfig }: FooterProps) {
                 {nap.name}
               </span>
             </div>
-            <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
-              专注庇护与移民法律服务，为华人社区提供专业、可靠的法律援助。我们致力于保护每一位客户的合法权益。
-            </p>
+            {config.tagline && (
+              <p className="text-sm leading-relaxed" style={{ color: "rgba(255,255,255,0.6)" }}>
+                {config.tagline}
+              </p>
+            )}
           </div>
 
           {/* Link columns */}

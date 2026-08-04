@@ -149,5 +149,7 @@
       "mistake": "未聘请专业律师",
       "correction": "移民法律复杂，专业律师的协助可以显著提高成功率。"
     }
-  ]
+  ],
+  "order": 1,
+  "category": "primary"
 }

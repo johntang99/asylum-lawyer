@@ -5,8 +5,15 @@
   "private": true,
   "scripts": {
     "dev": "next dev -p 3006",
+    "dev:asylum": "SITE_ID=asylum-attorney-la NEXT_DIST_DIR=.next-asylum next dev -p 3006",
+    "dev:legaldispute": "SITE_ID=legal-dispute-help NEXT_DIST_DIR=.next-legaldispute next dev -p 3007",
+    "dev:all": "npm run dev:asylum & npm run dev:legaldispute & wait",
     "build": "next build",
-    "start": "next start",
+    "build:asylum": "SITE_ID=asylum-attorney-la NEXT_DIST_DIR=.next-asylum next build",
+    "build:legaldispute": "SITE_ID=legal-dispute-help NEXT_DIST_DIR=.next-legaldispute next build",
+    "start": "next start -p 3006",
+    "start:asylum": "SITE_ID=asylum-attorney-la NEXT_DIST_DIR=.next-asylum next start -p 3006",
+    "start:legaldispute": "SITE_ID=legal-dispute-help NEXT_DIST_DIR=.next-legaldispute next start -p 3007",
     "lint": "next lint",
     "type-check": "tsc --noEmit",
     "seed": "node scripts/seed-content.mjs"

@@ -1,0 +1,36 @@
+{
+  "slug": "real-estate",
+  "title": "Real Estate",
+  "titleEN": "Real Estate",
+  "icon": "🏢",
+  "order": 3,
+  "description": "Closings, landlord-tenant matters, partition actions, and title or boundary disputes. Property is usually a family's largest asset, so the losses are correspondingly large.",
+  "intro": "Real estate disputes are unusually time-sensitive: whether a deposit is recoverable, where an eviction proceeding stands, whether a co-owner has already disposed of an interest — each has a firm deadline. We first confirm which stage you're at and how much time remains, then discuss approach. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Real Estate Dispute Consultation | Closings, Landlord-Tenant, Partition | Legal Dispute Help",
+    "description": "Chinese-language New York real estate consultation: closing disputes and deposit claims, landlord and tenant matters (arrears, eviction, repairs), partition actions for co-owned property, and title, boundary and neighbour disputes.",
+    "h1": "Real Estate"
+  },
+  "items": [
+    {
+      "title": "Closing disputes and deposits",
+      "description": "Deals that fall through and contested down payments",
+      "slug": "real-estate-closing"
+    },
+    {
+      "title": "Landlord and tenant disputes",
+      "description": "Arrears, eviction procedure, repair obligations and deposits",
+      "slug": "landlord-tenant"
+    },
+    {
+      "title": "Partition actions",
+      "description": "Co-owners who cannot agree on selling",
+      "slug": "partition-action"
+    },
+    {
+      "title": "Title, boundary and neighbour disputes",
+      "description": "Encroachment, easements, trees and fences"
+    }
+  ],
+  "groups": []
+}

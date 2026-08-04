@@ -1,0 +1,149 @@
+{
+  "slug": "business-disputes",
+  "title": "Business & Financial Disputes",
+  "titleEN": "Business & Financial Disputes",
+  "icon": "💼",
+  "order": 0,
+  "description": "Partnerships that break down, invoices that never get paid, shareholders who can't agree — the disputes that do the most damage to a small business. We help you assess the evidence and the odds before deciding whether to negotiate or sue.",
+  "intro": "The deciding factor in a business dispute is usually not who is right, but who has evidence that holds up and who hasn't missed a deadline. Many Chinese-owned businesses run on trust and verbal agreements, so when things go wrong the contract is incomplete, transfers have no memo line, and the record lives scattered across WeChat. We start by turning what you have into a usable evidence chain, then assess whether recovery is realistic and at what cost. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Business Dispute Consultation | Contracts, Shareholders, Debt | Legal Dispute Help",
+    "description": "Chinese-language consultation on New York business disputes: breach of contract and unpaid invoices, shareholder and partnership disputes, minority shareholder oppression, deadlock, debt recovery and judgment enforcement, commercial leases. Free initial assessment.",
+    "h1": "Business & Financial Disputes"
+  },
+  "items": [],
+  "groups": [
+    {
+      "title": "Between companies",
+      "items": [
+        {
+          "title": "Breach of contract and unpaid invoices",
+          "description": "Goods delivered or work completed, payment withheld",
+          "slug": "breach-of-contract"
+        },
+        {
+          "title": "Supplier and procurement disputes",
+          "description": "Non-conforming goods, late delivery, quality disagreements"
+        },
+        {
+          "title": "Distribution and agency agreements",
+          "description": "Exclusivity, territory, and commission disputes"
+        },
+        {
+          "title": "Commercial fraud and misappropriation",
+          "description": "Misrepresentation, falsified books, diverted company funds"
+        }
+      ]
+    },
+    {
+      "title": "Between shareholders and partners",
+      "items": [
+        {
+          "title": "Ownership percentage and capital contribution",
+          "description": "Verbal equity promises never documented",
+          "slug": "shareholder-dispute"
+        },
+        {
+          "title": "Distributions and inspection rights",
+          "description": "No distributions for years, access to books refused",
+          "slug": "shareholder-oppression"
+        },
+        {
+          "title": "Minority shareholder oppression",
+          "description": "Removed from management, diluted, cut off from returns",
+          "slug": "shareholder-oppression"
+        },
+        {
+          "title": "Buyouts and valuation",
+          "description": "You want out but can't agree on a price",
+          "slug": "business-divorce"
+        },
+        {
+          "title": "Deadlock and judicial dissolution",
+          "description": "Two 50/50 owners, neither will move",
+          "slug": "business-divorce"
+        },
+        {
+          "title": "Restaurant, market and salon partnership splits",
+          "description": "The most common business break-up in the community",
+          "slug": "business-divorce"
+        }
+      ]
+    },
+    {
+      "title": "Between individuals",
+      "items": [
+        {
+          "title": "Private loans that aren't repaid",
+          "description": "Promissory notes, wire transfers, loans to friends and family",
+          "slug": "private-loan"
+        },
+        {
+          "title": "Guarantees and enforceability of IOUs",
+          "description": "Being pursued after guaranteeing someone else's loan"
+        },
+        {
+          "title": "Jointly funded property purchases",
+          "description": "Your money, someone else's name on the deed"
+        }
+      ]
+    },
+    {
+      "title": "Between companies and individuals",
+      "items": [
+        {
+          "title": "Unpaid wages, hours, tips and overtime",
+          "description": "Recovery where pay was cash and no records exist",
+          "slug": "unpaid-wages"
+        },
+        {
+          "title": "Consumer and service disputes",
+          "description": "Renovation, event, and agency service disputes"
+        },
+        {
+          "title": "Independent contractor compensation",
+          "description": "Fee and expense disputes under 1099 arrangements"
+        }
+      ]
+    },
+    {
+      "title": "Debt and enforcement",
+      "items": [
+        {
+          "title": "Debt collection",
+          "description": "A staged approach from demand letter to litigation",
+          "slug": "debt-collection"
+        },
+        {
+          "title": "Post-judgment enforcement",
+          "description": "You won but can't collect: restraints, levies, liens",
+          "slug": "judgment-enforcement"
+        },
+        {
+          "title": "Bankruptcy and restructuring",
+          "description": "Protecting your claim when the other side files"
+        }
+      ]
+    },
+    {
+      "title": "Other frequent business disputes",
+      "items": [
+        {
+          "title": "Commercial lease disputes",
+          "description": "Sublandlords, security deposits, assignment, Good Guy guarantees",
+          "slug": "commercial-lease"
+        },
+        {
+          "title": "Construction payment disputes",
+          "description": "Unpaid work and mechanic's liens",
+          "slug": "mechanics-lien"
+        },
+        {
+          "title": "Business sale and transfer disputes",
+          "description": "Books that didn't match, equipment problems, landlord refusal",
+          "slug": "business-sale"
+        }
+      ]
+    }
+  ]
+}

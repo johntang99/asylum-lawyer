@@ -1,0 +1,21 @@
+{
+  "seo": {
+    "title": "Book a Free Consultation | Legal Dispute Help",
+    "description": "Book a free initial assessment with Legal Dispute Help. Describe your situation and we'll assess the evidence, deadlines and available paths, with rough costs for each."
+  },
+  "hero": {
+    "headline": "Book a free initial conversation",
+    "subheadline": "Fill in the form below. Try to include what happened, the amounts involved and the key dates — the more specific the information, the more useful our initial view."
+  },
+  "trust": {
+    "title": "What the first conversation covers",
+    "items": [
+      "Hearing your full account, in Chinese",
+      "Building a timeline and listing the documents you hold",
+      "Explaining how matters like this usually proceed and what is typically needed",
+      "Identifying whether a licensed attorney needs to be involved",
+      "Where needed, recommending a suitable partner law firm"
+    ]
+  },
+  "privacyNote": "The information you provide is used only to understand your enquiry. Legal Dispute Help is not a law firm; submitting this form does not create an engagement or an attorney-client relationship."
+}

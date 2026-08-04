@@ -21,18 +21,8 @@ function normalizeArticleMarkdown(markdown: string): string {
   return demotedHeadings.replace(/\n{3,}/g, '\n\n');
 }
 
-export async function generateStaticParams() {
-  const siteId = await getRequestSiteId();
-  const [zhArticles, enArticles] = await Promise.all([
-    loadPublicArticles('zh', siteId),
-    loadPublicArticles('en', siteId),
-  ]);
-  const slugs = Array.from(
-    new Set([...zhArticles, ...enArticles].map((article) => article.slug))
-  );
-  return slugs.map((slug) => ({ slug }));
-}
-
+// No generateStaticParams: slugs are per-site, so prerendering would bake the
+// default site's list and serve it on every other tenant's domain.
 export async function generateMetadata({
   params,
 }: {

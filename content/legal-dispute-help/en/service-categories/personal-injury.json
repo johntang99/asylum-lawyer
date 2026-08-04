@@ -1,0 +1,31 @@
+{
+  "slug": "personal-injury",
+  "title": "Personal Injury & Insurance",
+  "titleEN": "Personal Injury & Insurance",
+  "icon": "🚗",
+  "order": 6,
+  "description": "Car accidents, slip and fall, and what to do when an insurer denies a claim or lowballs the payout.",
+  "intro": "The outcome of an injury claim is largely set by what happens in the first few weeks: whether you sought treatment promptly, whether the scene was documented, and whether you signed a release before knowing the extent of the injury. We confirm those things first, then discuss the claim. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Personal Injury & Insurance Claim Consultation | Legal Dispute Help",
+    "description": "Chinese-language New York personal injury consultation: car accidents, slip and fall, denied insurance claims and disputed settlement amounts. Free initial assessment.",
+    "h1": "Personal Injury & Insurance"
+  },
+  "items": [
+    {
+      "title": "Car accidents",
+      "description": "Liability, medical costs and lost income",
+      "slug": "car-accident"
+    },
+    {
+      "title": "Slip and fall",
+      "description": "Liability in stores, apartment buildings and public spaces"
+    },
+    {
+      "title": "Denied or underpaid insurance claims",
+      "description": "Reviewing and appealing the stated grounds",
+      "slug": "insurance-claim"
+    }
+  ],
+  "groups": []
+}

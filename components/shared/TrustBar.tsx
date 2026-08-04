@@ -7,15 +7,11 @@ interface TrustBarProps {
   items?: TrustBarItem[];
 }
 
-const defaultItems: TrustBarItem[] = [
-  { icon: "⚖", label: "美国司法部（DOJ）认证法律代表" },
-  { icon: "🏆", label: "7+ 年执业经验" },
-  { icon: "📋", label: "500+ 庇护案件" },
-  { icon: "🗣", label: "中英文全程服务" },
-];
-
 export default function TrustBar({ items }: TrustBarProps) {
-  const trustItems = items ?? defaultItems;
+  // No default items: trust claims are per-site and must never be inherited
+  // from another firm. Render nothing when the site has not configured any.
+  const trustItems = items ?? [];
+  if (trustItems.length === 0) return null;
 
   return (
     <section style={{ backgroundColor: "#1B2A4A" }} className="py-6">

@@ -1,0 +1,223 @@
+{
+  "seo": {
+    "title": "New York Chinese-Language Legal Consultation & Referral | Legal Dispute Help",
+    "description": "Legal Dispute Help serves New York's Chinese community: we make sense of your situation in Chinese and connect you with partner US law firms when representation is needed. Not a law firm; no legal advice. Free initial conversation."
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "variant": "split-photo-right",
+      "headline": "When a dispute starts, first find out what your options actually are",
+      "subheadline": "Legal Dispute Help makes sense of your situation in Chinese: what happened, what documents you have, and how matters like this usually proceed. When formal advice or representation is needed, we connect you with a partner US law firm. We are not a law firm and do not give legal advice.",
+      "cta": {
+        "primary": {
+          "href": "/consultation",
+          "label": "Book a free consultation"
+        },
+        "secondary": {
+          "href": "tel:8452999888",
+          "label": "Call 845-299-9888"
+        }
+      },
+      "stats": [
+        {
+          "value": "8",
+          "label": "Practice areas"
+        },
+        {
+          "value": "50+",
+          "label": "Matter types"
+        },
+        {
+          "value": "中文",
+          "label": "Full Chinese service"
+        },
+        {
+          "value": "Free",
+          "label": "Initial assessment"
+        }
+      ]
+    },
+    {
+      "type": "trustBar",
+      "items": [
+        {
+          "icon": "globe",
+          "label": "Full Chinese-language service"
+        },
+        {
+          "icon": "phone",
+          "label": "Free initial conversation"
+        },
+        {
+          "icon": "badge",
+          "label": "Partner law firms handle cases"
+        },
+        {
+          "icon": "calendar",
+          "label": "Remote conversation available"
+        }
+      ]
+    },
+    {
+      "type": "serviceOverview",
+      "headline": "The kinds of disputes we help you make sense of",
+      "subheadline": "Choose the category that matches your situation to see how these matters usually proceed",
+      "services": [
+        {
+          "href": "/services/business-disputes",
+          "icon": "briefcase",
+          "title": "Business & Financial Disputes",
+          "description": "Breach of contract and unpaid invoices, shareholder and partnership disputes, minority oppression, business break-ups, debt recovery and judgment enforcement, commercial leases."
+        },
+        {
+          "href": "/services/family-law",
+          "icon": "home",
+          "title": "Family Law",
+          "description": "Uncontested and contested divorce, marital property division (real estate, businesses, retirement accounts, overseas assets), custody, support, prenuptial agreements."
+        },
+        {
+          "href": "/services/estate-planning",
+          "icon": "clipboard",
+          "title": "Estate Planning & Probate",
+          "description": "Will drafting, living trusts, probate and administration, intestate succession, inheritance disputes, cross-border US–China inheritance."
+        },
+        {
+          "href": "/services/real-estate",
+          "icon": "building",
+          "title": "Real Estate",
+          "description": "Closing disputes and deposits, landlord and tenant matters, partition actions for co-owned property, title and boundary disputes."
+        },
+        {
+          "href": "/services/employment",
+          "icon": "users",
+          "title": "Employment",
+          "description": "Unpaid wages and payroll compliance, hours and overtime, workplace injury, discrimination and wrongful termination. Employers and employees."
+        },
+        {
+          "href": "/services/business-formation",
+          "icon": "shield",
+          "title": "Business Formation & Compliance",
+          "description": "LLC and corporation formation, shareholder agreements, commercial contracts, trademarks, licences and violations."
+        },
+        {
+          "href": "/services/personal-injury",
+          "icon": "heart",
+          "title": "Personal Injury & Insurance",
+          "description": "Car accidents, slip and fall, denied insurance claims and disputed settlement amounts."
+        },
+        {
+          "href": "/services/other-matters",
+          "icon": "scale",
+          "title": "Other Matters",
+          "description": "Small claims guidance, traffic and misdemeanour matters, defamation and online libel, agency violation appeals."
+        }
+      ]
+    },
+    {
+      "type": "whyUs",
+      "headline": "What we do — and what we don't",
+      "subheadline": "Knowing the boundary tells you who you actually need",
+      "pillars": [
+        {
+          "title": "What we do: make the situation clear, in Chinese",
+          "description": "We listen to what happened, build the timeline, organise contracts and payment records, and explain how these matters usually proceed and what is typically needed. Most people are stuck not because there's no route, but because they don't know where to start."
+        },
+        {
+          "title": "What we don't do: advise or represent",
+          "description": "Legal Dispute Help is not a law firm. We do not give legal advice, assess the merits of your case, appear for you, or sign legal documents on your behalf. Those must be done by a licensed attorney."
+        },
+        {
+          "title": "When you need an attorney, we connect you",
+          "description": "Where your situation calls for formal advice or representation, we connect you with a partner US law firm. The attorney engagement is between you and that firm; we assist with Chinese-language communication and handing over documents."
+        },
+        {
+          "title": "We know how the community actually operates",
+          "description": "Verbal equity splits, payments by WeChat, staff paid in cash, property funded jointly by family. We know where that evidence usually sits and what an attorney will want to see."
+        }
+      ]
+    },
+    {
+      "type": "processTimeline",
+      "headline": "From first conversation to referral",
+      "subheadline": "You know what happens next at every stage",
+      "steps": [
+        {
+          "step": 1,
+          "title": "Free initial conversation",
+          "description": "We listen in Chinese and understand the amounts, dates and parties involved."
+        },
+        {
+          "step": 2,
+          "title": "Organise documents and timeline",
+          "description": "We turn contracts, transfers and message history into one coherent set of materials."
+        },
+        {
+          "step": 3,
+          "title": "Explain how these matters usually proceed",
+          "description": "General information about the typical process and what is normally required — not advice on your specific case."
+        },
+        {
+          "step": 4,
+          "title": "Identify whether you need an attorney",
+          "description": "Most disputes require a licensed attorney. We explain which category your situation generally falls into."
+        },
+        {
+          "step": 5,
+          "title": "Refer to a partner law firm",
+          "description": "We recommend a suitable partner firm; the attorney provides legal advice and takes on the engagement."
+        },
+        {
+          "step": 6,
+          "title": "Continue assisting with communication",
+          "description": "While the firm handles the matter, we help with Chinese-language communication and documents."
+        }
+      ]
+    },
+    {
+      "type": "faqPreview",
+      "headline": "Common questions",
+      "cta": {
+        "href": "/faq",
+        "label": "More questions"
+      },
+      "faqs": [
+        {
+          "question": "Are you a law firm?",
+          "answer": "No. Legal Dispute Help is a legal-matter consultation and referral service. We do not give legal advice or represent clients. Our founder, John Tao, practised law in China and is not licensed to practise in the United States. When representation is needed we connect you with a partner US law firm."
+        },
+        {
+          "question": "So what can you actually do for me?",
+          "answer": "Understand your situation in Chinese, organise your documents and timeline, explain how these matters usually proceed and what is typically needed, and connect you with a suitable law firm when required. In short: make it clear, then get you to the right person."
+        },
+        {
+          "question": "Is the first conversation free?",
+          "answer": "Yes. We learn about your situation, explain the usual process, and tell you whether an attorney needs to be involved."
+        },
+        {
+          "question": "Do I pay legal fees on top after a referral?",
+          "answer": "Yes. Law firm fees are agreed directly between you and that firm as part of your engagement with them. We explain the likely fee structure before referring you so there are no surprises."
+        },
+        {
+          "question": "I'm not in New York City. Can we talk remotely?",
+          "answer": "Yes. The initial conversation can usually be completed by phone or video. Any meeting or signing with an attorney is arranged separately by the firm."
+        }
+      ]
+    },
+    {
+      "type": "contactCta",
+      "headline": "Not sure who you actually need?",
+      "subheadline": "Start by telling us what happened. We'll make the situation clear and tell you whether an attorney is needed. The first conversation is free.",
+      "cta": {
+        "primary": {
+          "href": "/consultation",
+          "label": "Book a free consultation"
+        },
+        "secondary": {
+          "href": "tel:8452999888",
+          "label": "Call 845-299-9888"
+        }
+      }
+    }
+  ]
+}

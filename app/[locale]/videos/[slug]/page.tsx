@@ -21,12 +21,8 @@ interface VideoData {
   contentMarkdown?: string;
 }
 
-export async function generateStaticParams() {
-  const siteId = await getRequestSiteId();
-  const videos = await loadAllItems<VideoData>(siteId, 'zh', 'videos');
-  return videos.map((v) => ({ slug: v.slug }));
-}
-
+// No generateStaticParams: slugs are per-site, so prerendering would bake the
+// default site's list and serve it on every other tenant's domain.
 export async function generateMetadata({ params }: { params: { locale: string; slug: string } }) {
   const siteId = await getRequestSiteId();
   const video = await loadContent<VideoData>(siteId, params.locale as Locale, `videos/${params.slug}.json`);

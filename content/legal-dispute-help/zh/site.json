@@ -1,0 +1,71 @@
+{
+  "name": "公道法律咨询",
+  "nameEN": "Legal Dispute Help",
+  "tagline": "纽约华人中文法律事务咨询与律所转介",
+  "taglineEN": "TODO_ENGLISH_TAGLINE",
+  "description": "公道法律咨询为纽约华人提供中文法律事务咨询与转介服务：用中文听懂您的情况、帮您梳理材料与时间线、说明流程与常见误区，并在需要法律代理时为您对接合作的美国律师事务所。我们不是律师事务所，不提供法律意见，也不代理案件。",
+  "contactName": "John Tao",
+  "attorneyName": "John Tao",
+  "attorneyNameEN": "John Tao",
+  "barNumber": "TODO_BAR_NUMBER",
+  "phone": "845-299-9888",
+  "email": "TODO_EMAIL",
+  "wechatId": "TODO_WECHAT_ID",
+  "address": {
+    "street": "90 North Street, Suite 206",
+    "city": "Middletown",
+    "state": "NY",
+    "zip": "10940",
+    "country": "US"
+  },
+  "hours": {
+    "weekday": "周一至周五：TODO_营业时间",
+    "saturday": "周六：TODO_营业时间",
+    "sunday": "周日：休息"
+  },
+  "languages": [
+    "中文（普通话）",
+    "中文（粤语）",
+    "English"
+  ],
+  "serviceAreas": [
+    "纽约市",
+    "法拉盛",
+    "曼哈顿华埠",
+    "布鲁克林八大道",
+    "艾姆赫斯特",
+    "本森赫斯特",
+    "杰克逊高地",
+    "皇后区",
+    "布鲁克林",
+    "长岛",
+    "纽约州北部"
+  ],
+  "headerVariant": "sticky",
+  "legal": {
+    "privacyUrl": "/privacy",
+    "termsUrl": "/terms",
+    "disclaimerUrl": "/disclaimer",
+    "disclaimer": "公道法律咨询是法律事务咨询与转介服务机构，不是律师事务所，不提供法律意见，也不代理案件。创办人 John Tao 曾在中国从事法律工作，并非美国执业律师。需要正式法律意见或法律代理时，我们会为您对接合作的美国律师事务所，由持照律师提供相应服务。本网站内容仅供一般参考，不构成法律意见，浏览本网站不构成任何委托关系。",
+    "disclaimerEN": "The information on this website is provided for general informational purposes only. It does not constitute legal advice and does not create any form of engagement. Every dispute differs in its facts, evidence, and applicable deadlines, and past results do not guarantee similar outcomes. Please seek professional advice regarding your specific situation before taking any legal action. Browsing this website or contacting us through it does not create an engagement absent a signed written agreement."
+  },
+  "trustBar": [
+    {
+      "icon": "🗣",
+      "label": "全程中文沟通"
+    },
+    {
+      "icon": "💬",
+      "label": "免费初次沟通"
+    },
+    {
+      "icon": "🤝",
+      "label": "合作律所承办案件"
+    },
+    {
+      "icon": "💻",
+      "label": "可远程沟通"
+    }
+  ],
+  "notALawFirm": "公道法律咨询是法律事务咨询与转介服务机构，不是律师事务所，不提供法律意见，也不代理案件。创办人 John Tao 曾在中国从事法律工作，并非美国执业律师。需要正式法律意见或法律代理时，我们会为您对接合作的美国律师事务所，由持照律师提供相应服务。本网站内容仅供一般参考，不构成法律意见，浏览本网站不构成任何委托关系。"
+}

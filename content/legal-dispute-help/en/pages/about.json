@@ -1,0 +1,109 @@
+{
+  "seo": {
+    "title": "About | Legal Dispute Help",
+    "description": "Legal Dispute Help provides Chinese-language legal consultation for New York's Chinese community, from an office in Middletown, New York."
+  },
+  "sections": [
+    {
+      "type": "hero",
+      "headline": "About Legal Dispute Help",
+      "subheadline": "Our name comes from a plain idea: someone facing a dispute first needs to understand what is actually happening.",
+      "intro": "Chinese-language legal matter consultation and law firm referral for New York. We are not a law firm."
+    },
+    {
+      "type": "story",
+      "headline": "Who we are and what we do",
+      "paragraphs": [
+        "Legal Dispute Help provides Chinese-language legal matter consultation and law firm referral to people across the New York area, covering business and shareholder disputes, debt, family law, estate matters, real estate and employment.",
+        "One thing needs saying plainly: we are not a law firm. We do not give legal advice, we do not assess whether a case will succeed, and we do not appear for anyone or sign legal documents on their behalf. Our founder, John Tao, practised law in China more than twenty years ago, and is not licensed to practise law in the United States. Where your situation calls for formal legal advice or representation, we connect you with a partner US law firm, and the engagement is formed directly between you and that firm's licensed attorneys.",
+        "So what do we do? Much of what reaches us shares one feature: the person doesn't know where to start. The materials are scattered across WeChat, bank texts and a pile of paper. They aren't sure which kind of attorney handles this. They don't know what to prepare before that first meeting. That stretch is our work — understanding what happened in Chinese, organising the timeline and documents, explaining how these matters usually proceed, and then getting you in front of the right person.",
+        "Done well, the attorney's work afterwards is more efficient, and what you pay for it is usually lower."
+      ]
+    },
+    {
+      "type": "credentials",
+      "headline": "How we work",
+      "items": [
+        "Free initial conversation, in Chinese",
+        "Help organising your timeline and documents before you meet an attorney",
+        "General explanation of how these matters usually proceed (information, not advice)",
+        "Referral to a partner US law firm when representation is needed",
+        "Chinese-language support while the firm handles the matter"
+      ]
+    },
+    {
+      "type": "stats",
+      "headline": "At a glance",
+      "items": [
+        {
+          "value": "8",
+          "label": "Practice areas"
+        },
+        {
+          "value": "50+",
+          "label": "Matter types"
+        },
+        {
+          "value": "中文",
+          "label": "Full Chinese service"
+        },
+        {
+          "value": "Free",
+          "label": "Initial assessment"
+        }
+      ]
+    },
+    {
+      "type": "languages",
+      "headline": "Languages",
+      "narrative": "A dispute is stressful enough without a language barrier on top. Chinese is our default language of communication.",
+      "items": [
+        "Mandarin",
+        "Cantonese",
+        "English"
+      ]
+    },
+    {
+      "type": "office",
+      "headline": "Office",
+      "address": {
+        "street": "90 North Street, Suite 206",
+        "city": "Middletown",
+        "state": "NY",
+        "zip": "10940",
+        "formatted": "90 North Street, Suite 206, Middletown, NY 10940"
+      },
+      "hours": [
+        {
+          "days": "Mon–Fri",
+          "time": "TODO_HOURS"
+        },
+        {
+          "days": "Saturday",
+          "time": "TODO_HOURS"
+        },
+        {
+          "days": "Sunday",
+          "time": "Closed"
+        }
+      ]
+    },
+    {
+      "type": "cta",
+      "headline": "Tell us what happened",
+      "subheadline": "The first conversation is free. We'll make the situation clear and tell you whether an attorney is needed.",
+      "buttons": [
+        {
+          "href": "/consultation",
+          "label": "Book a free consultation",
+          "variant": "primary"
+        },
+        {
+          "href": "tel:8452999888",
+          "label": "Call 845-299-9888",
+          "variant": "secondary"
+        }
+      ]
+    }
+  ]
+}

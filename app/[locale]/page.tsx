@@ -1,7 +1,8 @@
+import { cache } from 'react';
 import { Metadata } from 'next';
 import Image from 'next/image';
 import Link from 'next/link';
-import { loadPageContent, loadAllItems } from '@/lib/content';
+import { loadPageContent, loadAllItems, getRequestSiteId, loadSiteInfo } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
 import FaqAccordion from '@/components/shared/FaqAccordion';
@@ -22,16 +23,13 @@ const ICON_MAP: Record<string, string> = {
 
 const WHY_US_ICONS = ['🗣', '🎯', '📊', '✅', '💬'];
 
-// Cache content for both metadata and page render
-let cachedContent: any = null;
-let cachedLocale: string = '';
-
-async function getHomeContent(locale: string) {
-  if (cachedContent && cachedLocale === locale) return cachedContent;
-  cachedContent = await loadPageContent<any>('home', locale as Locale);
-  cachedLocale = locale;
-  return cachedContent;
-}
+// Deduplicate the content read between generateMetadata and the render.
+// This MUST be React's per-request cache, not module-level state: a module
+// variable is shared by every request in the server process, so one site's
+// homepage would be served for every other site on the platform.
+const getHomeContent = cache(async (locale: string, siteId: string) => {
+  return loadPageContent<any>('home', locale as Locale, siteId);
+});
 
 export async function generateMetadata({
   params,
@@ -39,7 +37,8 @@ export async function generateMetadata({
   params: { locale: string };
 }): Promise<Metadata> {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const content = await getHomeContent(locale);
+  const siteId = await getRequestSiteId();
+  const content = await getHomeContent(locale, siteId);
   const seo = content?.seo;
   return {
     title: seo?.title ?? '洛杉矶中文庇护移民律师',
@@ -53,7 +52,8 @@ export default async function HomePage({
   params: { locale: string };
 }) {
   const locale = isValidLocale(params.locale) ? params.locale : defaultLocale;
-  const content = await getHomeContent(locale);
+  const siteId = await getRequestSiteId();
+  const content = await getHomeContent(locale, siteId);
   const sections = content?.sections ?? [];
 
   const hero = sections.find((s: any) => s.type === 'hero');
@@ -65,8 +65,12 @@ export default async function HomePage({
   const faqPreview = sections.find((s: any) => s.type === 'faqPreview');
   const contactCta = sections.find((s: any) => s.type === 'contactCta');
 
+  // Contact details for the closing CTA come from the site's own NAP.
+  const siteInfo = (await loadSiteInfo(siteId, locale as Locale)) as any;
+  const ctaEmail = contactCta?.email ?? siteInfo?.email ?? '';
+  const ctaWechat = contactCta?.wechat?.id ?? siteInfo?.wechatId ?? '';
+
   // Load dynamic content in parallel
-  const siteId = 'asylum-attorney-la';
   const [articles, videos] = await Promise.all([
     loadAllItems<any>(siteId, locale as Locale, 'blog').catch(() => []),
     loadAllItems<any>(siteId, locale as Locale, 'videos').catch(() => []),
@@ -458,13 +462,14 @@ export default async function HomePage({
                 {contactCta.cta?.primary?.label ?? '预约免费咨询'}
               </Link>
               <Link
-                href={contactCta.cta?.secondary?.href ?? 'mailto:yuxiaris@gmail.com'}
+                href={contactCta.cta?.secondary?.href ?? '#'}
                 className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
               >
                 {contactCta.cta?.secondary?.label ?? '发送邮件咨询'}
               </Link>
             </div>
             <div className="max-w-[600px] mx-auto grid grid-cols-1 md:grid-cols-2 gap-8">
+              {ctaEmail && (
               <div className="flex items-center gap-4">
                 <div
                   className="w-12 h-12 rounded-full flex items-center justify-center text-xl flex-shrink-0"
@@ -474,9 +479,11 @@ export default async function HomePage({
                 </div>
                 <div>
                   <div className="text-white font-medium">邮件咨询</div>
-                  <a href="mailto:yuxiaris@gmail.com" className="text-white/70 text-sm hover:text-white">yuxiaris@gmail.com</a>
+                  <a href={`mailto:${ctaEmail}`} className="text-white/70 text-sm hover:text-white">{ctaEmail}</a>
                 </div>
               </div>
+              )}
+              {ctaWechat && (
               <div className="flex items-center gap-4">
                 <div className="w-[120px] h-[120px] bg-white rounded-lg overflow-hidden flex-shrink-0">
                   <Image
@@ -490,11 +497,10 @@ export default async function HomePage({
                 </div>
                 <div>
                   <div className="text-white font-medium">微信咨询</div>
-                  <div className="text-white/70 text-sm">
-                    {contactCta.wechat?.id ?? 'yuxiaris'}
-                  </div>
+                  <div className="text-white/70 text-sm">{ctaWechat}</div>
                 </div>
               </div>
+              )}
             </div>
           </div>
         </section>

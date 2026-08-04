@@ -1,0 +1,70 @@
+{
+  "seo": {
+    "title": "Terms of Use | Legal Dispute Help",
+    "description": "Terms of use for the Legal Dispute Help website."
+  },
+  "hero": {
+    "headline": "Terms of Use",
+    "updated": "Last updated: August 2026"
+  },
+  "breadcrumbLabel": "Terms of Use",
+  "sections": [
+    {
+      "heading": "1. Acceptance",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "By accessing or using this website you confirm that you have read, understood and agree to be bound by these terms. If you do not agree, please do not use this website."
+        }
+      ]
+    },
+    {
+      "heading": "2. Nature of this website",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Legal Dispute Help is a legal-matter consultation and referral service. It is not a law firm, does not provide legal advice, and does not represent clients. Its founder, John Tao, practised law in China and is not licensed to practise law in the United States. Where formal legal advice or representation is needed, we connect you with a partner US law firm, and a licensed attorney there provides those services."
+        },
+        {
+          "type": "p",
+          "text": "The content here is general information, is not legal advice, and may be updated at any time. We do not warrant that every page reflects the current state of the law."
+        }
+      ]
+    },
+    {
+      "heading": "3. No engagement created",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Browsing this website, submitting a form, or contacting us does not create an engagement or an attorney-client relationship. An engagement with a law firm arises only once you and that firm sign a written agreement."
+        },
+        {
+          "type": "p",
+          "text": "Please do not send information you consider highly confidential before an engagement is in place."
+        }
+      ]
+    },
+    {
+      "heading": "4. Intellectual property",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The text, images, layout and other content on this website are owned by or licensed to the firm. They may not be copied, republished or used commercially without written permission."
+        }
+      ]
+    },
+    {
+      "heading": "5. Limitation of liability",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "To the fullest extent permitted by law, the firm accepts no liability for any direct or indirect loss arising from use of, or inability to use, this website."
+        },
+        {
+          "type": "p",
+          "text": "This website may be temporarily unavailable due to maintenance, technical faults or other causes, for which we accept no liability."
+        }
+      ]
+    }
+  ]
+}

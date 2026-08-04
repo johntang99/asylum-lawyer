@@ -19,15 +19,17 @@ import type {
 type HeaderConfig = any;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FooterConfig = any;
+import { getSiteDisplayName } from '@/lib/siteInfo';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import TrustBar from '@/components/shared/TrustBar';
 import LegalDisclaimer from '@/components/shared/LegalDisclaimer';
 import MobileStickyBar from '@/components/shared/MobileStickyBar';
 
-export async function generateStaticParams() {
-  return locales.map((locale) => ({ locale }));
-}
+// Every page under this segment resolves its content from the request host,
+// so nothing here may be prerendered at build time: a static render would bake
+// one tenant's content and serve it on every other tenant's domain.
+export const dynamic = 'force-dynamic';
 
 export async function generateMetadata({
   params,
@@ -238,10 +240,11 @@ export default async function LocaleLayout({
       <div className="min-h-screen flex flex-col">
         <Header
           locale={locale}
+          siteName={getSiteDisplayName({ businessName: (siteInfo as any)?.name }, '')}
           headerConfig={headerConfig ?? undefined}
         />
         <main className="flex-grow">{children}</main>
-        <TrustBar />
+        <TrustBar items={(siteInfo as any)?.trustBar} />
         <LegalDisclaimer disclaimer={siteInfo?.legal?.disclaimer} />
         <Footer
           locale={locale}

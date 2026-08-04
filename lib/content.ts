@@ -4,7 +4,7 @@
 
 import { Locale, SeoConfig } from './types';
 import { headers } from 'next/headers';
-import { getDefaultSite, getSiteByHost } from './sites';
+import { getDefaultSite, getSiteById, getSiteByHost, siteExists } from './sites';
 import fs from 'fs';
 import path from 'path';
 import { defaultLocale } from './i18n';
@@ -33,10 +33,65 @@ async function getLocalDefaultSiteId(): Promise<string | null> {
   }
 }
 
+/**
+ * Read request headers, distinguishing two very different failures:
+ *
+ *  - During static generation of a page, Next throws a DynamicServerError from
+ *    headers() to signal "this route is dynamic". That MUST propagate —
+ *    swallowing it lets one site's render be cached and served for every other
+ *    site on the platform.
+ *  - In generateStaticParams there is no request at all. That is expected, and
+ *    falling back to the default site is correct.
+ */
+function readRequestHeaders(): Headers | null {
+  try {
+    return headers();
+  } catch (error: unknown) {
+    const digest = (error as { digest?: unknown })?.digest;
+    if (typeof digest === 'string' && digest.startsWith('DYNAMIC_SERVER_USAGE')) {
+      throw error;
+    }
+    return null;
+  }
+}
+
+/**
+ * Pins an entire server process to one site.
+ *
+ * A Next server binds a single port, so "one port per client" means one process
+ * per client, each started with its own SITE_ID. This takes precedence over
+ * host and `?site=` resolution: a server started for a given client should only
+ * ever serve that client, whatever hostname it is reached on.
+ */
+function getPinnedSiteId(): string | null {
+  const pinned = (process.env.SITE_ID || '').trim().toLowerCase();
+  return pinned || null;
+}
+
 async function resolveSiteId(siteId?: string): Promise<string> {
   if (siteId) return siteId;
+
+  const pinnedSiteId = getPinnedSiteId();
+  if (pinnedSiteId) return pinnedSiteId;
+
+  const requestHeaders = readRequestHeaders();
+  if (!requestHeaders) {
+    const localSiteId = await getLocalDefaultSiteId();
+    if (localSiteId) return localSiteId;
+    const defaultSite = await getDefaultSite();
+    return defaultSite?.id || process.env.NEXT_PUBLIC_DEFAULT_SITE || 'default-site';
+  }
+
+  const previewSiteId = requestHeaders.get('x-site-id')?.trim().toLowerCase();
+  const host = requestHeaders.get('host');
+
   try {
-    const host = headers().get('host');
+    // `?site=<siteId>` preview (set as x-site-id by middleware) wins over host
+    // resolution so any registered site can be viewed without DNS.
+    if (previewSiteId && (await siteExists(previewSiteId))) {
+      return previewSiteId;
+    }
+
     const normalizedHost = (host || '').toLowerCase();
     if (!host) {
       const localSiteId = await getLocalDefaultSiteId();
@@ -69,14 +124,38 @@ export async function getRequestSiteId(): Promise<string> {
 }
 
 /**
+ * The locale a site falls back to when a translation is missing.
+ * Partially-translated sites show their primary language rather than a blank
+ * page, which is what the old hardcoded Chinese defaults used to provide.
+ */
+async function getSiteFallbackLocale(siteId: string): Promise<Locale> {
+  try {
+    const site = await getSiteById(siteId);
+    const siteDefault = site?.defaultLocale as Locale | undefined;
+    if (siteDefault) return siteDefault;
+  } catch {
+    // fall through
+  }
+  return defaultLocale;
+}
+
+/**
  * Generic function to load JSON content
  */
 export async function loadContent<T>(
   siteId: string,
   locale: Locale,
-  contentPath: string
+  contentPath: string,
+  allowLocaleFallback = true
 ): Promise<T | null> {
   const isDev = process.env.NODE_ENV !== 'production';
+
+  const withFallback = async (result: T | null): Promise<T | null> => {
+    if (result !== null || !allowLocaleFallback) return result;
+    const fallbackLocale = await getSiteFallbackLocale(siteId);
+    if (fallbackLocale === locale) return null;
+    return loadContent<T>(siteId, fallbackLocale, contentPath, false);
+  };
 
   // In dev mode, prefer file on disk so direct edits are reflected immediately.
   // Sync the file content to DB so both sources stay in lockstep.
@@ -119,15 +198,14 @@ export async function loadContent<T>(
 
     // Check if file exists
     if (!fs.existsSync(filePath)) {
-      console.warn(`Content file not found: ${filePath}`);
-      return null;
+      return withFallback(null);
     }
 
     const data = await fs.promises.readFile(filePath, 'utf-8');
     return JSON.parse(data) as T;
   } catch (error) {
     console.error(`Error loading content from ${contentPath}:`, error);
-    return null;
+    return withFallback(null);
   }
 }
 
@@ -233,10 +311,18 @@ export async function loadFooter<T>(siteId: string, locale: Locale): Promise<T |
 export async function loadAllItems<T>(
   siteId: string | undefined,
   locale: Locale,
-  directory: string
+  directory: string,
+  allowLocaleFallback = true
 ): Promise<T[]> {
   const isDev = process.env.NODE_ENV !== 'production';
   const resolvedSiteId = await resolveSiteId(siteId);
+
+  const withFallback = async (items: T[]): Promise<T[]> => {
+    if (items.length > 0 || !allowLocaleFallback) return items;
+    const fallbackLocale = await getSiteFallbackLocale(resolvedSiteId);
+    if (fallbackLocale === locale) return items;
+    return loadAllItems<T>(resolvedSiteId, fallbackLocale, directory, false);
+  };
 
   // In dev mode, prefer files on disk so direct edits are reflected immediately
   if (isDev) {
@@ -268,8 +354,11 @@ export async function loadAllItems<T>(
         );
         // In local dev, an empty directory should not mask DB content.
         // If no JSON files exist and DB is available, fall through to DB lookup.
-        if (items.length > 0 || !canUseContentDb()) {
+        if (items.length > 0) {
           return items;
+        }
+        if (!canUseContentDb()) {
+          return withFallback(items);
         }
       }
     } catch (error) {
@@ -283,14 +372,14 @@ export async function loadAllItems<T>(
       locale,
       `${directory}/`
     );
-    return entries.map((entry) => entry.data as T);
+    return withFallback(entries.map((entry) => entry.data as T));
   }
 
   try {
     const dirPath = path.join(CONTENT_DIR, resolvedSiteId, locale, directory);
 
     if (!fs.existsSync(dirPath)) {
-      return [];
+      return withFallback([]);
     }
 
     const files = await fs.promises.readdir(dirPath);
@@ -304,10 +393,10 @@ export async function loadAllItems<T>(
       })
     );
 
-    return items;
+    return withFallback(items);
   } catch (error) {
     console.error(`Error loading items from ${directory}:`, error);
-    return [];
+    return withFallback([]);
   }
 }
 

@@ -1,0 +1,39 @@
+{
+  "slug": "business-formation",
+  "title": "Business Formation & Compliance",
+  "titleEN": "Business Formation & Compliance",
+  "icon": "📋",
+  "order": 5,
+  "description": "Getting the structure and the agreements right at the start prevents most partnership disputes later. We also handle licensing, violations and trademarks.",
+  "intro": "In nearly every partnership dispute we see, the root cause traces back to the opening weeks: no operating agreement, no record of who contributed what, no exit mechanism. Time spent at formation is usually the best-value investment a new business makes. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Business Formation Consultation | LLC, Shareholder Agreements, Trademarks | Legal Dispute Help",
+    "description": "Chinese-language New York business consultation: LLC and corporation formation, partnership and shareholder agreements, commercial contract drafting and review, trademark registration, licensing, liquor licences, and health and fire violations.",
+    "h1": "Business Formation & Compliance"
+  },
+  "items": [
+    {
+      "title": "Entity formation (LLC / Corp)",
+      "description": "What the choice of entity and tax status actually changes",
+      "slug": "business-formation"
+    },
+    {
+      "title": "Partnership and shareholder agreements",
+      "description": "Contributions, distributions, decisions and exit terms agreed upfront",
+      "slug": "shareholder-agreement"
+    },
+    {
+      "title": "Commercial contract drafting and review",
+      "description": "Supply, service, agency and lease agreements"
+    },
+    {
+      "title": "Trademark registration",
+      "description": "Searching and registering brand names and marks"
+    },
+    {
+      "title": "Licences, permits and violations",
+      "description": "Application support and violation appeals"
+    }
+  ],
+  "groups": []
+}

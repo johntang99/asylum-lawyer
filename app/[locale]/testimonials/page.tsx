@@ -1,15 +1,9 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import { loadPageContent } from '@/lib/content';
+import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 
-export async function generateMetadata(): Promise<Metadata> {
-  return {
-    title: '客户评价 | 宇霞移民服务中心',
-    description:
-      '查看宇霞移民服务中心庇护移民案件客户的真实评价与反馈，了解我们如何帮助客户成功获得庇护身份。',
-  };
-}
-
-/* ── Testimonial Data ── */
+/* eslint-disable @typescript-eslint/no-explicit-any */
 
 interface Testimonial {
   stars: number;
@@ -19,174 +13,61 @@ interface Testimonial {
   year: string;
 }
 
-const testimonials: Testimonial[] = [
-  {
-    stars: 5,
-    quote:
-      '律师非常专业和耐心。从最初的咨询到最终获批，每一步都解释得非常清楚。我的庇护面谈准备得很充分，面谈后两周就收到了批准通知。非常感谢律师团队！',
-    name: '王先生',
-    caseType: '政治庇护',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '强烈推荐！律师帮我在移民法庭上成功获得了庇护。整个过程虽然漫长，但律师一直陪伴和支持我。',
-    name: '李女士',
-    caseType: '庇护法庭案件',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '我的案件比较复杂，之前咨询过其他律师都被拒绝代理。律师仔细分析了我的情况，制定了详细的策略，最终帮助我成功获得了庇护批准。从准备个人声明到面谈辅导，每一个环节都做得非常到位。',
-    name: '陈先生',
-    caseType: '庇护申请',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '面谈准备非常充分，律师和团队帮我做了三次模拟面谈。正式面谈时我感到很有信心。',
-    name: '赵女士',
-    caseType: '恐惧面谈',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote:
-      '宇霞移民服务中心在处理I-589申请方面经验丰富。他们帮我收集和整理了所有必要的证据材料，个人声明写得非常详尽有力。我的案件在面谈后很快就获得了批准。价格也很合理，还提供分期付款。',
-    name: '黄先生',
-    caseType: 'I-589',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '非常感谢律师帮我成功获得了庇护工卡。终于可以合法工作了，感觉生活有了新的希望。',
-    name: '刘女士',
-    caseType: '庇护工卡',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote:
-      '律师的中文沟通能力让我感到很安心。整个庇护申请过程中不存在语言障碍，每个法律概念都解释得通俗易懂。律师团队的响应速度也很快，微信上有问题通常当天就能得到回复。',
-    name: '周先生',
-    caseType: '政治庇护',
-    year: '2024',
-  },
-  {
-    stars: 4,
-    quote: '案件处理时间比预期长了一些，但最终结果非常满意。律师一直保持沟通，让我了解进展情况。',
-    name: '吴女士',
-    caseType: '庇护申请',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote:
-      '我是通过朋友推荐找到宇霞移民服务中心的。从第一次免费咨询就感受到了专业和真诚。律师详细分析了我的案情，指出了优势和需要加强的地方，并帮我制定了完整的申请策略。最终结果证明选择律师是正确的决定。',
-    name: '孙先生',
-    caseType: '政治庇护',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '绿卡申请顺利通过！从庇护获批到拿到绿卡，律师全程负责，非常省心。',
-    name: '杨女士',
-    caseType: '庇护绿卡',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '我的可信恐惧面谈在律师的帮助下顺利通过了。在被拘留期间，律师通过电话和视频为我做了充分的准备。她的专业知识和耐心帮助让我在面谈中能够清晰、完整地表达我的恐惧和经历。',
-    name: '马先生',
-    caseType: '恐惧面谈',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote: '律师团队效率很高，文件准备非常细致。面谈只用了一个小时就结束了，很快就收到了好消息。',
-    name: '林女士',
-    caseType: 'I-589',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '作为一名来自宗教少数群体的申请人，我的案件需要特别的法律论证。律师对相关法律和先例案件非常熟悉，准备了详尽的法律备忘录。她不仅是我的律师，更像是一位可以信赖的朋友。庇护获批的那一天，我激动得几乎说不出话来。',
-    name: '何先生',
-    caseType: '庇护申请',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote: '庇护案件成功！在法庭上律师的表现非常专业，法官对我们的证据材料印象深刻。',
-    name: '郑女士',
-    caseType: '庇护法庭案件',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '律师帮助我全家获得了庇护身份，包括我的妻子和两个孩子。整个过程中律师团队非常贴心，考虑到了每一个细节。现在我们一家人可以安心地在美国生活了。费用方面也提供了灵活的分期方案，减轻了我们的经济压力。',
-    name: '胡先生',
-    caseType: '政治庇护',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '工卡续签很顺利，律师提前提醒我准备材料，避免了工卡过期的问题。服务很周到。',
-    name: '谢女士',
-    caseType: '庇护工卡',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '我的庇护案件之前被另一位律师搞砸了，律师接手后重新整理了所有材料，补充了关键证据，最终在上诉中帮我翻转了拒绝决定。如果不是律师的专业和坚持，我可能已经被驱逐出境了。',
-    name: '徐先生',
-    caseType: '庇护法庭案件',
-    year: '2023',
-  },
-  {
-    stars: 5,
-    quote: '从咨询到获批只用了八个月。律师的效率和专业程度都超出了我的预期。真心推荐！',
-    name: '宋女士',
-    caseType: '庇护申请',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote:
-      '宇霞移民服务中心的团队配合非常默契。律师负责法律策略，助理帮忙整理文件和跟进进度，前台小姐姐也很热情友好。每次去律所都感到很安心。我的庇护绿卡已经顺利拿到，感谢整个团队的付出。',
-    name: '韩先生',
-    caseType: '庇护绿卡',
-    year: '2024',
-  },
-  {
-    stars: 5,
-    quote: '律师帮我成功通过了二次面谈。第一次面谈因为准备不足被要求补充材料，换了律师后一切顺利。',
-    name: '冯女士',
-    caseType: 'I-589',
-    year: '2023',
-  },
-];
+interface TestimonialsContent {
+  seo?: { title?: string; description?: string };
+  hero?: { headline?: string; subheadline?: string };
+  rating?: { score?: string; count?: string };
+  testimonials?: Testimonial[];
+}
+
+function normalizeTestimonials(content: TestimonialsContent | null): Testimonial[] {
+  const items = Array.isArray(content?.testimonials) ? content!.testimonials : [];
+  return items
+    .map((item) => ({
+      stars:
+        typeof item?.stars === 'number' && item.stars >= 1 && item.stars <= 5
+          ? item.stars
+          : 5,
+      quote: typeof item?.quote === 'string' ? item.quote : '',
+      name: typeof item?.name === 'string' ? item.name : '',
+      caseType: typeof item?.caseType === 'string' ? item.caseType : '',
+      year: typeof item?.year === 'string' ? item.year : '',
+    }))
+    .filter((item) => item.quote);
+}
+
+export async function generateMetadata({
+  params,
+}: {
+  params: { locale: string };
+}): Promise<Metadata> {
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const content = await loadPageContent<TestimonialsContent>('testimonials', locale);
+  return {
+    title: content?.seo?.title ?? '客户评价',
+    description: content?.seo?.description ?? '',
+  };
+}
 
 function StarRating({ count }: { count: number }) {
   return (
-    <span className="text-lg" style={{ color: '#C9963B' }}>
-      {Array.from({ length: count }, () => '\u2605').join('')}
-      {Array.from({ length: 5 - count }, () => '\u2606').join('')}
+    <span className="text-lg" style={{ color: 'var(--secondary)' }}>
+      {Array.from({ length: count }, () => '★').join('')}
+      {Array.from({ length: 5 - count }, () => '☆').join('')}
     </span>
   );
 }
 
-export default async function TestimonialsPage() {
-  /* Split testimonials into 3 columns for masonry effect */
-  const cols: Testimonial[][] = [[], [], []];
-  testimonials.forEach((t, i) => {
-    cols[i % 3].push(t);
-  });
+export default async function TestimonialsPage({
+  params,
+}: {
+  params: { locale: string };
+}) {
+  const locale = (isValidLocale(params.locale) ? params.locale : defaultLocale) as Locale;
+  const content = await loadPageContent<TestimonialsContent>('testimonials', locale);
+  const testimonials = normalizeTestimonials(content);
+  const ratingScore = content?.rating?.score ?? '4.9';
+  const ratingCount = content?.rating?.count ?? '';
 
   return (
     <>
@@ -196,7 +77,8 @@ export default async function TestimonialsPage() {
         style={{
           marginTop: '72px',
           minHeight: '280px',
-          background: 'linear-gradient(135deg, #1B2A4A 0%, #0F1A32 100%)',
+          background:
+            'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
         }}
       >
         <div className="max-w-[1200px] mx-auto px-6 py-16 w-full text-center">
@@ -204,10 +86,10 @@ export default async function TestimonialsPage() {
             className="text-[2.5rem] font-bold text-white mb-3 leading-tight"
             style={{ fontFamily: 'var(--font-heading)' }}
           >
-            客户评价
+            {content?.hero?.headline ?? '客户评价'}
           </h1>
           <p className="text-white/70 text-lg max-w-[600px] mx-auto">
-            听听我们的客户如何评价宇霞移民服务中心的庇护法律服务
+            {content?.hero?.subheadline ?? ''}
           </p>
         </div>
       </section>
@@ -216,7 +98,7 @@ export default async function TestimonialsPage() {
       <div className="bg-gray-50 border-b border-gray-200">
         <div className="max-w-[1200px] mx-auto px-6 py-3">
           <nav className="text-sm text-gray-500">
-            <Link href="/" className="hover:text-gray-700 transition-colors">
+            <Link href={`/${locale}`} className="hover:text-gray-700 transition-colors">
               首页
             </Link>
             <span className="mx-2">/</span>
@@ -231,14 +113,16 @@ export default async function TestimonialsPage() {
           <div className="inline-flex flex-col items-center">
             <span
               className="text-5xl font-bold mb-2"
-              style={{ color: '#1B2A4A', fontFamily: 'var(--font-heading)' }}
+              style={{ color: 'var(--primary)', fontFamily: 'var(--font-heading)' }}
             >
-              4.9
+              {ratingScore}
             </span>
-            <span className="text-2xl mb-2" style={{ color: '#C9963B' }}>
+            <span className="text-2xl mb-2" style={{ color: 'var(--secondary)' }}>
               ★★★★★
             </span>
-            <span className="text-gray-500 text-sm">基于 50+ 客户评价</span>
+            {ratingCount && (
+              <span className="text-gray-500 text-sm">{ratingCount}</span>
+            )}
           </div>
         </div>
       </section>
@@ -252,7 +136,7 @@ export default async function TestimonialsPage() {
               <div
                 key={i}
                 className="break-inside-avoid mb-6 bg-white border border-gray-200 rounded-lg p-6"
-                style={{ borderLeft: '3px solid #C9963B' }}
+                style={{ borderLeft: '3px solid var(--secondary)' }}
               >
                 <div className="mb-3">
                   <StarRating count={t.stars} />
@@ -263,16 +147,14 @@ export default async function TestimonialsPage() {
                 <div className="flex items-center gap-3">
                   <div
                     className="w-10 h-10 rounded-full flex items-center justify-center text-white text-sm font-semibold flex-shrink-0"
-                    style={{ backgroundColor: '#1B2A4A' }}
+                    style={{ backgroundColor: 'var(--primary)' }}
                   >
                     {t.name.charAt(0)}
                   </div>
                   <div>
-                    <div className="font-semibold text-gray-900 text-sm">
-                      {t.name}
-                    </div>
+                    <div className="font-semibold text-gray-900 text-sm">{t.name}</div>
                     <div className="text-xs text-gray-500">
-                      {t.caseType} · {t.year}
+                      {[t.caseType, t.year].filter(Boolean).join(' · ')}
                     </div>
                   </div>
                 </div>
@@ -286,7 +168,8 @@ export default async function TestimonialsPage() {
       <section
         className="py-[60px]"
         style={{
-          background: 'linear-gradient(135deg, #1B2A4A 0%, #0F1A32 100%)',
+          background:
+            'linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%)',
         }}
       >
         <div className="max-w-[700px] mx-auto px-6 text-center">
@@ -301,14 +184,14 @@ export default async function TestimonialsPage() {
           </p>
           <div className="flex flex-wrap justify-center gap-4">
             <Link
-              href="/consultation"
+              href={`/${locale}/consultation`}
               className="inline-block px-[36px] py-[16px] text-white font-semibold rounded-md transition-colors"
-              style={{ backgroundColor: '#B8373D' }}
+              style={{ backgroundColor: 'var(--accent)' }}
             >
               预约免费咨询
             </Link>
             <Link
-              href="/contact"
+              href={`/${locale}/contact`}
               className="inline-block px-[36px] py-[16px] font-semibold rounded-md border border-white text-white bg-transparent transition-colors"
             >
               联系我们

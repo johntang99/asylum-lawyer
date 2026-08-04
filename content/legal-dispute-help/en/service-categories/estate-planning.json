@@ -1,0 +1,50 @@
+{
+  "slug": "estate-planning",
+  "title": "Estate Planning & Probate",
+  "titleEN": "Estate Planning & Probate",
+  "icon": "📜",
+  "order": 2,
+  "description": "Wills, trusts, probate and inheritance disputes. For families with assets in both the US and China, planning ahead saves substantial time and cost.",
+  "intro": "Many Chinese families encounter probate for the first time when a parent dies, and only then discover that without a will the house is frozen for months or longer. The second recurring problem is cross-border inheritance: property and accounts in China, and a US process that doesn't reach them. We help you set the arrangements up in advance, or get the process through afterwards. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Wills, Trusts & Probate Consultation | Legal Dispute Help",
+    "description": "Chinese-language New York estate consultation: will drafting and review, living trusts, probate and administration, inheritance disputes and will contests, executor misconduct, powers of attorney, and cross-border US–China inheritance.",
+    "h1": "Estate Planning & Probate"
+  },
+  "items": [
+    {
+      "title": "Will drafting and review",
+      "description": "A will that is valid in New York and can actually be carried out",
+      "slug": "will-drafting"
+    },
+    {
+      "title": "Living trusts and succession planning",
+      "description": "Avoiding probate, protecting minors and dependants",
+      "slug": "living-trust"
+    },
+    {
+      "title": "Probate and intestate administration",
+      "description": "The full process with and without a will",
+      "slug": "probate"
+    },
+    {
+      "title": "Inheritance disputes and will contests",
+      "description": "Challenging validity, drafting, or circumstances of signing",
+      "slug": "will-contest"
+    },
+    {
+      "title": "Executor and trustee misconduct",
+      "description": "Delay, concealed accounting, unauthorised disposals"
+    },
+    {
+      "title": "Powers of attorney and health care proxies",
+      "description": "Authorisations to put in place before capacity is lost"
+    },
+    {
+      "title": "Cross-border US–China inheritance",
+      "description": "Coordinating property and accounts across both countries",
+      "slug": "cross-border-estate"
+    }
+  ],
+  "groups": []
+}

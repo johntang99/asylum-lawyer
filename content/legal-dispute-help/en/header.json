@@ -1,0 +1,75 @@
+{
+  "logo": {
+    "text": "Legal Dispute Help",
+    "href": "/"
+  },
+  "cta": {
+    "href": "/consultation",
+    "label": "Free Consultation",
+    "phone": "845-299-9888"
+  },
+  "nav": [
+    {
+      "href": "/",
+      "label": "Home"
+    },
+    {
+      "href": "/services",
+      "label": "Practice Areas",
+      "children": [
+        {
+          "href": "/services/business-disputes",
+          "label": "Business & Financial Disputes"
+        },
+        {
+          "href": "/services/family-law",
+          "label": "Family Law"
+        },
+        {
+          "href": "/services/estate-planning",
+          "label": "Estate Planning & Probate"
+        },
+        {
+          "href": "/services/real-estate",
+          "label": "Real Estate"
+        },
+        {
+          "href": "/services/employment",
+          "label": "Employment"
+        },
+        {
+          "href": "/services/business-formation",
+          "label": "Business Formation & Compliance"
+        },
+        {
+          "href": "/services/personal-injury",
+          "label": "Personal Injury & Insurance"
+        },
+        {
+          "href": "/services/other-matters",
+          "label": "Other Matters"
+        },
+        {
+          "href": "/services",
+          "label": "All practice areas…"
+        }
+      ]
+    },
+    {
+      "href": "/articles",
+      "label": "Insights"
+    },
+    {
+      "href": "/about",
+      "label": "About"
+    },
+    {
+      "href": "/faq",
+      "label": "FAQ"
+    },
+    {
+      "href": "/contact",
+      "label": "Contact"
+    }
+  ]
+}

@@ -1,0 +1,48 @@
+{
+  "slug": "family-law",
+  "title": "Family Law",
+  "titleEN": "Family Law",
+  "icon": "🏠",
+  "order": 1,
+  "description": "Divorce, property division, custody — decisions that shape the next several years. We explain the legal consequences in Chinese so you can see the actual choices, not just the emotion.",
+  "intro": "Chinese families face three recurring difficulties in divorce: assets tied up in a family business, property held in one spouse's or a relative's name, and custody standards that differ sharply from expectations formed elsewhere. We start by mapping your assets and your children's situation, then explain what uncontested and contested paths would each cost in time and risk. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Chinese Divorce & Family Law Consultation | Legal Dispute Help",
+    "description": "Chinese-language New York family law consultation: uncontested and contested divorce, marital property division (real estate, businesses, retirement accounts, overseas assets), prenuptial agreements, custody and visitation, support, and orders of protection.",
+    "h1": "Family Law"
+  },
+  "items": [
+    {
+      "title": "Uncontested and contested divorce",
+      "description": "Time, cost, and which path fits your situation",
+      "slug": "divorce"
+    },
+    {
+      "title": "Marital property division",
+      "description": "Real estate, businesses, retirement accounts and overseas assets",
+      "slug": "marital-property"
+    },
+    {
+      "title": "Prenuptial and postnuptial agreements",
+      "description": "Protecting premarital assets, family businesses, and blended families"
+    },
+    {
+      "title": "Child custody and visitation",
+      "description": "What courts actually weigh, and common misconceptions",
+      "slug": "child-custody"
+    },
+    {
+      "title": "Child support and spousal maintenance",
+      "description": "How it's calculated, income issues, and later modification"
+    },
+    {
+      "title": "Orders of protection",
+      "description": "Emergency applications and evidence preparation"
+    },
+    {
+      "title": "Unmarried couples' property disputes",
+      "description": "Claims over jointly funded property without marriage"
+    }
+  ],
+  "groups": []
+}

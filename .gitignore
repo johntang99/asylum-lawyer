@@ -35,3 +35,6 @@ next-env.d.ts
 # content history
 content/_history/
 content/_admin/
+
+# Per-client build directories (one port per site)
+.next-*

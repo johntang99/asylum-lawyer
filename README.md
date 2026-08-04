@@ -9,8 +9,7 @@ admin/login` →
  `admin123`  
 
 
-kill -9 $(lsof -tiTCP:3006 -sTCP:LISTEN)
-npm run dev
+c
 
 
 lsof -ti:3006 | xargs kill -9
@@ -19,6 +18,13 @@ npm run dev
 
 npm install
 npm run build
+
+
+lsof -ti:3006,3007 | xargs kill -9
+rm -rf .next .next-asylum .next-legaldispute
+npm run dev:all
+
+
 
 git add .
 git commit -m "Update: describe your changes"
@@ -246,33 +252,119 @@ Content loads via a **DB-first, file fallback** pattern:
 
 ---
 
-## Template Reuse (Pipeline B)
+## Multi-Site Platform
 
-This site is designed as a clone-and-customize template. To create a new attorney site:
+This codebase hosts multiple client sites from one deployment. **All page content is
+per-site**; nothing about a specific firm lives in the components.
 
-### What changes per client:
-- Attorney name, photo, credentials, bar number
-- Office address, phone, email, WeChat
-- Service page content (keep structure, swap details)
-- Testimonials and case types
-- Color palette (optional — navy+gold works broadly)
-- Geographic keywords (swap city names)
-- Near-location cities list
+### Live sites
 
-### What stays the same:
-- Page architecture and routes
-- Component library (Header, Footer, forms, etc.)
-- Admin CMS
-- SEO infrastructure
-- Multi-step intake form logic
-- Bilingual routing
-- Mobile responsive design
+| Site ID | Brand | Domain | Local port | Dev host |
+|---------|-------|--------|-----------|----------|
+| `asylum-attorney-la` | 宇霞移民服务中心 | `asylumsolution.com` | **3006** | `asylum.local` |
+| `legal-dispute-help` | 公道法律咨询 / Legal Dispute Help | `legaldisputehelp.com` | **3007** | `legaldispute.local` |
 
-### Extension for other practice areas:
-- Personal Injury: swap 15 service types
-- Family Law: swap service taxonomy
-- Criminal Defense: swap service categories
-- Business Immigration: swap visa types
+### Running the sites locally — one port per client
+
+Each client site gets its own port. A Next server binds a single port, so this means one
+server process per client, each pinned with `SITE_ID`:
+
+```bash
+npm run dev:asylum        # → http://localhost:3006   asylum-attorney-la
+npm run dev:legaldispute  # → http://localhost:3007   legal-dispute-help
+npm run dev:all           # both at once
+```
+
+Each pinned server also gets its own **build directory** (`NEXT_DIST_DIR`). Two `next dev`
+processes sharing one `.next` overwrite each other's compiled output; the symptom is
+`TypeError: __webpack_modules__[moduleId] is not a function` on whichever server compiled
+second. Keep the `NEXT_DIST_DIR` in any new per-client script.
+
+A pinned server serves **only** its own site — host headers and `?site=` cannot make it
+render another client. That is deliberate: it keeps `localhost:3006` permanently the
+asylum site.
+
+`npm run dev` (unpinned, port 3006) is the multi-tenant mode: it resolves by host and
+supports `?site=<siteId>` preview. Use it when working on the platform itself or
+previewing a site that has no port of its own yet.
+
+Production equivalents: `npm run start:asylum`, `npm run start:legaldispute`.
+
+Adding a port for a new client — add two scripts to `package.json`:
+
+```json
+"dev:newclient":   "SITE_ID=new-client NEXT_DIST_DIR=.next-newclient next dev -p 3008",
+"start:newclient": "SITE_ID=new-client NEXT_DIST_DIR=.next-newclient next start -p 3008"
+```
+
+### How a request resolves to a site
+
+1. `SITE_ID` env var — pins the whole process to one site (used by the per-client scripts)
+2. `?site=<siteId>` query param (sets a `site-preview` cookie; dev only unless
+   `NEXT_PUBLIC_ALLOW_SITE_PREVIEW=1`)
+3. Host → `site_domains` alias table → `sites.domain`
+4. On plain `localhost`, the first enabled site in `content/_sites.json`
+
+> **Every route under `app/[locale]` is `force-dynamic`.** Content depends on the request
+> host, so prerendering would bake one tenant's content and serve it on every other
+> tenant's domain. Do not add `generateStaticParams` to these routes, and never cache
+> per-site content in module-level variables — use React's `cache()`.
+
+### Onboarding a new client site
+
+```bash
+# 1. Create the site (admin UI → /admin/sites/new, or the API)
+#    Choose "Clone from" to copy an existing site's content as a starting point.
+
+# 2. Add a dev host alias on /admin/sites/<id>, then:
+echo "127.0.0.1 newclient.local" | sudo tee -a /etc/hosts
+sudo dscacheutil -flushcache && sudo killall -HUP mDNSResponder
+
+# 3. Preview without DNS at any time:
+open "http://localhost:3006/zh?site=newclient"
+```
+
+Then author `content/<siteId>/`:
+
+| Path | Purpose |
+|------|---------|
+| `theme.json` | Colour + typography tokens (injected as CSS custom properties) |
+| `<locale>/site.json` | Brand, NAP, hours, languages, `trustBar`, legal disclaimers |
+| `<locale>/header.json` `footer.json` | Nav, logo text, footer columns, `tagline` |
+| `<locale>/seo.json` | Default SEO |
+| `<locale>/pages/*.json` | home, about, services, contact, consultation, faq, testimonials, privacy, terms, disclaimer, remote-consultation |
+| `<locale>/service-categories/*.json` | Category hubs → `/services/[category]` |
+| `<locale>/services/*.json` | Service detail pages |
+| `<locale>/locations/*.json` | Near-location SEO pages |
+| `<locale>/landing/*.json` | Keyword landing pages → `/<slug>` |
+| `<locale>/blog/*.json` `videos/*.json` | Articles and videos |
+
+Missing content in a non-default locale falls back to the site's default locale, so a
+partially translated site shows its primary language rather than blank sections.
+
+### Compliance: what each site may claim
+
+`legal-dispute-help` is **not a law firm**. Its content is written as legal-matter
+consultation and law-firm referral, and every page carries a non-law-firm disclosure via
+`site.json → legal.disclaimer` (rendered by `LegalDisclaimer` in the locale layout).
+
+When editing that site's content, do not introduce phrasing that implies practising law:
+no "代发律师信", "全程代理", "我们起诉/出庭", or English equivalents. Service pages state
+that representation is handled by a partner law firm. Re-run this check after edits:
+
+```bash
+grep -rn "代发\|代为发出\|全程代理\|律师信\|我们代理" content/<siteId>
+```
+
+### Services: one tier or two
+
+A site with **no** `service-categories/` renders the flat layout and keeps one-level URLs
+(`/services/[slug]`) — this is what `asylum-attorney-la` uses.
+
+A site **with** categories gets hubs at `/services/[category]` and details at
+`/services/[category]/[slug]`, set by each service's `categorySlug`. Categories may use
+`groups` to sub-divide a large hub. `legal-dispute-help` uses this: 8 hubs, 56 matter
+types, 20 detail pages.
 
 ---
 

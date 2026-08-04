@@ -1,0 +1,45 @@
+{
+  "seo": {
+    "title": "Contact | Legal Dispute Help",
+    "description": "Legal Dispute Help: call 845-299-9888, or visit 90 North Street, Suite 206, Middletown, NY 10940. Free initial assessment, Chinese throughout."
+  },
+  "hours": [
+    {
+      "day": "Mon–Fri",
+      "time": "TODO_HOURS"
+    },
+    {
+      "day": "Saturday",
+      "time": "TODO_HOURS"
+    },
+    {
+      "day": "Sunday",
+      "time": "Closed"
+    }
+  ],
+  "contact": {
+    "address": "90 North Street, Suite 206",
+    "city": "Middletown, NY 10940",
+    "phone": "845-299-9888",
+    "phoneTel": "8452999888",
+    "email": "TODO_EMAIL",
+    "wechat": "TODO_WECHAT_ID",
+    "mapUrl": "https://maps.google.com/?q=90+North+Street+Suite+206+Middletown+NY+10940"
+  },
+  "emergency": {
+    "message": "If you have received court papers, an eviction notice, or any letter with a stated response deadline, please say so when you call — these usually need an attorney quickly, and we will prioritise connecting you with a partner firm. Missing a response deadline is often worse than the underlying dispute."
+  },
+  "serviceAreas": {
+    "primary": "New York City",
+    "nearby": [
+      "Flushing",
+      "Manhattan Chinatown",
+      "Sunset Park",
+      "Elmhurst",
+      "Bensonhurst",
+      "Jackson Heights",
+      "Queens",
+      "Brooklyn"
+    ]
+  }
+}

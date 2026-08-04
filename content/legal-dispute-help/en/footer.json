@@ -1,0 +1,116 @@
+{
+  "tagline": "Chinese-language legal matter consultation and law firm referral for New York. We are not a law firm.",
+  "nap": {
+    "name": "Legal Dispute Help",
+    "phone": "845-299-9888",
+    "email": "TODO_EMAIL",
+    "wechatId": "TODO_WECHAT_ID",
+    "address": {
+      "street": "90 North Street, Suite 206",
+      "city": "Middletown",
+      "state": "NY",
+      "zip": "10940",
+      "country": "US"
+    },
+    "hours": {
+      "weekday": "Mon–Fri: TODO_HOURS",
+      "saturday": "Sat: TODO_HOURS",
+      "sunday": "Sun: Closed"
+    }
+  },
+  "columns": [
+    {
+      "title": "Practice Areas",
+      "links": [
+        {
+          "href": "/services/business-disputes",
+          "label": "Business & Financial Disputes"
+        },
+        {
+          "href": "/services/family-law",
+          "label": "Family Law"
+        },
+        {
+          "href": "/services/estate-planning",
+          "label": "Estate Planning & Probate"
+        },
+        {
+          "href": "/services/real-estate",
+          "label": "Real Estate"
+        },
+        {
+          "href": "/services",
+          "label": "All practice areas"
+        }
+      ]
+    },
+    {
+      "title": "Common Questions",
+      "links": [
+        {
+          "href": "/services/business-disputes/breach-of-contract",
+          "label": "Recovering unpaid invoices"
+        },
+        {
+          "href": "/services/business-disputes/business-divorce",
+          "label": "Dissolving a partnership"
+        },
+        {
+          "href": "/services/estate-planning/probate",
+          "label": "The probate process"
+        },
+        {
+          "href": "/services/family-law/divorce",
+          "label": "How long divorce takes"
+        },
+        {
+          "href": "/faq",
+          "label": "More questions"
+        }
+      ]
+    },
+    {
+      "title": "Contact",
+      "links": [
+        {
+          "href": "/consultation",
+          "label": "Book a free consultation"
+        },
+        {
+          "href": "/contact",
+          "label": "Contact details"
+        },
+        {
+          "href": "/about",
+          "label": "About us"
+        },
+        {
+          "href": "/locations/flushing",
+          "label": "Flushing"
+        },
+        {
+          "href": "/locations/manhattan-chinatown",
+          "label": "Manhattan Chinatown"
+        }
+      ]
+    }
+  ],
+  "compliance": {
+    "disclaimer": "Legal Dispute Help is a legal-matter consultation and referral service. It is not a law firm, does not provide legal advice, and does not represent clients. Its founder, John Tao, practised law in China and is not licensed to practise law in the United States. Where formal legal advice or representation is needed, we connect you with a partner US law firm, and a licensed attorney there provides those services.",
+    "links": [
+      {
+        "href": "/privacy",
+        "label": "Privacy Policy"
+      },
+      {
+        "href": "/terms",
+        "label": "Terms of Use"
+      },
+      {
+        "href": "/disclaimer",
+        "label": "Disclaimer"
+      }
+    ]
+  },
+  "copyright": "© Legal Dispute Help"
+}

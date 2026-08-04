@@ -12,6 +12,8 @@ interface NavItem {
 
 interface HeaderProps {
   locale: string;
+  /** Falls back for the logo when the site defines no logo text. */
+  siteName?: string;
   headerConfig?: {
     logo?: { text?: string; href?: string };
     nav?: NavItem[];
@@ -27,7 +29,7 @@ interface HeaderProps {
 }
 
 const defaultConfig: NonNullable<HeaderProps["headerConfig"]> = {
-  logo: { text: "宇霞移民服务中心", href: "/" },
+  logo: { text: "", href: "/" },
   nav: [
     { label: "首页", href: "/" },
     {
@@ -50,7 +52,7 @@ const defaultConfig: NonNullable<HeaderProps["headerConfig"]> = {
   localeToggle: false,
 };
 
-export default function Header({ locale, headerConfig }: HeaderProps) {
+export default function Header({ locale, siteName = '', headerConfig }: HeaderProps) {
   const config = { ...defaultConfig, ...headerConfig };
   const pathname = usePathname();
 
@@ -186,7 +188,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                     whiteSpace: "nowrap",
                   }}
                 >
-                  {config.logo?.text || "宇霞移民服务中心"}
+                  {config.logo?.text || siteName}
                 </span>
               </>
             )}
@@ -510,7 +512,7 @@ export default function Header({ locale, headerConfig }: HeaderProps) {
                 fontSize: 16,
               }}
             >
-              {config.logo?.text || "宇霞移民服务中心"}
+              {config.logo?.text || siteName}
             </span>
           )}
           <button

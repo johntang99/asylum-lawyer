@@ -1,0 +1,149 @@
+{
+  "slug": "business-disputes",
+  "title": "财务与商业纠纷",
+  "titleEN": "Business & Financial Disputes",
+  "icon": "💼",
+  "order": 0,
+  "description": "生意合作出问题、货款收不回、股东之间谈不拢——这些是华人社区最常见也最伤元气的纠纷。我们帮您理清证据、评估胜算，再决定谈判还是起诉。",
+  "intro": "商业纠纷的关键往往不在于谁更有理，而在于谁手上有能站得住的证据、谁没有错过时效。很多华人生意靠的是人情和口头约定，出事后才发现合同不完整、转账没有备注、微信记录零散。我们会先帮您把手上的材料整理成可用的证据链，再评估追讨的现实可能性与成本，最后才谈方向——是书面催讨、走调解，还是需要律师介入提起诉讼。（以下为一般性流程说明，不构成针对您具体案件的法律意见。需要法律代理时，由合作律师事务所的持照律师承办。）",
+  "seo": {
+    "title": "纽约商业纠纷法律咨询 | 合同违约 · 股东纠纷 · 债务追讨 | 公道法律咨询",
+    "description": "纽约华人商业纠纷中文咨询：合同违约、货款拖欠、股东与合伙人纠纷、小股东被排挤、公司僵局、债务追讨与判决执行、商业租约与工程款纠纷。免费初次评估。",
+    "h1": "纽约华人商业与财务纠纷法律咨询"
+  },
+  "items": [],
+  "groups": [
+    {
+      "title": "公司之间",
+      "items": [
+        {
+          "title": "合同违约、货款与尾款拖欠",
+          "description": "供货、施工或服务完成后对方拒付或长期拖延",
+          "slug": "breach-of-contract"
+        },
+        {
+          "title": "供应商与采购纠纷",
+          "description": "货不对板、延迟交付、验收标准争议"
+        },
+        {
+          "title": "合作协议与代理协议争议",
+          "description": "独家代理、区域划分、提成结算争议"
+        },
+        {
+          "title": "商业欺诈与资金挪用",
+          "description": "虚假陈述、账目造假、公司资金被转走"
+        }
+      ]
+    },
+    {
+      "title": "股东与合伙人之间",
+      "items": [
+        {
+          "title": "股权比例与出资争议",
+          "description": "口头约定的股份没有写进文件，出资认定不清",
+          "slug": "shareholder-dispute"
+        },
+        {
+          "title": "分红不公与股东知情权",
+          "description": "长期不分红、拒绝提供账目、查账被拒",
+          "slug": "shareholder-oppression"
+        },
+        {
+          "title": "小股东被排挤",
+          "description": "被踢出管理层、被稀释股权、被断绝收益",
+          "slug": "shareholder-oppression"
+        },
+        {
+          "title": "退股、股权估值与回购",
+          "description": "想退出但对估值谈不拢",
+          "slug": "business-divorce"
+        },
+        {
+          "title": "公司僵局与强制解散清算",
+          "description": "两人各占一半互不让步，公司无法运作",
+          "slug": "business-divorce"
+        },
+        {
+          "title": "餐馆、超市、美甲店合伙散伙",
+          "description": "华人社区最高发的合伙拆伙纠纷",
+          "slug": "business-divorce"
+        }
+      ]
+    },
+    {
+      "title": "个人之间",
+      "items": [
+        {
+          "title": "民间借贷与私人借款不还",
+          "description": "借条、微信转账、亲友借款追讨",
+          "slug": "private-loan"
+        },
+        {
+          "title": "担保追偿与借条效力",
+          "description": "替人担保后被追债，或借条书写不规范"
+        },
+        {
+          "title": "亲友合资买房的出资权益",
+          "description": "房子写了别人名字，出资份额如何主张"
+        }
+      ]
+    },
+    {
+      "title": "公司与个人之间",
+      "items": [
+        {
+          "title": "欠薪、工时、小费与加班费",
+          "description": "现金发薪、无工资单情况下的追讨",
+          "slug": "unpaid-wages"
+        },
+        {
+          "title": "消费者与商家服务纠纷",
+          "description": "装修、婚庆、留学中介等服务纠纷"
+        },
+        {
+          "title": "独立承包商报酬争议",
+          "description": "1099身份下的报酬与费用争议"
+        }
+      ]
+    },
+    {
+      "title": "债务与执行",
+      "items": [
+        {
+          "title": "债务催收与追讨",
+          "description": "从书面催款到诉讼的分层思路",
+          "slug": "debt-collection"
+        },
+        {
+          "title": "判决后执行",
+          "description": "拿到判决却收不到钱：查扣、扣押、留置",
+          "slug": "judgment-enforcement"
+        },
+        {
+          "title": "破产与债务重组",
+          "description": "对方申请破产时如何保护您的债权"
+        }
+      ]
+    },
+    {
+      "title": "其他高频商业纠纷",
+      "items": [
+        {
+          "title": "商业租约纠纷",
+          "description": "二房东、押金、转租与 Good Guy 担保",
+          "slug": "commercial-lease"
+        },
+        {
+          "title": "装修与工程款纠纷",
+          "description": "工程款拖欠与 Mechanic's Lien 留置权",
+          "slug": "mechanics-lien"
+        },
+        {
+          "title": "生意买卖与转让（盘店）纠纷",
+          "description": "盘店后发现账目不实、设备有问题、房东不批准转租",
+          "slug": "business-sale"
+        }
+      ]
+    }
+  ]
+}

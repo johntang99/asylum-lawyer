@@ -1,0 +1,34 @@
+{
+  "slug": "employment",
+  "title": "Employment",
+  "titleEN": "Employment",
+  "icon": "👥",
+  "order": 4,
+  "description": "Both sides of the table. Unpaid wages, workplace injury, discrimination and wrongful termination — plus compliance and risk review for employers.",
+  "intro": "New York's wage and hour rules are stricter than most people assume, particularly in restaurants, nail salons and construction where cash pay is common. For employees, the absence of pay stubs does not necessarily prevent recovery. For employers, the cost of a wage claim usually far exceeds the cost of fixing records in advance. We act for both sides, so we know how the other one tends to respond. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Employment Dispute Consultation | Unpaid Wages, Injury, Termination | Legal Dispute Help",
+    "description": "Chinese-language New York employment consultation: unpaid wages and payroll compliance, hours and overtime, tip distribution, workers' compensation, discrimination and harassment, wrongful termination, non-competes. Employers and employees.",
+    "h1": "Employment"
+  },
+  "items": [
+    {
+      "title": "Unpaid wages and payroll compliance",
+      "description": "Recovery and proof where pay was cash and undocumented",
+      "slug": "unpaid-wages"
+    },
+    {
+      "title": "Workplace injury",
+      "description": "Workers' compensation claims and denials"
+    },
+    {
+      "title": "Discrimination, harassment and wrongful termination",
+      "description": "Channels, deadlines, and preserving evidence"
+    },
+    {
+      "title": "Non-compete and confidentiality agreements",
+      "description": "Enforceability and post-departure risk"
+    }
+  ],
+  "groups": []
+}

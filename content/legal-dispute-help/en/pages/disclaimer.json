@@ -1,0 +1,72 @@
+{
+  "seo": {
+    "title": "Disclaimer | Legal Dispute Help",
+    "description": "Legal disclaimer for Legal Dispute Help."
+  },
+  "hero": {
+    "headline": "Legal Disclaimer",
+    "updated": "Last updated: August 2026"
+  },
+  "breadcrumbLabel": "Disclaimer",
+  "notice": "Important: Legal Dispute Help is not a law firm, does not provide legal advice, and does not represent clients. Please read this disclaimer carefully before using this website or contacting us.",
+  "sections": [
+    {
+      "heading": "1. We are not a law firm",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Legal Dispute Help is a legal-matter consultation and referral service. It is not a law firm, does not provide legal advice, and does not represent clients. Its founder, John Tao, practised law in China and is not licensed to practise law in the United States. Where formal legal advice or representation is needed, we connect you with a partner US law firm, and a licensed attorney there provides those services."
+        },
+        {
+          "type": "p",
+          "text": "This means we will not advise on your specific case, will not assess its prospects, and will not file documents or appear in court on your behalf."
+        }
+      ]
+    },
+    {
+      "heading": "2. Website content is not legal advice",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "The content of this website is general information intended to help readers understand common processes and concepts. It is not specific to any case and cannot substitute for professional advice from a licensed attorney. Every matter differs in its facts, evidence and applicable deadlines."
+        }
+      ]
+    },
+    {
+      "heading": "3. No engagement created",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Browsing this website, submitting a form, sending an email or calling does not create an engagement or an attorney-client relationship. An engagement with a law firm arises only once you and that firm sign a written agreement."
+        }
+      ]
+    },
+    {
+      "heading": "4. About partner law firms",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "We maintain working relationships with several US law firms. In recommending one, we make no guarantee or promise as to the outcome of its services. Fees, scope and engagement terms are agreed directly between you and that firm."
+        }
+      ]
+    },
+    {
+      "heading": "5. Deadlines and limitation periods",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Legal claims carry limitation periods and response deadlines, and missing one can extinguish the right to pursue a claim. General descriptions here should not be used to work out the deadlines in your own matter — consult a licensed attorney promptly."
+        }
+      ]
+    },
+    {
+      "heading": "6. Past results do not guarantee future outcomes",
+      "blocks": [
+        {
+          "type": "p",
+          "text": "Nothing on this website should be read as a promise or guarantee of any particular outcome."
+        }
+      ]
+    }
+  ]
+}

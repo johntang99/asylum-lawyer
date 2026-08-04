@@ -1,0 +1,35 @@
+{
+  "slug": "other-matters",
+  "title": "Other Matters",
+  "titleEN": "Other Matters",
+  "icon": "⚖",
+  "order": 7,
+  "description": "Small claims, traffic and misdemeanour matters, defamation, and appeals against agency violations.",
+  "intro": "Some matters involve modest sums but carry consequences if ignored — effects on licences, insurance rates, even immigration status. These are usually straightforward to handle; the important thing is not to miss the response deadline. (This is general information about how such matters usually proceed, not advice on your specific case. Where representation is needed, a licensed attorney at a partner law firm handles it.)",
+  "seo": {
+    "title": "New York Chinese Legal Consultation | Small Claims, Traffic, Agency Violations | Legal Dispute Help",
+    "description": "Chinese-language New York consultation: small claims court guidance, traffic and misdemeanour matters, defamation and online libel, and appeals against DOH, DOB and DCWP violations.",
+    "h1": "Other Matters"
+  },
+  "items": [
+    {
+      "title": "Small claims guidance",
+      "description": "Limits, procedure and how to prepare to represent yourself",
+      "slug": "small-claims"
+    },
+    {
+      "title": "Traffic violations and misdemeanours",
+      "description": "Points, insurance consequences and court appearances"
+    },
+    {
+      "title": "Defamation and online libel",
+      "description": "False statements in WeChat groups, review platforms and social media"
+    },
+    {
+      "title": "Agency violation appeals",
+      "description": "DOH health, DOB buildings and DCWP consumer affairs violations",
+      "slug": "agency-violations"
+    }
+  ],
+  "groups": []
+}

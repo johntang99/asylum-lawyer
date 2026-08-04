@@ -1,0 +1,75 @@
+{
+  "cta": {
+    "href": "/consultation",
+    "label": "免费咨询",
+    "phone": "845-299-9888"
+  },
+  "nav": [
+    {
+      "href": "/",
+      "label": "首页"
+    },
+    {
+      "href": "/services",
+      "label": "服务领域",
+      "children": [
+        {
+          "href": "/services/business-disputes",
+          "label": "财务与商业纠纷"
+        },
+        {
+          "href": "/services/family-law",
+          "label": "婚姻与家庭"
+        },
+        {
+          "href": "/services/estate-planning",
+          "label": "遗产与传承"
+        },
+        {
+          "href": "/services/real-estate",
+          "label": "房地产"
+        },
+        {
+          "href": "/services/employment",
+          "label": "劳资与雇佣"
+        },
+        {
+          "href": "/services/business-formation",
+          "label": "公司设立与合规"
+        },
+        {
+          "href": "/services/personal-injury",
+          "label": "人身伤害与保险"
+        },
+        {
+          "href": "/services/other-matters",
+          "label": "其他常见需求"
+        },
+        {
+          "href": "/services",
+          "label": "全部服务…"
+        }
+      ]
+    },
+    {
+      "href": "/articles",
+      "label": "法律知识"
+    },
+    {
+      "href": "/about",
+      "label": "关于我们"
+    },
+    {
+      "href": "/faq",
+      "label": "常见问题"
+    },
+    {
+      "href": "/contact",
+      "label": "联系我们"
+    }
+  ],
+  "logo": {
+    "text": "公道法律咨询",
+    "href": "/"
+  }
+}

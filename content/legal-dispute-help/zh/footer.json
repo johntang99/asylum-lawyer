@@ -1,0 +1,116 @@
+{
+  "nap": {
+    "name": "公道法律咨询",
+    "phone": "845-299-9888",
+    "email": "TODO_EMAIL",
+    "wechatId": "TODO_WECHAT_ID",
+    "address": {
+      "street": "90 North Street, Suite 206",
+      "city": "Middletown",
+      "state": "NY",
+      "zip": "10940",
+      "country": "US"
+    },
+    "hours": {
+      "weekday": "周一至周五：TODO_营业时间",
+      "saturday": "周六：TODO_营业时间",
+      "sunday": "周日：休息"
+    }
+  },
+  "columns": [
+    {
+      "title": "主要服务",
+      "links": [
+        {
+          "href": "/services/business-disputes",
+          "label": "财务与商业纠纷"
+        },
+        {
+          "href": "/services/family-law",
+          "label": "婚姻与家庭"
+        },
+        {
+          "href": "/services/estate-planning",
+          "label": "遗产与传承"
+        },
+        {
+          "href": "/services/real-estate",
+          "label": "房地产"
+        },
+        {
+          "href": "/services",
+          "label": "全部服务"
+        }
+      ]
+    },
+    {
+      "title": "常见问题",
+      "links": [
+        {
+          "href": "/services/business-disputes/breach-of-contract",
+          "label": "货款拖欠怎么追"
+        },
+        {
+          "href": "/services/business-disputes/business-divorce",
+          "label": "合伙散伙怎么分"
+        },
+        {
+          "href": "/services/estate-planning/probate",
+          "label": "遗产认证流程"
+        },
+        {
+          "href": "/services/family-law/divorce",
+          "label": "离婚要多久"
+        },
+        {
+          "href": "/faq",
+          "label": "更多常见问题"
+        }
+      ]
+    },
+    {
+      "title": "联系我们",
+      "links": [
+        {
+          "href": "/consultation",
+          "label": "预约免费咨询"
+        },
+        {
+          "href": "/contact",
+          "label": "联系方式"
+        },
+        {
+          "href": "/about",
+          "label": "关于我们"
+        },
+        {
+          "href": "/locations/flushing",
+          "label": "法拉盛"
+        },
+        {
+          "href": "/locations/manhattan-chinatown",
+          "label": "曼哈顿华埠"
+        }
+      ]
+    }
+  ],
+  "compliance": {
+    "disclaimer": "公道法律咨询是法律事务咨询与转介服务机构，不是律师事务所，不提供法律意见，也不代理案件。创办人 John Tao 曾在中国从事法律工作，并非美国执业律师。需要正式法律意见或法律代理时，我们会为您对接合作的美国律师事务所，由持照律师提供相应服务。本网站内容仅供一般参考，不构成法律意见，浏览本网站不构成任何委托关系。",
+    "links": [
+      {
+        "href": "/privacy",
+        "label": "隐私政策"
+      },
+      {
+        "href": "/terms",
+        "label": "使用条款"
+      },
+      {
+        "href": "/disclaimer",
+        "label": "免责声明"
+      }
+    ]
+  },
+  "copyright": "© 公道法律咨询 Legal Dispute Help",
+  "tagline": "为纽约华人提供中文法律事务咨询与律所转介：商业与股东纠纷、债务、婚姻家庭、遗产传承、房地产与劳资问题。我们不是律师事务所。"
+}
