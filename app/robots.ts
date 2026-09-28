@@ -1,9 +1,11 @@
 import type { MetadataRoute } from 'next';
+import { getRequestSiteId } from '@/lib/content';
+import { getSiteBaseUrl } from '@/lib/siteUrl';
 
-const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yuxiaris.com';
+export default async function robots(): Promise<MetadataRoute.Robots> {
+  const siteId = await getRequestSiteId();
+  const baseUrl = await getSiteBaseUrl(siteId);
 
-export default function robots(): MetadataRoute.Robots {
   return {
     rules: [
       {
@@ -12,6 +14,7 @@ export default function robots(): MetadataRoute.Robots {
         disallow: ['/admin/', '/api/admin/'],
       },
     ],
-    sitemap: `${BASE_URL}/sitemap.xml`,
+    // Points at this site's own sitemap, not a shared one.
+    ...(baseUrl ? { sitemap: `${baseUrl}/sitemap.xml`, host: baseUrl } : {}),
   };
 }

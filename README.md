@@ -417,3 +417,84 @@ UNSPLASH_ACCESS_KEY=            # Stock photos
 ---
 
 Built with the [BAAM Platform](https://github.com/anthropics/claude-code) — System L (Legal/Asylum)
+
+---
+
+## Deploying to Production (Vercel, one project + both domains)
+
+Both client sites run from **one Vercel project**. The site is chosen per request from
+the `Host` header, so each domain serves its own content, sitemap and canonical URLs.
+
+### 1. Push the repo
+
+```bash
+git add .
+git commit -m "Multi-tenant platform + legal-dispute-help site"
+git push origin main
+```
+
+### 2. Create the Vercel project
+
+Import `github.com/johntang99/asylum-lawyer` on vercel.com. Framework preset **Next.js**;
+build command, output dir and install command all stay at their defaults.
+
+### 3. Environment variables (Production scope)
+
+| Variable | Value |
+|----------|-------|
+| `NEXT_PUBLIC_SUPABASE_URL` | from `.env.local` |
+| `SUPABASE_URL` | same as above |
+| `SUPABASE_SERVICE_ROLE_KEY` | from `.env.local` — **server-only, never `NEXT_PUBLIC_`** |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | from `.env.local` |
+| `SUPABASE_STORAGE_BUCKET` | from `.env.local` |
+| `JWT_SECRET` | from `.env.local` (≥32 chars) |
+| `RESEND_API_KEY`, `RESEND_FROM`, `CONTACT_FALLBACK_TO` | from `.env.local` |
+
+**Do not set** these in production:
+
+- `SITE_ID` — it pins the whole deployment to one client, breaking the other domain.
+- `NEXT_PUBLIC_ALLOW_SITE_PREVIEW` — leaving it unset disables `?site=`, so no one can
+  swap tenants via a query param.
+- `NEXT_PUBLIC_SITE_URL` — no longer needed; each site's URL comes from its own `domain`
+  (or `seo.json → siteUrl`). Only set it as a last-resort fallback.
+
+### 4. Attach both domains
+
+In **Project → Settings → Domains** add `legaldisputehelp.com`, `www.legaldisputehelp.com`
+and the asylum domain. Then point DNS at Vercel:
+
+| Type | Name | Value |
+|------|------|-------|
+| A | `@` | `76.76.21.21` |
+| CNAME | `www` | `cname.vercel-dns.com` |
+
+Vercel shows the exact records to use — follow those if they differ. TLS is issued
+automatically once DNS resolves.
+
+The domain must also exist in the database, which it already does for both sites — check
+under **Admin → Sites → Domain Aliases**, environment `prod`.
+
+### 5. Pre-launch checklist
+
+- [ ] **Change the admin password.** `admin@yuxiaris.com` / `admin123` is the seeded
+      default and `/admin/login` is reachable from every attached domain.
+- [ ] Fill the remaining `TODO_` placeholders — `grep -rn TODO_ content/<siteId>`
+- [ ] Confirm each site's `domain` is correct; it drives canonical URLs and the sitemap
+- [ ] Run **Admin → Onboarding QA Checklist** and confirm every row is green
+- [ ] Have an attorney review `legal-dispute-help` copy (see Compliance above)
+
+### 6. Verify after deploy
+
+```bash
+curl -sI https://legaldisputehelp.com/zh | head -1
+curl -s https://legaldisputehelp.com/sitemap.xml | head -5      # must be its own domain
+curl -s https://legaldisputehelp.com/robots.txt
+curl -s https://legaldisputehelp.com/zh | grep -o 'rel="canonical"[^>]*'
+```
+
+Then submit `https://legaldisputehelp.com/sitemap.xml` in Google Search Console.
+
+### Adding a third client later
+
+No redeploy config needed: onboard the site in the admin, add its domain in Vercel and
+DNS, and register the domain under the site's aliases. Host resolution does the rest.

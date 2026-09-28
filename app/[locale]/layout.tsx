@@ -20,6 +20,7 @@ type HeaderConfig = any;
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 type FooterConfig = any;
 import { getSiteDisplayName } from '@/lib/siteInfo';
+import { getSiteBaseUrl } from '@/lib/siteUrl';
 import Header from '@/components/layout/Header';
 import Footer from '@/components/layout/Footer';
 import TrustBar from '@/components/shared/TrustBar';
@@ -60,7 +61,7 @@ export async function generateMetadata({
     siteInfo?.description ||
     '洛杉矶专业中文庇护移民律师，提供政治庇护、移民签证等法律服务。';
   const titleDefault = seo?.title || titleBase;
-  const siteUrl = (seo as any)?.siteUrl || process.env.NEXT_PUBLIC_SITE_URL || '';
+  const siteUrl = await getSiteBaseUrl(site.id, locale as any);
   const canonical = siteUrl ? `${siteUrl}/${locale}` : undefined;
 
   const languageAlternates = siteUrl

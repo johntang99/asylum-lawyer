@@ -9,13 +9,14 @@
     },
     "phone": "",
     "address": {
-      "zip": "91776",
-      "city": "San Gabriel",
+      "zip": "91801",
+      "city": "Alhambra",
       "state": "CA",
-      "street": "1045 E. Valley Blvd., #A115, Rm 6",
+      "street": "820 S Garfield Ave, Ste 305",
       "country": "US"
     },
-    "wechatId": "yuxiaris"
+    "wechatId": "yuxiaris",
+    "wechatQrCodeUrl": "https://jzgzwfarakaegzlzfkqj.supabase.co/storage/v1/object/public/media/asylum-attorney-la/general/1788277721132-weixin-2026-08-17-151956.jpeg"
   },
   "columns": [
     {

@@ -4,8 +4,7 @@ import { getServiceCategories, getServices } from '@/lib/services';
 import { getLocations } from '@/lib/locations';
 import { loadPublicArticles } from '@/lib/articles';
 import type { Locale } from '@/lib/i18n';
-
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.yuxiaris.com';
+import { getSiteBaseUrl } from '@/lib/siteUrl';
 
 const LOCALES = ['zh', 'en'] as const;
 
@@ -101,12 +100,14 @@ async function routesForLocale(siteId: string, locale: Locale): Promise<RouteEnt
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
   const now = new Date();
   const siteId = await getRequestSiteId();
+  // Each site advertises its own domain, never a shared global URL.
+  const baseUrl = await getSiteBaseUrl(siteId);
 
   const perLocale = await Promise.all(
     LOCALES.map(async (locale) => {
       const routes = await routesForLocale(siteId, locale as Locale);
       return routes.map((route) => ({
-        url: `${BASE_URL}/${locale}${route.path}`,
+        url: `${baseUrl}/${locale}${route.path}`,
         lastModified: now,
         changeFrequency: route.changeFrequency,
         priority: route.priority,
