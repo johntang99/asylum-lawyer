@@ -1,9 +1,12 @@
 import Link from 'next/link';
+import { Children } from 'react';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
 import { loadAllItems, loadContent, getRequestSiteId } from '@/lib/content';
 import type { Locale } from '@/lib/i18n';
 import { getYouTubeEmbedUrl } from '@/lib/utils';
+import WechatQrPopupTrigger from '@/components/shared/WechatQrPopupTrigger';
+import { ASYLUM_WECHAT_ID, ASYLUM_WECHAT_QR_CODE_URL } from '@/lib/wechat';
 
 function normalizeVideoMarkdown(markdown: string): string {
   return markdown.replace(/^#\s+.+\n+/, '').replace(/\n{3,}/g, '\n\n');
@@ -52,6 +55,8 @@ export default async function VideoDetailPage({
 
   // Convert YouTube URL (watch/shorts/youtu.be) to embed URL
   const embedUrl = getYouTubeEmbedUrl(video.videoUrl);
+  const wechatId = ASYLUM_WECHAT_ID;
+  const wechatQrCodeUrl = ASYLUM_WECHAT_QR_CODE_URL;
 
   return (
     <>
@@ -130,9 +135,35 @@ export default async function VideoDetailPage({
                     h3: (props) => (
                       <h5 className="mt-4 mb-2 text-sm font-semibold text-gray-900" {...props} />
                     ),
-                    p: (props) => (
-                      <p className="mb-3 leading-7 text-gray-700" {...props} />
-                    ),
+                    p: ({ children, ...props }) => {
+                      const text = Children.toArray(children)
+                        .map((node) => (typeof node === 'string' ? node : ''))
+                        .join('')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+                      const isWechatLine = /^(微信|WeChat)\s*[:：]\s*yuxiaris$/i.test(text);
+
+                      if (isWechatLine) {
+                        return (
+                          <p className="mb-3 leading-7 text-gray-700" {...props}>
+                            微信：
+                            <WechatQrPopupTrigger
+                              wechatId={wechatId}
+                              qrCodeUrl={wechatQrCodeUrl}
+                              className="ml-1 font-medium text-[#B8373D] underline underline-offset-2 hover:text-[#8a2a2f]"
+                            >
+                              {wechatId}
+                            </WechatQrPopupTrigger>
+                          </p>
+                        );
+                      }
+
+                      return (
+                        <p className="mb-3 leading-7 text-gray-700" {...props}>
+                          {children}
+                        </p>
+                      );
+                    },
                     ul: (props) => (
                       <ul className="mb-3 list-disc pl-5 text-gray-700" {...props} />
                     ),
@@ -142,6 +173,23 @@ export default async function VideoDetailPage({
                     li: (props) => <li className="mb-1 leading-6" {...props} />,
                     a: ({ href, children, ...rest }) => {
                       const url = href || '';
+                      const linkText = Children.toArray(children)
+                        .map((node) => (typeof node === 'string' ? node : ''))
+                        .join('')
+                        .replace(/\s+/g, ' ')
+                        .trim();
+                      const isWechatLink = /^(微信|WeChat)\s*[:：]\s*yuxiaris$/i.test(linkText);
+                      if (isWechatLink) {
+                        return (
+                          <WechatQrPopupTrigger
+                            wechatId={wechatId}
+                            qrCodeUrl={wechatQrCodeUrl}
+                            className="font-medium text-[#B8373D] underline underline-offset-2 hover:text-[#8a2a2f]"
+                          >
+                            {linkText}
+                          </WechatQrPopupTrigger>
+                        );
+                      }
                       const isExternal = /^https?:\/\//i.test(url) && !url.includes('localhost');
                       return (
                         <a

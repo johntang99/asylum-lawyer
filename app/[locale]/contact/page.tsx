@@ -3,6 +3,8 @@ import Link from 'next/link';
 import { loadPageContent } from '@/lib/content';
 import { isValidLocale, defaultLocale, type Locale } from '@/lib/i18n';
 import SectionHeader from '@/components/shared/SectionHeader';
+import WechatQrPopupTrigger from '@/components/shared/WechatQrPopupTrigger';
+import { ASYLUM_WECHAT_QR_CODE_URL } from '@/lib/wechat';
 import ContactForm from './ContactForm';
 
 /* eslint-disable @typescript-eslint/no-explicit-any */
@@ -39,6 +41,7 @@ export default async function ContactPage({
     city: 'San Gabriel, CA 91776',
     mapUrl: 'https://maps.google.com/?q=1045+E+Valley+Blvd+A115+San+Gabriel+CA+91776',
   };
+  const wechatQrCodeUrl = content?.contact?.wechatQrCodeUrl ?? ASYLUM_WECHAT_QR_CODE_URL;
 
   const hours = content?.hours ?? [
     { day: '周一至周五', time: '9:00 AM – 6:00 PM' },
@@ -101,13 +104,14 @@ export default async function ContactPage({
               </div>
               <h3 className="text-lg font-semibold text-gray-900 mb-1">微信咨询</h3>
               <p className="text-gray-500 mb-4">{contact.wechat}</p>
-              <button
-                type="button"
+              <WechatQrPopupTrigger
+                wechatId={contact.wechat}
+                qrCodeUrl={wechatQrCodeUrl}
                 className="inline-block px-6 py-2.5 text-white font-semibold rounded-md text-sm transition-colors"
                 style={{ backgroundColor: '#07C160' }}
               >
                 添加微信
-              </button>
+              </WechatQrPopupTrigger>
             </div>
 
             {/* Email */}
@@ -231,7 +235,13 @@ export default async function ContactPage({
                 <span className="text-xl mt-0.5">💬</span>
                 <div>
                   <div className="font-semibold text-gray-900 mb-1">微信号</div>
-                  <span className="text-gray-600 text-sm">{contact.wechat}</span>
+                  <WechatQrPopupTrigger
+                    wechatId={contact.wechat}
+                    qrCodeUrl={wechatQrCodeUrl}
+                    className="text-sm font-medium text-[#1B2A4A] transition-colors duration-200 hover:text-[#C9963B]"
+                  >
+                    {contact.wechat}
+                  </WechatQrPopupTrigger>
                 </div>
               </div>
             </div>

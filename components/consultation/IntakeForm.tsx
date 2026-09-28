@@ -2,6 +2,8 @@
 
 import { useState, FormEvent } from 'react';
 import Link from 'next/link';
+import WechatQrPopupTrigger from '@/components/shared/WechatQrPopupTrigger';
+import { ASYLUM_WECHAT_QR_CODE_URL } from '@/lib/wechat';
 
 /* ── Constants ── */
 const NAVY = '#1B2A4A';
@@ -20,6 +22,7 @@ const DEFAULT_CONSULTATION_CONTENT = {
     contact: {
       email: 'yuxiaris@gmail.com',
       wechat: 'yuxiaris',
+      wechatQrCodeUrl: ASYLUM_WECHAT_QR_CODE_URL,
     },
   },
   form: {
@@ -298,7 +301,7 @@ function TrustSidebar({
     name: string;
     title: string;
     badges: readonly string[];
-    contact: { email: string; wechat: string };
+    contact: { email: string; wechat: string; wechatQrCodeUrl?: string };
   };
 }) {
   return (
@@ -331,7 +334,18 @@ function TrustSidebar({
         </p>
         <p>
           <span className="font-semibold">微信：</span>
-          {sidebar.contact.wechat}
+          {sidebar.contact.wechatQrCodeUrl ? (
+            <WechatQrPopupTrigger
+              wechatId={sidebar.contact.wechat}
+              qrCodeUrl={sidebar.contact.wechatQrCodeUrl}
+              className="font-medium transition-colors duration-200 hover:text-[#C9963B]"
+              style={{ color: NAVY }}
+            >
+              {sidebar.contact.wechat}
+            </WechatQrPopupTrigger>
+          ) : (
+            sidebar.contact.wechat
+          )}
         </p>
       </div>
     </div>
